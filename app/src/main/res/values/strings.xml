@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Dekaneh</string>
+
+
+
+    <!--Date -->
+    <string name="DATE_FORMATE_TODAY">today</string>
+    <string name="DATE_FORMATE_YESTERDAY">yesterday</string>
+    <string name="DATE_fiew_minutes_ago">%1$d minutes ago</string>
+    <string name="DATE_fiew_hours_ago">%1$d hours ago</string>
+    <string name="DATE_fiew_days_ago">%1$d days ago</string>
+    <string name="DATE_fiew_seconds_ago">few seconds ago</string>
+
+
+</resources>
