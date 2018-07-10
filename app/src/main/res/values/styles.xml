@@ -12,4 +12,10 @@
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
 
+
+    <style name="WhiteCheckBox">
+        <item name="colorAccent">#ffffff</item>
+        <item name="buttonTint">#fff</item>
+    </style>
+
 </resources>
