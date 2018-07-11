@@ -8,7 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public abstract class BaseFragment extends Fragment {
+import brain_socket.com.dekaneh.activity.registration.FragmentNavigationVP;
+import butterknife.ButterKnife;
+
+public abstract class BaseFragment extends Fragment implements FragmentNavigationVP.View {
+
+    protected FragmentNavigationVP.Presenter navigationPresenter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -18,11 +23,25 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(rootViewId(), container, false);
+
+        View rootView = inflater.inflate(rootViewLayoutId(), container, false);
+        ButterKnife.bind(this, rootView);
+
+        init(rootView);
+
+        return rootView;
     }
 
-    public abstract void init();
+    public abstract void init(View rootView);
 
-    public abstract int rootViewId();
+    /**
+     * e.g
+     * @return R.id.layout_name
+     **/
+    public abstract int rootViewLayoutId();
 
+    @Override
+    public void attachPresenter(FragmentNavigationVP.Presenter presenter) {
+        this.navigationPresenter = presenter;
+    }
 }
