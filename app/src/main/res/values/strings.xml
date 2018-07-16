@@ -18,6 +18,10 @@
     <string name="login">login</string>
     <string name="don_t_have_an_account_question">Don\'t have an account?</string>
     <string name="sign_up">Sign up</string>
+    <string name="store_name">Store name</string>
+    <string name="store_location">Store location</string>
+    <string name="create_account">Create account</string>
+    <string name="do_you_have_an_account_question">Do you have an account?</string>
 
 
 </resources>

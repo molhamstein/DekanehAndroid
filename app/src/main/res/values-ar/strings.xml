@@ -7,4 +7,8 @@
     <string name="login">تسجيل الدخول</string>
     <string name="don_t_have_an_account_question">ليس لديك حساب</string>
     <string name="sign_up">تسجيل حساب جديد</string>
+    <string name="store_name">اسم المحل</string>
+    <string name="store_location">منطقة المحل</string>
+    <string name="do_you_have_an_account_question">هل لديك حساب مسجل مسبقا؟</string>
+    <string name="create_account">تسجيل الحساب</string>
 </resources>
