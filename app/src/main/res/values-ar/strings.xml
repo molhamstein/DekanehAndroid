@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dekaneh</string>
+    <string name="phone_number">رقم الموبايل</string>
+    <string name="password">كلمة السر</string>
+    <string name="forgot_password">نسيت كلمة السر؟</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="don_t_have_an_account_question">ليس لديك حساب</string>
+    <string name="sign_up">تسجيل حساب جديد</string>
+</resources>
