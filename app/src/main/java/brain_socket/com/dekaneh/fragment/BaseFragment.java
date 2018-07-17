@@ -26,7 +26,6 @@ public abstract class BaseFragment extends Fragment implements FragmentNavigatio
 
         View rootView = inflater.inflate(rootViewLayoutId(), container, false);
         ButterKnife.bind(this, rootView);
-
         init(rootView);
 
         return rootView;
@@ -39,6 +38,7 @@ public abstract class BaseFragment extends Fragment implements FragmentNavigatio
      * @return R.id.layout_name
      **/
     public abstract int rootViewLayoutId();
+    public abstract String TAG();
 
     @Override
     public void attachPresenter(FragmentNavigationVP.Presenter presenter) {

@@ -25,6 +25,11 @@ public class ChooseAccountFragment extends BaseFragment {
         return R.layout.fragment_choose_account;
     }
 
+    @Override
+    public String TAG() {
+        return ChooseAccountFragment.class.getSimpleName();
+    }
+
 
     @OnClick(R.id.account_1)
     public void onCardOneClicked(){

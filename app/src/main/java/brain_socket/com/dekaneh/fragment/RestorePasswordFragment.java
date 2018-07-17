@@ -20,4 +20,9 @@ public class RestorePasswordFragment extends BaseFragment {
     public int rootViewLayoutId() {
         return R.layout.fragment_restore_password;
     }
+
+    @Override
+    public String TAG() {
+        return RestorePasswordFragment.class.getSimpleName();
+    }
 }

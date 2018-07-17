@@ -3,6 +3,8 @@ package brain_socket.com.dekaneh.activity.registration;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import brain_socket.com.dekaneh.R;
@@ -14,6 +16,10 @@ import butterknife.ButterKnife;
 
 public class RegistrationActivity extends BaseActivity implements RegistrationActivityVP.View {
 
+
+    private static final String TAG = RegistrationActivity.class.getSimpleName();
+    @BindView(R.id.mainToolbar)
+    Toolbar toolbar;
     @BindView(R.id.registrationContainer)
     View container;
 
@@ -29,6 +35,7 @@ public class RegistrationActivity extends BaseActivity implements RegistrationAc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
+        setSupportActionBar(toolbar);
 
         presenter = new RegistrationActivityPresenter(this);
 
@@ -38,6 +45,7 @@ public class RegistrationActivity extends BaseActivity implements RegistrationAc
 
     @Override
     public void setFragment(BaseFragment fragment) {
+        Log.d(TAG, "setFragment: " + fragment.TAG());
         fragment.attachPresenter(presenter);
         getSupportFragmentManager()
                 .beginTransaction()

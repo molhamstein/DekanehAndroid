@@ -21,4 +21,9 @@ public class SubmitAccountFragment extends BaseFragment {
         return R.layout.fragment_submit_account;
     }
 
+    @Override
+    public String TAG() {
+        return SubmitAccountFragment.class.getSimpleName();
+    }
+
 }

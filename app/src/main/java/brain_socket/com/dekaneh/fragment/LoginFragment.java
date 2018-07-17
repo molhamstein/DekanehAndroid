@@ -26,6 +26,11 @@ public class LoginFragment extends BaseFragment {
         return R.layout.fragment_login;
     }
 
+    @Override
+    public String TAG() {
+        return LoginFragment.class.getSimpleName();
+    }
+
     @OnClick(R.id.signUpText)
     public void onSignUpTextClicked(){
         navigationPresenter.replaceFragment(ChooseAccountFragment.newInstance());

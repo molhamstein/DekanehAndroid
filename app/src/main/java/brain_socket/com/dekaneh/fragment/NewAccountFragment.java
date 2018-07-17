@@ -26,6 +26,11 @@ public class NewAccountFragment extends BaseFragment {
         return R.layout.fragment_new_account;
     }
 
+    @Override
+    public String TAG() {
+        return NewAccountFragment.class.getSimpleName();
+    }
+
 
     @OnClick(R.id.signInText)
     public void onSignInTextClicked(){

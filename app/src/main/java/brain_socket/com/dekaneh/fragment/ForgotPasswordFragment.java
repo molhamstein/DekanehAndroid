@@ -24,4 +24,9 @@ public class ForgotPasswordFragment extends BaseFragment {
     public int rootViewLayoutId() {
         return R.layout.fragment_forgot_password;
     }
+
+    @Override
+    public String TAG() {
+        return ForgotPasswordFragment.class.getSimpleName();
+    }
 }
