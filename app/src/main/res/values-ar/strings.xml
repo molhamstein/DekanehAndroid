@@ -12,4 +12,6 @@
     <string name="do_you_have_an_account_question">هل لديك حساب مسجل مسبقا؟</string>
     <string name="create_account">تسجيل الحساب</string>
     <string name="code_send_info">سوف نرسل لك رمز استعادة كلمة السر</string>
+    <string name="new_password">كلمة السر الجديدة</string>
+    <string name="enter_code_info">قم بادخال رمز الاستعادة الذي حصلت عليه كرسالة نصية SMS</string>
 </resources>
