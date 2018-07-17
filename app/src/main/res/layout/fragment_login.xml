@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_background"
     android:minHeight="0dp"
     tools:context=".activity.registration.RegistrationActivity"
     tools:layout_editor_absoluteY="25dp">
