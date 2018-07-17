@@ -22,6 +22,7 @@
     <string name="store_location">Store location</string>
     <string name="create_account">Create account</string>
     <string name="do_you_have_an_account_question">Do you have an account?</string>
+    <string name="code_send_info">We will send you a code to change your password</string>
 
 
 </resources>
