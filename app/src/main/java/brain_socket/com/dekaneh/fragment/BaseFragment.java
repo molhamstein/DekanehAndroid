@@ -15,6 +15,7 @@ public abstract class BaseFragment extends Fragment implements FragmentNavigatio
 
     protected FragmentNavigationVP.Presenter navigationPresenter;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,6 @@ public abstract class BaseFragment extends Fragment implements FragmentNavigatio
         View rootView = inflater.inflate(rootViewLayoutId(), container, false);
         ButterKnife.bind(this, rootView);
         init(rootView);
-
         return rootView;
     }
 
@@ -44,4 +44,6 @@ public abstract class BaseFragment extends Fragment implements FragmentNavigatio
     public void attachPresenter(FragmentNavigationVP.Presenter presenter) {
         this.navigationPresenter = presenter;
     }
+
+
 }

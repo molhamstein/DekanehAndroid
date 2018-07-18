@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/registrationContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/splash_background"
-    android:orientation="vertical">
-
-
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/mainToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/transparent"
-        app:titleTextAppearance="@style/WhiteBoldTextView"
-        />
-
-    <FrameLayout
-        android:id="@+id/registrationContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    
-    
-
-</LinearLayout>
+    android:orientation="vertical"/>

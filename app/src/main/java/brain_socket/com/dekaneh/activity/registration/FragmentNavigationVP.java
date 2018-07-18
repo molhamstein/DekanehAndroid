@@ -4,7 +4,6 @@ import brain_socket.com.dekaneh.fragment.BaseFragment;
 
 public interface FragmentNavigationVP {
 
-
     interface View {
 
         void attachPresenter(Presenter presenter);

@@ -29,4 +29,5 @@ public class ForgotPasswordFragment extends BaseFragment {
     public String TAG() {
         return ForgotPasswordFragment.class.getSimpleName();
     }
+
 }

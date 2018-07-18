@@ -2,6 +2,7 @@ package brain_socket.com.dekaneh.fragment;
 
 
 import android.view.View;
+import android.widget.Toast;
 
 import brain_socket.com.dekaneh.R;
 import butterknife.OnClick;
@@ -18,6 +19,7 @@ public class LoginFragment extends BaseFragment {
 
     @Override
     public void init(View rootView) {
+
 
     }
 
