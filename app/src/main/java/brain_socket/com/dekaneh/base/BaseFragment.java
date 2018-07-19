@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.fragment;
+package brain_socket.com.dekaneh.base;
 
 
 import android.os.Bundle;

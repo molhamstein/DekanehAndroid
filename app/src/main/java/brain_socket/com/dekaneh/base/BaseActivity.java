@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.activity;
+package brain_socket.com.dekaneh.base;
 
 import android.annotation.SuppressLint;
 import android.app.NotificationManager;

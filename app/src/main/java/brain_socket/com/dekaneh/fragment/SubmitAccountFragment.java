@@ -4,6 +4,7 @@ package brain_socket.com.dekaneh.fragment;
 import android.view.View;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.base.BaseFragment;
 
 public class SubmitAccountFragment extends BaseFragment {
 

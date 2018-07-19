@@ -1,6 +1,6 @@
 package brain_socket.com.dekaneh.activity.registration;
 
-import brain_socket.com.dekaneh.fragment.BaseFragment;
+import brain_socket.com.dekaneh.base.BaseFragment;
 
 public interface RegistrationActivityVP {
 

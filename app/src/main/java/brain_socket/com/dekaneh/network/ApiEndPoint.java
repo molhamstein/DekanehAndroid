@@ -6,6 +6,6 @@ public class ApiEndPoint {
 
     private ApiEndPoint(){ }
 
-    public static final String LOGIN = BuildConfig.BASE_API_URL + "login";
+    public static final String LOGIN = BuildConfig.BASE_API_URL + "users/login";
 
 }

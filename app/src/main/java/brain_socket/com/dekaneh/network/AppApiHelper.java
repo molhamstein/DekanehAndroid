@@ -13,6 +13,7 @@ public class AppApiHelper {
     public static Single<LoginResponse> login(LoginRequest request) {
         return Rx2AndroidNetworking.post(ApiEndPoint.LOGIN)
                 .addBodyParameter(request)
+                .addQueryParameter("include", "user")
                 .build()
                 .getObjectSingle(LoginResponse.class);
     }

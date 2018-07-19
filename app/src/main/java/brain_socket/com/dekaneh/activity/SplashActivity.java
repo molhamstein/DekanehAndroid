@@ -3,6 +3,7 @@ package brain_socket.com.dekaneh.activity;
 import android.os.Bundle;
 
 import brain_socket.com.dekaneh.activity.registration.RegistrationActivity;
+import brain_socket.com.dekaneh.base.BaseActivity;
 
 public class SplashActivity extends BaseActivity {
 

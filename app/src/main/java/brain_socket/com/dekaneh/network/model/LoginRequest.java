@@ -3,7 +3,9 @@ package brain_socket.com.dekaneh.network.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class LoginRequest {
+import java.io.Serializable;
+
+public class LoginRequest implements Serializable{
 
     public LoginRequest(String phoneNumber, String password) {
         this.phoneNumber = phoneNumber;
