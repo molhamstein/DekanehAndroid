@@ -65,7 +65,6 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
     @Override
     protected void onStart() {
         super.onStart();
-        DekanehApp.setCurrentActivity(this);
     }
 
     @Override
