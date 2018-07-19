@@ -1,6 +1,9 @@
 package brain_socket.com.dekaneh;
 
 import android.app.Application;
+
+import com.androidnetworking.AndroidNetworking;
+
 import brain_socket.com.dekaneh.activity.BaseActivity;
 
 
@@ -17,7 +20,7 @@ public class DekanehApp extends Application {
         super.onCreate();
 //        appContext = this;
 //        sharedGsonParser = new Gson();
-//        AndroidNetworking.initialize(getApplicationContext());
+        AndroidNetworking.initialize(getApplicationContext());
 //        DataStore.disposeCurrentInstance(); /// to make sure no members are still stuck from the previous app instance
 //        DataStore.getInstance();
 //        systemLanguage = Locale.getDefault().getLanguage();
