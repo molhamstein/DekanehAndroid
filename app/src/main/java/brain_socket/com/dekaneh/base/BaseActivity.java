@@ -17,6 +17,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import brain_socket.com.dekaneh.ActivityComponent;
+import brain_socket.com.dekaneh.ActivityModule;
+import brain_socket.com.dekaneh.DaggerActivityComponent;
 import brain_socket.com.dekaneh.DekanehApp;
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.utils.LocaleUtils;
@@ -27,6 +30,7 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
 
     private View vLoading;
     ProgressDialog mProgressDialog;
+    private ActivityComponent activityComponent;
 
     public BaseActivity() {
         LocaleUtils.updateConfig(this);
@@ -48,6 +52,14 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
         super.onCreate(savedInstanceState);
         hideStatusBar();
         clearNotifications();
+        activityComponent = DaggerActivityComponent.builder()
+                .activityModule(new ActivityModule(this))
+                .applicationComponent(((DekanehApp) getApplication()).getApplicationComponent())
+                .build();
+    }
+
+    public ActivityComponent getActivityComponent() {
+        return activityComponent;
     }
 
     @Override

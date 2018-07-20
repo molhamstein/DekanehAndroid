@@ -20,20 +20,6 @@ public class LoginFragmentPresenter implements LoginFragmentVP.Presenter{
 
     @Override
     public void login(String phoneNumber, String password) {
-        AppApiHelper.login(new LoginRequest("00963933074900", "123456"))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<LoginResponse>() {
-                    @Override
-                    public void accept(LoginResponse loginResponse) throws Exception {
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        if (throwable instanceof ANError){
-                            ANError error = (ANError) throwable;
-                        }
-                    }
-                });
+
     }
 }
