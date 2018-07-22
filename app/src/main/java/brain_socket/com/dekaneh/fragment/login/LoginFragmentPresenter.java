@@ -5,6 +5,7 @@ import android.util.Log;
 
 import javax.inject.Inject;
 
+import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.application.SchedulerProvider;
 import brain_socket.com.dekaneh.base.BasePresenterImpl;
 import brain_socket.com.dekaneh.network.AppApiHelper;
@@ -25,6 +26,16 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
 
     @Override
     public void login(String phoneNumber, String password) {
+
+        if (phoneNumber == null || phoneNumber.isEmpty()) {
+            getView().onError(R.string.empty_email);
+            return;
+        }
+
+        if (password == null || password.isEmpty()) {
+            getView().onError(R.string.empty_password);
+            return;
+        }
 
         getView().showLoading();
 

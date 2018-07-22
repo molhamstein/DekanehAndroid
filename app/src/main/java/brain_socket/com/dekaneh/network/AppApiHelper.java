@@ -10,6 +10,7 @@ import io.reactivex.Single;
 
 public class AppApiHelper {
 
+    public static final int API_STATUS_CODE_LOCAL_ERROR = 0;
 
     public static Single<LoginResponse> login(LoginRequest request) {
         return Rx2AndroidNetworking.post(ApiEndPoint.LOGIN)

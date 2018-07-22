@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
@@ -37,7 +38,7 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
         LocaleUtils.updateConfig(this);
     }
 
-    private void hideStatusBar(){
+    private void hideStatusBar() {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
@@ -54,12 +55,12 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
 
     @Override
     public void onError(int resId) {
-        displayCustomToast(resId);
+        displaySnackBar(resId);
     }
 
     @Override
     public void onError(String message) {
-        displayCustomToast(message);
+        displaySnackBar(message);
     }
 
     @Override
@@ -131,7 +132,8 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
             NotificationManager nMgr = (NotificationManager) getSystemService(ns);
             nMgr.cancelAll();
 
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
     }
 
     /////////////////////////
@@ -140,13 +142,13 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
 
     protected void showLoading(boolean show) {
         try {
-            if(vLoading == null)
+            if (vLoading == null)
                 ///vLoading = findViewById(R.id.vLoading);
-            if (show) {
-                vLoading.setVisibility(View.VISIBLE);
-            } else {
-                vLoading.setVisibility(View.GONE);
-            }
+                if (show) {
+                    vLoading.setVisibility(View.VISIBLE);
+                } else {
+                    vLoading.setVisibility(View.GONE);
+                }
         } catch (Exception ignored) {
 
         }
@@ -165,11 +167,23 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
         }
     }
 
-    private void displayCustomToast(int strRes) {
+    private void displayCustomToast(@StringRes int strRes) {
         if (strRes != 0) {
             displayCustomToast(getString(strRes));
         }
     }
+
+    private static void displaySnackBar(@StringRes int txtRes) {
+        final Snackbar bar = Snackbar.make(null, txtRes, Snackbar.LENGTH_SHORT);
+        bar.setAction("DISMISS", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bar.dismiss();
+            }
+        });
+        bar.show();
+    }
+
 
     private static void displaySnackBar(String txt) {
         final Snackbar bar = Snackbar.make(null, txt, Snackbar.LENGTH_SHORT);
@@ -222,7 +236,7 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
         mProgressDialog.show();
     }
 
-    private void hideProgressDialog(){
+    private void hideProgressDialog() {
         mProgressDialog.dismiss();
     }
 

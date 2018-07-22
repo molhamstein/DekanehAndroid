@@ -1,10 +1,13 @@
 package brain_socket.com.dekaneh.base;
 
+import com.androidnetworking.common.ANConstants;
 import com.androidnetworking.error.ANError;
 
 import javax.inject.Inject;
 
+import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.application.SchedulerProvider;
+import brain_socket.com.dekaneh.network.AppApiHelper;
 import io.reactivex.disposables.CompositeDisposable;
 
 public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
@@ -54,6 +57,26 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
 
     @Override
     public void handleApiError(ANError error) {
+
+        if (error == null || error.getErrorBody() == null) {
+            getView().onError(R.string.api_default_error);
+        }
+
+        else if (error.getErrorCode() == AppApiHelper.API_STATUS_CODE_LOCAL_ERROR
+                && error.getErrorDetail().equals(ANConstants.CONNECTION_ERROR)) {
+            getView().onError(R.string.connection_error);
+        }
+
+        else if (error.getErrorCode() == AppApiHelper.API_STATUS_CODE_LOCAL_ERROR
+                && error.getErrorDetail().equals(ANConstants.REQUEST_CANCELLED_ERROR)) {
+            getView().onError(R.string.api_retry_error);
+        }
+
+        //TODO add custom error handling from server
+//        final GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
+//        final Gson gson = builder.create();
+//
+//            ApiError apiError = gson.fromJson(error.getErrorBody(), ApiError.class);
 
     }
 
