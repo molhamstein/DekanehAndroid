@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh;
+package brain_socket.com.dekaneh.application;
 
 import android.app.Application;
 

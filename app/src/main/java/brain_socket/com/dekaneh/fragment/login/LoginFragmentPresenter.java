@@ -5,7 +5,7 @@ import android.util.Log;
 
 import javax.inject.Inject;
 
-import brain_socket.com.dekaneh.SchedulerProvider;
+import brain_socket.com.dekaneh.application.SchedulerProvider;
 import brain_socket.com.dekaneh.base.BasePresenterImpl;
 import brain_socket.com.dekaneh.network.AppApiHelper;
 import brain_socket.com.dekaneh.network.model.LoginRequest;

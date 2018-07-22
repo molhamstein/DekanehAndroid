@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 import brain_socket.com.dekaneh.dagger.ActivityComponent;
 import brain_socket.com.dekaneh.dagger.ActivityModule;
-import brain_socket.com.dekaneh.DekanehApp;
+import brain_socket.com.dekaneh.application.DekanehApp;
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.dagger.DaggerActivityComponent;
 import brain_socket.com.dekaneh.utils.LocaleUtils;

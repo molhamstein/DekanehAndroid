@@ -5,7 +5,7 @@ import android.content.Context;
 
 import javax.inject.Singleton;
 
-import brain_socket.com.dekaneh.DekanehApp;
+import brain_socket.com.dekaneh.application.DekanehApp;
 import dagger.Component;
 
 @Singleton

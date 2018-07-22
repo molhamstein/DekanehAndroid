@@ -4,7 +4,7 @@ import com.androidnetworking.error.ANError;
 
 import javax.inject.Inject;
 
-import brain_socket.com.dekaneh.SchedulerProvider;
+import brain_socket.com.dekaneh.application.SchedulerProvider;
 import io.reactivex.disposables.CompositeDisposable;
 
 public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {

@@ -3,13 +3,12 @@ package brain_socket.com.dekaneh.dagger;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 
-import brain_socket.com.dekaneh.AppSchedulerProvider;
-import brain_socket.com.dekaneh.SchedulerProvider;
+import brain_socket.com.dekaneh.application.AppSchedulerProvider;
+import brain_socket.com.dekaneh.application.SchedulerProvider;
 import brain_socket.com.dekaneh.fragment.login.LoginFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.login.LoginFragmentVP;
 import dagger.Module;
 import dagger.Provides;
-import io.reactivex.Scheduler;
 import io.reactivex.disposables.CompositeDisposable;
 
 @Module
