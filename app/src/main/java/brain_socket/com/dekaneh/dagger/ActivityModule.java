@@ -1,10 +1,15 @@
-package brain_socket.com.dekaneh;
+package brain_socket.com.dekaneh.dagger;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 
+import brain_socket.com.dekaneh.AppSchedulerProvider;
+import brain_socket.com.dekaneh.SchedulerProvider;
+import brain_socket.com.dekaneh.fragment.login.LoginFragmentPresenter;
+import brain_socket.com.dekaneh.fragment.login.LoginFragmentVP;
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.Scheduler;
 import io.reactivex.disposables.CompositeDisposable;
 
 @Module
@@ -31,6 +36,18 @@ public class ActivityModule {
     @Provides
     CompositeDisposable provideCompositeDisposable(){
         return new CompositeDisposable();
+    }
+
+    @Provides
+    SchedulerProvider provideSchedulerProvider() {
+        return new AppSchedulerProvider();
+    }
+
+    @Provides
+    LoginFragmentVP.Presenter<LoginFragmentVP.View> provideLoginPresenter(LoginFragmentPresenter<LoginFragmentVP.View> presenter) {
+
+        return presenter;
+
     }
 
 }

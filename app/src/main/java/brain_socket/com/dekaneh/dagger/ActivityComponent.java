@@ -1,7 +1,7 @@
-package brain_socket.com.dekaneh;
+package brain_socket.com.dekaneh.dagger;
 
 import brain_socket.com.dekaneh.activity.registration.RegistrationActivity;
-import brain_socket.com.dekaneh.fragment.LoginFragment;
+import brain_socket.com.dekaneh.fragment.login.LoginFragment;
 import dagger.Component;
 
 @PerActivity

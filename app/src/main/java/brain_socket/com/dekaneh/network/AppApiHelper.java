@@ -8,12 +8,10 @@ import brain_socket.com.dekaneh.network.model.LoginRequest;
 import brain_socket.com.dekaneh.network.model.LoginResponse;
 import io.reactivex.Single;
 
-@Singleton
-public class AppApiHelper implements ApiHelper {
+public class AppApiHelper {
 
-    private AppApiHelper(){ }
 
-    public Single<LoginResponse> login(LoginRequest request) {
+    public static Single<LoginResponse> login(LoginRequest request) {
         return Rx2AndroidNetworking.post(ApiEndPoint.LOGIN)
                 .addBodyParameter(request)
                 .addQueryParameter("include", "user")

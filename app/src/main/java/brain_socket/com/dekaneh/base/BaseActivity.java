@@ -17,16 +17,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-import brain_socket.com.dekaneh.ActivityComponent;
-import brain_socket.com.dekaneh.ActivityModule;
-import brain_socket.com.dekaneh.DaggerActivityComponent;
+import brain_socket.com.dekaneh.dagger.ActivityComponent;
+import brain_socket.com.dekaneh.dagger.ActivityModule;
 import brain_socket.com.dekaneh.DekanehApp;
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.dagger.DaggerActivityComponent;
 import brain_socket.com.dekaneh.utils.LocaleUtils;
+import brain_socket.com.dekaneh.utils.NetworkUtils;
 
 
 @SuppressLint("Registered")
-public class BaseActivity extends AppCompatActivity implements LocaleUtils.LanguageListener {
+public class BaseActivity extends AppCompatActivity implements LocaleUtils.LanguageListener, BaseView {
 
     private View vLoading;
     ProgressDialog mProgressDialog;
@@ -39,6 +40,46 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
     private void hideStatusBar(){
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
+    @Override
+    public void showLoading() {
+        showProgressDialog();
+    }
+
+    @Override
+    public void hideLoading() {
+        hideProgressDialog();
+    }
+
+    @Override
+    public void onError(int resId) {
+        displayCustomToast(resId);
+    }
+
+    @Override
+    public void onError(String message) {
+        displayCustomToast(message);
+    }
+
+    @Override
+    public void showMessage(String message) {
+        displayCustomToast(message);
+    }
+
+    @Override
+    public void showMessage(int resId) {
+        displayCustomToast(resId);
+    }
+
+    @Override
+    public boolean isNetworkConnected() {
+        return NetworkUtils.isNetworkConnected(this);
+    }
+
+    @Override
+    public void hideKeyboard() {
+        closeKeyBoard();
     }
 
     @Override
@@ -115,7 +156,7 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
     //--- Alerts & toasts
     /////////////////////////
 
-    public void displayCustomToast(String txt) {
+    private void displayCustomToast(String txt) {
         try {
             Toast toast = Toast.makeText(this, txt, Toast.LENGTH_LONG);
             toast.show();
@@ -124,13 +165,13 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
         }
     }
 
-    public void displayCustomToast(int strRes) {
+    private void displayCustomToast(int strRes) {
         if (strRes != 0) {
             displayCustomToast(getString(strRes));
         }
     }
 
-    public static void displaySnackBar(String txt) {
+    private static void displaySnackBar(String txt) {
         final Snackbar bar = Snackbar.make(null, txt, Snackbar.LENGTH_SHORT);
         bar.setAction("DISMISS", new View.OnClickListener() {
             @Override
@@ -145,7 +186,7 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
     //--- Keyboard
     /////////////////////////
 
-    void closeKeyBoard() {
+    private void closeKeyBoard() {
         // Check if no view has focus:
         View view = this.getCurrentFocus();
         if (view != null) {
@@ -154,7 +195,7 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
         }
     }
 
-    public void hideKeyboardWhenTouchOut(View parentView) {
+    private void hideKeyboardWhenTouchOut(View parentView) {
         //Set up touch listener for non-text box views to hide keyboard.
         if (!(parentView instanceof EditText)) {
             parentView.setOnTouchListener(new View.OnTouchListener() {
@@ -174,14 +215,14 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
         }
     }
 
-    public void showProgressDialog() {
+    private void showProgressDialog() {
         mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setMessage("Please wait...");
         mProgressDialog.setCancelable(false);
         mProgressDialog.show();
     }
 
-    public void hideProgressDialog(){
+    private void hideProgressDialog(){
         mProgressDialog.dismiss();
     }
 

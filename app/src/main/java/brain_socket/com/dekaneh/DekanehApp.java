@@ -4,7 +4,9 @@ import android.app.Application;
 
 import com.androidnetworking.AndroidNetworking;
 
-import brain_socket.com.dekaneh.base.BaseActivity;
+import brain_socket.com.dekaneh.dagger.ApplicationComponent;
+import brain_socket.com.dekaneh.dagger.ApplicationModule;
+import brain_socket.com.dekaneh.dagger.DaggerApplicationComponent;
 
 
 public class DekanehApp extends Application {

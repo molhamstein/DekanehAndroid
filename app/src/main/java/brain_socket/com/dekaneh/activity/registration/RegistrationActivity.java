@@ -9,7 +9,7 @@ import android.view.View;
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
-import brain_socket.com.dekaneh.fragment.LoginFragment;
+import brain_socket.com.dekaneh.fragment.login.LoginFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

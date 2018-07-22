@@ -1,11 +1,11 @@
-package brain_socket.com.dekaneh;
+package brain_socket.com.dekaneh.dagger;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import javax.inject.Qualifier;
+import javax.inject.Scope;
 
-@Qualifier
+@Scope
 @Retention(RetentionPolicy.RUNTIME)
-@interface ActivityContext {
+@interface PerActivity {
 }

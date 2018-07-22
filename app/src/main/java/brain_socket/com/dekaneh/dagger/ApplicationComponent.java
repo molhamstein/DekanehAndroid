@@ -1,10 +1,11 @@
-package brain_socket.com.dekaneh;
+package brain_socket.com.dekaneh.dagger;
 
 import android.app.Application;
 import android.content.Context;
 
 import javax.inject.Singleton;
 
+import brain_socket.com.dekaneh.DekanehApp;
 import dagger.Component;
 
 @Singleton

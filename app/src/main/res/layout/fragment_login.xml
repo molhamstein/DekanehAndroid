@@ -58,6 +58,8 @@
             android:drawablePadding="8dp"
             android:drawableStart="@drawable/ic_phone_gray_24dp"
             android:hint="@string/phone_number"
+            android:inputType="phone"
+            android:textAlignment="viewStart"
             android:textColorHint="@color/light_gray" />
 
 
@@ -86,6 +88,8 @@
             android:drawablePadding="8dp"
             android:drawableStart="@drawable/ic_lock_gray_24dp"
             android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textAlignment="viewStart"
             android:textColorHint="@color/light_gray" />
 
 
