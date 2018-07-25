@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.fragment.login;
+package brain_socket.com.dekaneh.fragment.registration.login;
 
 
 import android.view.View;
@@ -7,9 +7,10 @@ import android.widget.EditText;
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.MainActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
-import brain_socket.com.dekaneh.fragment.ChooseAccountFragment;
-import brain_socket.com.dekaneh.fragment.ForgotPasswordFragment;
+import brain_socket.com.dekaneh.fragment.registration.ChooseAccountFragment;
+import brain_socket.com.dekaneh.fragment.registration.ForgotPasswordFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -64,5 +65,10 @@ public class LoginFragment extends BaseFragment implements LoginFragmentVP.View 
     @OnClick(R.id.forgotPasswordText)
     public void onForgotPasswordText(){
         navigationPresenter.replaceFragment(ForgotPasswordFragment.newInstance());
+    }
+
+    @Override
+    public void startMainActivity() {
+        MainActivity.start(getContext());
     }
 }

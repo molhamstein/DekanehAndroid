@@ -1,7 +1,8 @@
 package brain_socket.com.dekaneh.dagger;
 
+import brain_socket.com.dekaneh.activity.MainActivity;
 import brain_socket.com.dekaneh.activity.registration.RegistrationActivity;
-import brain_socket.com.dekaneh.fragment.login.LoginFragment;
+import brain_socket.com.dekaneh.fragment.registration.login.LoginFragment;
 import dagger.Component;
 
 @PerActivity
@@ -9,6 +10,8 @@ import dagger.Component;
 public interface ActivityComponent {
 
     void inject(RegistrationActivity activity);
+
+    void inject(MainActivity activity);
 
     void inject(LoginFragment fragment);
 

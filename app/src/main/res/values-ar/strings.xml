@@ -14,4 +14,10 @@
     <string name="code_send_info">سوف نرسل لك رمز استعادة كلمة السر</string>
     <string name="new_password">كلمة السر الجديدة</string>
     <string name="enter_code_info">قم بادخال رمز الاستعادة الذي حصلت عليه كرسالة نصية SMS</string>
+    <string name="buy_now">اشتري الآن +</string>
+    <string name="dummy_text">اشتري علبتين ملمع الزجاج بوفالو و احصل على الثالثة مجانا</string>
+    <string name="profile">صفحتي</string>
+    <string name="offers">العروض</string>
+    <string name="categories">التصنيفات</string>
+    <string name="main">الرئيسية</string>
 </resources>

@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.fragment.login;
+package brain_socket.com.dekaneh.fragment.registration.login;
 
 
 import android.util.Log;
@@ -48,6 +48,7 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
                     public void accept(LoginResponse loginResponse) throws Exception {
                         getView().showMessage(loginResponse.getUser().getOwnerName());
                         getView().hideLoading();
+                        getView().startMainActivity();
                     }
                 }, new Consumer<Throwable>() {
                     @Override

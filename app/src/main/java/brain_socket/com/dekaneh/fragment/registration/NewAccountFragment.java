@@ -1,11 +1,11 @@
-package brain_socket.com.dekaneh.fragment;
+package brain_socket.com.dekaneh.fragment.registration;
 
 
 import android.view.View;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.base.BaseFragment;
-import brain_socket.com.dekaneh.fragment.login.LoginFragment;
+import brain_socket.com.dekaneh.fragment.registration.login.LoginFragment;
 import butterknife.OnClick;
 
 public class NewAccountFragment extends BaseFragment {

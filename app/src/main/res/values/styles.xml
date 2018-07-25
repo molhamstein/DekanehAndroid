@@ -49,4 +49,30 @@
         <item name="buttonTint">#fff</item>
     </style>
 
+
+
+    <!-- item styles -->
+
+    <style name="WhiteBoldTextItemBtn" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/cairo_black</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="WhiteBoldTextItemOffer" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/cairo_black</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+    <style name="PrimaryBoldItemTextView" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/cairo_bold</item>
+        <item name="android:textColor">@color/primaryText</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+
 </resources>
