@@ -12,24 +12,21 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/test"
+            android:id="@+id/mainParent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <FrameLayout
-                android:id="@+id/test1"
+                android:id="@+id/mainHeader"
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TEEEEEST"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:textSize="32sp"
-                    />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ad"
+                    android:scaleType="centerCrop"/>
 
 
             </FrameLayout>
@@ -37,7 +34,15 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="1000dp"
-                android:background="@color/green0">
+                android:background="@color/off_white"
+                >
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/mainOffersRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"
+                    />
 
             </FrameLayout>
 

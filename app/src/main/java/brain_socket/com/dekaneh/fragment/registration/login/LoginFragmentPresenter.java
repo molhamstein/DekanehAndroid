@@ -40,7 +40,7 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
         getView().showLoading();
 
         getCompositeDisposable().add(
-                AppApiHelper.login(new LoginRequest(phoneNumber, password))
+                AppApiHelper.login(new LoginRequest("00963933074900", "123456"))
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<LoginResponse>() {

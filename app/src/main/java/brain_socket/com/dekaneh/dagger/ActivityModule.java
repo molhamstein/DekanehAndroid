@@ -2,13 +2,21 @@ package brain_socket.com.dekaneh.dagger;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Named;
 
 import brain_socket.com.dekaneh.activity.MainActivityPresenter;
 import brain_socket.com.dekaneh.activity.MainActivityVP;
+import brain_socket.com.dekaneh.adapter.OffersAdapter;
 import brain_socket.com.dekaneh.application.AppSchedulerProvider;
 import brain_socket.com.dekaneh.application.SchedulerProvider;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentVP;
+import brain_socket.com.dekaneh.network.model.Offer;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
@@ -54,4 +62,21 @@ public class ActivityModule {
         return presenter;
     }
 
+    @Provides
+    OffersAdapter providesOffersAdapter() {
+
+        List<Offer> offers = new ArrayList<>();
+        offers.add(new Offer("10"));
+        offers.add(new Offer("20"));
+        offers.add(new Offer("10"));
+        offers.add(new Offer("30"));
+
+        return new OffersAdapter(offers);
+    }
+
+    @Provides
+    LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity) {
+
+        return new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false);
+    }
 }

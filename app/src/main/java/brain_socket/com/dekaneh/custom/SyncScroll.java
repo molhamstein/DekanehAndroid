@@ -1,6 +1,7 @@
 package brain_socket.com.dekaneh.custom;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
@@ -10,10 +11,18 @@ public class SyncScroll extends ScrollView {
     private View syncView;
 
 
-    private boolean scrollable;
+    private boolean scrollable = true;
 
     public SyncScroll(Context context) {
         super(context);
+    }
+
+    public SyncScroll(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public SyncScroll(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
     }
 
 

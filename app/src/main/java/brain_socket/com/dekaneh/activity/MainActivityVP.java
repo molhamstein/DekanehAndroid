@@ -13,6 +13,8 @@ public interface MainActivityVP {
 
     interface Presenter<T extends View> extends BasePresenter<T> {
 
+        void onBottomNavMainItemClick();
+
     }
 
 }

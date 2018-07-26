@@ -5,7 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import javax.inject.Inject;
@@ -19,10 +20,12 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements MainActivityVP.View {
 
-//
-//    @Inject
-//    MainActivityVP.Presenter<MainActivityVP.View> presenter;
 
+    @Inject
+    MainActivityVP.Presenter<MainActivityVP.View> presenter;
+
+    @BindView(R.id.mainToolbar)
+    Toolbar toolbar;
     @BindView(R.id.navigation)
     BottomNavigationView bottomNavigation;
 
@@ -33,6 +36,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_main:
+                    presenter.onBottomNavMainItemClick();
                     return true;
                 case R.id.navigation_categories:
                     return true;
@@ -56,8 +60,9 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        setSupportActionBar(toolbar);
         getActivityComponent().inject(this);
-//        presenter.onAttach(this);
+        presenter.onAttach(this);
 
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
@@ -71,5 +76,12 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.mainContainer, fragment, fragment.TAG())
                 .commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+
     }
 }

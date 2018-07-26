@@ -45,5 +45,7 @@
     <string name="offers">Offers</string>
     <string name="categories">Categories</string>
     <string name="main">Main</string>
+    <string name="notifications">Notifications</string>
+    <string name="cart">Cart</string>
 
 </resources>

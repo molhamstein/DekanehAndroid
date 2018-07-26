@@ -55,12 +55,12 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
 
     @Override
     public void onError(int resId) {
-        displaySnackBar(resId);
+        displayCustomToast(resId);
     }
 
     @Override
     public void onError(String message) {
-        displaySnackBar(message);
+        displayCustomToast(message);
     }
 
     @Override
@@ -92,7 +92,6 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        hideStatusBar();
         clearNotifications();
         activityComponent = DaggerActivityComponent.builder()
                 .activityModule(new ActivityModule(this))
