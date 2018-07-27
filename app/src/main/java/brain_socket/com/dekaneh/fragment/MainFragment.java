@@ -12,6 +12,7 @@ import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.custom.SyncScroll;
+import brain_socket.com.dekaneh.dagger.Horizontal;
 import butterknife.BindView;
 
 public class MainFragment extends BaseFragment {
@@ -19,6 +20,7 @@ public class MainFragment extends BaseFragment {
     @Inject
     OffersAdapter offersAdapter;
     @Inject
+    @Horizontal
     LinearLayoutManager linearLayoutManager;
 
     @BindView(R.id.syncScroll)

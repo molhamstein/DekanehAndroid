@@ -74,9 +74,9 @@ public class ActivityModule {
         return new OffersAdapter(offers);
     }
 
+    @Horizontal
     @Provides
     LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity) {
-
         return new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false);
     }
 }
