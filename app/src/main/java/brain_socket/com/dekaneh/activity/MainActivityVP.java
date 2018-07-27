@@ -8,12 +8,14 @@ public interface MainActivityVP {
     interface View extends BaseView {
 
         void showMainFragment();
+        void showOffersFragment();
 
     }
 
     interface Presenter<T extends View> extends BasePresenter<T> {
 
         void onBottomNavMainItemClick();
+        void onBottomOffersItemClick();
 
     }
 

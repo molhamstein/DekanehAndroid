@@ -15,6 +15,7 @@ import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.fragment.MainFragment;
+import brain_socket.com.dekaneh.fragment.OffersFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -39,6 +40,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
                     presenter.onBottomNavMainItemClick();
                     return true;
                 case R.id.navigation_categories:
+                    presenter.onBottomOffersItemClick();
                     return true;
                 case R.id.navigation_offers:
                     return true;
@@ -70,6 +72,11 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     @Override
     public void showMainFragment() {
         replaceFragment(MainFragment.newInstance());
+    }
+
+    @Override
+    public void showOffersFragment() {
+        replaceFragment(OffersFragment.newInstance());
     }
 
     private void replaceFragment(BaseFragment fragment) {

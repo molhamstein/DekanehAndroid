@@ -76,7 +76,12 @@ public class ActivityModule {
 
     @Horizontal
     @Provides
-    LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity) {
+    LinearLayoutManager provideHorizontalLinearLayoutManager(AppCompatActivity activity) {
         return new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false);
+    }
+
+    @Provides
+    LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity) {
+        return new LinearLayoutManager(activity);
     }
 }

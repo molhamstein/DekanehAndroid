@@ -26,4 +26,9 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
     public void onBottomNavMainItemClick() {
         getView().showMainFragment();
     }
+
+    @Override
+    public void onBottomOffersItemClick() {
+        getView().showOffersFragment();
+    }
 }
