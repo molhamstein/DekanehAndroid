@@ -20,4 +20,8 @@
     <string name="offers">العروض</string>
     <string name="categories">التصنيفات</string>
     <string name="main">الرئيسية</string>
+    <string name="dummy_item_top_text">طرد ١٢ علبة</string>
+    <string name="dummy_item_title">ملمع بوفالو للأرضيات</string>
+    <string name="dummy_price">200</string>
+    <string name="currency">ل.س</string>
 </resources>

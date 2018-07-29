@@ -40,6 +40,7 @@ dependencies {
     implementation 'com.amitshekhar.android:rx2-android-networking:1.0.1'
     implementation 'com.google.dagger:dagger:2.16'
     implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:1.2.0'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     testImplementation 'junit:junit:4.12'

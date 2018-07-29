@@ -47,5 +47,9 @@
     <string name="main">Main</string>
     <string name="notifications">Notifications</string>
     <string name="cart">Cart</string>
+    <string name="dummy_item_top_text">13 Containers</string>
+    <string name="dummy_item_title">Floor wash bla bla something</string>
+    <string name="dummy_price">200</string>
+    <string name="currency">S.P</string>
 
 </resources>
