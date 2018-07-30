@@ -9,11 +9,13 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.adapter.HomeSection;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.custom.SyncScroll;
 import brain_socket.com.dekaneh.dagger.Horizontal;
 import butterknife.BindView;
+import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 
 public class MainFragment extends BaseFragment {
 
@@ -31,6 +33,8 @@ public class MainFragment extends BaseFragment {
     View header;
     @BindView(R.id.mainOffersRV)
     RecyclerView offersRV;
+    @BindView(R.id.mainProductRV)
+    RecyclerView productsRV;
 
     public MainFragment() {
         // Required empty public constructor
@@ -52,6 +56,12 @@ public class MainFragment extends BaseFragment {
         syncScroll.setSynchronizedView(header);
         offersRV.setLayoutManager(linearLayoutManager);
         offersRV.setAdapter(offersAdapter);
+        SectionedRecyclerViewAdapter adapter = new SectionedRecyclerViewAdapter();
+        adapter.addSection(new HomeSection());
+        adapter.addSection(new HomeSection());
+        adapter.addSection(new HomeSection());
+        productsRV.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        productsRV.setAdapter(adapter);
     }
 
     @Override

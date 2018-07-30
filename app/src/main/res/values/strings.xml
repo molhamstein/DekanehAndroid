@@ -51,5 +51,6 @@
     <string name="dummy_item_title">Floor wash bla bla something</string>
     <string name="dummy_price">200</string>
     <string name="currency">S.P</string>
+    <string name="dummy_header">Cleaners</string>
 
 </resources>

@@ -13,7 +13,6 @@
     </style>
 
 
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
@@ -53,7 +52,6 @@
         <item name="colorAccent">#ffffff</item>
         <item name="buttonTint">#fff</item>
     </style>
-
 
 
     <!-- offer item styles -->
@@ -100,6 +98,13 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="ItemHeader" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/cairo_bold</item>
+        <item name="android:textColor">@color/primaryText</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
 
 
 
