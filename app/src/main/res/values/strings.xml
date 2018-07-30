@@ -52,5 +52,8 @@
     <string name="dummy_price">200</string>
     <string name="currency">S.P</string>
     <string name="dummy_header">Cleaners</string>
+    <string name="offers_available">Offers available</string>
+    <string name="see_all_offers">See all offers</string>
+    <string name="see_all">See all</string>
 
 </resources>

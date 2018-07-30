@@ -25,4 +25,7 @@
     <string name="dummy_price">200</string>
     <string name="currency">ل.س</string>
     <string name="dummy_header">منظفات</string>
+    <string name="offers_available">يتوفر عروض</string>
+    <string name="see_all_offers">مشاهدة جميع العروض</string>
+    <string name="see_all">مشاهدة الكل</string>
 </resources>

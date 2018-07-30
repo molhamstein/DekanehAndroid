@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="170dp"
-    android:layout_height="wrap_content">
+    android:layout_width="165dp"
+    android:layout_height="220dp"
+    android:layout_marginStart="5dp">
 
     <android.support.v7.widget.CardView
-        android:layout_width="160dp"
+        android:layout_width="150dp"
         android:layout_height="match_parent"
-        app:contentPadding="8dp"
         android:layout_marginBottom="4dp"
         android:layout_marginTop="2dp"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="40dp">
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="8dp">
 
             <TextView
                 style="@style/SecondaryTextView"
@@ -24,11 +27,12 @@
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:text="@string/dummy_item_top_text"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:layout_marginStart="8dp"/>
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="80dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/tide" />
 
@@ -37,43 +41,64 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:paddingEnd="16dp"
-                android:paddingStart="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:lines="2"
                 android:text="@string/dummy_item_title"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:layout_marginTop="-8dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="-22dp">
+                android:layout_marginTop="-16dp"
+                android:layout_marginStart="8dp">
 
 
                 <TextView
+                    android:id="@+id/productPrice"
                     style="@style/GreenPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="start"
                     android:text="@string/dummy_price"
+
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/currency"
-                    style="@style/GreenCurrency"/>
+                    style="@style/GreenCurrency"
+                    android:textSize="8sp"/>
 
             </LinearLayout>
 
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/productOfferTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/offers_available"
+            android:layout_gravity="end"
+            android:textSize="12sp"
+            android:layout_marginTop="8dp"
+            style="@style/WhiteBoldTextItem"
+            android:paddingStart="6dp"
+            android:paddingEnd="0dp"
+            android:background="@drawable/item_product_textview_background_red"
+            android:visibility="gone"
+            />
+
     </android.support.v7.widget.CardView>
 
     <Button
         android:id="@+id/loginBtn"
-        style="@style/WhiteBoldTextItemBtn"
-        android:layout_width="90dp"
+        style="@style/WhiteBlackTextItemBtn"
+        android:layout_width="95dp"
         android:layout_height="30dp"
         android:layout_gravity="bottom|end"
         android:layout_marginBottom="12dp"

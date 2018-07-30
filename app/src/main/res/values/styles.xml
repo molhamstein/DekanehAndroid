@@ -56,7 +56,7 @@
 
     <!-- offer item styles -->
 
-    <style name="WhiteBoldTextOfferBtn" parent="@android:style/TextAppearance.Widget.TextView">
+    <style name="WhiteBlackTextOfferBtn" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:fontFamily">@font/cairo_black</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
@@ -64,7 +64,7 @@
     </style>
 
 
-    <style name="WhiteBoldTextItemOffer" parent="@android:style/TextAppearance.Widget.TextView">
+    <style name="WhiteBlackTextItemOffer" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:fontFamily">@font/cairo_black</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">12sp</item>
@@ -89,12 +89,17 @@
     <style name="GreenCurrency" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:fontFamily">@font/cairo_bold</item>
         <item name="android:textColor">@color/light_green</item>
-        <item name="android:textSize">12sp</item>
         <item name="android:alpha">.7</item>
     </style>
 
-    <style name="WhiteBoldTextItemBtn" parent="@android:style/TextAppearance.Widget.TextView">
+    <style name="WhiteBlackTextItemBtn" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:fontFamily">@font/cairo_black</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="WhiteBoldTextItem" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/cairo_bold</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">12sp</item>
     </style>

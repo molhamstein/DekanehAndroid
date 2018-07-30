@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
+
+        <TextView
+            android:id="@+id/productSectionHeader"
+            style="@style/ItemHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center_vertical"
+
+            android:text="@string/dummy_header" />
+
+        <TextView
+            style="@style/PrimaryTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:text="@string/see_all"
+            android:textSize="12sp"
+            />
+
+
+    </FrameLayout>
+
+    <View
+        android:layout_width="120dp"
+        android:layout_height="3dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/green" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mainProductsRV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>
