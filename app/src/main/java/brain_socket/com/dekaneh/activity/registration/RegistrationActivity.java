@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 
 import brain_socket.com.dekaneh.R;
@@ -40,7 +41,7 @@ public class RegistrationActivity extends BaseActivity implements RegistrationAc
 
     @Override
     public void setFragment(BaseFragment fragment) {
-        if (fragment.TAG().equals(LoginFragment.class.getSimpleName())){
+        if (fragment.TAG().equals(LoginFragment.class.getSimpleName())) {
             getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         }
         fragment.attachPresenter(presenter);
@@ -51,4 +52,11 @@ public class RegistrationActivity extends BaseActivity implements RegistrationAc
                 .commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1)
+            finish();
+        else
+            super.onBackPressed();
+    }
 }
