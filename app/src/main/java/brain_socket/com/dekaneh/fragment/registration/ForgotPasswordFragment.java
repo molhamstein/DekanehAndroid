@@ -3,11 +3,18 @@ package brain_socket.com.dekaneh.fragment.registration;
 
 import android.view.View;
 
+import com.github.florent37.viewanimator.ViewAnimator;
+
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.base.BaseFragment;
+import butterknife.BindView;
 
 public class ForgotPasswordFragment extends BaseFragment {
 
+    @BindView(R.id.forgetPasswordSubmitBtn)
+    View submitBtn;
+    @BindView(R.id.forgotPassPhoneCard)
+    View phoneCard;
 
     public ForgotPasswordFragment() { }
 
@@ -18,6 +25,13 @@ public class ForgotPasswordFragment extends BaseFragment {
 
     @Override
     public void init(View rootView) {
+
+        ViewAnimator.animate(phoneCard)
+                .translationX(-800, 0).alpha(0, 1)
+                .duration(800)
+                .andAnimate(submitBtn).translationX(-800, 0)
+                .duration(800)
+                .alpha(0, 1).decelerate().start();
 
     }
 

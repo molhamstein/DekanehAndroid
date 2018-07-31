@@ -3,11 +3,20 @@ package brain_socket.com.dekaneh.fragment.registration;
 
 import android.view.View;
 
+import com.github.florent37.viewanimator.ViewAnimator;
+
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.base.BaseFragment;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 public class ChooseAccountFragment extends BaseFragment {
+
+
+    @BindView(R.id.account_1Card)
+    View account1;
+    @BindView(R.id.account_2Card)
+    View account2;
 
     public ChooseAccountFragment() { }
 
@@ -18,6 +27,10 @@ public class ChooseAccountFragment extends BaseFragment {
 
     @Override
     public void init(View rootView) {
+
+        ViewAnimator.animate(account1).translationX(-800, 0).alpha(0, 1).duration(800)
+                .andAnimate(account2).translationX(-800, 0).alpha(0, 1).duration(800)
+                .decelerate().start();
 
     }
 
@@ -32,12 +45,12 @@ public class ChooseAccountFragment extends BaseFragment {
     }
 
 
-    @OnClick(R.id.account_1)
+    @OnClick(R.id.account_1Card)
     public void onCardOneClicked(){
         navigationPresenter.replaceFragment(NewAccountFragment.newInstance());
     }
 
-    @OnClick(R.id.account_2)
+    @OnClick(R.id.account_2Card)
     public void onCardTwoClicked(){
         navigationPresenter.replaceFragment(NewAccountFragment.newInstance());
     }

@@ -2,7 +2,10 @@ package brain_socket.com.dekaneh.fragment.registration.login;
 
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+
+import com.github.florent37.viewanimator.ViewAnimator;
 
 import javax.inject.Inject;
 
@@ -23,7 +26,16 @@ public class LoginFragment extends BaseFragment implements LoginFragmentVP.View 
     EditText phoneNumberEditText;
     @BindView(R.id.loginPassword)
     EditText passwordEditText;
-
+    @BindView(R.id.loginPhoneCard)
+    View phoneNumberCard;
+    @BindView(R.id.loginPasswordCard)
+    View passwordCard;
+    @BindView(R.id.forgotPasswordText)
+    View forgotPasswordText;
+    @BindView(R.id.loginBtn)
+    Button loginBtn;
+    @BindView(R.id.loginSignUpText)
+    View signUpText;
 
     public LoginFragment() { }
 
@@ -39,6 +51,18 @@ public class LoginFragment extends BaseFragment implements LoginFragmentVP.View 
         if (getActivityComponent() != null)
             getActivityComponent().inject(this);
         presenter.onAttach(this);
+
+        ViewAnimator.animate(phoneNumberCard).translationX(-800, 0)
+                .alpha(0f, 1f).duration(1000)
+                .andAnimate(passwordCard).translationX(-1000, 0)
+                .alpha(0f, 1f).duration(1000)
+                .andAnimate(forgotPasswordText).translationX(-1100, 0)
+                .alpha(0, 1).duration(1000)
+                .andAnimate(loginBtn).translationX(-1200, 0)
+                .alpha(0, 1).duration(1000)
+                .andAnimate(signUpText).translationX(-1300, 0)
+                .alpha(0, 1).duration(1000)
+                .start();
 
     }
 

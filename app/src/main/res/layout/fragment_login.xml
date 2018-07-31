@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/loginPhoneCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="43dp"
@@ -44,7 +44,7 @@
         app:cardCornerRadius="30dp"
         app:cardElevation="10dp"
         app:contentPadding="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/cardView2"
+        app:layout_constraintBottom_toTopOf="@+id/loginPasswordCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -66,7 +66,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardView2"
+        android:id="@+id/loginPasswordCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -108,7 +108,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+        app:layout_constraintTop_toBottomOf="@+id/loginPasswordCard" />
 
 
     <Button
@@ -121,7 +121,7 @@
         android:background="@drawable/action_button_shape_round"
         android:text="@string/login"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/loginSignUpText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -134,7 +134,7 @@
         app:layout_constraintGuide_end="330dp" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/loginSignUpText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="59dp"

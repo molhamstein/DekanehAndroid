@@ -5,17 +5,19 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import brain_socket.com.dekaneh.R;
-import brain_socket.com.dekaneh.adapter.HomeSection;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
+import brain_socket.com.dekaneh.adapter.SectionedProductsAdapter;
 import brain_socket.com.dekaneh.base.BaseFragment;
-import brain_socket.com.dekaneh.custom.SyncScroll;
 import brain_socket.com.dekaneh.dagger.Horizontal;
+import brain_socket.com.dekaneh.network.model.Product;
+import brain_socket.com.dekaneh.network.model.ProductsSection;
 import butterknife.BindView;
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 
 public class MainFragment extends BaseFragment {
 
@@ -25,12 +27,8 @@ public class MainFragment extends BaseFragment {
     @Horizontal
     LinearLayoutManager linearLayoutManager;
 
-    @BindView(R.id.syncScroll)
-    SyncScroll syncScroll;
     @BindView(R.id.mainParent)
     View parent;
-    @BindView(R.id.mainHeader)
-    View header;
     @BindView(R.id.mainOffersRV)
     RecyclerView offersRV;
     @BindView(R.id.mainProductRV)
@@ -52,16 +50,26 @@ public class MainFragment extends BaseFragment {
         if (getActivityComponent() != null)
             getActivityComponent().inject(this);
 
-        syncScroll.setAnchorView(parent);
-        syncScroll.setSynchronizedView(header);
         offersRV.setLayoutManager(linearLayoutManager);
         offersRV.setAdapter(offersAdapter);
-        SectionedRecyclerViewAdapter adapter = new SectionedRecyclerViewAdapter();
-        adapter.addSection(new HomeSection());
-        adapter.addSection(new HomeSection());
-        adapter.addSection(new HomeSection());
-        productsRV.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        productsRV.setLayoutManager(new LinearLayoutManager(getContext()){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
+        List<Product> products = new ArrayList<>();
+        products.add(new Product("200", true));
+        products.add(new Product("350"));
+        products.add(new Product("2500"));
+        products.add(new Product("1200"));
+        products.add(new Product("1500"));
+        List<ProductsSection> sections = new ArrayList<>();
+        sections.add(new ProductsSection("منتجات مختارة", products));
+        sections.add(new ProductsSection("منظفات", products));
+        SectionedProductsAdapter adapter = new SectionedProductsAdapter(sections);
         productsRV.setAdapter(adapter);
+        productsRV.setNestedScrollingEnabled(true);
     }
 
     @Override
