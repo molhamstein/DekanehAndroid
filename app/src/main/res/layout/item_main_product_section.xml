@@ -25,7 +25,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
-            android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"
             android:text="@string/see_all"
             android:textSize="12sp"
             />

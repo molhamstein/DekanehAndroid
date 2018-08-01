@@ -49,6 +49,8 @@ public class RegistrationActivity extends BaseActivity implements RegistrationAc
                 .beginTransaction()
                 .replace(R.id.registrationContainer, fragment)
                 .addToBackStack(fragment.TAG())
+                .setCustomAnimations(R.anim.anim_slide_in_from_left, R.anim.anim_slide_out_to_right,
+                        R.anim.anim_slide_in_from_left, R.anim.anim_slide_out_to_right)
                 .commit();
     }
 
