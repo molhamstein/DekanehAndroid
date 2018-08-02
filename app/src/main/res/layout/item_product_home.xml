@@ -1,110 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="165dp"
-    android:layout_height="220dp"
+    android:layout_width="160dp"
+    android:layout_height="225dp"
     android:layout_marginStart="5dp">
 
-    <android.support.v7.widget.CardView
+
+    <LinearLayout
         android:layout_width="150dp"
-        android:layout_height="match_parent"
+        android:layout_height="220dp"
         android:layout_marginBottom="4dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginStart="2dp"
-        android:layout_marginEnd="40dp">
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shadow_offer_card"
+        android:orientation="vertical"
+        >
 
+        <TextView
+            style="@style/PrimaryTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:gravity="start"
+            android:text="@string/dummy_item_top_text"
+            android:textSize="10sp" />
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/tide" />
+
+        <TextView
+            style="@style/PrimaryTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="-8dp"
+            android:gravity="center"
+            android:lines="2"
+            android:text="@string/dummy_item_title"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginTop="8dp">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="-16dp"
+            android:orientation="horizontal">
+
 
             <TextView
-                style="@style/SecondaryTextView"
-                android:layout_width="match_parent"
+                android:id="@+id/productPrice"
+                style="@style/GreenPrice"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start"
-                android:text="@string/dummy_item_top_text"
-                android:textSize="12sp"
-                android:layout_marginStart="8dp"/>
+                android:text="@string/dummy_price"
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/tide" />
+                />
 
             <TextView
-                style="@style/PrimaryTextView"
-                android:layout_width="match_parent"
+                style="@style/GreenCurrency"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:lines="2"
-                android:text="@string/dummy_item_title"
-                android:textSize="14sp"
-                android:layout_marginTop="-8dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="-16dp"
-                android:layout_marginStart="8dp">
-
-
-                <TextView
-                    android:id="@+id/productPrice"
-                    style="@style/GreenPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:text="@string/dummy_price"
-
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/currency"
-                    style="@style/GreenCurrency"
-                    android:textSize="8sp"/>
-
-            </LinearLayout>
-
+                android:text="@string/currency"
+                android:textSize="8sp" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/productOfferTag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/offers_available"
-            android:layout_gravity="end"
-            android:textSize="12sp"
-            android:layout_marginTop="8dp"
-            style="@style/WhiteBoldTextItem"
-            android:paddingStart="6dp"
-            android:paddingEnd="0dp"
-            android:background="@drawable/item_product_textview_background_red"
-            android:visibility="gone"
-            />
 
-    </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/productOfferTag"
+        style="@style/WhiteBoldTextItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="19dp"
+        android:background="@drawable/item_product_textview_background_red"
+        android:paddingEnd="0dp"
+        android:paddingStart="6dp"
+        android:text="@string/offers_available"
+        android:textSize="12sp"
+        android:visibility="visible" />
+
 
     <Button
         android:id="@+id/loginBtn"
         style="@style/WhiteBlackTextItemBtn"
-        android:layout_width="95dp"
-        android:layout_height="30dp"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/action_button_shape_round"
-        android:text="@string/buy_now"
-         />
+        android:layout_marginEnd="-8dp"
+        android:background="@drawable/action_button_shape_green_glow_item"
+        android:text="@string/buy_now" />
 
 
 </FrameLayout>
