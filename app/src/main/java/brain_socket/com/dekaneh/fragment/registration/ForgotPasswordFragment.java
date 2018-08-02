@@ -7,7 +7,9 @@ import com.github.florent37.viewanimator.ViewAnimator;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.base.BaseFragment;
+import brain_socket.com.dekaneh.fragment.registration.login.LoginFragment;
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class ForgotPasswordFragment extends BaseFragment {
 
@@ -45,4 +47,8 @@ public class ForgotPasswordFragment extends BaseFragment {
         return ForgotPasswordFragment.class.getSimpleName();
     }
 
+    @OnClick(R.id.forgetPasswordSubmitBtn)
+    public void onsubmitBtnClicked() {
+        navigationPresenter.replaceFragment(LoginFragment.newInstance());
+    }
 }

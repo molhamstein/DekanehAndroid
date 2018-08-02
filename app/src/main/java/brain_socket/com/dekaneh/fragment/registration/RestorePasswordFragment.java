@@ -5,6 +5,8 @@ import android.view.View;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.base.BaseFragment;
+import brain_socket.com.dekaneh.fragment.registration.login.LoginFragment;
+import butterknife.OnClick;
 
 public class RestorePasswordFragment extends BaseFragment {
 
@@ -25,6 +27,11 @@ public class RestorePasswordFragment extends BaseFragment {
     @Override
     public String TAG() {
         return RestorePasswordFragment.class.getSimpleName();
+    }
+
+    @OnClick(R.id.restorePassLoginBtn)
+    public void onLoginBtnClicked() {
+        navigationPresenter.replaceFragment(LoginFragment.newInstance());
     }
 
 }

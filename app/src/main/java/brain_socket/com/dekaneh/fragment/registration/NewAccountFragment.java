@@ -60,4 +60,9 @@ public class NewAccountFragment extends BaseFragment {
     public void onSignInTextClicked() {
         navigationPresenter.replaceFragment(LoginFragment.newInstance());
     }
+
+    @OnClick(R.id.newAccountSubmitBtn)
+    public void onSubmitBtnClicked() {
+        navigationPresenter.replaceFragment(SubmitAccountFragment.newInstance());
+    }
 }

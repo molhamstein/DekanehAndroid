@@ -14,6 +14,7 @@ import brain_socket.com.dekaneh.activity.MainActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.fragment.registration.ChooseAccountFragment;
 import brain_socket.com.dekaneh.fragment.registration.ForgotPasswordFragment;
+import brain_socket.com.dekaneh.fragment.registration.NewAccountFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -83,7 +84,7 @@ public class LoginFragment extends BaseFragment implements LoginFragmentVP.View 
 
     @OnClick(R.id.signUpText)
     public void onSignUpTextClicked(){
-        navigationPresenter.replaceFragment(ChooseAccountFragment.newInstance());
+        navigationPresenter.replaceFragment(NewAccountFragment.newInstance());
     }
 
     @OnClick(R.id.forgotPasswordText)
