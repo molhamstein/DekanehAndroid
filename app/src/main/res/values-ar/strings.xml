@@ -29,4 +29,7 @@
     <string name="see_all_offers">مشاهدة جميع العروض</string>
     <string name="see_all">مشاهدة الكل</string>
     <string name="code">رمز الاستعادة</string>
+    <string name="back_to_sign_in">العودة لتسجيل الدخول</string>
+    <string name="visit_text">سنقوم بزيارتك قريبا لإتمام الاجرائات</string>
+    <string name="request_submitted_text">تم تسجيل طلبك</string>
 </resources>

@@ -56,5 +56,8 @@
     <string name="see_all_offers">See all offers</string>
     <string name="see_all">See all</string>
     <string name="code">Code</string>
+    <string name="back_to_sign_in">Back to sign in</string>
+    <string name="visit_text">We\'ll visit you soon</string>
+    <string name="request_submitted_text">Request submitted</string>
 
 </resources>
