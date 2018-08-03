@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
@@ -28,7 +30,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     @BindView(R.id.mainToolbar)
     Toolbar toolbar;
     @BindView(R.id.navigation)
-    BottomNavigationView bottomNavigation;
+    BottomNavigationViewEx bottomNavigation;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -67,6 +69,9 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         presenter.onAttach(this);
 
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        bottomNavigation.enableAnimation(false);
+        bottomNavigation.enableItemShiftingMode(false);
+        bottomNavigation.enableShiftingMode(false);
     }
 
     @Override

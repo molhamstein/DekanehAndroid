@@ -38,13 +38,15 @@
     </FrameLayout>
 
 
-    <android.support.design.widget.BottomNavigationView
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/windowBackground"
         app:menu="@menu/navigation"
         app:itemIconTint="@color/bottom_nav_item_color"
-        app:itemTextColor="@color/bottom_nav_item_color"/>
+        app:itemTextColor="@color/bottom_nav_item_color"
+        android:animateLayoutChanges="false"
+        />
 
 </LinearLayout>

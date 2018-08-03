@@ -41,6 +41,7 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.16'
     implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.github.florent37:viewanimator:1.0.5'
+    implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     testImplementation 'junit:junit:4.12'
