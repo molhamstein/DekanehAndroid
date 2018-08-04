@@ -32,10 +32,15 @@
     </style>
 
 
-    <style name="WhiteBoldTextView" parent="@android:style/TextAppearance.Widget.TextView">
+    <style name="WhiteBlackTextView" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:fontFamily">@font/cairo_black</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="WhiteBoldTextView" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/cairo_bold</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="WhiteThinTextView" parent="@android:style/TextAppearance.Widget.TextView">

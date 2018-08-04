@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_background">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteY="25dp">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/loginText1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
@@ -25,7 +25,7 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/loginLogo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -102,7 +102,7 @@
 
         <TextView
             android:id="@+id/forgotPasswordText"
-            style="@style/WhiteBoldTextView"
+            style="@style/WhiteBlackTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -114,7 +114,7 @@
 
         <Button
             android:id="@+id/loginBtn"
-            style="@style/WhiteBoldTextView"
+            style="@style/WhiteBlackTextView"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -145,7 +145,7 @@
 
             <TextView
                 android:id="@+id/signUpText"
-                style="@style/WhiteBoldTextView"
+                style="@style/WhiteBlackTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up"

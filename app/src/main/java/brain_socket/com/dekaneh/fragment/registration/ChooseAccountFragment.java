@@ -7,6 +7,7 @@ import com.github.florent37.viewanimator.ViewAnimator;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.base.BaseFragment;
+import brain_socket.com.dekaneh.custom.DekanehInterpolator;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -28,8 +29,11 @@ public class ChooseAccountFragment extends BaseFragment {
     @Override
     public void init(View rootView) {
 
-        ViewAnimator.animate(account1).translationX(-800, 0).alpha(0, 1).duration(800)
-                .andAnimate(account2).translationX(-800, 0).alpha(0, 1).duration(800)
+        ViewAnimator.animate(account1).translationX(-800, 0)
+                .alpha(0, 1).duration(800)
+                .andAnimate(account2).translationX(-700, 0)
+                .alpha(0, 1).duration(800)
+                .interpolator(new DekanehInterpolator(1f))
                 .decelerate().start();
 
     }
@@ -53,5 +57,9 @@ public class ChooseAccountFragment extends BaseFragment {
     @OnClick(R.id.account_2Card)
     public void onCardTwoClicked(){
         navigationPresenter.replaceFragment(NewAccountFragment.newInstance());
+    }
+
+
+    private void performOutAnimation() {
     }
 }

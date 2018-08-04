@@ -59,5 +59,6 @@
     <string name="back_to_sign_in">Back to sign in</string>
     <string name="visit_text">We\'ll visit you soon</string>
     <string name="request_submitted_text">Request submitted</string>
+    <string name="search">Search</string>
 
 </resources>

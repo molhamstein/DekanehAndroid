@@ -3,8 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_gray_24dp"
+        android:title="@string/search"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="300"
+        />
+
+    <item
         android:id="@+id/action_notifications"
-        android:icon="@drawable/ic_notifications_dark_gray_24dp"
+        android:icon="@drawable/ic_notifications_none_black_24dp"
         android:title="@string/notifications"
         app:showAsAction="ifRoom"
         android:orderInCategory="200"
@@ -12,7 +20,7 @@
 
     <item
         android:id="@+id/action_cart"
-        android:icon="@drawable/ic_shopping_cart_dark_gray_24dp"
+        android:icon="@drawable/cart"
         android:title="@string/cart"
         app:showAsAction="ifRoom"
         android:orderInCategory="100"
