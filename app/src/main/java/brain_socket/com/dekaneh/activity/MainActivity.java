@@ -18,8 +18,10 @@ import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.fragment.MainFragment;
 import brain_socket.com.dekaneh.fragment.OffersFragment;
+import brain_socket.com.dekaneh.network.PicassoImageLoadingService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import ss.com.bannerslider.Slider;
 
 public class MainActivity extends BaseActivity implements MainActivityVP.View {
 
@@ -72,6 +74,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         bottomNavigation.enableAnimation(false);
         bottomNavigation.enableItemShiftingMode(false);
         bottomNavigation.enableShiftingMode(false);
+        Slider.init(new PicassoImageLoadingService());
     }
 
     @Override
