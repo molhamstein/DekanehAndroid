@@ -116,6 +116,10 @@
     </style>
 
 
+    <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+    <item name="fontFamily">@font/cairo_semi_bold</item>
+    </style>
+
 
 
 </resources>

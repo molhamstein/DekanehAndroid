@@ -47,6 +47,7 @@
         app:itemIconTint="@color/bottom_nav_item_color"
         app:itemTextColor="@color/bottom_nav_item_color"
         android:animateLayoutChanges="false"
+        android:theme="@style/Widget.BottomNavigationView"
         />
 
 </LinearLayout>

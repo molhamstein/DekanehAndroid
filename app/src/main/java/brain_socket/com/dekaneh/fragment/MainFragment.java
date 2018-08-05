@@ -80,6 +80,7 @@ public class MainFragment extends BaseFragment {
         drawableIds.add(R.drawable.tide);
 
         slider.setAdapter(new MainSliderAdapter(drawableIds));
+
     }
 
     @Override
