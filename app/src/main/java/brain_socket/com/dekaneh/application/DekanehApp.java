@@ -1,8 +1,11 @@
 package brain_socket.com.dekaneh.application;
 
 import android.app.Application;
+import android.content.res.Configuration;
 
 import com.androidnetworking.AndroidNetworking;
+
+import java.util.Locale;
 
 import brain_socket.com.dekaneh.dagger.ApplicationComponent;
 import brain_socket.com.dekaneh.dagger.ApplicationModule;
@@ -25,6 +28,12 @@ public class DekanehApp extends Application {
         applicationComponent.inject(this);
 
         AndroidNetworking.initialize(getApplicationContext());
+
+        Locale locale = new Locale("ar");
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getResources().updateConfiguration(config, null);
 
     }
 
