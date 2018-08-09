@@ -21,13 +21,23 @@
         <item name="android:textColor">@color/primaryText</item>
     </style>
 
-    <style name="PrimaryBoldTextView" parent="@android:style/TextAppearance.Widget.TextView">
+    <style name="PrimaryBlackTextView" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:fontFamily">@font/cairo_black</item>
         <item name="android:textColor">@color/primaryText</item>
     </style>
 
-    <style name="SecondaryTextView" parent="@android:style/TextAppearance.Widget.TextView">
+    <style name="SecondaryRegularTextView" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:fontFamily">@font/cairo_regular</item>
+        <item name="android:textColor">@color/secondaryText</item>
+    </style>
+
+    <style name="SecondaryBoldTextView" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/cairo_bold</item>
+        <item name="android:textColor">@color/secondaryText</item>
+    </style>
+
+    <style name="SecondaryBlackTextView" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/cairo_bold</item>
         <item name="android:textColor">@color/secondaryText</item>
     </style>
 
@@ -120,6 +130,12 @@
     <item name="fontFamily">@font/cairo_semi_bold</item>
     </style>
 
+
+    <style name="FlatButton" parent="Theme.AppCompat.Light">
+        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless.Colored</item>
+        <item name="colorControlHighlight">@color/secondaryText</item>
+        <item name="colorAccent">@color/light_green</item>
+    </style>
 
 
 </resources>

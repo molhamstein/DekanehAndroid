@@ -1,6 +1,6 @@
 package brain_socket.com.dekaneh.dagger;
 
-import brain_socket.com.dekaneh.activity.MainActivity;
+import brain_socket.com.dekaneh.activity.main.MainActivity;
 import brain_socket.com.dekaneh.activity.registration.RegistrationActivity;
 import brain_socket.com.dekaneh.fragment.MainFragment;
 import brain_socket.com.dekaneh.fragment.OffersFragment;

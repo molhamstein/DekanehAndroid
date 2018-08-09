@@ -18,15 +18,17 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
 
 
     private List<Offer> offers;
+    private int itemLayoutId;
 
-    public OffersAdapter(List<Offer> offers) {
+    public OffersAdapter(List<Offer> offers, int itemLayoutId) {
         this.offers = offers;
+        this.itemLayoutId = itemLayoutId;
     }
 
     @NonNull
     @Override
     public OffersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new OffersViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_offer, parent, false));
+        return new OffersViewHolder(LayoutInflater.from(parent.getContext()).inflate(itemLayoutId, parent, false));
     }
 
     @Override

@@ -11,10 +11,9 @@ import com.github.florent37.viewanimator.ViewAnimator;
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
-import brain_socket.com.dekaneh.activity.MainActivity;
+import brain_socket.com.dekaneh.activity.main.MainActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.custom.DekanehInterpolator;
-import brain_socket.com.dekaneh.fragment.registration.ChooseAccountFragment;
 import brain_socket.com.dekaneh.fragment.registration.ForgotPasswordFragment;
 import brain_socket.com.dekaneh.fragment.registration.NewAccountFragment;
 import butterknife.BindView;

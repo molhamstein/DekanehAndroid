@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.activity;
+package brain_socket.com.dekaneh.activity.main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +16,7 @@ import javax.inject.Inject;
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
+import brain_socket.com.dekaneh.fragment.CategoriesFragment;
 import brain_socket.com.dekaneh.fragment.MainFragment;
 import brain_socket.com.dekaneh.fragment.OffersFragment;
 import brain_socket.com.dekaneh.network.PicassoImageLoadingService;
@@ -44,9 +45,10 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
                     presenter.onBottomNavMainItemClick();
                     return true;
                 case R.id.navigation_categories:
-                    presenter.onBottomOffersItemClick();
+                    presenter.onBottomCategoriesItemClick();
                     return true;
                 case R.id.navigation_offers:
+                    presenter.onBottomOffersItemClick();
                     return true;
                 case R.id.navigation_profile:
                     return true;
@@ -85,6 +87,11 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     @Override
     public void showOffersFragment() {
         replaceFragment(OffersFragment.newInstance());
+    }
+
+    @Override
+    public void showCategoriesFragment() {
+        replaceFragment(CategoriesFragment.newInstance());
     }
 
     private void replaceFragment(BaseFragment fragment) {

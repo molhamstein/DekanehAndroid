@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.activity;
+package brain_socket.com.dekaneh.activity.main;
 
 import brain_socket.com.dekaneh.base.BasePresenter;
 import brain_socket.com.dekaneh.base.BaseView;
@@ -9,6 +9,7 @@ public interface MainActivityVP {
 
         void showMainFragment();
         void showOffersFragment();
+        void showCategoriesFragment();
 
     }
 
@@ -16,6 +17,7 @@ public interface MainActivityVP {
 
         void onBottomNavMainItemClick();
         void onBottomOffersItemClick();
+        void onBottomCategoriesItemClick();
 
     }
 

@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.activity;
+package brain_socket.com.dekaneh.activity.main;
 
 
 import javax.inject.Inject;
@@ -30,5 +30,10 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
     @Override
     public void onBottomOffersItemClick() {
         getView().showOffersFragment();
+    }
+
+    @Override
+    public void onBottomCategoriesItemClick() {
+        getView().showCategoriesFragment();
     }
 }

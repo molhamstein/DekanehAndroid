@@ -15,6 +15,7 @@ import brain_socket.com.dekaneh.adapter.MainSliderAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
 import brain_socket.com.dekaneh.adapter.SectionedProductsAdapter;
 import brain_socket.com.dekaneh.base.BaseFragment;
+import brain_socket.com.dekaneh.dagger.FragmentMain;
 import brain_socket.com.dekaneh.dagger.Horizontal;
 import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.network.model.ProductsSection;
@@ -24,6 +25,7 @@ import ss.com.bannerslider.Slider;
 public class MainFragment extends BaseFragment {
 
     @Inject
+    @FragmentMain
     OffersAdapter offersAdapter;
     @Inject
     @Horizontal
@@ -56,7 +58,7 @@ public class MainFragment extends BaseFragment {
 
         offersRV.setLayoutManager(linearLayoutManager);
         offersRV.setAdapter(offersAdapter);
-        productsRV.setLayoutManager(new LinearLayoutManager(getContext()){
+        productsRV.setLayoutManager(new LinearLayoutManager(getContext()) {
             @Override
             public boolean canScrollVertically() {
                 return false;

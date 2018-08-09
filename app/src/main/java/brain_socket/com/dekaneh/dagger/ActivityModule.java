@@ -7,10 +7,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Named;
-
-import brain_socket.com.dekaneh.activity.MainActivityPresenter;
-import brain_socket.com.dekaneh.activity.MainActivityVP;
+import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.main.MainActivityPresenter;
+import brain_socket.com.dekaneh.activity.main.MainActivityVP;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
 import brain_socket.com.dekaneh.application.AppSchedulerProvider;
 import brain_socket.com.dekaneh.application.SchedulerProvider;
@@ -62,6 +61,19 @@ public class ActivityModule {
         return presenter;
     }
 
+    @FragmentMain
+    @Provides
+    OffersAdapter providesMainOffersAdapter() {
+
+        List<Offer> offers = new ArrayList<>();
+        offers.add(new Offer("10"));
+        offers.add(new Offer("20"));
+        offers.add(new Offer("10"));
+        offers.add(new Offer("30"));
+
+        return new OffersAdapter(offers, R.layout.item_offer);
+    }
+
     @Provides
     OffersAdapter providesOffersAdapter() {
 
@@ -71,7 +83,7 @@ public class ActivityModule {
         offers.add(new Offer("10"));
         offers.add(new Offer("30"));
 
-        return new OffersAdapter(offers);
+        return new OffersAdapter(offers, R.layout.item_offer_fragment_offers);
     }
 
     @Horizontal

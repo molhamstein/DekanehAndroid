@@ -30,7 +30,7 @@
 
 
             <EditText
-                style="@style/PrimaryBoldTextView"
+                style="@style/PrimaryBlackTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
@@ -60,7 +60,7 @@
 
 
             <EditText
-                style="@style/PrimaryBoldTextView"
+                style="@style/PrimaryBlackTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
@@ -88,7 +88,7 @@
 
 
             <EditText
-                style="@style/PrimaryBoldTextView"
+                style="@style/PrimaryBlackTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
@@ -116,7 +116,7 @@
 
 
             <EditText
-                style="@style/PrimaryBoldTextView"
+                style="@style/PrimaryBlackTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"

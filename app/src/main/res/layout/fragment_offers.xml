@@ -12,6 +12,15 @@
         android:src="@drawable/splash_background"
         />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="110sp"
+        android:text="@string/offers"
+        android:layout_marginTop="-40dp"
+        android:alpha=".15"
+        style="@style/WhiteBlackTextView"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/offersRV"
         android:layout_width="match_parent"
