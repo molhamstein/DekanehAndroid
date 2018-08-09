@@ -13,16 +13,14 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            >
+            android:layout_height="200dp">
 
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:background="@drawable/square_shape_green_glow_item"
-                android:padding="30dp"
-                >
+                android:padding="30dp">
 
                 <TextView
                     style="@style/WhiteBoldTextView"
@@ -38,8 +36,8 @@
                     android:layout_gravity="bottom"
                     android:layout_marginBottom="32dp"
                     android:alpha=".7"
-                    android:textSize="12sp"
-                    android:text="@string/price" />
+                    android:text="@string/price"
+                    android:textSize="12sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -82,41 +80,39 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <TextView
                     style="@style/SecondaryBoldTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pack"
-                    />
+                    android:text="Pack" />
 
                 <TextView
+                    style="@style/PrimaryBlackTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/dummy_pepsi_title"
-                    style="@style/PrimaryBlackTextView"
-                    android:layout_marginTop="-12dp"/>
+                    android:layout_marginTop="-12dp"
+                    android:text="@string/dummy_pepsi_title" />
 
                 <TextView
                     style="@style/SecondaryBoldTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/product"
-                    />
+                    android:text="@string/product" />
 
                 <TextView
+                    style="@style/PrimaryBlackTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/pepsi_co"
-                    style="@style/PrimaryBlackTextView"
-                    android:layout_marginTop="-12dp"/>
+                    android:layout_marginTop="-12dp"
+                    android:text="@string/pepsi_co" />
 
             </LinearLayout>
 
@@ -128,36 +124,35 @@
                 android:layout_height="70dp"
                 android:layout_gravity="bottom|end"
                 android:layout_marginTop="70dp"
-                android:background="@drawable/action_button_shape_green_glow_offer"
-                >
+                android:background="@drawable/action_button_shape_green_glow_offer">
 
                 <Button
                     android:layout_width="40dp"
                     android:layout_height="70dp"
-                    android:theme="@style/FlatButton"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="-18dp"
                     android:text="+"
                     android:textColor="@color/white"
-                    android:layout_marginTop="-18dp"
                     android:textSize="32sp"
-                    android:layout_gravity="start"/>
+                    android:theme="@style/FlatButton" />
 
                 <TextView
+                    style="@style/WhiteBoldTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3"
-                    style="@style/WhiteBoldTextView"
                     android:layout_gravity="center"
-                    android:textSize="18sp"/>
+                    android:text="3"
+                    android:textSize="18sp" />
 
                 <Button
                     android:layout_width="40dp"
                     android:layout_height="70dp"
-                    android:theme="@style/FlatButton"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="-18dp"
                     android:text="-"
                     android:textColor="@color/white"
-                    android:layout_marginTop="-18dp"
                     android:textSize="38sp"
-                    android:layout_gravity="end"/>
+                    android:theme="@style/FlatButton" />
 
             </FrameLayout>
 
@@ -170,53 +165,59 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="16dp"
             android:text="@string/offers" />
 
         <View
             android:layout_width="80dp"
             android:layout_height="3dp"
+            android:layout_marginStart="16dp"
             android:background="@color/green" />
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp" />
 
         <TextView
             style="@style/PrimaryBlackTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
-            android:text="@string/about_the_product"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
-            />
+            android:text="@string/about_the_product" />
 
         <View
             android:layout_width="80dp"
             android:layout_height="3dp"
+            android:layout_marginStart="16dp"
             android:background="@color/green" />
 
         <TextView
+            style="@style/PrimaryTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="@string/dummy_text"
-            style="@style/PrimaryTextView"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
 
         <TextView
+            style="@style/SecondaryBlackTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/SecondaryBlackTextView"
-            android:text="More"
-            android:textSize="18sp"
+            android:layout_marginStart="16dp"
             android:gravity="center"
-            />
+            android:text="More"
+            android:textSize="18sp" />
 
         <View
             android:layout_width="80dp"
             android:layout_height="3dp"
-            android:background="@color/green"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:background="@color/green" />
 
 
         <TextView
@@ -224,17 +225,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
-            android:text="@string/similar_products"
-            android:layout_marginTop="40dp"/>
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/similar_products" />
 
         <View
             android:layout_width="130dp"
             android:layout_height="3dp"
+            android:layout_marginStart="16dp"
             android:background="@color/green" />
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp" />
 
         <Button
             style="@style/WhiteBlackTextOfferBtn"
@@ -243,8 +247,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="70dp"
             android:background="@drawable/action_button_shape_green_glow_offer"
-            android:text="Add Now  +"
-            />
+            android:text="Add Now  +" />
 
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
