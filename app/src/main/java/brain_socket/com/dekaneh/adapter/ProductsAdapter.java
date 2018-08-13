@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.ProductDetailsActivity;
 import brain_socket.com.dekaneh.network.model.Product;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,7 +19,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
     private List<Product> products;
 
-    ProductsAdapter(List<Product> products) {
+    public ProductsAdapter(List<Product> products) {
         this.products = products;
     }
 
@@ -38,6 +39,14 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         } else {
             holder.offerTag.setVisibility(View.GONE);
         }
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProductDetailsActivity.start(view.getContext());
+            }
+        });
 
 
     }

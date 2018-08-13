@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="80dp"
+    android:background="@drawable/square_shape_shadow_item">
+
+    <TextView
+        android:id="@+id/percent"
+        style="@style/WhiteBlackTextItemOffer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/item_offer_textview_background_gray"
+        android:gravity="center"
+        android:paddingBottom="4dp"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
+        android:paddingTop="4dp"
+        android:text="10%"
+        android:layout_gravity="center_vertical|start"/>
+
+    <TextView
+        style="@style/WhiteBoldTextItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:text="@string/dummy_text"
+        android:maxWidth="220dp"
+        android:layout_gravity="center_vertical|start"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="250S.P"
+            style="@style/PrimaryBlackTextView"
+            android:textSize="20sp"
+            android:layout_gravity="end"
+            android:foreground="@drawable/horizontal_line"
+            android:layout_marginTop="-3dp"
+            android:alpha=".8"
+            android:paddingBottom="3dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="200S.P"
+            style="@style/WhiteBlackTextView"
+            android:layout_marginTop="-23dp"
+            android:textSize="24sp"
+            />
+
+    </LinearLayout>
+
+</FrameLayout>

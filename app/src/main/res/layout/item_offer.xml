@@ -41,7 +41,7 @@
             android:paddingEnd="8dp"
             android:paddingStart="8dp"
             android:paddingTop="4dp"
-            android:text="10 %" />
+            android:text="10%" />
 
     </LinearLayout>
 

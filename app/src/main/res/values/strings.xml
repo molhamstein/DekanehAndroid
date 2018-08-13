@@ -66,5 +66,7 @@
     <string name="pepsi_co">PEPSI co</string>
     <string name="about_the_product">About the product</string>
     <string name="similar_products">Similar Products</string>
+    <string name="more">More</string>
+    <string name="product_details">Product Details</string>
 
 </resources>
