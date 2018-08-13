@@ -8,6 +8,8 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
@@ -34,6 +36,10 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     Toolbar toolbar;
     @BindView(R.id.navigation)
     BottomNavigationViewEx bottomNavigation;
+    @BindView(R.id.mainToolbarTitle)
+    TextView toolbarTitle;
+    @BindView(R.id.mainToolbarLogo)
+    View toolbarLogo;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -92,6 +98,28 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     @Override
     public void showCategoriesFragment() {
         replaceFragment(CategoriesFragment.newInstance());
+    }
+
+    @Override
+    public void showToolbarTitle(boolean show) {
+        if (show) toolbarTitle.setVisibility(View.VISIBLE);
+        else toolbarTitle.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showToolbarLogo(boolean show) {
+        if (show) toolbarLogo.setVisibility(View.VISIBLE);
+        else toolbarLogo.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setToolbarTitle(String title) {
+        toolbarTitle.setText(title);
+    }
+
+    @Override
+    public void setToolbarTitle(int title) {
+        toolbarTitle.setText(title);
     }
 
     private void replaceFragment(BaseFragment fragment) {
