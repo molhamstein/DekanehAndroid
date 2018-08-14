@@ -1,35 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.CategoryDetailsActivity">
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="16dp">
+        android:theme="@style/AppTheme.AppBarOverlay">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/catDetailsToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/splash_background"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
-        <TextView
-            style="@style/PrimaryBlackTextView"
-            android:layout_width="wrap_content"
+            <TextView
+                style="@style/PrimaryBlackTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingEnd="60dp"
+                android:paddingStart="0dp"
+                android:text="@string/product_details" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="start|center_vertical"
-            android:layout_marginStart="16dp"
-            android:text="@string/sub_categories" />
+            android:orientation="vertical"
+            android:paddingTop="16dp">
 
-        <View
-            android:layout_width="100dp"
-            android:layout_height="3dp"
-            android:layout_marginStart="16dp"
-            android:background="@color/green" />
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
+            <TextView
+                style="@style/PrimaryBlackTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginStart="16dp"
+                android:text="@string/sub_categories" />
 
-    </LinearLayout>
+            <View
+                android:layout_width="100dp"
+                android:layout_height="3dp"
+                android:layout_marginStart="16dp"
+                android:background="@color/green" />
 
-</ScrollView>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/catDetailsSubCatRV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp" />
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/catDetailsProductsRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

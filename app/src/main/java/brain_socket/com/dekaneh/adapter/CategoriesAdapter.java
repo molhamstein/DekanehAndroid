@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.CategoryDetailsActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -31,6 +32,13 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     public void onBindViewHolder(@NonNull CategoriesViewHolder holder, int position) {
 
         holder.title.setText(titles.get(position));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CategoryDetailsActivity.start(view.getContext());
+            }
+        });
     }
 
     @Override
