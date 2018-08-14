@@ -19,6 +19,8 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
         getView().showMainFragment();
+        getView().showToolbarTitle(false);
+        getView().showToolbarLogo(true);
     }
 
     @Override

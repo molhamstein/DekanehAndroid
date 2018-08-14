@@ -38,4 +38,5 @@
     <string name="about_the_product">عن المنتج</string>
     <string name="similar_products">منتجات مشابهة</string>
     <string name="product_details">تفاصيل المنتج</string>
+    <string name="sub_categories">التصنيفات الفرعية</string>
 </resources>

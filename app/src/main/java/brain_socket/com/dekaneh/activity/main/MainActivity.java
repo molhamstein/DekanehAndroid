@@ -75,6 +75,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
         getActivityComponent().inject(this);
         presenter.onAttach(this);
 

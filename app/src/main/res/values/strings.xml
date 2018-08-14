@@ -68,5 +68,6 @@
     <string name="similar_products">Similar Products</string>
     <string name="more">More</string>
     <string name="product_details">Product Details</string>
+    <string name="sub_categories">Sub Categories</string>
 
 </resources>
