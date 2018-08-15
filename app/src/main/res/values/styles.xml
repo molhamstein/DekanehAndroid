@@ -77,6 +77,11 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <style name="GreenBlackTextView" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/cairo_black</item>
+        <item name="android:textColor">@color/light_green</item>
+    </style>
+
     <style name="WhiteCheckBox">
         <item name="colorAccent">#ffffff</item>
         <item name="buttonTint">#fff</item>

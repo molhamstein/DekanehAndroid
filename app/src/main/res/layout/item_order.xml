@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:background="@drawable/shadow_card_black"
@@ -43,6 +44,7 @@
         style="@style/SecondaryBlackTextView"
         android:textSize="10sp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
         />
 
     <TextView
@@ -53,7 +55,37 @@
         style="@style/PrimaryBlackTextView"
         android:textSize="32sp"
         android:layout_marginTop="-24dp"
-        android:layout_marginEnd="22dp"
+        android:layout_marginEnd="54dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status"
+        style="@style/SecondaryBoldTextView"
+        android:textSize="12sp"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delivered"
+        style="@style/GreenBlackTextView"
+        android:textSize="16sp"
+        android:layout_marginBottom="-8dp"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="32dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
+        android:rotation="180"
+        android:layout_gravity="center_vertical|end"
         />
 
 </FrameLayout>
