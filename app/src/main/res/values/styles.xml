@@ -29,6 +29,12 @@
         <item name="android:textColor">@color/primaryText</item>
     </style>
 
+
+    <style name="PrimaryBoldTextView" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/cairo_bold</item>
+        <item name="android:textColor">@color/primaryText</item>
+    </style>
+
     <style name="PrimaryBlackTextView" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:fontFamily">@font/cairo_black</item>
         <item name="android:textColor">@color/primaryText</item>

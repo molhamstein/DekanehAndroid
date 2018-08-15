@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@drawable/shadow_card_black"
+    android:padding="16dp"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="13/2/2018"
+        style="@style/PrimaryBoldTextView"
+        android:textSize="16sp"
+        android:layout_marginTop="-13dp"
+        android:layout_gravity="start"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order id"
+        style="@style/SecondaryBoldTextView"
+        android:textSize="12sp"
+        android:layout_gravity="start|center_vertical"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QRS43W2KU"
+        style="@style/PrimaryBlackTextView"
+        android:textSize="16sp"
+        android:layout_marginBottom="-8dp"
+        android:layout_gravity="start|bottom"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/currency"
+        android:layout_gravity="end"
+        style="@style/SecondaryBlackTextView"
+        android:textSize="10sp"
+        android:layout_marginTop="8dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_price"
+        android:layout_gravity="end|top"
+        style="@style/PrimaryBlackTextView"
+        android:textSize="32sp"
+        android:layout_marginTop="-24dp"
+        android:layout_marginEnd="22dp"
+        />
+
+</FrameLayout>
