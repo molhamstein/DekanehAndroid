@@ -21,6 +21,7 @@ import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.fragment.CategoriesFragment;
 import brain_socket.com.dekaneh.fragment.MainFragment;
 import brain_socket.com.dekaneh.fragment.OffersFragment;
+import brain_socket.com.dekaneh.fragment.ProfileFragment;
 import brain_socket.com.dekaneh.network.PicassoImageLoadingService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -57,6 +58,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
                     presenter.onBottomOffersItemClick();
                     return true;
                 case R.id.navigation_profile:
+                    presenter.onBottomProfileItemClick();
                     return true;
             }
             return false;
@@ -99,6 +101,11 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     @Override
     public void showCategoriesFragment() {
         replaceFragment(CategoriesFragment.newInstance());
+    }
+
+    @Override
+    public void showProfileFragment() {
+        replaceFragment(ProfileFragment.newInstance());
     }
 
     @Override

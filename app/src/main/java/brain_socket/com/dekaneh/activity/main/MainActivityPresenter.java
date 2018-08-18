@@ -45,4 +45,12 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
         getView().showToolbarTitle(true);
         getView().setToolbarTitle(R.string.categories);
     }
+
+    @Override
+    public void onBottomProfileItemClick() {
+        getView().showProfileFragment();
+        getView().showToolbarLogo(false);
+        getView().showToolbarTitle(true);
+        getView().setToolbarTitle(R.string.profile);
+    }
 }

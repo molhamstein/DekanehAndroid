@@ -12,6 +12,7 @@ public interface MainActivityVP {
         void showMainFragment();
         void showOffersFragment();
         void showCategoriesFragment();
+        void showProfileFragment();
         void showToolbarTitle(boolean show);
         void showToolbarLogo(boolean show);
         void setToolbarTitle(String title);
@@ -24,6 +25,7 @@ public interface MainActivityVP {
         void onBottomNavMainItemClick();
         void onBottomOffersItemClick();
         void onBottomCategoriesItemClick();
+        void onBottomProfileItemClick();
 
     }
 
