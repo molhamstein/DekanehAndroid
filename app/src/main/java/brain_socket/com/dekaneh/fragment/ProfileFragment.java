@@ -1,6 +1,7 @@
 package brain_socket.com.dekaneh.fragment;
 
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.View;
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.adapter.OrdersAdapter;
 import brain_socket.com.dekaneh.base.BaseFragment;
+import brain_socket.com.dekaneh.utils.ViewUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -17,6 +19,8 @@ public class ProfileFragment extends BaseFragment {
     RecyclerView profileOrdersRV;
     @BindView(R.id.bottomSheet)
     View bottomSheet;
+    @BindView(R.id.tabLayout)
+    TabLayout tabLayout;
 
     BottomSheetBehavior behavior;
 
@@ -36,8 +40,8 @@ public class ProfileFragment extends BaseFragment {
         profileOrdersRV.setAdapter(new OrdersAdapter());
         behavior = BottomSheetBehavior.from(bottomSheet);
         behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-
-
+        tabLayout.addTab(tabLayout.newTab().setCustomView(ViewUtils.getTabTextView(getContext(), "Orders")));
+        tabLayout.addTab(tabLayout.newTab().setCustomView(ViewUtils.getTabTextView(getContext(), "Post Orders")));
     }
 
     @Override

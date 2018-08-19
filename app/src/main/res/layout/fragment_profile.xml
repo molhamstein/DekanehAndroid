@@ -1,251 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:fitsSystemWindows="true">
-
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:layout_scrollFlags="scroll">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/ad"
-                android:scaleType="centerCrop"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#000"
-                android:alpha=".4"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center_vertical|start"
-                android:layout_margin="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Name"
-                    style="@style/WhiteBlackTextView"
-                    android:alpha=".7"
-                    android:layout_marginTop="-8dp"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Store Name"
-                    style="@style/WhiteBlackTextView"
-                    android:textSize="22sp"
-                    android:layout_marginTop="-18dp"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Owner name"
-                    style="@style/WhiteBlackTextView"
-                    android:alpha=".7"
-                    android:layout_marginTop="-8dp"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Name"
-                    style="@style/WhiteBlackTextView"
-                    android:textSize="22sp"
-                    android:layout_marginTop="-18dp"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Phone number"
-                    style="@style/WhiteBlackTextView"
-                    android:alpha=".7"
-                    android:layout_marginTop="-8dp"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="0098493821"
-                    style="@style/WhiteBlackTextView"
-                    android:textSize="22sp"
-                    android:layout_marginTop="-18dp"
-                    />
-
-            </LinearLayout>
-
-            <ImageView
-                android:id="@+id/profileSettingsIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_settings_white_24dp"
-                android:layout_gravity="end"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="16dp"
-                android:padding="8dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                />
-
-            <ImageView
-                android:id="@+id/profileEditIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_edit_white_24dp"
-                android:layout_gravity="end"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="56dp"
-                android:padding="8dp"
-
-                />
-
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
-
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="match_parent">
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:fitsSystemWindows="true"
+                app:layout_scrollFlags="scroll">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ad" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha=".4"
+                    android:background="#000" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/WhiteBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-8dp"
+                        android:alpha=".7"
+                        android:text="Name" />
+
+                    <TextView
+                        style="@style/WhiteBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-18dp"
+                        android:text="Store Name"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        style="@style/WhiteBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-8dp"
+                        android:alpha=".7"
+                        android:text="Owner name" />
+
+                    <TextView
+                        style="@style/WhiteBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-18dp"
+                        android:text="Name"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        style="@style/WhiteBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-8dp"
+                        android:alpha=".7"
+                        android:text="Phone number" />
+
+                    <TextView
+                        style="@style/WhiteBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-18dp"
+                        android:text="0098493821"
+                        android:textSize="22sp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/profileSettingsIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="30dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="8dp"
+                    app:srcCompat="@drawable/ic_settings_white_24dp" />
+
+                <ImageView
+                    android:id="@+id/profileEditIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="56dp"
+                    android:layout_marginTop="30dp"
+                    android:padding="8dp"
+                    app:srcCompat="@drawable/ic_edit_white_24dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+
+                    />
+
+
+            </FrameLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/profileOrdersRV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:layout_marginTop="250dp"/>
+
+
+            <FrameLayout
+                android:layout_width="260dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="190dp"
+                android:background="@drawable/shadow_white_background_round">
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="215dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    app:tabGravity="fill"
+                    app:tabMaxWidth="0dp"
+                    app:tabMode="fixed" />
+
+            </FrameLayout>
 
         </FrameLayout>
 
+
     </android.support.v4.widget.NestedScrollView>
+
 
     <LinearLayout
         android:id="@+id/bottomSheet"
         android:layout_width="match_parent"
         android:layout_height="800dp"
-        android:orientation="vertical"
-        android:background="@drawable/shadow_card_black"
-        android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:paddingStart="32dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/shadow_card_black"
+        android:orientation="vertical"
+        android:paddingBottom="100dp"
         android:paddingEnd="32dp"
-        app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+        android:paddingStart="32dp"
+        android:visibility="visible"
         app:behavior_hideable="true"
         app:behavior_peekHeight="600dp"
-        android:paddingBottom="100dp"
-        android:visibility="gone"
-        >
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
         <TextView
+            style="@style/PrimaryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Business Name"
-            style="@style/PrimaryTextView"
             android:layout_gravity="end"
             android:layout_marginTop="30dp"
-            />
+            android:text="Business Name" />
 
         <EditText
+            style="@style/PrimaryBoldTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="-4dp"
+            android:layout_marginStart="-4dp"
+            android:layout_marginTop="-22dp"
             android:hint="Email"
-            android:textSize="22sp"
-            style="@style/PrimaryBoldTextView"
-            android:layout_marginTop="-22dp"
-            android:layout_marginStart="-4dp"
-            android:layout_marginEnd="-4dp"
-            />
+            android:textSize="22sp" />
 
         <TextView
+            style="@style/PrimaryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Phone number"
-            style="@style/PrimaryTextView"
             android:layout_gravity="end"
             android:layout_marginTop="-6dp"
-            />
+            android:text="Phone number" />
 
         <EditText
+            style="@style/PrimaryBoldTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="-4dp"
+            android:layout_marginStart="-4dp"
+            android:layout_marginTop="-22dp"
             android:hint="(Optional)"
-            android:textSize="22sp"
-            style="@style/PrimaryBoldTextView"
-            android:layout_marginTop="-22dp"
-            android:layout_marginStart="-4dp"
-            android:layout_marginEnd="-4dp"
-            />
+            android:textSize="22sp" />
 
         <TextView
+            style="@style/PrimaryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Owner Name"
-            style="@style/PrimaryTextView"
             android:layout_gravity="end"
             android:layout_marginTop="-6dp"
-            />
+            android:text="Owner Name" />
 
         <EditText
+            style="@style/PrimaryBoldTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
-            android:textSize="22sp"
-            style="@style/PrimaryBoldTextView"
-            android:layout_marginTop="-22dp"
-            android:layout_marginStart="-4dp"
             android:layout_marginEnd="-4dp"
-            />
+            android:layout_marginStart="-4dp"
+            android:layout_marginTop="-22dp"
+            android:hint="Name"
+            android:textSize="22sp" />
 
         <TextView
+            style="@style/PrimaryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Location"
-            style="@style/PrimaryTextView"
             android:layout_gravity="end"
             android:layout_marginTop="-6dp"
-            />
+            android:text="Location" />
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-22dp"
-            android:layout_marginStart="-4dp"
             android:layout_marginEnd="-4dp"
-            >
+            android:layout_marginStart="-4dp"
+            android:layout_marginTop="-22dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_pin_drop_gray_24dp"
                 android:layout_gravity="bottom|start"
                 android:layout_margin="16dp"
-                />
+                app:srcCompat="@drawable/ic_pin_drop_gray_24dp" />
 
             <EditText
+                style="@style/PrimaryBoldTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="(Optional)"
-                android:textSize="22sp"
-                style="@style/PrimaryBoldTextView"
-                />
+                android:textSize="22sp" />
 
         </FrameLayout>
 
@@ -255,13 +254,11 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="80dp"
             android:background="@drawable/action_button_shape_round"
             android:text="Update"
-            android:layout_marginTop="80dp"
             android:textColor="@color/white" />
 
-
     </LinearLayout>
-
 
 </android.support.design.widget.CoordinatorLayout>
