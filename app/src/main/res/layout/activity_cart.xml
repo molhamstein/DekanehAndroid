@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.CartActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="400dp"
+            android:background="@drawable/shadow_card_black"
+            android:layout_margin="16dp"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/cartOrderRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="100dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/secondaryText"
+                android:layout_gravity="bottom"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="70dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/currency"
+                android:layout_gravity="bottom|end"
+                style="@style/SecondaryBlackTextView"
+                android:textSize="10sp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="33000"
+                android:layout_gravity="bottom|end"
+                style="@style/PrimaryBlackTextView"
+                android:textSize="32sp"
+                android:layout_marginEnd="40dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:text="الاجمالي"
+                style="@style/SecondaryBlackTextView"
+                android:textSize="18sp"
+                android:layout_marginBottom="16dp"/>
+
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/loginBtn"
+            style="@style/WhiteBlackTextView"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/action_button_shape_round"
+            android:text="Send Order"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

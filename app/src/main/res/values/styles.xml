@@ -51,7 +51,7 @@
     </style>
 
     <style name="SecondaryBlackTextView" parent="@android:style/TextAppearance.Widget.TextView">
-        <item name="android:fontFamily">@font/cairo_bold</item>
+        <item name="android:fontFamily">@font/cairo_black</item>
         <item name="android:textColor">@color/secondaryText</item>
     </style>
 

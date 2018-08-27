@@ -16,6 +16,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.CartActivity;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.fragment.CategoriesFragment;
@@ -142,4 +143,17 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         return true;
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.action_cart:
+                CartActivity.start(this);
+                return false;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

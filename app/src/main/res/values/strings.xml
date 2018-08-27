@@ -69,5 +69,6 @@
     <string name="more">More</string>
     <string name="product_details">Product Details</string>
     <string name="sub_categories">Sub Categories</string>
+    <string name="quantity">Quantity</string>
 
 </resources>
