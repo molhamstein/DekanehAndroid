@@ -28,6 +28,7 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
         getView().showMainFragment();
         getView().showToolbarTitle(false);
         getView().showToolbarLogo(true);
+        getView().showToolbarCanopy(false);
     }
 
     @Override
@@ -36,6 +37,7 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
         getView().showToolbarLogo(false);
         getView().showToolbarTitle(true);
         getView().setToolbarTitle(R.string.offers);
+        getView().showToolbarCanopy(false);
     }
 
     @Override
@@ -44,6 +46,7 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
         getView().showToolbarLogo(false);
         getView().showToolbarTitle(true);
         getView().setToolbarTitle(R.string.categories);
+        getView().showToolbarCanopy(false);
     }
 
     @Override
@@ -52,5 +55,6 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
         getView().showToolbarLogo(false);
         getView().showToolbarTitle(true);
         getView().setToolbarTitle(R.string.profile);
+        getView().showToolbarCanopy(true);
     }
 }

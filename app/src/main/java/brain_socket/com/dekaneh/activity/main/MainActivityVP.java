@@ -17,6 +17,7 @@ public interface MainActivityVP {
         void showToolbarLogo(boolean show);
         void setToolbarTitle(String title);
         void setToolbarTitle(@StringRes int title);
+        void showToolbarCanopy(boolean show);
 
     }
 

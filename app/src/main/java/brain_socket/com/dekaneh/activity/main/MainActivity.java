@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.github.florent37.viewanimator.ViewAnimator;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import javax.inject.Inject;
@@ -19,6 +20,7 @@ import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.CartActivity;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
+import brain_socket.com.dekaneh.custom.DekanehInterpolator;
 import brain_socket.com.dekaneh.fragment.CategoriesFragment;
 import brain_socket.com.dekaneh.fragment.MainFragment;
 import brain_socket.com.dekaneh.fragment.OffersFragment;
@@ -129,6 +131,12 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     @Override
     public void setToolbarTitle(int title) {
         toolbarTitle.setText(title);
+    }
+
+    @Override
+    public void showToolbarCanopy(boolean show) {
+        if (show) toolbar.setBackgroundResource(R.drawable.canopy_up);
+        else toolbar.setBackgroundResource(R.drawable.splash_background);
     }
 
     private void replaceFragment(BaseFragment fragment) {
