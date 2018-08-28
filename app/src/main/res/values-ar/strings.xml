@@ -40,4 +40,6 @@
     <string name="product_details">تفاصيل المنتج</string>
     <string name="sub_categories">التصنيفات الفرعية</string>
     <string name="quantity">الكمية</string>
+    <string name="cart">السلة</string>
+
 </resources>

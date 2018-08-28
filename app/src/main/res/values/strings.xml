@@ -46,7 +46,6 @@
     <string name="categories">Categories</string>
     <string name="main">Main</string>
     <string name="notifications">Notifications</string>
-    <string name="cart">Cart</string>
     <string name="dummy_item_top_text">13 Containers</string>
     <string name="dummy_item_title">Floor wash bla bla something</string>
     <string name="dummy_price">200</string>
@@ -70,5 +69,6 @@
     <string name="product_details">Product Details</string>
     <string name="sub_categories">Sub Categories</string>
     <string name="quantity">Quantity</string>
+    <string name="cart">Cart</string>
 
 </resources>
