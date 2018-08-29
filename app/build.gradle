@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-def androidSupportVersion = "27.1.1"
+def androidSupportVersion = "27.1.0"
 
 
 android {
@@ -35,11 +35,12 @@ dependencies {
     implementation "com.android.support:cardview-v7:$androidSupportVersion"
     implementation "com.android.support:support-v4:$androidSupportVersion"
     implementation "com.android.support:design:$androidSupportVersion"
+    implementation "com.android.support:support-vector-drawable:$androidSupportVersion"
+    implementation "com.android.support:support-v4:$androidSupportVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.jakewharton:butterknife:8.8.1'
     implementation 'com.amitshekhar.android:rx2-android-networking:1.0.1'
     implementation 'com.google.dagger:dagger:2.16'
-    implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.github.florent37:viewanimator:1.0.5'
     implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
     implementation 'com.ss.bannerslider:bannerslider:2.0.0'

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.SettingsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.PopupOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/mainToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/splash_background"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title=""
+            app:titleTextAppearance="@style/PrimaryBlackTextView">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/splash_background"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/title_activity_settings"
+            android:textSize="82sp"
+            android:gravity="center"
+            android:layout_marginTop="-22dp"
+            android:alpha=".3"
+            style="@style/WhiteBlackTextView"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Some slogan about Dekaneh service"
+        android:gravity="center"
+        style="@style/PrimaryBoldTextView"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_us"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="16dp"
+            android:textSize="18sp"
+            style="@style/PrimaryBoldTextView"
+            android:alpha=".7"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:rotation="180"
+            android:alpha=".5"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="16dp"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/secondaryText"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="16dp"
+            android:textSize="18sp"
+            style="@style/PrimaryBoldTextView"
+            android:alpha=".7"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:rotation="180"
+            android:alpha=".5"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="16dp"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/secondaryText"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notifications"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="16dp"
+            android:textSize="18sp"
+            style="@style/PrimaryBoldTextView"
+            android:alpha=".7"
+            />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="16dp"
+            android:checked="true"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/secondaryText"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"/>
+
+    </FrameLayout>
+
+</LinearLayout>

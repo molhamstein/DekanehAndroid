@@ -9,6 +9,7 @@ import android.view.View;
 import com.github.florent37.viewanimator.ViewAnimator;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.SettingsActivity;
 import brain_socket.com.dekaneh.adapter.OrdersAdapter;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.custom.DekanehInterpolator;
@@ -65,6 +66,7 @@ public class ProfileFragment extends BaseFragment {
 
     @OnClick(R.id.profileSettingsIcon)
     public void onSettingsActionClick() {
+        SettingsActivity.start(getContext());
     }
 
     @OnClick(R.id.profileEditIcon)
