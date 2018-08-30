@@ -5,7 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -33,7 +36,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
 
         Product product = products.get(position);
-        holder.price.setText(product.getPrice());
+        holder.price.setText(product.getRetailPrice());
+        holder.name.setText(product.getNameAr());
+        Picasso.get().load(product.getImage()).into(holder.image);
         if (product.isHasOffer()) {
             holder.offerTag.setVisibility(View.VISIBLE);
         } else {
@@ -62,6 +67,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         TextView price;
         @BindView(R.id.productOfferTag)
         View offerTag;
+        @BindView(R.id.productName)
+        TextView name;
+        @BindView(R.id.productImage)
+        ImageView image;
 
         ProductViewHolder(View itemView) {
             super(itemView);

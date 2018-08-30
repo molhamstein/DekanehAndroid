@@ -1,0 +1,45 @@
+package brain_socket.com.dekaneh.fragment.main;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import brain_socket.com.dekaneh.application.SchedulerProvider;
+import brain_socket.com.dekaneh.base.BasePresenterImpl;
+import brain_socket.com.dekaneh.network.AppApiHelper;
+import brain_socket.com.dekaneh.network.model.HomeCategory;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
+
+public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePresenterImpl<T> implements MainFragmentVP.Presenter<T> {
+
+    @Inject
+    public MainFragmentPresenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
+        super(schedulerProvider, compositeDisposable);
+    }
+
+    @Override
+    public void fetchCategories() {
+        getView().showLoading();
+        getCompositeDisposable().add(
+                AppApiHelper.getHomeCategories()
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(new Consumer<List<HomeCategory>>() {
+                               @Override
+                               public void accept(List<HomeCategory> homeCategories) throws Exception {
+                                    getView().showMessage(homeCategories.get(0).getTitleAr());
+                                    getView().addCategoriesWithProducts(homeCategories);
+                                    getView().hideLoading();
+                               }
+                           }, new Consumer<Throwable>() {
+                               @Override
+                               public void accept(Throwable throwable) throws Exception {
+                                   getView().showMessage(throwable.getMessage());
+                                   getView().hideLoading();
+                               }
+                           }
+                )
+        );
+    }
+}

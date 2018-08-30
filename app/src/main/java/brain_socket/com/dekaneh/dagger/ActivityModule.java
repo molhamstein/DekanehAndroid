@@ -10,11 +10,15 @@ import java.util.List;
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.main.MainActivityPresenter;
 import brain_socket.com.dekaneh.activity.main.MainActivityVP;
+import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
 import brain_socket.com.dekaneh.application.AppSchedulerProvider;
 import brain_socket.com.dekaneh.application.SchedulerProvider;
+import brain_socket.com.dekaneh.fragment.main.MainFragmentPresenter;
+import brain_socket.com.dekaneh.fragment.main.MainFragmentVP;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentVP;
+import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.Offer;
 import dagger.Module;
 import dagger.Provides;
@@ -59,6 +63,16 @@ public class ActivityModule {
     @Provides
     MainActivityVP.Presenter<MainActivityVP.View> provideMainActivityPresenter(MainActivityPresenter<MainActivityVP.View> presenter) {
         return presenter;
+    }
+
+    @Provides
+    MainFragmentVP.Presenter<MainFragmentVP.View> provideMainFragmentPresenter(MainFragmentPresenter<MainFragmentVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    HomeCategoriesAdapter providesHomeCategoriesAdapter() {
+        return new HomeCategoriesAdapter(new ArrayList<HomeCategory>());
     }
 
     @FragmentMain

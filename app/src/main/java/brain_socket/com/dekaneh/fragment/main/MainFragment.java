@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.fragment;
+package brain_socket.com.dekaneh.fragment.main;
 
 
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,19 +11,23 @@ import java.util.List;
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.MainSliderAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
-import brain_socket.com.dekaneh.adapter.SectionedProductsAdapter;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.dagger.FragmentMain;
 import brain_socket.com.dekaneh.dagger.Horizontal;
+import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.network.model.ProductsSection;
 import butterknife.BindView;
 import ss.com.bannerslider.Slider;
 
-public class MainFragment extends BaseFragment {
+public class MainFragment extends BaseFragment implements MainFragmentVP.View {
 
+    @Inject
+    MainFragmentVP.Presenter<MainFragmentVP.View> presenter;
+    @Inject HomeCategoriesAdapter categoriesAdapter;
     @Inject
     @FragmentMain
     OffersAdapter offersAdapter;
@@ -55,6 +59,8 @@ public class MainFragment extends BaseFragment {
 
         if (getActivityComponent() != null)
             getActivityComponent().inject(this);
+        presenter.onAttach(this);
+        presenter.fetchCategories();
 
         offersRV.setLayoutManager(linearLayoutManager);
         offersRV.setAdapter(offersAdapter);
@@ -64,17 +70,7 @@ public class MainFragment extends BaseFragment {
                 return false;
             }
         });
-        List<Product> products = new ArrayList<>();
-        products.add(new Product("200", true));
-        products.add(new Product("350"));
-        products.add(new Product("2500"));
-        products.add(new Product("1200"));
-        products.add(new Product("1500"));
-        List<ProductsSection> sections = new ArrayList<>();
-        sections.add(new ProductsSection("منتجات مختارة", products));
-        sections.add(new ProductsSection("منظفات", products));
-        SectionedProductsAdapter adapter = new SectionedProductsAdapter(sections);
-        productsRV.setAdapter(adapter);
+        productsRV.setAdapter(categoriesAdapter);
         productsRV.setNestedScrollingEnabled(true);
 
         List<Integer> drawableIds = new ArrayList<>();
@@ -93,5 +89,10 @@ public class MainFragment extends BaseFragment {
     @Override
     public String TAG() {
         return MainFragment.class.getSimpleName();
+    }
+
+    @Override
+    public void addCategoriesWithProducts(List<HomeCategory> categories) {
+        categoriesAdapter.addCategories(categories);
     }
 }

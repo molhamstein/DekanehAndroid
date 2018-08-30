@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import brain_socket.com.dekaneh.R;
-import brain_socket.com.dekaneh.adapter.SectionedProductsAdapter;
+import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.SubCategoriesAdapter;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.network.model.Product;
@@ -51,18 +51,18 @@ public class CategoryDetailsActivity extends BaseActivity {
         subcategoriesRV.setAdapter(new SubCategoriesAdapter(titles));
 
 
-        List<Product> products = new ArrayList<>();
-        products.add(new Product("200", true));
-        products.add(new Product("350"));
-        products.add(new Product("2500"));
-        products.add(new Product("1200"));
-        products.add(new Product("1500"));
-        List<ProductsSection> sections = new ArrayList<>();
-        sections.add(new ProductsSection("منتجات مختارة", products));
-        sections.add(new ProductsSection("منظفات", products));
-        SectionedProductsAdapter adapter = new SectionedProductsAdapter(sections);
-        productsRV.setAdapter(adapter);
-        productsRV.setLayoutManager(new LinearLayoutManager(this));
+//        List<Product> products = new ArrayList<>();
+//        products.add(new Product("200", true));
+//        products.add(new Product("350"));
+//        products.add(new Product("2500"));
+//        products.add(new Product("1200"));
+//        products.add(new Product("1500"));
+//        List<ProductsSection> sections = new ArrayList<>();
+//        sections.add(new ProductsSection("منتجات مختارة", products));
+//        sections.add(new ProductsSection("منظفات", products));
+//        HomeCategoriesAdapter adapter = new HomeCategoriesAdapter(sections);
+//        productsRV.setAdapter(adapter);
+//        productsRV.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override

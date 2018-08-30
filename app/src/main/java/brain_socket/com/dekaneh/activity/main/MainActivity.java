@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.github.florent37.viewanimator.ViewAnimator;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import javax.inject.Inject;
@@ -20,9 +19,8 @@ import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.CartActivity;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
-import brain_socket.com.dekaneh.custom.DekanehInterpolator;
 import brain_socket.com.dekaneh.fragment.CategoriesFragment;
-import brain_socket.com.dekaneh.fragment.MainFragment;
+import brain_socket.com.dekaneh.fragment.main.MainFragment;
 import brain_socket.com.dekaneh.fragment.OffersFragment;
 import brain_socket.com.dekaneh.fragment.ProfileFragment;
 import brain_socket.com.dekaneh.network.PicassoImageLoadingService;

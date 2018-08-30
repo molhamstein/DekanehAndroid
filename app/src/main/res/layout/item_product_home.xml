@@ -24,12 +24,14 @@
             android:textSize="10sp" />
 
         <ImageView
+            android:id="@+id/productImage"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:scaleType="fitCenter"
             android:src="@drawable/tide" />
 
         <TextView
+            android:id="@+id/productName"
             style="@style/PrimaryTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
