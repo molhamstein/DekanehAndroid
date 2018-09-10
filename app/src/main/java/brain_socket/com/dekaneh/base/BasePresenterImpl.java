@@ -8,20 +8,23 @@ import javax.inject.Inject;
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.application.SchedulerProvider;
 import brain_socket.com.dekaneh.network.AppApiHelper;
+import brain_socket.com.dekaneh.network.CacheStore;
 import io.reactivex.disposables.CompositeDisposable;
 
 public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
 
     private final SchedulerProvider schedulerProvider;
     private final CompositeDisposable compositeDisposable;
+    private final CacheStore cacheStore;
     private T view;
 
 
     @Inject
-    public BasePresenterImpl(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
+    public BasePresenterImpl(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable, CacheStore cacheStore) {
 
         this.schedulerProvider = schedulerProvider;
         this.compositeDisposable = compositeDisposable;
+        this.cacheStore = cacheStore;
     }
 
     @Override
@@ -49,6 +52,10 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
 
     public CompositeDisposable getCompositeDisposable() {
         return compositeDisposable;
+    }
+
+    public CacheStore getCacheStore() {
+        return cacheStore;
     }
 
     public T getView() {

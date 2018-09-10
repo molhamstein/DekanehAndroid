@@ -9,6 +9,7 @@ import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.application.SchedulerProvider;
 import brain_socket.com.dekaneh.base.BasePresenterImpl;
 import brain_socket.com.dekaneh.network.AppApiHelper;
+import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.LoginRequest;
 import brain_socket.com.dekaneh.network.model.LoginResponse;
 import io.reactivex.disposables.CompositeDisposable;
@@ -19,10 +20,12 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
 
     private static final String TAG = LoginFragmentPresenter.class.getSimpleName();
 
+
     @Inject
-    public LoginFragmentPresenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
-        super(schedulerProvider, compositeDisposable);
+    public LoginFragmentPresenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable, CacheStore cacheStore) {
+        super(schedulerProvider, compositeDisposable, cacheStore);
     }
+
 
     @Override
     public void login(String phoneNumber, String password) {
@@ -41,22 +44,22 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
 
         getCompositeDisposable().add(
                 AppApiHelper.login(new LoginRequest("00963933074900", "123456"))
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<LoginResponse>() {
-                    @Override
-                    public void accept(LoginResponse loginResponse) throws Exception {
-                        getView().showMessage(loginResponse.getUser().getOwnerName());
-                        getView().hideLoading();
-                        getView().startMainActivity();
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        Log.e(TAG, "accept: ", throwable);
-                        getView().hideLoading();
-                    }
-                })
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<LoginResponse>() {
+                            @Override
+                            public void accept(LoginResponse loginResponse) throws Exception {
+                                getView().showMessage(loginResponse.getUser().getOwnerName());
+                                getView().hideLoading();
+                                getView().startMainActivity();
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                Log.e(TAG, "accept: ", throwable);
+                                getView().hideLoading();
+                            }
+                        })
         );
     }
 }

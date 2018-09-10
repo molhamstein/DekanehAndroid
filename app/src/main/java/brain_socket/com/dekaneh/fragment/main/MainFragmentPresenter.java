@@ -7,15 +7,18 @@ import javax.inject.Inject;
 import brain_socket.com.dekaneh.application.SchedulerProvider;
 import brain_socket.com.dekaneh.base.BasePresenterImpl;
 import brain_socket.com.dekaneh.network.AppApiHelper;
+import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
+import brain_socket.com.dekaneh.network.model.Offer;
+import brain_socket.com.dekaneh.network.model.Product;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
 public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePresenterImpl<T> implements MainFragmentVP.Presenter<T> {
 
     @Inject
-    public MainFragmentPresenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
-        super(schedulerProvider, compositeDisposable);
+    public MainFragmentPresenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable, CacheStore cacheStore) {
+        super(schedulerProvider, compositeDisposable, cacheStore);
     }
 
     @Override
@@ -28,7 +31,6 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
                 .subscribe(new Consumer<List<HomeCategory>>() {
                                @Override
                                public void accept(List<HomeCategory> homeCategories) throws Exception {
-                                    getView().showMessage(homeCategories.get(0).getTitleAr());
                                     getView().addCategoriesWithProducts(homeCategories);
                                     getView().hideLoading();
                                }
@@ -40,6 +42,28 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
                                }
                            }
                 )
+        );
+    }
+
+    @Override
+    public void fetchFeaturedOffers() {
+        getCompositeDisposable().add(
+                AppApiHelper.getFeaturedOffers()
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(new Consumer<List<Offer>>() {
+                    @Override
+                    public void accept(List<Offer> offers) throws Exception {
+
+                        getView().addFeaturedOffers(offers);
+
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+
+                    }
+                })
         );
     }
 }
