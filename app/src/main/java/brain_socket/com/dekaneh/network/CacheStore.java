@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import brain_socket.com.dekaneh.network.model.Category;
+import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.utils.CacheUtils;
 
@@ -17,14 +18,15 @@ import brain_socket.com.dekaneh.utils.CacheUtils;
 public class CacheStore {
 
     private Context context;
-
     @Inject
     public CacheStore(Context context) {
         this.context = context;
     }
 
-    public static final String PRODUCTS_LIST = "products_list";
-    public static final String CATEGORIES_LIST = "products_list";
+
+    private static final String PRODUCTS_LIST = "products_list";
+    private static final String CATEGORIES_LIST = "products_list";
+    private static final String HOME_CATEGORIES_LIST = "home_categories_list";
 
     public void cacheProducts(List<Product> products) {
         getPreference()
@@ -46,6 +48,17 @@ public class CacheStore {
 
     public List<Category> getCategories() {
         return CacheUtils.convertJsonStringToCategoriesArray(getPreference().getString(CATEGORIES_LIST, null));
+    }
+
+    public void cacheHomeCategories(List<HomeCategory> homeCategories) {
+        getPreference()
+                .edit()
+                .putString(HOME_CATEGORIES_LIST, CacheUtils.convertArrayToJsonString(homeCategories))
+                .apply();
+    }
+
+    public List<HomeCategory> getHomeCategories() {
+        return CacheUtils.convertJsonStringToHomeCategoriesArray(getPreference().getString(HOME_CATEGORIES_LIST, null));
     }
 
 

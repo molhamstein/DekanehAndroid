@@ -22,26 +22,36 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
     }
 
     @Override
+    public void onAttach(T mvpView) {
+        super.onAttach(mvpView);
+        if (getCacheStore().getHomeCategories() != null)
+            getView().addCategoriesWithProducts(getCacheStore().getHomeCategories());
+        else fetchCategories();
+
+    }
+
+    @Override
     public void fetchCategories() {
         getView().showLoading();
         getCompositeDisposable().add(
                 AppApiHelper.getHomeCategories()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<HomeCategory>>() {
-                               @Override
-                               public void accept(List<HomeCategory> homeCategories) throws Exception {
-                                    getView().addCategoriesWithProducts(homeCategories);
-                                    getView().hideLoading();
-                               }
-                           }, new Consumer<Throwable>() {
-                               @Override
-                               public void accept(Throwable throwable) throws Exception {
-                                   getView().showMessage(throwable.getMessage());
-                                   getView().hideLoading();
-                               }
-                           }
-                )
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<List<HomeCategory>>() {
+                                       @Override
+                                       public void accept(List<HomeCategory> homeCategories) throws Exception {
+                                           getView().addCategoriesWithProducts(homeCategories);
+                                           getCacheStore().cacheHomeCategories(homeCategories);
+                                           getView().hideLoading();
+                                       }
+                                   }, new Consumer<Throwable>() {
+                                       @Override
+                                       public void accept(Throwable throwable) throws Exception {
+                                           getView().showMessage(throwable.getMessage());
+                                           getView().hideLoading();
+                                       }
+                                   }
+                        )
         );
     }
 
@@ -49,21 +59,21 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
     public void fetchFeaturedOffers() {
         getCompositeDisposable().add(
                 AppApiHelper.getFeaturedOffers()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<Offer>>() {
-                    @Override
-                    public void accept(List<Offer> offers) throws Exception {
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<List<Offer>>() {
+                            @Override
+                            public void accept(List<Offer> offers) throws Exception {
 
-                        getView().addFeaturedOffers(offers);
+                                getView().addFeaturedOffers(offers);
 
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
 
-                    }
-                })
+                            }
+                        })
         );
     }
 }

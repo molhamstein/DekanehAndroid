@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import brain_socket.com.dekaneh.network.model.Category;
+import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.Product;
 
 
@@ -27,4 +28,7 @@ public class CacheUtils {
         return new Gson().fromJson(json, new TypeToken<List<Product>>(){}.getType());
     }
 
+    public static List<HomeCategory> convertJsonStringToHomeCategoriesArray(String json) {
+        return new Gson().fromJson(json, new TypeToken<List<HomeCategory>>(){}.getType());
+    }
 }

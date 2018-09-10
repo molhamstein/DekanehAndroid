@@ -24,7 +24,6 @@ public class CategoriesFragmentPresenter<T extends CategoriesFragmentVP.View> ex
     @Override
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
-        Log.d("XASXAX", "onAttach: " + getCacheStore().getCategories().get(0).getId());
         if (getCacheStore().getCategories() != null)
             getView().addCategories(getCacheStore().getCategories());
         else fetchCategories();
