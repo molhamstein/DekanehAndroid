@@ -1,18 +1,39 @@
 package brain_socket.com.dekaneh.network.model;
 
-public class Offer {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-    private String percent;
+import java.io.Serializable;
 
-    public Offer(String percent) {
-        this.percent = percent;
+public class Offer implements Serializable {
+
+    @SerializedName("id")
+    @Expose
+    private String id;
+    @SerializedName("nameAr")
+    @Expose
+    private String nameAr;
+    @SerializedName("image")
+    @Expose
+    private String image;
+    @SerializedName("retailPrice")
+    @Expose
+    private String retailPrice;
+
+
+    public String getId() {
+        return id;
     }
 
-    public String getPercent() {
-        return percent;
+    public String getNameAr() {
+        return nameAr;
     }
 
-    public void setPercent(String percent) {
-        this.percent = percent;
+    public String getImage() {
+        return image;
+    }
+
+    public String getRetailPrice() {
+        return retailPrice;
     }
 }
