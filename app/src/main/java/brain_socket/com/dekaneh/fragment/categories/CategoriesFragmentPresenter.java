@@ -1,11 +1,7 @@
 package brain_socket.com.dekaneh.fragment.categories;
 
-import android.util.Log;
-
 import java.util.List;
-
 import javax.inject.Inject;
-
 import brain_socket.com.dekaneh.application.SchedulerProvider;
 import brain_socket.com.dekaneh.base.BasePresenterImpl;
 import brain_socket.com.dekaneh.network.AppApiHelper;

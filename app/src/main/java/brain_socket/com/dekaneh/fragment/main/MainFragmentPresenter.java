@@ -24,9 +24,14 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
     @Override
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
-        if (getCacheStore().getHomeCategories() != null)
+        if (getCacheStore().getHomeCategories() != null && getCacheStore().getFeaturedOffers() != null) {
             getView().addCategoriesWithProducts(getCacheStore().getHomeCategories());
-        else fetchCategories();
+            getView().addFeaturedOffers(getCacheStore().getFeaturedOffers());
+        }
+        else {
+            fetchFeaturedOffers();
+            fetchCategories();
+        }
 
     }
 
@@ -66,6 +71,7 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
                             public void accept(List<Offer> offers) throws Exception {
 
                                 getView().addFeaturedOffers(offers);
+                                getCacheStore().cacheFeaturedOffers(offers);
 
                             }
                         }, new Consumer<Throwable>() {

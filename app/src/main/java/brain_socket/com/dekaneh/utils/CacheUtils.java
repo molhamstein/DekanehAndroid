@@ -5,11 +5,11 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
+import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Product;
 
 
@@ -30,5 +30,9 @@ public class CacheUtils {
 
     public static List<HomeCategory> convertJsonStringToHomeCategoriesArray(String json) {
         return new Gson().fromJson(json, new TypeToken<List<HomeCategory>>(){}.getType());
+    }
+
+    public static List<Offer> convertJsonStringToOffersArray(String json) {
+        return new Gson().fromJson(json, new TypeToken<List<Offer>>(){}.getType());
     }
 }

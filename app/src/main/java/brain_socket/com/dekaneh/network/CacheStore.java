@@ -11,6 +11,7 @@ import javax.inject.Singleton;
 
 import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
+import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.utils.CacheUtils;
 
@@ -27,6 +28,7 @@ public class CacheStore {
     private static final String PRODUCTS_LIST = "products_list";
     private static final String CATEGORIES_LIST = "products_list";
     private static final String HOME_CATEGORIES_LIST = "home_categories_list";
+    private static final String FEATURED_OFFERS = "home_categories_list";
 
     public void cacheProducts(List<Product> products) {
         getPreference()
@@ -59,6 +61,17 @@ public class CacheStore {
 
     public List<HomeCategory> getHomeCategories() {
         return CacheUtils.convertJsonStringToHomeCategoriesArray(getPreference().getString(HOME_CATEGORIES_LIST, null));
+    }
+
+    public void cacheFeaturedOffers(List<Offer> offers) {
+        getPreference()
+                .edit()
+                .putString(FEATURED_OFFERS, CacheUtils.convertArrayToJsonString(offers))
+                .apply();
+    }
+
+    public List<Offer> getFeaturedOffers() {
+        return CacheUtils.convertJsonStringToOffersArray(getPreference().getString(FEATURED_OFFERS, null));
     }
 
 
