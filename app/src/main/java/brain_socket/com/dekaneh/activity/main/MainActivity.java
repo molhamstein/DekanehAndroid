@@ -19,7 +19,7 @@ import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.CartActivity;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
-import brain_socket.com.dekaneh.fragment.CategoriesFragment;
+import brain_socket.com.dekaneh.fragment.categories.CategoriesFragment;
 import brain_socket.com.dekaneh.fragment.main.MainFragment;
 import brain_socket.com.dekaneh.fragment.OffersFragment;
 import brain_socket.com.dekaneh.fragment.ProfileFragment;

@@ -49,7 +49,7 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
         return categories.size();
     }
 
-    public void addCategories(List<HomeCategory> categories) {
+    public void addAllCategories(List<HomeCategory> categories) {
         this.categories = categories;
         notifyDataSetChanged();
     }

@@ -18,8 +18,8 @@ import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.dagger.FragmentMain;
 import brain_socket.com.dekaneh.dagger.Horizontal;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
+import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Product;
-import brain_socket.com.dekaneh.network.model.ProductsSection;
 import butterknife.BindView;
 import ss.com.bannerslider.Slider;
 
@@ -27,13 +27,17 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
 
     @Inject
     MainFragmentVP.Presenter<MainFragmentVP.View> presenter;
-    @Inject HomeCategoriesAdapter categoriesAdapter;
+    @Inject
+    HomeCategoriesAdapter categoriesAdapter;
     @Inject
     @FragmentMain
     OffersAdapter offersAdapter;
     @Inject
     @Horizontal
     LinearLayoutManager linearLayoutManager;
+    @Inject
+    @Horizontal
+    LinearLayoutManager offersLinearLayoutManager;
 
     @BindView(R.id.mainParent)
     View parent;
@@ -61,6 +65,7 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
             getActivityComponent().inject(this);
         presenter.onAttach(this);
         presenter.fetchCategories();
+        presenter.fetchFeaturedOffers();
 
         offersRV.setLayoutManager(linearLayoutManager);
         offersRV.setAdapter(offersAdapter);
@@ -93,6 +98,11 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
 
     @Override
     public void addCategoriesWithProducts(List<HomeCategory> categories) {
-        categoriesAdapter.addCategories(categories);
+        categoriesAdapter.addAllCategories(categories);
+    }
+
+    @Override
+    public void addFeaturedOffers(List<Offer> offers) {
+        offersAdapter.addAllOffers(offers);
     }
 }

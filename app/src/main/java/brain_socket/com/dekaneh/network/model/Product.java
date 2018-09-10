@@ -25,6 +25,9 @@ public class Product implements Serializable{
     private String price;
     private boolean hasOffer;
 
+    public Product() {
+    }
+
     public Product(String price, boolean hasOffer) {
         this.price = price;
         this.hasOffer = hasOffer;

@@ -7,19 +7,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.CategoryDetailsActivity;
+import brain_socket.com.dekaneh.network.model.Category;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder> {
 
-    private List<String> titles;
+    private List<Category> categories;
 
-    public CategoriesAdapter(List<String> titles) {
-        this.titles = titles;
+    @Inject
+    public CategoriesAdapter() {
+        this.categories = new ArrayList<>();
     }
 
     @NonNull
@@ -31,7 +36,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     @Override
     public void onBindViewHolder(@NonNull CategoriesViewHolder holder, int position) {
 
-        holder.title.setText(titles.get(position));
+        holder.title.setText(categories.get(position).getTitleAr());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +48,12 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
 
     @Override
     public int getItemCount() {
-        return titles.size();
+        return categories.size();
+    }
+
+    public void addAllCategories(List<Category> categories) {
+        this.categories = categories;
+        notifyDataSetChanged();
     }
 
     class CategoriesViewHolder extends RecyclerView.ViewHolder {

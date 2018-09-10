@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.network.model.Offer;
+import brain_socket.com.dekaneh.network.model.Product;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -20,8 +22,8 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
     private List<Offer> offers;
     private int itemLayoutId;
 
-    public OffersAdapter(List<Offer> offers, int itemLayoutId) {
-        this.offers = offers;
+    public OffersAdapter(int itemLayoutId) {
+        this.offers = new ArrayList<>();
         this.itemLayoutId = itemLayoutId;
     }
 
@@ -34,13 +36,18 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
     @Override
     public void onBindViewHolder(@NonNull OffersViewHolder holder, int position) {
 
-        holder.percent.setText(offers.get(position).getPercent());
+        holder.percent.setText("10%");
 
     }
 
     @Override
     public int getItemCount() {
         return offers.size();
+    }
+
+    public void addAllOffers(List<Offer> offers) {
+        this.offers = offers;
+        notifyDataSetChanged();
     }
 
     class OffersViewHolder extends RecyclerView.ViewHolder {
