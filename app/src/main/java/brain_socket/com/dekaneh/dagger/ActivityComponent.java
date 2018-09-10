@@ -1,9 +1,9 @@
 package brain_socket.com.dekaneh.dagger;
 
-import javax.inject.Singleton;
 
 import brain_socket.com.dekaneh.activity.main.MainActivity;
 import brain_socket.com.dekaneh.activity.registration.RegistrationActivity;
+import brain_socket.com.dekaneh.fragment.categories.CategoriesFragment;
 import brain_socket.com.dekaneh.fragment.main.MainFragment;
 import brain_socket.com.dekaneh.fragment.OffersFragment;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragment;
@@ -22,5 +22,7 @@ public interface ActivityComponent {
     void inject(MainFragment fragment);
 
     void inject(OffersFragment fragment);
+
+    void inject(CategoriesFragment fragment);
 
 }

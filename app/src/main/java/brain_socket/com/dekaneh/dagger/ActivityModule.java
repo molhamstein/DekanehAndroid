@@ -7,17 +7,23 @@ import android.support.v7.widget.LinearLayoutManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Singleton;
+
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.main.MainActivityPresenter;
 import brain_socket.com.dekaneh.activity.main.MainActivityVP;
+import brain_socket.com.dekaneh.adapter.CategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
 import brain_socket.com.dekaneh.application.AppSchedulerProvider;
 import brain_socket.com.dekaneh.application.SchedulerProvider;
+import brain_socket.com.dekaneh.fragment.categories.CategoriesFragmentPresenter;
+import brain_socket.com.dekaneh.fragment.categories.CategoriesFragmentVP;
 import brain_socket.com.dekaneh.fragment.main.MainFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.main.MainFragmentVP;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentVP;
+import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.Offer;
 import dagger.Module;
@@ -46,6 +52,11 @@ public class ActivityModule {
     }
 
     @Provides
+    CacheStore provideCacheStore(AppCompatActivity context) {
+        return new CacheStore(context);
+    }
+
+    @Provides
     CompositeDisposable provideCompositeDisposable(){
         return new CompositeDisposable();
     }
@@ -71,6 +82,11 @@ public class ActivityModule {
     }
 
     @Provides
+    CategoriesFragmentVP.Presenter<CategoriesFragmentVP.View> provideCategoriesFragmentPresenter(CategoriesFragmentPresenter<CategoriesFragmentVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
     HomeCategoriesAdapter providesHomeCategoriesAdapter() {
         return new HomeCategoriesAdapter(new ArrayList<HomeCategory>());
     }
@@ -79,25 +95,18 @@ public class ActivityModule {
     @Provides
     OffersAdapter providesMainOffersAdapter() {
 
-        List<Offer> offers = new ArrayList<>();
-        offers.add(new Offer("10"));
-        offers.add(new Offer("20"));
-        offers.add(new Offer("10"));
-        offers.add(new Offer("30"));
-
-        return new OffersAdapter(offers, R.layout.item_offer);
+        return new OffersAdapter(R.layout.item_offer);
     }
 
     @Provides
     OffersAdapter providesOffersAdapter() {
 
-        List<Offer> offers = new ArrayList<>();
-        offers.add(new Offer("10"));
-        offers.add(new Offer("20"));
-        offers.add(new Offer("10"));
-        offers.add(new Offer("30"));
+        return new OffersAdapter(R.layout.item_offer_fragment_offers);
+    }
 
-        return new OffersAdapter(offers, R.layout.item_offer_fragment_offers);
+    @Provides
+    CategoriesAdapter provideCategoriesAdapter() {
+        return new CategoriesAdapter();
     }
 
     @Horizontal
