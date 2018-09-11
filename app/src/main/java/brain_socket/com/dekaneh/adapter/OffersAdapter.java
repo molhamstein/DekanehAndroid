@@ -5,7 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +39,10 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
     @Override
     public void onBindViewHolder(@NonNull OffersViewHolder holder, int position) {
 
+        Offer offer = offers.get(position);
+
+        Picasso.get().load(offer.getImage()).into(holder.image);
+        holder.name.setText(offer.getNameAr());
         holder.percent.setText("10%");
 
     }
@@ -52,6 +59,10 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
 
     class OffersViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.offerImage)
+        ImageView image;
+        @BindView(R.id.offerName)
+        TextView name;
         @BindView(R.id.percent)
         TextView percent;
 
