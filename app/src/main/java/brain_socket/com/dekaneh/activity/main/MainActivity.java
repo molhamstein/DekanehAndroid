@@ -21,7 +21,7 @@ import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.fragment.categories.CategoriesFragment;
 import brain_socket.com.dekaneh.fragment.main.MainFragment;
-import brain_socket.com.dekaneh.fragment.OffersFragment;
+import brain_socket.com.dekaneh.fragment.offers.OffersFragment;
 import brain_socket.com.dekaneh.fragment.ProfileFragment;
 import brain_socket.com.dekaneh.network.PicassoImageLoadingService;
 import butterknife.BindView;

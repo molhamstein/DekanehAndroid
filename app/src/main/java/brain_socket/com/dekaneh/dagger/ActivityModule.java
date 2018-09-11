@@ -21,6 +21,8 @@ import brain_socket.com.dekaneh.fragment.categories.CategoriesFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.categories.CategoriesFragmentVP;
 import brain_socket.com.dekaneh.fragment.main.MainFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.main.MainFragmentVP;
+import brain_socket.com.dekaneh.fragment.offers.OffersFragmentPresenter;
+import brain_socket.com.dekaneh.fragment.offers.OffersFragmentVP;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentVP;
 import brain_socket.com.dekaneh.network.CacheStore;
@@ -83,6 +85,11 @@ public class ActivityModule {
 
     @Provides
     CategoriesFragmentVP.Presenter<CategoriesFragmentVP.View> provideCategoriesFragmentPresenter(CategoriesFragmentPresenter<CategoriesFragmentVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    OffersFragmentVP.Presenter<OffersFragmentVP.View> provideOffersFragmentPresenter(OffersFragmentPresenter<OffersFragmentVP.View> presenter) {
         return presenter;
     }
 

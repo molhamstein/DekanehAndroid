@@ -44,4 +44,10 @@ public class AppApiHelper {
                 .getObjectListSingle(Offer.class);
     }
 
+    public static Single<List<Offer>> getOffers() {
+        return Rx2AndroidNetworking.get(ApiEndPoint.OFFERS)
+                .build()
+                .getObjectListSingle(Offer.class);
+    }
+
 }

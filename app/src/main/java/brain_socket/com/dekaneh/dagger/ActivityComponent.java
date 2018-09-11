@@ -5,7 +5,7 @@ import brain_socket.com.dekaneh.activity.main.MainActivity;
 import brain_socket.com.dekaneh.activity.registration.RegistrationActivity;
 import brain_socket.com.dekaneh.fragment.categories.CategoriesFragment;
 import brain_socket.com.dekaneh.fragment.main.MainFragment;
-import brain_socket.com.dekaneh.fragment.OffersFragment;
+import brain_socket.com.dekaneh.fragment.offers.OffersFragment;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragment;
 import dagger.Component;
 
