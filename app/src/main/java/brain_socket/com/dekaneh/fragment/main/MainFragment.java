@@ -64,8 +64,8 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
         if (getActivityComponent() != null)
             getActivityComponent().inject(this);
         presenter.onAttach(this);
-        presenter.fetchCategories();
-        presenter.fetchFeaturedOffers();
+//        presenter.fetchCategories();
+//        presenter.fetchFeaturedOffers();
 
         offersRV.setLayoutManager(linearLayoutManager);
         offersRV.setAdapter(offersAdapter);
