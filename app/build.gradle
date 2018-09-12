@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+
 def androidSupportVersion = "27.1.0"
 
 
@@ -11,7 +12,13 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+                onesignal_app_id: 'b19828bb-c6a3-48d5-ad66-1040026d8d8e',
+                // Project number pulled from dashboard, local value is ignored.
+                onesignal_google_project_number: 'REMOTE'
+        ]
         vectorDrawables.useSupportLibrary = true
+
     }
     buildTypes {
         release {
@@ -35,7 +42,7 @@ dependencies {
     implementation "com.android.support:cardview-v7:$androidSupportVersion"
     implementation "com.android.support:support-v4:$androidSupportVersion"
     implementation "com.android.support:design:$androidSupportVersion"
-    implementation "com.android.support:support-vector-drawable:$androidSupportVersion"
+//    implementation "com.android.support:support-vector-drawable:$androidSupportVersion"
     implementation "com.android.support:support-v4:$androidSupportVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.jakewharton:butterknife:8.8.1'
@@ -45,9 +52,11 @@ dependencies {
     implementation 'com.github.ittianyu:BottomNavigationViewEx:1.2.4'
     implementation 'com.ss.bannerslider:bannerslider:2.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.onesignal:OneSignal:3.10.1'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     implementation 'org.jetbrains:annotations-java5:15.0'
 }
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'

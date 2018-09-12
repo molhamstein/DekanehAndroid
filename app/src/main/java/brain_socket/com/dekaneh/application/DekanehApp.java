@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.res.Configuration;
 
 import com.androidnetworking.AndroidNetworking;
+import com.onesignal.OneSignal;
 
 import java.util.Locale;
 
@@ -34,6 +35,10 @@ public class DekanehApp extends Application {
         Configuration config = new Configuration();
         config.locale = locale;
         getResources().updateConfiguration(config, null);
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
 
     }
 
