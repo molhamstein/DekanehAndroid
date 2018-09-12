@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Offer implements Serializable {
 
@@ -13,13 +14,39 @@ public class Offer implements Serializable {
     @SerializedName("nameAr")
     @Expose
     private String nameAr;
-    @SerializedName("image")
+    @SerializedName("description")
     @Expose
-    private String image;
+    private String description;
     @SerializedName("retailPrice")
     @Expose
-    private String retailPrice;
-
+    private int retailPrice;
+    @SerializedName("wholeSalePrice")
+    @Expose
+    private int wholeSalePrice;
+    @SerializedName("wholeSaleMarketPrice")
+    @Expose
+    private int wholeSaleMarketPrice;
+    @SerializedName("retailPriceDiscount")
+    @Expose
+    private int retailPriceDiscount;
+    @SerializedName("wholeSalePriceDiscount")
+    @Expose
+    private int wholeSalePriceDiscount;
+    @SerializedName("isFeatured")
+    @Expose
+    private boolean isFeatured;
+    @SerializedName("status")
+    @Expose
+    private String status;
+    @SerializedName("category")
+    @Expose
+    private Category category;
+    @SerializedName("manufacturer")
+    @Expose
+    private Manufacturer manufacturer;
+    @SerializedName("products")
+    @Expose
+    private List<Product> products;
 
     public String getId() {
         return id;
@@ -29,11 +56,55 @@ public class Offer implements Serializable {
         return nameAr;
     }
 
-    public String getImage() {
-        return image;
+    public String getDescription() {
+        return description;
     }
 
-    public String getRetailPrice() {
+    public int getRetailPrice() {
         return retailPrice;
+    }
+
+    public int getWholeSalePrice() {
+        return wholeSalePrice;
+    }
+
+    public int getWholeSaleMarketPrice() {
+        return wholeSaleMarketPrice;
+    }
+
+    public int getRetailPriceDiscount() {
+        return retailPriceDiscount;
+    }
+
+    public int getWholeSalePriceDiscount() {
+        return wholeSalePriceDiscount;
+    }
+
+    public boolean isFeatured() {
+        return isFeatured;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    private int getDiscountPercentage() {
+        return (retailPrice - retailPriceDiscount) * 100 / retailPrice;
+    }
+
+    public String getPercentageString() {
+        return String.valueOf(getDiscountPercentage()) + "%";
     }
 }

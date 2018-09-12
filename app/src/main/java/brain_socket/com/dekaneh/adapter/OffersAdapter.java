@@ -2,6 +2,7 @@ package brain_socket.com.dekaneh.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +14,21 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Product;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersViewHolder>{
+public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersViewHolder> {
 
 
     private List<Offer> offers;
     private int itemLayoutId;
 
+    @Inject
     public OffersAdapter(int itemLayoutId) {
         this.offers = new ArrayList<>();
         this.itemLayoutId = itemLayoutId;
@@ -41,9 +45,10 @@ public class OffersAdapter  extends RecyclerView.Adapter<OffersAdapter.OffersVie
 
         Offer offer = offers.get(position);
 
-        Picasso.get().load(offer.getImage()).into(holder.image);
+        if (offer.getProducts() != null)
+            Picasso.get().load(offer.getProducts().get(0).getImage()).into(holder.image);
         holder.name.setText(offer.getNameAr());
-        holder.percent.setText("10%");
+        holder.percent.setText(offer.getPercentageString());
 
     }
 

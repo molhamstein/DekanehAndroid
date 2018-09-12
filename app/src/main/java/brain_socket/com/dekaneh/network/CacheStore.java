@@ -27,9 +27,9 @@ public class CacheStore {
 
 
     private static final String PRODUCTS_LIST = "products_list";
-    private static final String CATEGORIES_LIST = "products_list";
+    private static final String CATEGORIES_LIST = "categories_list";
     private static final String HOME_CATEGORIES_LIST = "home_categories_list";
-    private static final String FEATURED_OFFERS = "home_categories_list";
+    private static final String FEATURED_OFFERS = "featured_offers_list";
 
     public void cacheProducts(List<Product> products) {
         getPreference()

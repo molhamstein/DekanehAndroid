@@ -1,5 +1,7 @@
 package brain_socket.com.dekaneh.fragment.main;
 
+import android.util.Log;
+
 import java.util.List;
 
 import javax.inject.Inject;
