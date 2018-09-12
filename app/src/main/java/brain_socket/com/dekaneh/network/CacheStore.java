@@ -19,6 +19,7 @@ import brain_socket.com.dekaneh.utils.GsonUtils;
 public class CacheStore {
 
     private Context context;
+
     @Inject
     public CacheStore(Context context) {
         this.context = context;
@@ -74,8 +75,7 @@ public class CacheStore {
         return GsonUtils.convertJsonStringToOffersArray(getPreference().getString(FEATURED_OFFERS, null));
     }
 
-
-    private SharedPreferences getPreference(){
+    private SharedPreferences getPreference() {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
