@@ -1,5 +1,6 @@
 package brain_socket.com.dekaneh.base;
 
+import android.content.Intent;
 import android.support.annotation.StringRes;
 
 public interface BaseView {
@@ -19,6 +20,8 @@ public interface BaseView {
     boolean isNetworkConnected();
 
     void hideKeyboard();
+
+    Intent getIntent();
 
 
 

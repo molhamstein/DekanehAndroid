@@ -13,7 +13,7 @@ import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Product;
-import brain_socket.com.dekaneh.utils.CacheUtils;
+import brain_socket.com.dekaneh.utils.GsonUtils;
 
 @Singleton
 public class CacheStore {
@@ -33,45 +33,45 @@ public class CacheStore {
     public void cacheProducts(List<Product> products) {
         getPreference()
                 .edit()
-                .putString(PRODUCTS_LIST, CacheUtils.convertArrayToJsonString(products))
+                .putString(PRODUCTS_LIST, GsonUtils.convertArrayToJsonString(products))
                 .apply();
     }
 
     public List<Product> getProducts() {
-        return CacheUtils.convertJsonStringToProductsArray(getPreference().getString(PRODUCTS_LIST, null));
+        return GsonUtils.convertJsonStringToProductsArray(getPreference().getString(PRODUCTS_LIST, null));
     }
 
     public void cacheCategories(List<Category> categories) {
         getPreference()
                 .edit()
-                .putString(CATEGORIES_LIST, CacheUtils.convertArrayToJsonString(categories))
+                .putString(CATEGORIES_LIST, GsonUtils.convertArrayToJsonString(categories))
                 .apply();
     }
 
     public List<Category> getCategories() {
-        return CacheUtils.convertJsonStringToCategoriesArray(getPreference().getString(CATEGORIES_LIST, null));
+        return GsonUtils.convertJsonStringToCategoriesArray(getPreference().getString(CATEGORIES_LIST, null));
     }
 
     public void cacheHomeCategories(List<HomeCategory> homeCategories) {
         getPreference()
                 .edit()
-                .putString(HOME_CATEGORIES_LIST, CacheUtils.convertArrayToJsonString(homeCategories))
+                .putString(HOME_CATEGORIES_LIST, GsonUtils.convertArrayToJsonString(homeCategories))
                 .apply();
     }
 
     public List<HomeCategory> getHomeCategories() {
-        return CacheUtils.convertJsonStringToHomeCategoriesArray(getPreference().getString(HOME_CATEGORIES_LIST, null));
+        return GsonUtils.convertJsonStringToHomeCategoriesArray(getPreference().getString(HOME_CATEGORIES_LIST, null));
     }
 
     public void cacheFeaturedOffers(List<Offer> offers) {
         getPreference()
                 .edit()
-                .putString(FEATURED_OFFERS, CacheUtils.convertArrayToJsonString(offers))
+                .putString(FEATURED_OFFERS, GsonUtils.convertArrayToJsonString(offers))
                 .apply();
     }
 
     public List<Offer> getFeaturedOffers() {
-        return CacheUtils.convertJsonStringToOffersArray(getPreference().getString(FEATURED_OFFERS, null));
+        return GsonUtils.convertJsonStringToOffersArray(getPreference().getString(FEATURED_OFFERS, null));
     }
 
 

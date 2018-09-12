@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import brain_socket.com.dekaneh.R;
-import brain_socket.com.dekaneh.activity.ProductDetailsActivity;
+import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
 import brain_socket.com.dekaneh.network.model.Product;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,7 +47,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
             ProductViewHolder productViewHolder = (ProductViewHolder) holder;
 
-            Product product = products.get(position);
+            final Product product = products.get(position);
             productViewHolder.price.setText(product.getRetailPrice());
             productViewHolder.name.setText(product.getNameAr());
             Picasso.get().load(product.getImage()).into(productViewHolder.image);
@@ -60,7 +60,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ProductDetailsActivity.start(view.getContext());
+                    ProductDetailsActivity.start(view.getContext(), product);
                 }
             });
 

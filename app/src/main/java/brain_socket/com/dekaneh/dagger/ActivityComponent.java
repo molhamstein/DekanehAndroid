@@ -2,6 +2,7 @@ package brain_socket.com.dekaneh.dagger;
 
 
 import brain_socket.com.dekaneh.activity.main.MainActivity;
+import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
 import brain_socket.com.dekaneh.activity.registration.RegistrationActivity;
 import brain_socket.com.dekaneh.fragment.categories.CategoriesFragment;
 import brain_socket.com.dekaneh.fragment.main.MainFragment;
@@ -16,6 +17,8 @@ public interface ActivityComponent {
     void inject(RegistrationActivity activity);
 
     void inject(MainActivity activity);
+
+    void inject(ProductDetailsActivity activity);
 
     void inject(LoginFragment fragment);
 

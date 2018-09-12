@@ -22,7 +22,7 @@ public class OffersFragment extends BaseFragment implements OffersFragmentVP.Vie
     @Inject
     LinearLayoutManager linearLayoutManager;
     @Inject
-    OffersFragmentVP.Presenter presenter;
+    OffersFragmentVP.Presenter<OffersFragmentVP.View> presenter;
 
     @BindView(R.id.offersRV)
     RecyclerView offersRV;
@@ -40,6 +40,8 @@ public class OffersFragment extends BaseFragment implements OffersFragmentVP.Vie
     public void init(View rootView) {
         if (getActivityComponent() != null)
             getActivityComponent().inject(this);
+        presenter.onAttach(this);
+        presenter.fetchOffers();
 
         offersRV.setLayoutManager(linearLayoutManager);
         offersRV.setAdapter(offersAdapter);

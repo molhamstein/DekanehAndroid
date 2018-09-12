@@ -8,6 +8,7 @@ import java.io.Serializable;
 public class Product implements Serializable{
 
 
+    public static final String TAG = Product.class.getSimpleName();
     @SerializedName("id")
     @Expose
     private String id;
@@ -20,6 +21,9 @@ public class Product implements Serializable{
     @SerializedName("retailPrice")
     @Expose
     private String retailPrice;
+    @SerializedName("manufacturer")
+    @Expose
+    private Manufacturer manufacturer;
 
 
     private String price;
@@ -68,5 +72,9 @@ public class Product implements Serializable{
 
     public String getRetailPrice() {
         return retailPrice;
+    }
+
+    public Manufacturer getManufacturer() {
+        return manufacturer;
     }
 }

@@ -12,6 +12,8 @@ import javax.inject.Singleton;
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.main.MainActivityPresenter;
 import brain_socket.com.dekaneh.activity.main.MainActivityVP;
+import brain_socket.com.dekaneh.activity.product_details.ProductDetailsPresenter;
+import brain_socket.com.dekaneh.activity.product_details.ProductDetailsVP;
 import brain_socket.com.dekaneh.adapter.CategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
@@ -79,6 +81,11 @@ public class ActivityModule {
     }
 
     @Provides
+    ProductDetailsVP.Presenter<ProductDetailsVP.View> provideProductDetailsPresenter(ProductDetailsPresenter<ProductDetailsVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
     MainFragmentVP.Presenter<MainFragmentVP.View> provideMainFragmentPresenter(MainFragmentPresenter<MainFragmentVP.View> presenter) {
         return presenter;
     }
@@ -101,13 +108,11 @@ public class ActivityModule {
     @FragmentMain
     @Provides
     OffersAdapter providesMainOffersAdapter() {
-
         return new OffersAdapter(R.layout.item_offer);
     }
 
     @Provides
     OffersAdapter providesOffersAdapter() {
-
         return new OffersAdapter(R.layout.item_offer_fragment_offers);
     }
 
