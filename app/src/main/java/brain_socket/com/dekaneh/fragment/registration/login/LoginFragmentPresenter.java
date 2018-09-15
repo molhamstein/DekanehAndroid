@@ -3,6 +3,8 @@ package brain_socket.com.dekaneh.fragment.registration.login;
 
 import android.util.Log;
 
+import com.onesignal.OneSignal;
+
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
@@ -43,15 +45,21 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
         getView().showLoading();
 
         getCompositeDisposable().add(
-                AppApiHelper.login(new LoginRequest("00963933074900", "123456"))
+                AppApiHelper.login(new LoginRequest("0936207611", "qwe12345"))
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<LoginResponse>() {
                             @Override
-                            public void accept(LoginResponse loginResponse) throws Exception {
+                            public void accept(final LoginResponse loginResponse) throws Exception {
                                 getView().showMessage(loginResponse.getUser().getOwnerName());
                                 getView().hideLoading();
                                 getView().startMainActivity();
+                                OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
+                                    @Override
+                                    public void idsAvailable(String userId, String registrationId) {
+                                        OneSignal.sendTag("user_id", loginResponse.getUserId());
+                                    }
+                                });
                             }
                         }, new Consumer<Throwable>() {
                             @Override
