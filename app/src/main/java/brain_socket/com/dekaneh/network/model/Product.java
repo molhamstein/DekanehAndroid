@@ -20,42 +20,17 @@ public class Product implements Serializable{
     private String image;
     @SerializedName("retailPrice")
     @Expose
-    private String retailPrice;
+    private double retailPrice;
     @SerializedName("manufacturer")
     @Expose
     private Manufacturer manufacturer;
 
+    public Product() { }
 
-    private String price;
-    private boolean hasOffer;
-
-    public Product() {
-    }
-
-    public Product(String price, boolean hasOffer) {
-        this.price = price;
-        this.hasOffer = hasOffer;
-    }
-
-    public Product(String price) {
-        this.price = price;
-        this.hasOffer = false;
-    }
-
-    public boolean isHasOffer() {
-        return hasOffer;
-    }
-
-    public void setHasOffer(boolean hasOffer) {
-        this.hasOffer = hasOffer;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
+    public Product(Product product){
+        this.id = product.getId();
+        this.nameAr = product.getNameAr();
+        this.retailPrice = product.getRetailPrice();
     }
 
     public String getId() {
@@ -70,7 +45,7 @@ public class Product implements Serializable{
         return image;
     }
 
-    public String getRetailPrice() {
+    public double getRetailPrice() {
         return retailPrice;
     }
 

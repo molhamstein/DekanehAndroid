@@ -70,8 +70,6 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         miniOffersRV.setLayoutManager(new LinearLayoutManager(this));
         miniOffersRV.setAdapter(new MiniOfferAdapter());
         List<Product> products = new ArrayList<>();
-        products.add(new Product("200"));
-        products.add(new Product("240"));
         similarProductsRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         similarProductsRV.setAdapter(new ProductsAdapter(products));
 
@@ -92,7 +90,7 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     @Override
     public void updateView(Product product) {
         this.name.setText(product.getNameAr());
-        this.price.setText(product.getRetailPrice());
+        this.price.setText(String.valueOf(product.getRetailPrice()));
         this.packName.setText(product.getNameAr());
         this.manufacturer.setText(product.getManufacturer().getNameAr());
     }

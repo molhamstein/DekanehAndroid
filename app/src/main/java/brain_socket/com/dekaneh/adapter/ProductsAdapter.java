@@ -48,14 +48,14 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             ProductViewHolder productViewHolder = (ProductViewHolder) holder;
 
             final Product product = products.get(position);
-            productViewHolder.price.setText(product.getRetailPrice());
+            productViewHolder.price.setText(String.valueOf(product.getRetailPrice()));
             productViewHolder.name.setText(product.getNameAr());
             Picasso.get().load(product.getImage()).into(productViewHolder.image);
-            if (product.isHasOffer()) {
-                productViewHolder.offerTag.setVisibility(View.VISIBLE);
-            } else {
-                productViewHolder.offerTag.setVisibility(View.GONE);
-            }
+//            if (product.isHasOffer()) {
+//                productViewHolder.offerTag.setVisibility(View.VISIBLE);
+//            } else {
+//                productViewHolder.offerTag.setVisibility(View.GONE);
+//            }
 
             productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

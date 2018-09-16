@@ -107,13 +107,13 @@ public class ActivityModule {
 
     @FragmentMain
     @Provides
-    OffersAdapter providesMainOffersAdapter() {
-        return new OffersAdapter(R.layout.item_offer);
+    OffersAdapter providesMainOffersAdapter(AppCompatActivity context) {
+        return new OffersAdapter(R.layout.item_offer, context);
     }
 
     @Provides
-    OffersAdapter providesOffersAdapter() {
-        return new OffersAdapter(R.layout.item_offer_fragment_offers);
+    OffersAdapter providesOffersAdapter(AppCompatActivity context) {
+        return new OffersAdapter(R.layout.item_offer_fragment_offers, context);
     }
 
     @Provides

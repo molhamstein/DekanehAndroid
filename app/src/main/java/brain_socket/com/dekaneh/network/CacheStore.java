@@ -3,15 +3,18 @@ package brain_socket.com.dekaneh.network;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.Offer;
+import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.utils.GsonUtils;
 
@@ -30,6 +33,7 @@ public class CacheStore {
     private static final String CATEGORIES_LIST = "categories_list";
     private static final String HOME_CATEGORIES_LIST = "home_categories_list";
     private static final String FEATURED_OFFERS = "featured_offers_list";
+    private static final String CART_ITEMS = "cart_items";
 
     public void cacheProducts(List<Product> products) {
         getPreference()
@@ -74,6 +78,79 @@ public class CacheStore {
     public List<Offer> getFeaturedOffers() {
         return GsonUtils.convertJsonStringToOffersArray(getPreference().getString(FEATURED_OFFERS, null));
     }
+
+    public void cacheCartItems(List<CartItem> items) {
+        getPreference()
+                .edit()
+                .putString(CART_ITEMS, GsonUtils.convertArrayToJsonString(items))
+                .apply();
+    }
+
+    public List<CartItem> getCartItems() {
+        return GsonUtils.convertJsonStringToCartItemsArray(getPreference().getString(CART_ITEMS, null));
+    }
+
+    private void cacheNewCartItem(CartItem item) {
+        List<CartItem> items = getCartItems();
+        items.add(item);
+        cacheCartItems(items);
+    }
+
+    private void updateCartItem(CartItem item, int index) {
+        List<CartItem> items = getCartItems();
+        items.set(index, item);
+        cacheCartItems(items);
+    }
+
+    public void addCartItem(CartItem mItem) {
+        boolean itemExist = false;
+        int index = 0;
+        for (CartItem item : getCartItems()) {
+            if (item.getId().equals(mItem.getId())) {
+                Log.d("XXX", "addCartItem: inside if " + item.getCount());
+                item.addOne();
+                updateCartItem(item, index);
+                itemExist = true;
+                break;
+            }
+            ++index;
+            Log.d("XXX", "addCartItem: inside for " + item.getCount());
+        }
+
+        if (!itemExist) {
+            mItem.setCount(1);
+            Log.d("XXX", "addCartItem: outside " + mItem.getCount());
+            cacheNewCartItem(mItem);
+        }
+
+
+    }
+
+    public void removeCartItem(CartItem mItem) {
+        int index = 0;
+        for (CartItem item : getCartItems()) {
+            if (item.getId().equals(mItem.getId())) {
+                item.removeOne();
+                updateCartItem(item, index);
+                if (item.getCount() == 0) {
+                    getCartItems().remove(item);
+                    cacheCartItems(getCartItems());
+                }
+                break;
+            }
+            ++index;
+        }
+    }
+
+    public int cartItemCount(CartItem mItem) {
+        for (CartItem item : getCartItems()) {
+            if (item.getId().equals(mItem.getId())) {
+                return item.getCount();
+            }
+        }
+        return 1;
+    }
+
 
     private SharedPreferences getPreference() {
         return PreferenceManager.getDefaultSharedPreferences(context);

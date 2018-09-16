@@ -2,10 +2,15 @@ package brain_socket.com.dekaneh.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import java.util.ArrayList;
 import java.util.List;
+
+import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.Offer;
+import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.Product;
 
 
@@ -37,5 +42,12 @@ public class GsonUtils {
 
     public static Product convertJsonStringToProductObject(String json) {
         return new Gson().fromJson(json, new TypeToken<Product>(){}.getType());
+    }
+
+    public static List<CartItem> convertJsonStringToCartItemsArray(String json) {
+        if (json == null) {
+            return new ArrayList<>();
+        }
+        return new Gson().fromJson(json, new TypeToken<List<CartItem>>(){}.getType());
     }
 }
