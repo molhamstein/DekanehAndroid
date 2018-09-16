@@ -20,7 +20,7 @@ public class Product implements Serializable{
     private String image;
     @SerializedName("retailPrice")
     @Expose
-    private double retailPrice;
+    private int retailPrice;
     @SerializedName("manufacturer")
     @Expose
     private Manufacturer manufacturer;
@@ -45,7 +45,7 @@ public class Product implements Serializable{
         return image;
     }
 
-    public double getRetailPrice() {
+    public int getRetailPrice() {
         return retailPrice;
     }
 

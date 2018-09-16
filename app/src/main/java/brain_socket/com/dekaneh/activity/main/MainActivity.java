@@ -16,7 +16,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
-import brain_socket.com.dekaneh.activity.CartActivity;
+import brain_socket.com.dekaneh.activity.cart.CartActivity;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.fragment.categories.CategoriesFragment;

@@ -28,4 +28,8 @@ public class CartItem extends Product{
     public void removeOne() {
         --count;
     }
+
+    public int getWholePrice() {
+        return getRetailPrice() * getCount();
+    }
 }

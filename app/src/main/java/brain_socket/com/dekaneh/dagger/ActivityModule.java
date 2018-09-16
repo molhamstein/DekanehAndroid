@@ -10,10 +10,13 @@ import java.util.List;
 import javax.inject.Singleton;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.cart.CartActivityPresenter;
+import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
 import brain_socket.com.dekaneh.activity.main.MainActivityPresenter;
 import brain_socket.com.dekaneh.activity.main.MainActivityVP;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsPresenter;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsVP;
+import brain_socket.com.dekaneh.adapter.CartOrdersAdapter;
 import brain_socket.com.dekaneh.adapter.CategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
@@ -91,6 +94,11 @@ public class ActivityModule {
     }
 
     @Provides
+    CartActivityVP.Presenter<CartActivityVP.View> provideCartActivityPresenter(CartActivityPresenter<CartActivityVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
     CategoriesFragmentVP.Presenter<CategoriesFragmentVP.View> provideCategoriesFragmentPresenter(CategoriesFragmentPresenter<CategoriesFragmentVP.View> presenter) {
         return presenter;
     }
@@ -119,6 +127,11 @@ public class ActivityModule {
     @Provides
     CategoriesAdapter provideCategoriesAdapter() {
         return new CategoriesAdapter();
+    }
+
+    @Provides
+    CartOrdersAdapter provideCartAdatper(AppCompatActivity context) {
+        return new CartOrdersAdapter(context);
     }
 
     @Horizontal
