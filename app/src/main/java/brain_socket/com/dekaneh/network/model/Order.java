@@ -20,7 +20,7 @@ public class Order implements Serializable {
     private String status;
     @SerializedName("totalPrice")
     @Expose
-    private double totalPrice;
+    private int totalPrice;
     @SerializedName("clientType")
     @Expose
     private String clientType;
@@ -41,51 +41,71 @@ public class Order implements Serializable {
     private String couponId;
     @SerializedName("products")
     @Expose
-    private List<Item> items;
+    private List<CartItem> products;
 
-
-    public class Item extends Product implements Serializable {
-
-        @SerializedName("id")
-        @Expose
-        private String id;
-        @SerializedName("count")
-        @Expose
-        private int count;
-        @SerializedName("price")
-        @Expose
-        private String price;
-        @SerializedName("creationDate")
-        @Expose
-        private Date creationDate;
-        @SerializedName("productId")
-        @Expose
-        private String productId;
-
-        public Item(Product product) {
-            super(product);
-        }
-
-
-        public String getId() {
-            return id;
-        }
-
-        public int getCount() {
-            return count;
-        }
-
-        public String getPrice() {
-            return price;
-        }
-
-        public Date getCreationDate() {
-            return creationDate;
-        }
-
-        public String getProductId() {
-            return productId;
-        }
+    public Order(String clientId, List<CartItem> items) {
+        this.clientId = clientId;
+        this.products = items;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public Date getOrderDate() {
+        return orderDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public String getClientType() {
+        return clientType;
+    }
+
+    public Date getAssignedDate() {
+        return assignedDate;
+    }
+
+    public Date getDeliveredDate() {
+        return deliveredDate;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public String getDeliveryMemberId() {
+        return deliveryMemberId;
+    }
+
+    public String getCouponId() {
+        return couponId;
+    }
+
+    public List<CartItem> getItems() {
+        return products;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id='" + id + '\'' +
+                ", orderDate=" + orderDate +
+                ", status='" + status + '\'' +
+                ", totalPrice=" + totalPrice +
+                ", clientType='" + clientType + '\'' +
+                ", assignedDate=" + assignedDate +
+                ", deliveredDate=" + deliveredDate +
+                ", clientId='" + clientId + '\'' +
+                ", deliveryMemberId='" + deliveryMemberId + '\'' +
+                ", couponId='" + couponId + '\'' +
+                ", products=" + products +
+                '}';
+    }
 }

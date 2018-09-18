@@ -18,6 +18,7 @@ import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.network.CacheStore;
+import brain_socket.com.dekaneh.network.Session;
 import brain_socket.com.dekaneh.network.model.CartItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,7 +33,7 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
     @Inject
     public CartOrdersAdapter(Context context) {
         items = new ArrayList<>();
-        cacheStore = new CacheStore(context);
+        cacheStore = new CacheStore(context, new Session(context));
     }
 
     @NonNull
@@ -60,7 +61,7 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
                 item.addOne();
                 notifyDataSetChanged();
                 if (onQuantityChangedListener != null)
-                    onQuantityChangedListener.onChanged(getPrice());
+                    onQuantityChangedListener.onChanged();
             }
         });
 
@@ -71,7 +72,7 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
                 item.removeOne();
                 notifyDataSetChanged();
                 if (onQuantityChangedListener != null)
-                    onQuantityChangedListener.onChanged(getPrice());
+                    onQuantityChangedListener.onChanged();
             }
         });
 
@@ -91,13 +92,6 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
         this.onQuantityChangedListener = onQuantityChangedListener;
     }
 
-    public int getPrice() {
-        int price = 0;
-        for (CartItem item : items) {
-            price += item.getWholePrice();
-        }
-        return price;
-    }
 
     class CartOrderViewHolder extends RecyclerView.ViewHolder {
 
@@ -123,6 +117,6 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
     }
 
     public interface OnQuantityChangedListener{
-        void onChanged(int price);
+        void onChanged();
     }
 }

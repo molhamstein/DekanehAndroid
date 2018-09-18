@@ -51,13 +51,14 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
                         .subscribe(new Consumer<LoginResponse>() {
                             @Override
                             public void accept(final LoginResponse loginResponse) throws Exception {
+                                getCacheStore().getSession().setUser(loginResponse.getUser(), loginResponse.getId());
                                 getView().showMessage(loginResponse.getUser().getOwnerName());
                                 getView().hideLoading();
                                 getView().startMainActivity();
                                 OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
                                     @Override
                                     public void idsAvailable(String userId, String registrationId) {
-                                        OneSignal.sendTag("user_id", loginResponse.getUserId());
+                                        OneSignal.sendTag("user_id", loginResponse.getUser().getId());
                                     }
                                 });
                             }

@@ -59,4 +59,11 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
         getView().setToolbarTitle(R.string.profile);
         getView().showToolbarCanopy(true);
     }
+
+    @Override
+    public void restart() {
+        getCacheStore().clearCache();
+        getView().recreate();
+    }
+
 }

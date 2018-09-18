@@ -28,8 +28,10 @@
 
 
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/ordersView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -91,7 +93,7 @@
             </FrameLayout>
 
             <Button
-                android:id="@+id/loginBtn"
+                android:id="@+id/sendBtn"
                 style="@style/WhiteBlackTextView"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
@@ -103,4 +105,26 @@
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
+
+    <ImageView
+        android:id="@+id/emptyCartImg"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/empty_cart"
+        android:layout_gravity="center"
+        android:alpha=".5"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="10dp"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/emptyCartText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your cart is empty!"
+        android:gravity="center"
+        style="@style/SecondaryBoldTextView"
+        android:visibility="gone"
+        />
 </LinearLayout>

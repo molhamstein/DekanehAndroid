@@ -18,7 +18,7 @@ public interface MainActivityVP {
         void setToolbarTitle(String title);
         void setToolbarTitle(@StringRes int title);
         void showToolbarCanopy(boolean show);
-
+        void recreate();
     }
 
     interface Presenter<T extends View> extends BasePresenter<T> {
@@ -28,6 +28,7 @@ public interface MainActivityVP {
         void onBottomCategoriesItemClick();
         void onBottomProfileItemClick();
 
+        void restart();
     }
 
 }

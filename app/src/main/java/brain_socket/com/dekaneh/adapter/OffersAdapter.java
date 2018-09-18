@@ -20,6 +20,7 @@ import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.network.CacheStore;
+import brain_socket.com.dekaneh.network.Session;
 import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Order;
@@ -38,7 +39,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
     public OffersAdapter(int itemLayoutId, Context context) {
         this.offers = new ArrayList<>();
         this.itemLayoutId = itemLayoutId;
-        cacheStore = new CacheStore(context);
+        cacheStore = new CacheStore(context, new Session(context));
     }
 
     @NonNull
@@ -54,12 +55,11 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         final CartItem item = new CartItem(offer);
 
         for (CartItem mItem : cacheStore.getCartItems())
-
-        if (mItem.getId().equals(item.getId())) {
-            holder.orderNowBtn.setVisibility(View.GONE);
-            holder.orderBtn.setVisibility(View.VISIBLE);
-            holder.orderCount.setText(String.valueOf(mItem.getCount()));
-        }
+            if (mItem.getId().equals(item.getId())) {
+                holder.orderNowBtn.setVisibility(View.GONE);
+                holder.orderBtn.setVisibility(View.VISIBLE);
+                holder.orderCount.setText(String.valueOf(mItem.getCount()));
+            }
 
         if (offer.getProducts() != null)
             Picasso.get().load(offer.getProducts().get(0).getImage()).into(holder.image);

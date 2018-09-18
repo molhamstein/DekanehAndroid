@@ -137,6 +137,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         else toolbar.setBackgroundResource(R.drawable.splash_background);
     }
 
+
     private void replaceFragment(BaseFragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.mainContainer, fragment, fragment.TAG())
@@ -153,13 +154,23 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_cart:
-                CartActivity.start(this);
+                startActivityForResult(new Intent(this, CartActivity.class), 1);
                 return false;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                presenter.restart();
+            }
+        }
+
+    }
 }

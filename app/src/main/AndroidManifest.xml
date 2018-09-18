@@ -18,16 +18,18 @@
             android:theme="@style/SplashTheme" />
         <activity android:name=".activity.registration.RegistrationActivity" >
 
-        </activity>
-        <activity
-            android:name=".activity.main.MainActivity"
-            android:label="@string/title_activity_main">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
+        </activity>
+        <activity
+            android:name=".activity.main.MainActivity"
+            android:label="@string/title_activity_main">
 
         </activity>
         <activity android:name=".activity.product_details.ProductDetailsActivity" />

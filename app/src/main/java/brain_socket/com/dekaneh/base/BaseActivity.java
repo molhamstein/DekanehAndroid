@@ -97,6 +97,7 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
                 .activityModule(new ActivityModule(this))
                 .applicationComponent(((DekanehApp) getApplication()).getApplicationComponent())
                 .build();
+        mProgressDialog = new ProgressDialog(this);
     }
 
     public ActivityComponent getActivityComponent() {
@@ -229,7 +230,6 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
     }
 
     private void showProgressDialog() {
-        mProgressDialog = new ProgressDialog(this);
         mProgressDialog.setMessage("Please wait...");
         mProgressDialog.setCancelable(false);
         mProgressDialog.show();

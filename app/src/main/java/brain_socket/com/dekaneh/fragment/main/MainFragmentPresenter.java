@@ -1,5 +1,6 @@
 package brain_socket.com.dekaneh.fragment.main;
 
+
 import android.util.Log;
 
 import java.util.List;
@@ -12,11 +13,12 @@ import brain_socket.com.dekaneh.network.AppApiHelper;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.Offer;
-import brain_socket.com.dekaneh.network.model.Product;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
 public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePresenterImpl<T> implements MainFragmentVP.Presenter<T> {
+
+    public static final String TAG = MainFragmentPresenter.class.getSimpleName();
 
     @Inject
     public MainFragmentPresenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable, CacheStore cacheStore) {
@@ -50,6 +52,7 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
                                            getView().addCategoriesWithProducts(homeCategories);
                                            getCacheStore().cacheHomeCategories(homeCategories);
                                            getView().hideLoading();
+
                                        }
                                    }, new Consumer<Throwable>() {
                                        @Override
@@ -64,6 +67,7 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
 
     @Override
     public void fetchFeaturedOffers() {
+        getView().showLoading();
         getCompositeDisposable().add(
                 AppApiHelper.getFeaturedOffers()
                         .subscribeOn(getSchedulerProvider().io())
@@ -72,13 +76,16 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
                             @Override
                             public void accept(List<Offer> offers) throws Exception {
 
+                                getView().hideLoading();
                                 getView().addFeaturedOffers(offers);
                                 getCacheStore().cacheFeaturedOffers(offers);
+
 
                             }
                         }, new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
+                                getView().hideLoading();
 
                             }
                         })

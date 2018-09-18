@@ -7,7 +7,10 @@ import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.View;
 
+import javax.inject.Inject;
+
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.main.MainActivity;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragment;
@@ -21,7 +24,8 @@ public class RegistrationActivity extends BaseActivity implements RegistrationAc
     @BindView(R.id.registrationContainer)
     View container;
 
-    RegistrationActivityPresenter presenter;
+    @Inject
+    RegistrationActivityPresenter<RegistrationActivityVP.View> presenter;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, RegistrationActivity.class);
@@ -33,8 +37,9 @@ public class RegistrationActivity extends BaseActivity implements RegistrationAc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
-
-        presenter = new RegistrationActivityPresenter(this);
+        if (getActivityComponent() != null)
+            getActivityComponent().inject(this);
+        presenter.onAttach(this);
 
         setFragment(LoginFragment.newInstance());
     }
@@ -52,6 +57,11 @@ public class RegistrationActivity extends BaseActivity implements RegistrationAc
                 .setCustomAnimations(R.anim.anim_slide_in_from_left, R.anim.anim_slide_out_to_right,
                         R.anim.anim_slide_in_from_left, R.anim.anim_slide_out_to_right)
                 .commit();
+    }
+
+    @Override
+    public void startMainActivity() {
+        MainActivity.start(this);
     }
 
     @Override

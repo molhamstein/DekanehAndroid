@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,10 +23,12 @@ import brain_socket.com.dekaneh.utils.GsonUtils;
 public class CacheStore {
 
     private Context context;
+    private Session session;
 
     @Inject
-    public CacheStore(Context context) {
+    public CacheStore(Context context, Session session) {
         this.context = context;
+        this.session = session;
     }
 
 
@@ -34,6 +37,10 @@ public class CacheStore {
     private static final String HOME_CATEGORIES_LIST = "home_categories_list";
     private static final String FEATURED_OFFERS = "featured_offers_list";
     private static final String CART_ITEMS = "cart_items";
+
+    public Session getSession() {
+        return session;
+    }
 
     public void cacheProducts(List<Product> products) {
         getPreference()
@@ -87,7 +94,10 @@ public class CacheStore {
     }
 
     public List<CartItem> getCartItems() {
-        return GsonUtils.convertJsonStringToCartItemsArray(getPreference().getString(CART_ITEMS, null));
+        List<CartItem> items = GsonUtils.convertJsonStringToCartItemsArray(getPreference().getString(CART_ITEMS, null));
+        if (items != null)
+            return items;
+        return new ArrayList<>();
     }
 
     private void cacheNewCartItem(CartItem item) {
@@ -151,9 +161,19 @@ public class CacheStore {
         return 1;
     }
 
+    public void clearCart() {
+        getPreference()
+                .edit()
+                .putString(CART_ITEMS, "")
+                .apply();
+    }
+
 
     private SharedPreferences getPreference() {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
+    public void clearCache() {
+        getPreference().edit().clear().apply();
+    }
 }

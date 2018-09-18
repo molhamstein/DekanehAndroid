@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import brain_socket.com.dekaneh.activity.main.MainActivity;
 import brain_socket.com.dekaneh.activity.registration.FragmentNavigationVP;
 import brain_socket.com.dekaneh.dagger.ActivityComponent;
 import butterknife.ButterKnife;
@@ -120,4 +121,5 @@ public abstract class BaseFragment extends Fragment implements FragmentNavigatio
     public Intent getIntent() {
         return activity.getIntent();
     }
+
 }

@@ -1,7 +1,14 @@
 package brain_socket.com.dekaneh.network.model;
 
-public class CartItem extends Product{
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
+public class CartItem extends Product implements Serializable{
+
+    @SerializedName("count")
+    @Expose
     private int count;
 
     public CartItem(int count, Product product) {

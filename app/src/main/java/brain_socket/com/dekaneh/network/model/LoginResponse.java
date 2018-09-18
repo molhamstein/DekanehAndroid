@@ -7,15 +7,22 @@ import java.io.Serializable;
 
 public class LoginResponse implements Serializable {
 
+    @SerializedName("id")
     @Expose
-    @SerializedName("userId")
-    private String userId;
+    private String id;
+    @SerializedName("ttl")
     @Expose
+    private String ttl;
     @SerializedName("user")
+    @Expose
     private User user;
 
-    public String getUserId() {
-        return userId;
+    public String getId() {
+        return id;
+    }
+
+    public String getTtl() {
+        return ttl;
     }
 
     public User getUser() {

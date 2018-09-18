@@ -11,6 +11,7 @@ import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.LoginRequest;
 import brain_socket.com.dekaneh.network.model.LoginResponse;
 import brain_socket.com.dekaneh.network.model.Offer;
+import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.Product;
 import io.reactivex.Single;
 
@@ -48,6 +49,14 @@ public class AppApiHelper {
         return Rx2AndroidNetworking.get(ApiEndPoint.OFFERS)
                 .build()
                 .getObjectListSingle(Offer.class);
+    }
+
+    public static Single<Order> sendOrder(String accessToken, Order request) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.ORDERS)
+                .addApplicationJsonBody(request)
+                .addQueryParameter("access_token", accessToken)
+                .build()
+                .getObjectSingle(Order.class);
     }
 
 }

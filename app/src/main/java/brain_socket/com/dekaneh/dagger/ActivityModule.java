@@ -16,6 +16,8 @@ import brain_socket.com.dekaneh.activity.main.MainActivityPresenter;
 import brain_socket.com.dekaneh.activity.main.MainActivityVP;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsPresenter;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsVP;
+import brain_socket.com.dekaneh.activity.registration.RegistrationActivityPresenter;
+import brain_socket.com.dekaneh.activity.registration.RegistrationActivityVP;
 import brain_socket.com.dekaneh.adapter.CartOrdersAdapter;
 import brain_socket.com.dekaneh.adapter.CategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
@@ -31,6 +33,7 @@ import brain_socket.com.dekaneh.fragment.offers.OffersFragmentVP;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentVP;
 import brain_socket.com.dekaneh.network.CacheStore;
+import brain_socket.com.dekaneh.network.Session;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.Offer;
 import dagger.Module;
@@ -59,8 +62,13 @@ public class ActivityModule {
     }
 
     @Provides
-    CacheStore provideCacheStore(AppCompatActivity context) {
-        return new CacheStore(context);
+    Session provideSession(AppCompatActivity context) {
+        return new Session(context);
+    }
+
+    @Provides
+    CacheStore provideCacheStore(AppCompatActivity context, Session session) {
+        return new CacheStore(context, session);
     }
 
     @Provides
@@ -71,6 +79,11 @@ public class ActivityModule {
     @Provides
     SchedulerProvider provideSchedulerProvider() {
         return new AppSchedulerProvider();
+    }
+
+    @Provides
+    RegistrationActivityPresenter<RegistrationActivityVP.View> provideRegistrationActivityPresenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable, CacheStore cacheStore) {
+        return new RegistrationActivityPresenter<>(schedulerProvider, compositeDisposable, cacheStore);
     }
 
     @Provides
