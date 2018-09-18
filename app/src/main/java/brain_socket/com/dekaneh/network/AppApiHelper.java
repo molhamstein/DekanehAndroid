@@ -72,4 +72,13 @@ public class AppApiHelper {
                 .build()
                 .getObjectListSingle(SliderImage.class);
     }
+
+    public static Single<List<Product>> getSimilarProducts(String productId) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.SIMILAR_PRODUCTS)
+                .addQueryParameter("productId", productId)
+                .addQueryParameter("limit", "10")
+                .build()
+                .getObjectListSingle(Product.class);
+    }
+
 }

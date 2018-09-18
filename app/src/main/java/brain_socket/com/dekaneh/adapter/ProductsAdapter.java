@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import brain_socket.com.dekaneh.R;
@@ -28,6 +29,10 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     private List<Product> products;
     private CacheStore cacheStore;
 
+    public ProductsAdapter(CacheStore cacheStore) {
+        this.cacheStore = cacheStore;
+        this.products = new ArrayList<>();
+    }
 
     public ProductsAdapter(List<Product> products, CacheStore cacheStore) {
         this.products = products;
@@ -107,6 +112,11 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return products.size();
+    }
+
+    public void addAllProducts(List<Product> products) {
+        this.products = products;
+        notifyDataSetChanged();
     }
 
     @Override

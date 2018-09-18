@@ -20,6 +20,8 @@ import brain_socket.com.dekaneh.adapter.MiniOfferAdapter;
 import brain_socket.com.dekaneh.adapter.ProductsAdapter;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseView;
+import brain_socket.com.dekaneh.network.CacheStore;
+import brain_socket.com.dekaneh.network.Session;
 import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.utils.GsonUtils;
 import butterknife.BindView;
@@ -48,6 +50,8 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     @BindView(R.id.productManufacturer)
     TextView manufacturer;
 
+    ProductsAdapter productsAdapter;
+
     public static void start(Context context, Product product) {
         Intent starter = new Intent(context, ProductDetailsActivity.class);
         Bundle bundle = new Bundle();
@@ -66,12 +70,13 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         getActivityComponent().inject(this);
 
         presenter.onAttach(this);
+        productsAdapter = new ProductsAdapter(new CacheStore(this, new Session(this)));
 
         miniOffersRV.setLayoutManager(new LinearLayoutManager(this));
         miniOffersRV.setAdapter(new MiniOfferAdapter());
         List<Product> products = new ArrayList<>();
         similarProductsRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-//        similarProductsRV.setAdapter(new ProductsAdapter(products));
+        similarProductsRV.setAdapter(productsAdapter);
 
     }
 
@@ -93,5 +98,10 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         this.price.setText(String.valueOf(product.getRetailPrice()));
         this.packName.setText(product.getNameAr());
         this.manufacturer.setText(product.getManufacturer().getNameAr());
+    }
+
+    @Override
+    public void addAllSimilarProducts(List<Product> products) {
+        productsAdapter.addAllProducts(products);
     }
 }
