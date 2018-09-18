@@ -12,5 +12,6 @@ public class ApiEndPoint {
     public static final String FEATURED_OFFERS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"and\":[{\"isOffer\":\"true\"}, {\"isFeatured\":\"true\"}]}}";
     public static final String OFFERS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"and\":[{\"isOffer\":\"true\"}]}}";
     public static final String ORDERS = BuildConfig.BASE_API_URL + "orders";
+    public static final String TOP_SLIDERS = BuildConfig.BASE_API_URL + "topSliders";
 
 }

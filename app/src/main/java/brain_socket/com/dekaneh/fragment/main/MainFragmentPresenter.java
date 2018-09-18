@@ -13,6 +13,7 @@ import brain_socket.com.dekaneh.network.AppApiHelper;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.Offer;
+import brain_socket.com.dekaneh.network.model.SliderImage;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -89,6 +90,29 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
 
                             }
                         })
+        );
+    }
+
+    @Override
+    public void fetchSliderImages() {
+        getView().showLoading();
+        getCompositeDisposable().add(
+                AppApiHelper.getSliderImages()
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(new Consumer<List<SliderImage>>() {
+                    @Override
+                    public void accept(List<SliderImage> sliderImages) throws Exception {
+                        getView().addSliderImages(sliderImages);
+                        getView().hideLoading();
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        getView().hideLoading();
+                        Log.e(TAG, "accept: ", throwable);
+                    }
+                })
         );
     }
 }

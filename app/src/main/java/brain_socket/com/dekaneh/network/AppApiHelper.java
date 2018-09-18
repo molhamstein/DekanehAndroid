@@ -13,6 +13,7 @@ import brain_socket.com.dekaneh.network.model.LoginResponse;
 import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.Product;
+import brain_socket.com.dekaneh.network.model.SliderImage;
 import io.reactivex.Single;
 
 public class AppApiHelper {
@@ -66,4 +67,9 @@ public class AppApiHelper {
                 .getObjectListSingle(Order.class);
     }
 
+    public static Single<List<SliderImage>> getSliderImages() {
+        return Rx2AndroidNetworking.get(ApiEndPoint.TOP_SLIDERS)
+                .build()
+                .getObjectListSingle(SliderImage.class);
+    }
 }

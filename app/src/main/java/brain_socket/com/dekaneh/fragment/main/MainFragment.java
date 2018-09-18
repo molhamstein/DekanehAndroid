@@ -20,6 +20,7 @@ import brain_socket.com.dekaneh.dagger.Horizontal;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Product;
+import brain_socket.com.dekaneh.network.model.SliderImage;
 import butterknife.BindView;
 import ss.com.bannerslider.Slider;
 
@@ -48,6 +49,8 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
     @BindView(R.id.mainProductRV)
     RecyclerView productsRV;
 
+    private MainSliderAdapter sliderAdapter;
+
     public MainFragment() {
         // Required empty public constructor
     }
@@ -64,6 +67,7 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
         if (getActivityComponent() != null)
             getActivityComponent().inject(this);
         presenter.onAttach(this);
+        presenter.fetchSliderImages();
 
         offersRV.setLayoutManager(linearLayoutManager);
         offersRV.setAdapter(offersAdapter);
@@ -76,11 +80,7 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
         productsRV.setAdapter(categoriesAdapter);
         productsRV.setNestedScrollingEnabled(true);
 
-        List<Integer> drawableIds = new ArrayList<>();
-        drawableIds.add(R.drawable.ad);
-        drawableIds.add(R.drawable.tide);
 
-        slider.setAdapter(new MainSliderAdapter(drawableIds));
 
     }
 
@@ -102,5 +102,12 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
     @Override
     public void addFeaturedOffers(List<Offer> offers) {
         offersAdapter.addAllOffers(offers);
+    }
+
+    @Override
+    public void addSliderImages(List<SliderImage> images) {
+        sliderAdapter = new MainSliderAdapter(images);
+        slider.setAdapter(sliderAdapter);
+
     }
 }
