@@ -8,7 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +30,7 @@ import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.utils.GsonUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ProductDetailsActivity extends BaseActivity implements ProductDetailsVP.View {
 
@@ -49,6 +54,13 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     TextView packName;
     @BindView(R.id.productManufacturer)
     TextView manufacturer;
+    @BindView(R.id.productImage)
+    ImageView productImage;
+    @BindView(R.id.productDescription)
+    TextView description;
+
+    @BindView(R.id.orderCount)
+    TextView orderCount;
 
     ProductsAdapter productsAdapter;
 
@@ -74,7 +86,6 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
 
         miniOffersRV.setLayoutManager(new LinearLayoutManager(this));
         miniOffersRV.setAdapter(new MiniOfferAdapter());
-        List<Product> products = new ArrayList<>();
         similarProductsRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         similarProductsRV.setAdapter(productsAdapter);
 
@@ -94,14 +105,37 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
 
     @Override
     public void updateView(Product product) {
+        Picasso.get().load(product.getImage()).into(this.productImage);
         this.name.setText(product.getNameAr());
         this.price.setText(String.valueOf(product.getRetailPrice()));
         this.packName.setText(product.getNameAr());
         this.manufacturer.setText(product.getManufacturer().getNameAr());
+        this.description.setText(product.getDescription());
     }
 
     @Override
     public void addAllSimilarProducts(List<Product> products) {
         productsAdapter.addAllProducts(products);
+    }
+
+    @Override
+    public void updateOrderCountText(int count) {
+        orderCount.setText(String.valueOf(count));
+    }
+
+
+    @OnClick(R.id.plusOne)
+    public void onPlusOneBtnClicked() {
+        presenter.onPlusBtnClicked();
+    }
+
+    @OnClick(R.id.minusOne)
+    public void onMinusOneBtnClicked() {
+        presenter.onMinusBtnClicked();
+    }
+
+    @OnClick(R.id.addNowBtn)
+    public void onAddNowBtnClicked() {
+
     }
 }

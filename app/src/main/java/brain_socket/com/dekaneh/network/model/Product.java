@@ -24,6 +24,10 @@ public class Product implements Serializable{
     @SerializedName("manufacturer")
     @Expose
     private Manufacturer manufacturer;
+    @SerializedName("description")
+    @Expose
+    private String description;
+
 
 
     public Product(Product product){
@@ -50,5 +54,9 @@ public class Product implements Serializable{
 
     public Manufacturer getManufacturer() {
         return manufacturer;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

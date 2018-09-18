@@ -11,11 +11,14 @@ public class ProductDetailsVP {
     public interface View extends BaseView{
         void updateView(Product product);
         void addAllSimilarProducts(List<Product> products);
+        void updateOrderCountText(int count);
     }
 
     public interface Presenter<T extends BaseView> extends BasePresenter<T> {
 
         void fetchSimilarProducts(String id);
+        void onMinusBtnClicked();
+        void onPlusBtnClicked();
 
     }
 
