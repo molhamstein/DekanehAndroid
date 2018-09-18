@@ -117,19 +117,16 @@ public class CacheStore {
         int index = 0;
         for (CartItem item : getCartItems()) {
             if (item.getId().equals(mItem.getId())) {
-                Log.d("XXX", "addCartItem: inside if " + item.getCount());
                 item.addOne();
                 updateCartItem(item, index);
                 itemExist = true;
                 break;
             }
             ++index;
-            Log.d("XXX", "addCartItem: inside for " + item.getCount());
         }
 
         if (!itemExist) {
             mItem.setCount(1);
-            Log.d("XXX", "addCartItem: outside " + mItem.getCount());
             cacheNewCartItem(mItem);
         }
 

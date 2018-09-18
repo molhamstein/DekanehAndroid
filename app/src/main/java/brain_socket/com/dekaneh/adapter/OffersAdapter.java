@@ -88,7 +88,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         holder.minusOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (item.getCount() > 0) {
+                if (cacheStore.cartItemCount(item) > 0) {
                     cacheStore.removeCartItem(item);
                     holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
                 }
