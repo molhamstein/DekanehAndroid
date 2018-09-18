@@ -90,7 +90,7 @@
     <Button
         android:id="@+id/orderNowBtn"
         style="@style/WhiteBlackTextItemBtn"
-        android:layout_width="120dp"
+        android:layout_width="130dp"
         android:layout_height="70dp"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="-8dp"
@@ -105,6 +105,7 @@
         android:layout_height="70dp"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="-8dp"
+        android:layout_marginBottom="-10dp"
         android:background="@drawable/action_button_shape_green_glow_offer"
         android:visibility="gone"
         >
