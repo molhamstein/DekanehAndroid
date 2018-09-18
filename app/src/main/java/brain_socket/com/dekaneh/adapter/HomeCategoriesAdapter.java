@@ -1,5 +1,6 @@
 package brain_socket.com.dekaneh.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,23 +9,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.network.CacheStore;
+import brain_socket.com.dekaneh.network.Session;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAdapter.HomeCategoriesViewHolder> {
 
+    private CacheStore cacheStore;
     private List<HomeCategory> categories;
 
 
     @Inject
-    public HomeCategoriesAdapter(List<HomeCategory> categories) {
-        this.categories = categories;
+    public HomeCategoriesAdapter(Context context) {
+        this.categories = new ArrayList<>();
+        this.cacheStore = new CacheStore(context, new Session(context));
     }
 
     @NonNull
@@ -38,7 +44,7 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
 
         HomeCategory category = categories.get(position);
         holder.header.setText(category.getTitleAr());
-        ProductsAdapter adapter = new ProductsAdapter(category.getProducts());
+        ProductsAdapter adapter = new ProductsAdapter(category.getProducts(), cacheStore);
         holder.productsRV.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         holder.productsRV.setAdapter(adapter);
 

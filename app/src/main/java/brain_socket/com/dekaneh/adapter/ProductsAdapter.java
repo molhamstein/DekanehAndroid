@@ -14,22 +14,26 @@ import java.util.List;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
+import brain_socket.com.dekaneh.network.CacheStore;
+import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Product;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ProductsAdapter extends RecyclerView.Adapter {
 
-    private List<Product> products;
     private final int SEE_MORE_VIEW = -1;
     private final int MAX_NUM_OF_PRODUCTS = 8;
+    private List<Product> products;
+    private CacheStore cacheStore;
 
 
-    public ProductsAdapter(List<Product> products) {
+    public ProductsAdapter(List<Product> products, CacheStore cacheStore) {
         this.products = products;
         if (products.size() >= MAX_NUM_OF_PRODUCTS) {
             products.add(null);
         }
+        this.cacheStore = cacheStore;
     }
 
     @NonNull
@@ -41,21 +45,17 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int position) {
 
         if (holder instanceof ProductViewHolder) {
 
-            ProductViewHolder productViewHolder = (ProductViewHolder) holder;
+            final ProductViewHolder productViewHolder = (ProductViewHolder) holder;
 
             final Product product = products.get(position);
+            final CartItem item = new CartItem(product);
             productViewHolder.price.setText(String.valueOf(product.getRetailPrice()));
             productViewHolder.name.setText(product.getNameAr());
             Picasso.get().load(product.getImage()).into(productViewHolder.image);
-//            if (product.isHasOffer()) {
-//                productViewHolder.offerTag.setVisibility(View.VISIBLE);
-//            } else {
-//                productViewHolder.offerTag.setVisibility(View.GONE);
-//            }
 
             productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -63,6 +63,35 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                     ProductDetailsActivity.start(view.getContext(), product);
                 }
             });
+
+            productViewHolder.orderNowBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    view.setVisibility(View.GONE);
+                    productViewHolder.orderBtn.setVisibility(View.VISIBLE);
+                    cacheStore.addCartItem(item);
+                    productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                }
+            });
+
+            productViewHolder.plusOneBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    cacheStore.addCartItem(item);
+                    productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+
+                }
+            });
+
+            productViewHolder.minusOne.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    cacheStore.removeCartItem(item);
+                    productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+
+                }
+            });
+
 
         }
     }
@@ -89,6 +118,16 @@ public class ProductsAdapter extends RecyclerView.Adapter {
         TextView name;
         @BindView(R.id.productImage)
         ImageView image;
+        @BindView(R.id.orderNowBtn)
+        View orderNowBtn;
+        @BindView(R.id.orderBtn)
+        View orderBtn;
+        @BindView(R.id.plusOne)
+        View plusOneBtn;
+        @BindView(R.id.minusOne)
+        View minusOne;
+        @BindView(R.id.orderCount)
+        TextView orderCount;
 
         ProductViewHolder(View itemView) {
             super(itemView);

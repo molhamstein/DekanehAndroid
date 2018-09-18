@@ -88,7 +88,7 @@
 
 
     <Button
-        android:id="@+id/loginBtn"
+        android:id="@+id/orderNowBtn"
         style="@style/WhiteBlackTextItemBtn"
         android:layout_width="120dp"
         android:layout_height="60dp"
@@ -96,6 +96,62 @@
         android:layout_marginEnd="-16dp"
         android:background="@drawable/action_button_shape_green_glow_item"
         android:text="@string/buy_now" />
+
+    <FrameLayout
+        android:id="@+id/orderBtn"
+        style="@style/WhiteBlackTextOfferBtn"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="-16dp"
+        android:background="@drawable/action_button_shape_green_glow_offer"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:id="@+id/plusOne"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="start"
+            android:layout_marginTop="-12dp"
+            android:layout_marginStart="8dp"
+            android:padding="8dp"
+            android:gravity="center"
+            android:text="+"
+            android:textSize="24sp"
+            style="@style/WhiteBoldTextView"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            />
+
+        <TextView
+            android:id="@+id/orderCount"
+            style="@style/WhiteBoldTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="0"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/minusOne"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="-12dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="-"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            style="@style/WhiteBoldTextView"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"/>
+
+    </FrameLayout>
 
 
 </FrameLayout>
