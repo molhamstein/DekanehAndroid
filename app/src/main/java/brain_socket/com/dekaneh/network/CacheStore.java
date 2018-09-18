@@ -174,6 +174,10 @@ public class CacheStore {
     }
 
     public void clearCache() {
-        getPreference().edit().clear().apply();
+        getPreference().edit().remove(PRODUCTS_LIST).apply();
+        getPreference().edit().remove(CATEGORIES_LIST).apply();
+        getPreference().edit().remove(HOME_CATEGORIES_LIST).apply();
+        getPreference().edit().remove(FEATURED_OFFERS).apply();
+        getPreference().edit().remove(CART_ITEMS).apply();
     }
 }

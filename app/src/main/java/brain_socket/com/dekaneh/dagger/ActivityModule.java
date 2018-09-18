@@ -22,6 +22,7 @@ import brain_socket.com.dekaneh.adapter.CartOrdersAdapter;
 import brain_socket.com.dekaneh.adapter.CategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
+import brain_socket.com.dekaneh.adapter.OrdersAdapter;
 import brain_socket.com.dekaneh.application.AppSchedulerProvider;
 import brain_socket.com.dekaneh.application.SchedulerProvider;
 import brain_socket.com.dekaneh.fragment.categories.CategoriesFragmentPresenter;
@@ -30,6 +31,8 @@ import brain_socket.com.dekaneh.fragment.main.MainFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.main.MainFragmentVP;
 import brain_socket.com.dekaneh.fragment.offers.OffersFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.offers.OffersFragmentVP;
+import brain_socket.com.dekaneh.fragment.profile.ProfileFragmentPresenter;
+import brain_socket.com.dekaneh.fragment.profile.ProfileFragmentVP;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentVP;
 import brain_socket.com.dekaneh.network.CacheStore;
@@ -122,8 +125,13 @@ public class ActivityModule {
     }
 
     @Provides
-    HomeCategoriesAdapter providesHomeCategoriesAdapter() {
-        return new HomeCategoriesAdapter(new ArrayList<HomeCategory>());
+    ProfileFragmentVP.Presenter<ProfileFragmentVP.View> provideProfileFragmentPresenter(ProfileFragmentPresenter<ProfileFragmentVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    HomeCategoriesAdapter providesHomeCategoriesAdapter(AppCompatActivity context) {
+        return new HomeCategoriesAdapter(context);
     }
 
     @FragmentMain
@@ -145,6 +153,11 @@ public class ActivityModule {
     @Provides
     CartOrdersAdapter provideCartAdatper(AppCompatActivity context) {
         return new CartOrdersAdapter(context);
+    }
+
+    @Provides
+    OrdersAdapter provideOrdersAdapter(AppCompatActivity context) {
+        return new OrdersAdapter(context);
     }
 
     @Horizontal

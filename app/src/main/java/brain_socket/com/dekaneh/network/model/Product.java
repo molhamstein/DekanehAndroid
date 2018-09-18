@@ -9,7 +9,7 @@ public class Product implements Serializable{
 
 
     public static final String TAG = Product.class.getSimpleName();
-    @SerializedName("id")
+    @SerializedName("_id")
     @Expose
     private String id;
     @SerializedName("nameAr")
@@ -25,7 +25,6 @@ public class Product implements Serializable{
     @Expose
     private Manufacturer manufacturer;
 
-    public Product() { }
 
     public Product(Product product){
         this.id = product.getId();

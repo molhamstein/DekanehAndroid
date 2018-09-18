@@ -3,6 +3,7 @@ package brain_socket.com.dekaneh.utils;
 import android.content.Context;
 
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -23,7 +24,7 @@ public class AppDateUtils {
     // date formats
     private static final String FORMAT_DATE_TIME = "yyyy-MM-dd HH:mm";
     private static final String FORMAT_TIME_ONLY = "HH:mm";
-    private static final String FORMAT_DATE_ONLY = "yyyy-MM-dd";
+    private static final String FORMAT_DATE_ONLY = "yyyy/MM/dd";
     private static final String FORMAT_UTC = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
     private static final long oneDayMillies = 24 * 60 * 60 * 1000;
@@ -112,5 +113,10 @@ public class AppDateUtils {
         int offsetFromUtc = tz.getOffset(now.getTime());
         long offset = TimeUnit.HOURS.convert(offsetFromUtc, TimeUnit.MILLISECONDS);
         return offset;
+    }
+
+    public static String dateToString(Date date) {
+        DateFormat format = new SimpleDateFormat(FORMAT_DATE_ONLY);
+        return format.format(date);
     }
 }

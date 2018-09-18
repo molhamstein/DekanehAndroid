@@ -2,6 +2,7 @@ package brain_socket.com.dekaneh.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             final ProductViewHolder productViewHolder = (ProductViewHolder) holder;
 
             final Product product = products.get(position);
+            Log.d("CCCCC", "onBindViewHolder: " + product.getId());
             final CartItem item = new CartItem(product);
             productViewHolder.price.setText(String.valueOf(product.getRetailPrice()));
             productViewHolder.name.setText(product.getNameAr());

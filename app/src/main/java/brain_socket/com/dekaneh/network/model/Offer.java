@@ -8,6 +8,9 @@ import java.util.List;
 
 public class Offer extends Product implements Serializable {
 
+    @SerializedName("id")
+    @Expose
+    private String id;
     @SerializedName("description")
     @Expose
     private String description;
@@ -40,6 +43,10 @@ public class Offer extends Product implements Serializable {
         super(product);
     }
 
+    @Override
+    public String getId() {
+        return id;
+    }
 
     public double getWholeSalePrice() {
         return wholeSalePrice;
@@ -73,8 +80,8 @@ public class Offer extends Product implements Serializable {
         return products;
     }
 
-    private double getDiscountPercentage() {
-        return (getRetailPrice() - retailPriceDiscount) * 100 / getRetailPrice();
+    private int getDiscountPercentage() {
+        return (int) (getRetailPrice() - retailPriceDiscount) * 100 / getRetailPrice();
     }
 
     public String getPercentageString() {

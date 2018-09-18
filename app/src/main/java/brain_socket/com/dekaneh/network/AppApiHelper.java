@@ -59,4 +59,11 @@ public class AppApiHelper {
                 .getObjectSingle(Order.class);
     }
 
+    public static Single<List<Order>> getOrders(String userId) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.ORDERS)
+                .addQueryParameter("filter[where][clientId]", userId)
+                .build()
+                .getObjectListSingle(Order.class);
+    }
+
 }

@@ -39,7 +39,7 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
     @Override
     public void sendOrder() {
 
-        Order order = new Order(getCacheStore().getSession().getUserId(), getCacheStore().getCartItems());
+        Order order = new Order(getPrice(), getCacheStore().getSession().getUserId(), getCacheStore().getCartItems());
 
         getView().showLoading();
         getCompositeDisposable().add(
@@ -50,7 +50,6 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
                             @Override
                             public void accept(Order order) throws Exception {
 
-                                Log.d(TAG, "accept: " + order.toString());
                                 getCacheStore().clearCart();
                                 getView().hideLoading();
                                 getView().setOrderViewClear(true);

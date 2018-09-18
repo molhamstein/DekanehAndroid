@@ -43,9 +43,10 @@ public class Order implements Serializable {
     @Expose
     private List<CartItem> products;
 
-    public Order(String clientId, List<CartItem> items) {
+    public Order(int totalPrice, String clientId, List<CartItem> items) {
         this.clientId = clientId;
         this.products = items;
+        this.totalPrice = totalPrice;
     }
 
     public String getId() {

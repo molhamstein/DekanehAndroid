@@ -71,7 +71,7 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         miniOffersRV.setAdapter(new MiniOfferAdapter());
         List<Product> products = new ArrayList<>();
         similarProductsRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        similarProductsRV.setAdapter(new ProductsAdapter(products));
+//        similarProductsRV.setAdapter(new ProductsAdapter(products));
 
     }
 
