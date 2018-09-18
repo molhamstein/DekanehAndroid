@@ -53,7 +53,6 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             final ProductViewHolder productViewHolder = (ProductViewHolder) holder;
 
             final Product product = products.get(position);
-            Log.d("CCCCC", "onBindViewHolder: " + product.getId());
             final CartItem item = new CartItem(product);
             productViewHolder.price.setText(String.valueOf(product.getRetailPrice()));
             productViewHolder.name.setText(product.getNameAr());
@@ -88,8 +87,15 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             productViewHolder.minusOne.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    cacheStore.removeCartItem(item);
-                    productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                    if (item.getCount() > 0) {
+                        cacheStore.removeCartItem(item);
+                        productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                    }
+                    else {
+                        ((ProductViewHolder) holder).orderNowBtn.setVisibility(View.VISIBLE);
+                        ((ProductViewHolder) holder).orderBtn.setVisibility(View.GONE);
+                    }
+
 
                 }
             });
