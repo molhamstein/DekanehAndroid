@@ -59,6 +59,13 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
             final Product product = products.get(position);
             final CartItem item = new CartItem(product);
+
+            if (cacheStore.isCartItemExist(item)){
+                productViewHolder.orderNowBtn.setVisibility(View.GONE);
+                productViewHolder.orderBtn.setVisibility(View.VISIBLE);
+                productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+            }
+
             productViewHolder.price.setText(String.valueOf(product.getRetailPrice()));
             productViewHolder.name.setText(product.getNameAr());
             Picasso.get().load(product.getImage()).into(productViewHolder.image);

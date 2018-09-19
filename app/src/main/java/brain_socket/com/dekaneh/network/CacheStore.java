@@ -158,6 +158,15 @@ public class CacheStore {
         return 1;
     }
 
+    public boolean isCartItemExist(CartItem mItem) {
+        for (CartItem item : getCartItems()) {
+            if (item.getId().equals(mItem.getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void clearCart() {
         getPreference()
                 .edit()

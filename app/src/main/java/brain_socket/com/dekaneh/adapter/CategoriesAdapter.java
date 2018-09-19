@@ -13,7 +13,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
-import brain_socket.com.dekaneh.activity.CategoryDetailsActivity;
+import brain_socket.com.dekaneh.activity.category_details.CategoryDetailsActivity;
 import brain_socket.com.dekaneh.network.model.Category;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,12 +36,14 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     @Override
     public void onBindViewHolder(@NonNull CategoriesViewHolder holder, int position) {
 
-        holder.title.setText(categories.get(position).getTitleAr());
+        final Category category = categories.get(position);
+
+        holder.title.setText(category.getTitleAr());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CategoryDetailsActivity.start(view.getContext());
+                CategoryDetailsActivity.start(view.getContext(), category);
             }
         });
     }

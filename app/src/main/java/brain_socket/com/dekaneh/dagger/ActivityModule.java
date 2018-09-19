@@ -12,6 +12,8 @@ import javax.inject.Singleton;
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.cart.CartActivityPresenter;
 import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
+import brain_socket.com.dekaneh.activity.category_details.CategoryDetailsPresenter;
+import brain_socket.com.dekaneh.activity.category_details.CategoryDetailsVP;
 import brain_socket.com.dekaneh.activity.main.MainActivityPresenter;
 import brain_socket.com.dekaneh.activity.main.MainActivityVP;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsPresenter;
@@ -21,6 +23,7 @@ import brain_socket.com.dekaneh.activity.registration.RegistrationActivityVP;
 import brain_socket.com.dekaneh.adapter.CartOrdersAdapter;
 import brain_socket.com.dekaneh.adapter.CategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
+import brain_socket.com.dekaneh.adapter.ManufacturersAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
 import brain_socket.com.dekaneh.adapter.OrdersAdapter;
 import brain_socket.com.dekaneh.application.AppSchedulerProvider;
@@ -115,6 +118,11 @@ public class ActivityModule {
     }
 
     @Provides
+    CategoryDetailsVP.Presenter<CategoryDetailsVP.View> provideCategoryDetailsPresenter(CategoryDetailsPresenter<CategoryDetailsVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
     CategoriesFragmentVP.Presenter<CategoriesFragmentVP.View> provideCategoriesFragmentPresenter(CategoriesFragmentPresenter<CategoriesFragmentVP.View> presenter) {
         return presenter;
     }
@@ -158,6 +166,11 @@ public class ActivityModule {
     @Provides
     OrdersAdapter provideOrdersAdapter(AppCompatActivity context) {
         return new OrdersAdapter(context);
+    }
+
+    @Provides
+    ManufacturersAdapter provideManufacturersAdapter(AppCompatActivity context) {
+        return new ManufacturersAdapter(context);
     }
 
     @Horizontal

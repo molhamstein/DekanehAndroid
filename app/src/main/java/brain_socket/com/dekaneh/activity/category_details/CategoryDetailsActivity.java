@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.activity;
+package brain_socket.com.dekaneh.activity.category_details;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,16 +11,24 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import brain_socket.com.dekaneh.R;
-import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
+import brain_socket.com.dekaneh.adapter.ManufacturersAdapter;
 import brain_socket.com.dekaneh.adapter.SubCategoriesAdapter;
 import brain_socket.com.dekaneh.base.BaseActivity;
-import brain_socket.com.dekaneh.network.model.Product;
-import brain_socket.com.dekaneh.network.model.ProductsSection;
+import brain_socket.com.dekaneh.network.model.Category;
+import brain_socket.com.dekaneh.network.model.Manufacturer;
+import brain_socket.com.dekaneh.utils.GsonUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CategoryDetailsActivity extends BaseActivity {
+public class CategoryDetailsActivity extends BaseActivity implements CategoryDetailsVP.View {
+
+    @Inject
+    CategoryDetailsVP.Presenter<CategoryDetailsVP.View> presenter;
+    @Inject
+    ManufacturersAdapter adapter;
 
     @BindView(R.id.catDetailsToolbar)
     Toolbar toolbar;
@@ -29,8 +37,11 @@ public class CategoryDetailsActivity extends BaseActivity {
     @BindView(R.id.catDetailsProductsRV)
     RecyclerView productsRV;
 
-    public static void start(Context context) {
+    public static void start(Context context, Category category) {
         Intent starter = new Intent(context, CategoryDetailsActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(Category.TAG, GsonUtils.convertObjectToJson(category));
+        starter.putExtras(bundle);
         context.startActivity(starter);
     }
 
@@ -39,6 +50,12 @@ public class CategoryDetailsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_details);
         ButterKnife.bind(this);
+
+        if (getActivityComponent() != null)
+            getActivityComponent().inject(this);
+
+        presenter.onAttach(this);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         List<String> titles = new ArrayList<>();
@@ -49,20 +66,9 @@ public class CategoryDetailsActivity extends BaseActivity {
         titles.add("Pastry");
         subcategoriesRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         subcategoriesRV.setAdapter(new SubCategoriesAdapter(titles));
+        productsRV.setLayoutManager(new LinearLayoutManager(this));
+        productsRV.setAdapter(adapter);
 
-
-//        List<Product> products = new ArrayList<>();
-//        products.add(new Product("200", true));
-//        products.add(new Product("350"));
-//        products.add(new Product("2500"));
-//        products.add(new Product("1200"));
-//        products.add(new Product("1500"));
-//        List<ProductsSection> sections = new ArrayList<>();
-//        sections.add(new ProductsSection("منتجات مختارة", products));
-//        sections.add(new ProductsSection("منظفات", products));
-//        HomeCategoriesAdapter adapter = new HomeCategoriesAdapter(sections);
-//        productsRV.setAdapter(adapter);
-//        productsRV.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
@@ -75,5 +81,10 @@ public class CategoryDetailsActivity extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void addAllManufacturers(List<Manufacturer> manufacturers) {
+        adapter.addAllManufacturers(manufacturers);
     }
 }

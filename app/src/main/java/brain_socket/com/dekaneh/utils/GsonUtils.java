@@ -44,6 +44,10 @@ public class GsonUtils {
         return new Gson().fromJson(json, new TypeToken<Product>(){}.getType());
     }
 
+    public static Category convertJsonStringToCategoryObject(String json) {
+        return new Gson().fromJson(json, new TypeToken<Category>(){}.getType());
+    }
+
     public static List<CartItem> convertJsonStringToCartItemsArray(String json) {
         if (json == null) {
             return new ArrayList<>();

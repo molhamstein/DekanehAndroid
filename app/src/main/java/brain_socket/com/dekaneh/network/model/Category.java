@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 public class Category implements Serializable{
 
+    public static final String TAG = Category.class.getSimpleName();
     @SerializedName("titleAr")
     @Expose
     private String titleAr;

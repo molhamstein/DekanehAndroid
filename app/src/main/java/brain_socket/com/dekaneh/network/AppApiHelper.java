@@ -10,6 +10,7 @@ import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.LoginRequest;
 import brain_socket.com.dekaneh.network.model.LoginResponse;
+import brain_socket.com.dekaneh.network.model.Manufacturer;
 import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.Product;
@@ -80,5 +81,15 @@ public class AppApiHelper {
                 .build()
                 .getObjectListSingle(Product.class);
     }
+
+    public static Single<List<Manufacturer>> getCategoryManufacturers(String categoryId) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.GROUPED_BY_MANUFACTURERS)
+                .addQueryParameter("categoryId", categoryId)
+                .addQueryParameter("limit", "10")
+                .build()
+                .getObjectListSingle(Manufacturer.class);
+    }
+
+
 
 }
