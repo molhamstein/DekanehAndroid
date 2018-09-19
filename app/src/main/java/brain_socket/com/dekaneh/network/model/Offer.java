@@ -11,9 +11,6 @@ public class Offer extends Product implements Serializable {
     @SerializedName("id")
     @Expose
     private String id;
-    @SerializedName("description")
-    @Expose
-    private String description;
     @SerializedName("wholeSalePrice")
     @Expose
     private double wholeSalePrice;
