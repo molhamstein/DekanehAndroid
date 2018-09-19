@@ -7,18 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.network.model.SubCategory;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdapter.SubCategoriesViewHolder> {
 
-    private List<String> titles;
+    private List<SubCategory> subCategories;
 
-    public SubCategoriesAdapter(List<String> titles) {
-        this.titles = titles;
+    @Inject
+    public SubCategoriesAdapter() {
+        this.subCategories = new ArrayList<>();
     }
 
     @NonNull
@@ -29,12 +34,19 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
 
     @Override
     public void onBindViewHolder(@NonNull SubCategoriesViewHolder holder, int position) {
-        holder.title.setText(titles.get(position));
+        SubCategory subCategory = subCategories.get(position);
+
+        holder.title.setText(subCategory.getTitleAr());
     }
 
     @Override
     public int getItemCount() {
-        return titles.size();
+        return subCategories.size();
+    }
+
+    public void addAllSubCategories(List<SubCategory> subCategories) {
+        this.subCategories = subCategories;
+        notifyDataSetChanged();
     }
 
     class SubCategoriesViewHolder extends RecyclerView.ViewHolder {

@@ -12,13 +12,14 @@ import brain_socket.com.dekaneh.network.AppApiHelper;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.Manufacturer;
+import brain_socket.com.dekaneh.network.model.SubCategory;
 import brain_socket.com.dekaneh.utils.GsonUtils;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
 public class CategoryDetailsPresenter<T extends CategoryDetailsVP.View> extends BasePresenterImpl<T> implements CategoryDetailsVP.Presenter<T> {
     public static final String TAG = CategoryDetailsPresenter.class.getSimpleName();
-    Category category;
+    private Category category;
 
     @Inject
     public CategoryDetailsPresenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable, CacheStore cacheStore) {
@@ -30,11 +31,27 @@ public class CategoryDetailsPresenter<T extends CategoryDetailsVP.View> extends 
         super.onAttach(mvpView);
         category = GsonUtils.convertJsonStringToCategoryObject(getView().getIntent().getExtras().getString(Category.TAG));
         fetchManufacturers();
+        fetchSubCategories();
     }
 
     @Override
     public void fetchSubCategories() {
+        getCompositeDisposable().add(
+                AppApiHelper.getSubCategories(category.getId())
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<List<SubCategory>>() {
+                            @Override
+                            public void accept(List<SubCategory> subCategories) throws Exception {
+                                getView().addAllSubCategories(subCategories);
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
 
+                            }
+                        })
+        );
     }
 
     @Override

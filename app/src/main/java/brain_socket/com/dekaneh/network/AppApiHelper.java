@@ -15,6 +15,7 @@ import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.network.model.SliderImage;
+import brain_socket.com.dekaneh.network.model.SubCategory;
 import io.reactivex.Single;
 
 public class AppApiHelper {
@@ -88,6 +89,13 @@ public class AppApiHelper {
                 .addQueryParameter("limit", "10")
                 .build()
                 .getObjectListSingle(Manufacturer.class);
+    }
+
+    public static Single<List<SubCategory>> getSubCategories(String categoryId) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.SUB_CATEGORIES)
+                .addPathParameter("id", categoryId)
+                .build()
+                .getObjectListSingle(SubCategory.class);
     }
 
 

@@ -19,6 +19,7 @@ import brain_socket.com.dekaneh.adapter.SubCategoriesAdapter;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.Manufacturer;
+import brain_socket.com.dekaneh.network.model.SubCategory;
 import brain_socket.com.dekaneh.utils.GsonUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,7 +29,9 @@ public class CategoryDetailsActivity extends BaseActivity implements CategoryDet
     @Inject
     CategoryDetailsVP.Presenter<CategoryDetailsVP.View> presenter;
     @Inject
-    ManufacturersAdapter adapter;
+    ManufacturersAdapter manufacturersAdapter;
+    @Inject
+    SubCategoriesAdapter subCategoriesAdapter;
 
     @BindView(R.id.catDetailsToolbar)
     Toolbar toolbar;
@@ -58,16 +61,10 @@ public class CategoryDetailsActivity extends BaseActivity implements CategoryDet
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        List<String> titles = new ArrayList<>();
-        titles.add("All");
-        titles.add("Chips");
-        titles.add("Biscuits");
-        titles.add("Beverages");
-        titles.add("Pastry");
         subcategoriesRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        subcategoriesRV.setAdapter(new SubCategoriesAdapter(titles));
+        subcategoriesRV.setAdapter(subCategoriesAdapter);
         productsRV.setLayoutManager(new LinearLayoutManager(this));
-        productsRV.setAdapter(adapter);
+        productsRV.setAdapter(manufacturersAdapter);
 
     }
 
@@ -85,6 +82,11 @@ public class CategoryDetailsActivity extends BaseActivity implements CategoryDet
 
     @Override
     public void addAllManufacturers(List<Manufacturer> manufacturers) {
-        adapter.addAllManufacturers(manufacturers);
+        manufacturersAdapter.addAllManufacturers(manufacturers);
+    }
+
+    @Override
+    public void addAllSubCategories(List<SubCategory> subCategories) {
+        subCategoriesAdapter.addAllSubCategories(subCategories);
     }
 }
