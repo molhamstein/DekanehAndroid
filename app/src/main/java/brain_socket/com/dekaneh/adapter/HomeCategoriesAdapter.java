@@ -15,6 +15,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.category_details.CategoryDetailsActivity;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.Session;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
@@ -42,11 +43,19 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
     @Override
     public void onBindViewHolder(@NonNull HomeCategoriesViewHolder holder, int position) {
 
-        HomeCategory category = categories.get(position);
+        final HomeCategory category = categories.get(position);
         holder.header.setText(category.getTitleAr());
         ProductsAdapter adapter = new ProductsAdapter(category.getProducts(), cacheStore);
         holder.productsRV.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         holder.productsRV.setAdapter(adapter);
+
+
+        holder.header.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CategoryDetailsActivity.start(view.getContext(), category);
+            }
+        });
 
     }
 
