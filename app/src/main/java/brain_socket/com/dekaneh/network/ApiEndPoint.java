@@ -7,6 +7,7 @@ public class ApiEndPoint {
     private ApiEndPoint(){ }
 
 
+
     public static final String SIMILAR_PRODUCTS = BuildConfig.BASE_API_URL + "products/similarProduct";
     public static final String LOGIN = BuildConfig.BASE_API_URL + "users/login";
     public static final String HOME_CATEGORIES = BuildConfig.BASE_API_URL + "products/groupedByCategories";
@@ -17,5 +18,6 @@ public class ApiEndPoint {
     public static final String TOP_SLIDERS = BuildConfig.BASE_API_URL + "topSliders";
     public static final String GROUPED_BY_MANUFACTURERS = BuildConfig.BASE_API_URL + "products/groupedByManufacturers";
     public static final String SUB_CATEGORIES = CATEGORIES + "/{id}/subCategories";
+    public static final String LOGOUT = "users/logout";
 
 }

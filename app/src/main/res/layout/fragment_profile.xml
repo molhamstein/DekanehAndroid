@@ -221,36 +221,6 @@
                 android:hint="Name"
                 android:textSize="22sp" />
 
-            <TextView
-                style="@style/PrimaryTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="-6dp"
-                android:text="Location" />
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="-4dp"
-                android:layout_marginStart="-4dp"
-                android:layout_marginTop="-22dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|start"
-                    android:layout_margin="16dp"
-                    app:srcCompat="@drawable/ic_pin_drop_gray_24dp" />
-
-                <EditText
-                    style="@style/PrimaryBoldTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="(Optional)"
-                    android:textSize="22sp" />
-
-            </FrameLayout>
 
             <Button
                 android:id="@+id/loginBtn"

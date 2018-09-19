@@ -13,7 +13,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
-import brain_socket.com.dekaneh.activity.SettingsActivity;
+import brain_socket.com.dekaneh.activity.settings.SettingsActivity;
 import brain_socket.com.dekaneh.adapter.OrdersAdapter;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.custom.DekanehInterpolator;

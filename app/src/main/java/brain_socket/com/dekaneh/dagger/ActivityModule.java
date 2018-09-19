@@ -20,6 +20,8 @@ import brain_socket.com.dekaneh.activity.product_details.ProductDetailsPresenter
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsVP;
 import brain_socket.com.dekaneh.activity.registration.RegistrationActivityPresenter;
 import brain_socket.com.dekaneh.activity.registration.RegistrationActivityVP;
+import brain_socket.com.dekaneh.activity.settings.SettingsActivityPresenter;
+import brain_socket.com.dekaneh.activity.settings.SettingsActivityVP;
 import brain_socket.com.dekaneh.adapter.CartOrdersAdapter;
 import brain_socket.com.dekaneh.adapter.CategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
@@ -120,6 +122,11 @@ public class ActivityModule {
 
     @Provides
     CategoryDetailsVP.Presenter<CategoryDetailsVP.View> provideCategoryDetailsPresenter(CategoryDetailsPresenter<CategoryDetailsVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    SettingsActivityVP.Presenter<SettingsActivityVP.View> providesSettingsActivityPresenter(SettingsActivityPresenter<SettingsActivityVP.View> presenter) {
         return presenter;
     }
 

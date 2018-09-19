@@ -6,6 +6,7 @@ import brain_socket.com.dekaneh.activity.category_details.CategoryDetailsActivit
 import brain_socket.com.dekaneh.activity.main.MainActivity;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
 import brain_socket.com.dekaneh.activity.registration.RegistrationActivity;
+import brain_socket.com.dekaneh.activity.settings.SettingsActivity;
 import brain_socket.com.dekaneh.fragment.profile.ProfileFragment;
 import brain_socket.com.dekaneh.fragment.categories.CategoriesFragment;
 import brain_socket.com.dekaneh.fragment.main.MainFragment;
@@ -26,6 +27,8 @@ public interface ActivityComponent {
     void inject(CartActivity activity);
 
     void inject(CategoryDetailsActivity activity);
+
+    void inject(SettingsActivity activity);
 
     void inject(LoginFragment fragment);
 

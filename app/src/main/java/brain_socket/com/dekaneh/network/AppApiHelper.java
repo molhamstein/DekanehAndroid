@@ -1,5 +1,6 @@
 package brain_socket.com.dekaneh.network;
 
+import com.google.gson.JsonObject;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 
 import java.util.List;
@@ -98,6 +99,12 @@ public class AppApiHelper {
                 .getObjectListSingle(SubCategory.class);
     }
 
+    public static Single<String> logout(String accessToken) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.LOGOUT)
+                .addQueryParameter("access_token", accessToken)
+                .build()
+                .getObjectSingle(String.class);
+    }
 
 
 }

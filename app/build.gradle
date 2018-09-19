@@ -53,6 +53,7 @@ dependencies {
     implementation 'com.ss.bannerslider:bannerslider:2.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.onesignal:OneSignal:3.10.1'
+    implementation 'com.jakewharton:process-phoenix:2.0.0'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.16'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     testImplementation 'junit:junit:4.12'
