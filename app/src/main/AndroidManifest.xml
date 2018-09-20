@@ -16,24 +16,22 @@
         <activity
             android:name=".activity.SplashActivity"
             android:theme="@style/SplashTheme" />
-        <activity android:name=".activity.registration.RegistrationActivity" >
-
+        <activity android:name=".activity.registration.RegistrationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".activity.main.MainActivity"
-            android:label="@string/title_activity_main">
-
-        </activity>
+            android:label="@string/title_activity_main"></activity>
         <activity android:name=".activity.product_details.ProductDetailsActivity" />
         <activity android:name=".activity.category_details.CategoryDetailsActivity" />
         <activity android:name=".activity.cart.CartActivity" />
-        <activity android:name=".activity.settings.SettingsActivity"></activity>
+        <activity android:name=".activity.settings.SettingsActivity" />
+        <activity android:name=".activity.manufacturer.ManufacturerActivity"></activity>
     </application>
 
 </manifest>

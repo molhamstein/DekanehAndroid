@@ -4,6 +4,9 @@ import brain_socket.com.dekaneh.BuildConfig;
 
 public class ApiEndPoint {
 
+    public static final String PRODUCTS = "products";
+    public static final String USERS = "users";
+
     private ApiEndPoint(){ }
 
 

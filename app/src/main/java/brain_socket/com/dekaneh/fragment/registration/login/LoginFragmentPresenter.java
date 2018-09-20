@@ -3,6 +3,7 @@ package brain_socket.com.dekaneh.fragment.registration.login;
 
 import android.util.Log;
 
+import com.androidnetworking.error.ANError;
 import com.onesignal.OneSignal;
 
 import javax.inject.Inject;
@@ -45,14 +46,13 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
         getView().showLoading();
 
         getCompositeDisposable().add(
-                AppApiHelper.login(new LoginRequest("0936207611", "qwe12345"))
+                AppApiHelper.login(new LoginRequest(phoneNumber, password))
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<LoginResponse>() {
                             @Override
                             public void accept(final LoginResponse loginResponse) throws Exception {
                                 getCacheStore().getSession().setUser(loginResponse.getUser(), loginResponse.getId());
-                                getView().showMessage(loginResponse.getUser().getOwnerName());
                                 getView().hideLoading();
                                 getView().startMainActivity();
                                 OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
@@ -67,6 +67,11 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
                             public void accept(Throwable throwable) throws Exception {
                                 Log.e(TAG, "accept: ", throwable);
                                 getView().hideLoading();
+                                if (throwable instanceof ANError) {
+                                    ANError anError = (ANError) throwable;
+//                                    handleApiError(anError);
+                                    Log.d(TAG, "accept: " + anError.getErrorBody());
+                                }
                             }
                         })
         );

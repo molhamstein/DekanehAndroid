@@ -15,8 +15,10 @@ import brain_socket.com.dekaneh.network.model.Manufacturer;
 import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.Product;
+import brain_socket.com.dekaneh.network.model.SignUpRequest;
 import brain_socket.com.dekaneh.network.model.SliderImage;
 import brain_socket.com.dekaneh.network.model.SubCategory;
+import brain_socket.com.dekaneh.network.model.User;
 import io.reactivex.Single;
 
 public class AppApiHelper {
@@ -106,5 +108,18 @@ public class AppApiHelper {
                 .getObjectSingle(String.class);
     }
 
+    public static Single<List<Offer>> getProductsByManufacturer(String manufacturerId) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.PRODUCTS)
+                .addQueryParameter("filter[where][manufacturerId]", manufacturerId)
+                .build()
+                .getObjectListSingle(Offer.class);
+    }
+
+    public static Single<User> signUp(SignUpRequest request) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.USERS)
+                .addBodyParameter(request)
+                .build()
+                .getObjectSingle(User.class);
+    }
 
 }

@@ -16,6 +16,8 @@ import brain_socket.com.dekaneh.activity.category_details.CategoryDetailsPresent
 import brain_socket.com.dekaneh.activity.category_details.CategoryDetailsVP;
 import brain_socket.com.dekaneh.activity.main.MainActivityPresenter;
 import brain_socket.com.dekaneh.activity.main.MainActivityVP;
+import brain_socket.com.dekaneh.activity.manufacturer.ManufacturerActivityPresenter;
+import brain_socket.com.dekaneh.activity.manufacturer.ManufacturerActivityVP;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsPresenter;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsVP;
 import brain_socket.com.dekaneh.activity.registration.RegistrationActivityPresenter;
@@ -39,8 +41,11 @@ import brain_socket.com.dekaneh.fragment.offers.OffersFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.offers.OffersFragmentVP;
 import brain_socket.com.dekaneh.fragment.profile.ProfileFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.profile.ProfileFragmentVP;
+import brain_socket.com.dekaneh.fragment.registration.NewAccountFragment;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentVP;
+import brain_socket.com.dekaneh.fragment.registration.new_account.NewAccountFragmentPresenter;
+import brain_socket.com.dekaneh.fragment.registration.new_account.NewAccountFragmentVP;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.Session;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
@@ -142,6 +147,16 @@ public class ActivityModule {
 
     @Provides
     ProfileFragmentVP.Presenter<ProfileFragmentVP.View> provideProfileFragmentPresenter(ProfileFragmentPresenter<ProfileFragmentVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    ManufacturerActivityVP.Presenter<ManufacturerActivityVP.View> provideManufacturerActivityPresenter(ManufacturerActivityPresenter<ManufacturerActivityVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    NewAccountFragmentVP.Presenter<NewAccountFragmentVP.View> provideNewAccountFragmentPresenter(NewAccountFragmentPresenter<NewAccountFragmentVP.View> presenter) {
         return presenter;
     }
 

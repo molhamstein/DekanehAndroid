@@ -30,6 +30,7 @@
 
 
             <EditText
+                android:id="@+id/phoneNumber"
                 style="@style/PrimaryBlackTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -60,12 +61,41 @@
 
 
             <EditText
+                android:id="@+id/storeName"
                 style="@style/PrimaryBlackTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="8dp"
                 android:background="@null"
                 android:hint="@string/store_name"
+                android:inputType="textNoSuggestions"
+                android:textColorHint="@color/light_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/newAccountOwnerNameCard"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:background="@drawable/shadow_black"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:srcCompat="@drawable/ic_person_gray_24dp" />
+
+
+            <EditText
+                android:id="@+id/ownerName"
+                style="@style/PrimaryBlackTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:background="@null"
+                android:hint="@string/owner_name"
                 android:inputType="textNoSuggestions"
                 android:textColorHint="@color/light_gray" />
         </LinearLayout>
@@ -88,6 +118,7 @@
 
 
             <EditText
+                android:id="@+id/storeLocation"
                 style="@style/PrimaryBlackTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -116,6 +147,7 @@
 
 
             <EditText
+                android:id="@+id/password"
                 style="@style/PrimaryBlackTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

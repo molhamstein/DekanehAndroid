@@ -41,6 +41,8 @@ public class User implements Serializable {
     @Expose
     private String gender;
 
+
+
     public String getId() {
         return id;
     }

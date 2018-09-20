@@ -9,6 +9,7 @@ import java.util.List;
 import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
+import brain_socket.com.dekaneh.network.model.Manufacturer;
 import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.Product;
@@ -46,6 +47,10 @@ public class GsonUtils {
 
     public static Category convertJsonStringToCategoryObject(String json) {
         return new Gson().fromJson(json, new TypeToken<Category>(){}.getType());
+    }
+
+    public static Manufacturer convertJsonStringToManufacturerObject(String json) {
+        return new Gson().fromJson(json, new TypeToken<Manufacturer>(){}.getType());
     }
 
     public static List<CartItem> convertJsonStringToCartItemsArray(String json) {
