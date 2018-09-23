@@ -15,9 +15,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.category_details.CategoryDetailsActivity;
+import brain_socket.com.dekaneh.activity.manufacturer.ManufacturerActivity;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.CartItem;
+import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.Product;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,18 +31,20 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     private final int MAX_NUM_OF_PRODUCTS = 8;
     private List<Product> products;
     private CacheStore cacheStore;
+    private Category category;
 
     public ProductsAdapter(CacheStore cacheStore) {
         this.cacheStore = cacheStore;
         this.products = new ArrayList<>();
     }
 
-    public ProductsAdapter(List<Product> products, CacheStore cacheStore) {
+    public ProductsAdapter(List<Product> products, CacheStore cacheStore, Category category) {
         this.products = products;
         if (products.size() >= MAX_NUM_OF_PRODUCTS) {
             products.add(null);
         }
         this.cacheStore = cacheStore;
+        this.category = category;
     }
 
     @NonNull
@@ -53,11 +58,11 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int position) {
 
+        final Product product = products.get(position);
         if (holder instanceof ProductViewHolder) {
 
             final ProductViewHolder productViewHolder = (ProductViewHolder) holder;
 
-            final Product product = products.get(position);
             final CartItem item = new CartItem(product);
 
             if (cacheStore.isCartItemExist(item)) {
@@ -111,6 +116,15 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             });
 
 
+        } else if (holder instanceof SeeMoreViewHolder) {
+            final SeeMoreViewHolder seeMoreViewHolder = (SeeMoreViewHolder) holder;
+            seeMoreViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (!products.isEmpty())
+                        CategoryDetailsActivity.start(view.getContext(), category);
+                }
+            });
         }
     }
 

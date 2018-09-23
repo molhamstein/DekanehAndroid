@@ -45,7 +45,7 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
 
         final HomeCategory category = categories.get(position);
         holder.header.setText(category.getTitleAr());
-        ProductsAdapter adapter = new ProductsAdapter(category.getProducts(), cacheStore);
+        ProductsAdapter adapter = new ProductsAdapter(category.getProducts(), cacheStore ,category);
         holder.productsRV.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         holder.productsRV.setAdapter(adapter);
 
