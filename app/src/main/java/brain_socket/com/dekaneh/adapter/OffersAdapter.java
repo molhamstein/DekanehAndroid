@@ -61,7 +61,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
                 holder.orderCount.setText(String.valueOf(mItem.getCount()));
             }
 
-        if (offer.getProducts() != null)
+        if (offer.getProducts() != null && !offer.getProducts().isEmpty())
             Picasso.get().load(offer.getProducts().get(0).getImage()).into(holder.image);
         holder.name.setText(offer.getNameAr());
         holder.percent.setText(offer.getPercentageString());

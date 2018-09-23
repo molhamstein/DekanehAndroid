@@ -4,8 +4,8 @@ import brain_socket.com.dekaneh.BuildConfig;
 
 public class ApiEndPoint {
 
-    public static final String PRODUCTS = "products";
-    public static final String USERS = "users";
+    public static final String PRODUCTS = BuildConfig.BASE_API_URL + "products";
+    public static final String USERS = BuildConfig.BASE_API_URL + "users";
 
     private ApiEndPoint(){ }
 

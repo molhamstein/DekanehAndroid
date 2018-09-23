@@ -1,5 +1,7 @@
 package brain_socket.com.dekaneh.activity.manufacturer;
 
+import android.util.Log;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -28,6 +30,7 @@ public class ManufacturerActivityPresenter<T extends ManufacturerActivityVP.View
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
         this.manufacturer = GsonUtils.convertJsonStringToManufacturerObject(getView().getIntent().getExtras().getString(Manufacturer.TAG));
+        Log.d("ASDASDAD", "onAttach: " + manufacturer.getId());
     }
 
     @Override
