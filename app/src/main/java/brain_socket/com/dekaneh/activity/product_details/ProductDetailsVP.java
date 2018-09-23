@@ -12,6 +12,7 @@ public class ProductDetailsVP {
         void updateView(Product product);
         void addAllSimilarProducts(List<Product> products);
         void updateOrderCountText(int count);
+        void hideSimilarProductsSection();
     }
 
     public interface Presenter<T extends BaseView> extends BasePresenter<T> {

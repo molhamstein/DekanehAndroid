@@ -20,7 +20,8 @@
                 android:id="@+id/prodDetailsToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                android:background="@color/white"/>
 
             <TextView
                 style="@style/PrimaryBlackTextView"
@@ -113,44 +114,48 @@
 
             </FrameLayout>
 
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        style="@style/SecondaryBoldTextView"
+                        style="@style/SecondaryBlackTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pack" />
+                        android:text="Pack"
+                        android:textSize="14sp"/>
 
                     <TextView
                         android:id="@+id/productPackName"
                         style="@style/PrimaryBlackTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="-12dp"
+                        android:layout_marginTop="-16dp"
+                        android:textSize="22sp"
                         android:text="@string/dummy_pepsi_title" />
 
                     <TextView
-                        style="@style/SecondaryBoldTextView"
+                        style="@style/SecondaryBlackTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/product" />
+                        android:text="@string/product"
+                        android:textSize="14sp"/>
 
                     <TextView
                         android:id="@+id/productManufacturer"
                         style="@style/PrimaryBlackTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/pepsi_co" />
+                        android:text="@string/pepsi_co"
+                        android:layout_marginTop="-12dp"
+                        android:textSize="22sp"/>
 
                 </LinearLayout>
 
@@ -167,37 +172,37 @@
 
                     <TextView
                         android:id="@+id/plusOne"
-                        style="@style/WhiteBoldTextView"
+                        style="@style/WhiteBlackTextView"
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="65dp"
                         android:layout_gravity="start"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="-12dp"
+                        android:layout_marginTop="-20dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:gravity="center"
                         android:padding="8dp"
                         android:text="+"
-                        android:textSize="24sp" />
+                        android:textSize="32sp" />
 
                     <TextView
                         android:id="@+id/orderCount"
-                        style="@style/WhiteBoldTextView"
+                        style="@style/WhiteBlackTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="0"
-                        android:textSize="18sp" />
+                        android:textSize="24sp" />
 
                     <TextView
                         android:id="@+id/minusOne"
-                        style="@style/WhiteBoldTextView"
+                        style="@style/WhiteBlackTextView"
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="65dp"
                         android:layout_gravity="end"
                         android:layout_marginEnd="8dp"
-                        android:layout_marginTop="-12dp"
+                        android:layout_marginTop="-20dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?attr/selectableItemBackgroundBorderless"
@@ -205,11 +210,11 @@
                         android:padding="8dp"
                         android:text="-"
                         android:textColor="@color/white"
-                        android:textSize="24sp" />
+                        android:textSize="32sp" />
 
                 </FrameLayout>
 
-            </LinearLayout>
+            </FrameLayout>
 
 
             <TextView
@@ -218,6 +223,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="48dp"
                 android:text="@string/offers" />
 
             <View
@@ -253,8 +259,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:text="@string/dummy_text"
                 android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/similarProductsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp">
 
 
             <TextView
@@ -295,6 +309,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp" />
 
+            </LinearLayout>
             <Button
                 android:id="@+id/addNowBtn"
                 style="@style/WhiteBlackTextOfferBtn"
@@ -302,8 +317,8 @@
                 android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="70dp"
-                android:background="@drawable/action_button_shape_green_glow_offer"
-                android:text="Add Now  +" />
+                android:background="@drawable/primary_color_button_round_10"
+                android:text="@string/buy_now" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

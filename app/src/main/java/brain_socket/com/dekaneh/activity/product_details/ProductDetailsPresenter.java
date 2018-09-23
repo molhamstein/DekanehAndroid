@@ -43,7 +43,9 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
                         .subscribe(new Consumer<List<Product>>() {
                             @Override
                             public void accept(List<Product> products) throws Exception {
-                                getView().addAllSimilarProducts(products);
+                                if (products.isEmpty()) getView().hideSimilarProductsSection();
+                                else getView().addAllSimilarProducts(products);
+
                                 getView().hideLoading();
                             }
                         }, new Consumer<Throwable>() {

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -58,6 +59,8 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     ImageView productImage;
     @BindView(R.id.productDescription)
     TextView description;
+    @BindView(R.id.similarProductsLayout)
+    View similarProductsLayout;
 
     @BindView(R.id.orderCount)
     TextView orderCount;
@@ -123,6 +126,11 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     @Override
     public void updateOrderCountText(int count) {
         orderCount.setText(String.valueOf(count));
+    }
+
+    @Override
+    public void hideSimilarProductsSection() {
+        similarProductsLayout.setVisibility(View.GONE);
     }
 
 
