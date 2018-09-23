@@ -22,6 +22,7 @@ import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.network.model.SliderImage;
 import butterknife.BindView;
+import butterknife.OnClick;
 import ss.com.bannerslider.Slider;
 
 public class MainFragment extends BaseFragment implements MainFragmentVP.View {
@@ -110,4 +111,10 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
         slider.setAdapter(sliderAdapter);
 
     }
+
+    @OnClick(R.id.seeAllOffersText)
+    public void onSeeAllOffersText() {
+
+    }
+
 }

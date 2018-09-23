@@ -56,6 +56,12 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
                 CategoryDetailsActivity.start(view.getContext(), category);
             }
         });
+        holder.seeAllText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CategoryDetailsActivity.start(view.getContext(), category);
+            }
+        });
 
     }
 
@@ -75,6 +81,8 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
         TextView header;
         @BindView(R.id.mainProductsRV)
         RecyclerView productsRV;
+        @BindView(R.id.seeAllText)
+        View seeAllText;
 
         HomeCategoriesViewHolder(View itemView) {
             super(itemView);

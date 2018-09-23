@@ -12,6 +12,7 @@ public class CategoryDetailsVP {
     public interface View extends BaseView {
         void addAllManufacturers(List<Manufacturer> manufacturers);
         void addAllSubCategories(List<SubCategory> subCategories);
+        void setTitle(String title);
     }
 
     public interface Presenter<T extends View> extends BasePresenter<T> {

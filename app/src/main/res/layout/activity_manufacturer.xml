@@ -25,6 +25,7 @@
                 app:titleTextAppearance="@style/PrimaryBlackTextView" />
 
             <TextView
+                android:id="@+id/toolbarTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -44,17 +45,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/manufacturerName"
-                style="@style/PrimaryBoldTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Katakit"
-                android:textSize="48sp"
-
-                />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/productsRV"

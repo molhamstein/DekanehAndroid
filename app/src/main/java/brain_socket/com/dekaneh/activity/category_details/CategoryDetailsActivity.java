@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +40,8 @@ public class CategoryDetailsActivity extends BaseActivity implements CategoryDet
     RecyclerView subcategoriesRV;
     @BindView(R.id.catDetailsProductsRV)
     RecyclerView productsRV;
+    @BindView(R.id.toolbarTitle)
+    TextView toolbarTitle;
 
     public static void start(Context context, Category category) {
         Intent starter = new Intent(context, CategoryDetailsActivity.class);
@@ -89,5 +92,10 @@ public class CategoryDetailsActivity extends BaseActivity implements CategoryDet
     @Override
     public void addAllSubCategories(List<SubCategory> subCategories) {
         subCategoriesAdapter.addAllSubCategories(subCategories);
+    }
+
+    @Override
+    public void setTitle(String title) {
+        toolbarTitle.setText(title);
     }
 }

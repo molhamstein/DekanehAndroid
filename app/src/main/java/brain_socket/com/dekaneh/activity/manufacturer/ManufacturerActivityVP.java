@@ -12,7 +12,8 @@ public class ManufacturerActivityVP {
 
     public interface View extends BaseView {
         void addAllProducts(List<Offer> offers);
-        void updateViews(Manufacturer manufacturer);
+        void setTitle(String title);
+
     }
 
     public interface Presenter<T extends BaseView> extends BasePresenter<T> {

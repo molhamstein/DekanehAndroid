@@ -30,7 +30,7 @@ public class ManufacturerActivityPresenter<T extends ManufacturerActivityVP.View
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
         this.manufacturer = GsonUtils.convertJsonStringToManufacturerObject(getView().getIntent().getExtras().getString(Manufacturer.TAG));
-        Log.d("ASDASDAD", "onAttach: " + manufacturer.getId());
+        getView().setTitle(manufacturer.getNameAr());
     }
 
     @Override

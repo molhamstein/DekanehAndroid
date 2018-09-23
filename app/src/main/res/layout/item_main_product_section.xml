@@ -17,7 +17,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
-
             android:text="@string/dummy_header" />
 
         <TextView
@@ -28,6 +27,10 @@
             android:layout_gravity="end|center_vertical"
             android:text="@string/see_all"
             android:textSize="12sp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="12dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             />
 
 

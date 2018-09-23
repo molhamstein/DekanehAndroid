@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.util.List;
@@ -32,10 +33,10 @@ public class ManufacturerActivity extends BaseActivity implements ManufacturerAc
 
     @BindView(R.id.manufacturerToolbar)
     Toolbar toolbar;
-    @BindView(R.id.manufacturerName)
-    TextView manufacturerName;
     @BindView(R.id.productsRV)
     RecyclerView productsRV;
+    @BindView(R.id.toolbarTitle)
+    TextView toolbarTitle;
 
 
     public static void start(Context context, Manufacturer manufacturer) {
@@ -51,9 +52,16 @@ public class ManufacturerActivity extends BaseActivity implements ManufacturerAc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manufacturer);
         ButterKnife.bind(this);
+
         if (getActivityComponent() != null)
             getActivityComponent().inject(this);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
+
         presenter.onAttach(this);
+
         productsRV.setLayoutManager(new LinearLayoutManager(this));
         productsRV.setAdapter(adapter);
         presenter.fetchProducts();
@@ -61,13 +69,25 @@ public class ManufacturerActivity extends BaseActivity implements ManufacturerAc
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                return false;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
     public void addAllProducts(List<Offer> offers) {
         adapter.addAllOffers(offers);
     }
 
     @Override
-    public void updateViews(Manufacturer manufacturer) {
-        toolbar.setTitle(manufacturer.getNameAr());
-        manufacturerName.setText(manufacturer.getNameAr());
+    public void setTitle(String title) {
+        toolbarTitle.setText(title);
     }
 }

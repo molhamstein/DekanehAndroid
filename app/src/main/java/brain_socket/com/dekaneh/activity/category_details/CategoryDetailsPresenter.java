@@ -30,6 +30,7 @@ public class CategoryDetailsPresenter<T extends CategoryDetailsVP.View> extends 
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
         category = GsonUtils.convertJsonStringToCategoryObject(getView().getIntent().getExtras().getString(Category.TAG));
+        getView().setTitle(category.getTitleAr());
         fetchManufacturers();
         fetchSubCategories();
     }
