@@ -139,9 +139,10 @@ public class CacheStore {
             if (item.getId().equals(mItem.getId())) {
                 item.removeOne();
                 updateCartItem(item, index);
-                if (item.getCount() == 0) {
-                    getCartItems().remove(item);
-                    cacheCartItems(getCartItems());
+                if (item.getCount() - 1 <= 0) {
+                    List<CartItem> items = getCartItems();
+                    items.remove(index);
+                    cacheCartItems(items);
                 }
                 break;
             }

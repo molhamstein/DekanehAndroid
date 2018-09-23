@@ -60,7 +60,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             final Product product = products.get(position);
             final CartItem item = new CartItem(product);
 
-            if (cacheStore.isCartItemExist(item)){
+            if (cacheStore.isCartItemExist(item)) {
                 productViewHolder.orderNowBtn.setVisibility(View.GONE);
                 productViewHolder.orderBtn.setVisibility(View.VISIBLE);
                 productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
@@ -99,16 +99,14 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             productViewHolder.minusOne.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (cacheStore.cartItemCount(item) > 0) {
+                    if (cacheStore.cartItemCount(item) <= 1) {
+                        cacheStore.removeCartItem(item);
+                        ((ProductViewHolder) holder).orderNowBtn.setVisibility(View.VISIBLE);
+                        ((ProductViewHolder) holder).orderBtn.setVisibility(View.GONE);
+                    } else {
                         cacheStore.removeCartItem(item);
                         productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
                     }
-                    else {
-                        ((ProductViewHolder) holder).orderNowBtn.setVisibility(View.VISIBLE);
-                        ((ProductViewHolder) holder).orderBtn.setVisibility(View.GONE);
-                    }
-
-
                 }
             });
 

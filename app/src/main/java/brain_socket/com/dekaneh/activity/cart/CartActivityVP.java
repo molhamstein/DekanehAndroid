@@ -12,6 +12,7 @@ public class CartActivityVP {
         void addAllItems(List<CartItem> items);
         void setOrderViewClear(boolean clear);
         void setOkResult();
+        void disableOrderBtn();
     }
 
     public interface Presenter<T extends BaseView> extends BasePresenter<T> {

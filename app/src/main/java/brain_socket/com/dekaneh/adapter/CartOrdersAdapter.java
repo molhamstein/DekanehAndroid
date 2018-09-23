@@ -13,10 +13,13 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.Session;
 import brain_socket.com.dekaneh.network.model.CartItem;
@@ -43,7 +46,7 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CartOrderViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final CartOrderViewHolder holder, int position) {
 
         final CartItem item = items.get(position);
 
@@ -61,7 +64,7 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
                 item.addOne();
                 notifyDataSetChanged();
                 if (onQuantityChangedListener != null)
-                    onQuantityChangedListener.onChanged();
+                    onQuantityChangedListener.onChanged(items.isEmpty());
             }
         });
 
@@ -71,8 +74,24 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
                 cacheStore.removeCartItem(item);
                 item.removeOne();
                 notifyDataSetChanged();
+
+                if (item.getCount() <= 0) {
+                    items.remove(item);
+                    new Timer().schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            ((BaseActivity)holder.itemView.getContext()).runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    notifyDataSetChanged();
+                                }
+                            });
+                        }
+                    }, 500);
+                }
+
                 if (onQuantityChangedListener != null)
-                    onQuantityChangedListener.onChanged();
+                    onQuantityChangedListener.onChanged(items.isEmpty());
             }
         });
 
@@ -117,6 +136,6 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
     }
 
     public interface OnQuantityChangedListener{
-        void onChanged();
+        void onChanged(boolean isCartClear);
     }
 }

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -40,6 +41,8 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
     View emptyCartImg;
     @BindView(R.id.emptyCartText)
     View emptyCartText;
+    @BindView(R.id.sendBtn)
+    Button orderButton;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, CartActivity.class);
@@ -65,8 +68,12 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
         presenter.fetchItems();
         cartAdapter.setOnQuantityChangedListener(new CartOrdersAdapter.OnQuantityChangedListener() {
             @Override
-            public void onChanged() {
+            public void onChanged(boolean isCartClear) {
                 total.setText(String.valueOf(presenter.getPrice()));
+                if (isCartClear) {
+                    setOrderViewClear(true);
+                }
+                setOkResult();
             }
         });
         total.setText(String.valueOf(presenter.getPrice()));
@@ -106,6 +113,13 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
     @Override
     public void setOkResult() {
         setResult(RESULT_OK);
+    }
+
+    @Override
+    public void disableOrderBtn() {
+            orderButton.setEnabled(false);
+            orderButton.setClickable(false);
+            orderButton.setBackgroundResource(R.drawable.disabled_button_round_10);
     }
 
     @OnClick(R.id.sendBtn)
