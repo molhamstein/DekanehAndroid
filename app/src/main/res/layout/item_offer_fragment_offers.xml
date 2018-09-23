@@ -56,19 +56,24 @@
         android:id="@+id/orderNowBtn"
         style="@style/WhiteBlackTextOfferBtn"
         android:layout_width="150dp"
-        android:layout_height="70dp"
+        android:layout_height="40dp"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/action_button_shape_green_glow_offer"
-        android:text="@string/buy_now" />
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/primary_color_button_round_10"
+        android:text="@string/buy_now"
+        android:visibility="visible"
+        />
+
     <FrameLayout
         android:id="@+id/orderBtn"
         style="@style/WhiteBlackTextOfferBtn"
         android:layout_width="150dp"
-        android:layout_height="70dp"
+        android:layout_height="40dp"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/action_button_shape_green_glow_offer"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/primary_color_button_round_10"
         android:visibility="gone"
         >
 
@@ -82,12 +87,11 @@
             android:padding="8dp"
             android:gravity="center"
             android:text="+"
-            android:textColor="@color/white"
             android:textSize="24sp"
+            style="@style/WhiteBoldTextView"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
-            style="@style/WhiteBlackTextView"
             />
 
         <TextView
@@ -111,7 +115,7 @@
             android:text="-"
             android:textColor="@color/white"
             android:textSize="24sp"
-            style="@style/WhiteBlackTextView"
+            style="@style/WhiteBoldTextView"
             android:foreground="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"/>

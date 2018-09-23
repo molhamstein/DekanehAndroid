@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#82C2A9</color>
     <color name="colorPrimaryDark">#b9b9b9</color>
-    <color name="colorAccent">#03CA9E</color>
+    <color name="colorAccent">#82C2A9</color>
     <color name="white">#ffffff</color>
     <color name="light_green">#03CA9E</color>
     <color name="light_green01">#03ca77</color>
@@ -13,6 +13,8 @@
     <color name="primaryText">#4A4A4A</color>
     <color name="secondaryText">#c6c6c6</color>
     <color name="off_white">#f4f4f4</color>
+    <color name="brown">#5A3D1E</color>
+    <color name="paige">#F9EDCF</color>
 
 
 </resources>

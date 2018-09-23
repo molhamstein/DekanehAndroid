@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".activity.cart.CartActivity">
 
@@ -13,16 +13,28 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.PopupOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/cartToolbar"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/splash_background"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="@string/cart"
-            app:titleTextAppearance="@style/PrimaryBlackTextView">
+            android:layout_height="match_parent">
 
-        </android.support.v7.widget.Toolbar>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/cartToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title=""
+                app:titleTextAppearance="@style/PrimaryBlackTextView">
+            </android.support.v7.widget.Toolbar>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/cart"
+                style="@style/PrimaryBlackTextView"
+                />
+
+        </FrameLayout>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -98,7 +110,7 @@
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/action_button_shape_round"
+                android:background="@drawable/primary_color_button_round_10"
                 android:text="Send Order"
                 android:textColor="@color/white" />
 
@@ -110,21 +122,19 @@
         android:id="@+id/emptyCartImg"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/empty_cart"
         android:layout_gravity="center"
-        android:alpha=".5"
-        android:layout_marginTop="60dp"
         android:layout_marginStart="10dp"
-        android:visibility="gone"
-        />
+        android:layout_marginTop="60dp"
+        android:alpha=".5"
+        android:src="@drawable/empty_cart"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/emptyCartText"
+        style="@style/SecondaryBoldTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your cart is empty!"
         android:gravity="center"
-        style="@style/SecondaryBoldTextView"
-        android:visibility="gone"
-        />
+        android:text="Your cart is empty!"
+        android:visibility="gone" />
 </LinearLayout>

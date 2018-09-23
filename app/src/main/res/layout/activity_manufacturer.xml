@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".activity.manufacturer.ManufacturerActivity">
 
@@ -12,16 +12,27 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.PopupOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/manufacturerToolbar"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/splash_background"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="Manufacturer"
-            app:titleTextAppearance="@style/PrimaryBlackTextView">
+            android:layout_height="wrap_content">
 
-        </android.support.v7.widget.Toolbar>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/manufacturerToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title=""
+                app:titleTextAppearance="@style/PrimaryBlackTextView" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Manufacturer"
+                style="@style/PrimaryBlackTextView"
+                />
+
+        </FrameLayout>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -39,16 +50,16 @@
                 style="@style/PrimaryBoldTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="Katakit"
                 android:textSize="48sp"
-                android:gravity="center"
 
                 />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/productsRV"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="150dp"
-    android:layout_height="210dp">
+    android:layout_width="145dp"
+    android:layout_height="220dp">
 
 
     <LinearLayout
@@ -90,23 +90,20 @@
     <Button
         android:id="@+id/orderNowBtn"
         style="@style/WhiteBlackTextItemBtn"
-        android:layout_width="130dp"
-        android:layout_height="70dp"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="-8dp"
-        android:layout_marginBottom="-10dp"
-        android:background="@drawable/action_button_shape_green_glow_item"
-        android:text="@string/buy_now" />
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|center"
+        android:background="@drawable/primary_color_button_round_10"
+        android:text="@string/buy_now"
+        />
 
     <FrameLayout
         android:id="@+id/orderBtn"
         style="@style/WhiteBlackTextOfferBtn"
-        android:layout_width="130dp"
-        android:layout_height="70dp"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="-8dp"
-        android:layout_marginBottom="-10dp"
-        android:background="@drawable/action_button_shape_green_glow_offer"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|center"
+        android:background="@drawable/primary_color_button_round_10"
         android:visibility="gone"
         >
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -134,7 +135,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     @Override
     public void showToolbarCanopy(boolean show) {
         if (show) toolbar.setBackgroundResource(R.drawable.canopy_up);
-        else toolbar.setBackgroundResource(R.drawable.splash_background);
+        else toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
     }
 
 

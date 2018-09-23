@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@drawable/shadow_gray_square_round_min"/>
+    <item android:drawable="@drawable/shadow_black"/>
     <item>
         <shape
             android:shape="rectangle">
             <corners android:radius="5dp" />
             <solid
-                android:color="@color/colorPrimary" />
+                android:color="@color/paige" />
+            <stroke android:color="@color/brown"
+                android:width="2dp"/>
         </shape>
     </item>
 </layer-list>

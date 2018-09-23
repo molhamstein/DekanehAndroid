@@ -58,6 +58,7 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
 
         ordersRV.setLayoutManager(new LinearLayoutManager(this));
         ordersRV.setAdapter(cartAdapter);

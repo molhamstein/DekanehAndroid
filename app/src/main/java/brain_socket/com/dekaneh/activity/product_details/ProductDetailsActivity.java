@@ -79,6 +79,8 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
+
         getActivityComponent().inject(this);
 
         presenter.onAttach(this);

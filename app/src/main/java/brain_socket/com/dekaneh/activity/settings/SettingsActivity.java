@@ -38,6 +38,8 @@ public class SettingsActivity extends BaseActivity implements SettingsActivityVP
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
+
 
 
     }

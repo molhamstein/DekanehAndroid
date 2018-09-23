@@ -61,6 +61,7 @@ public class CategoryDetailsActivity extends BaseActivity implements CategoryDet
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
         subcategoriesRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         subcategoriesRV.setAdapter(subCategoriesAdapter);
         productsRV.setLayoutManager(new LinearLayoutManager(this));

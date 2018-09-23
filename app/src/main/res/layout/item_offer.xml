@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="2dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="8dp"
@@ -25,6 +25,8 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
+            android:lines="2"
+            android:textSize="12sp"
             android:text="@string/dummy_text" />
 
         <TextView
@@ -54,11 +56,10 @@
         android:id="@+id/orderNowBtn"
         style="@style/WhiteBlackTextOfferBtn"
         android:layout_width="150dp"
-        android:layout_height="70dp"
+        android:layout_height="40dp"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/action_button_shape_green_glow_offer"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/primary_color_button_round_10"
         android:text="@string/buy_now"
         android:visibility="visible"
         />
@@ -67,11 +68,10 @@
         android:id="@+id/orderBtn"
         style="@style/WhiteBlackTextOfferBtn"
         android:layout_width="150dp"
-        android:layout_height="70dp"
+        android:layout_height="40dp"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/action_button_shape_green_glow_offer"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/primary_color_button_round_10"
         android:visibility="gone"
         >
 

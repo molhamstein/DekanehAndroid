@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash_background"
     >
 
     <LinearLayout
@@ -53,7 +52,7 @@
             style="@style/WhiteBlackTextView"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/action_button_shape_round"
+            android:background="@drawable/brown_button_round_10"
             android:text="@string/back_to_sign_in"
             android:textColor="@color/white"
             android:textSize="12sp"

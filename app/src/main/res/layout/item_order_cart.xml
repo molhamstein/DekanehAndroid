@@ -76,11 +76,11 @@
     <FrameLayout
         style="@style/WhiteBlackTextOfferBtn"
         android:layout_width="150dp"
-        android:layout_height="70dp"
+        android:layout_height="40dp"
         android:layout_gravity="bottom|end"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="-8dp"
-        android:background="@drawable/action_button_shape_green_glow_offer"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/primary_color_button_round_10"
         >
 
         <TextView

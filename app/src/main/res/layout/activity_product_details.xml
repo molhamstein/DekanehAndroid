@@ -12,23 +12,25 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/prodDetailsToolbar"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/prodDetailsToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
             <TextView
                 style="@style/PrimaryBlackTextView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="@string/product_details"
-                android:paddingEnd="60dp"
-                android:paddingStart="0dp"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/product_details" />
 
-        </android.support.v7.widget.Toolbar>
 
+        </FrameLayout>
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
@@ -50,19 +52,19 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
-                    android:background="@drawable/square_shape_green_glow_item"
+                    android:background="@drawable/square_shape_paige_background_brown_stroke"
                     android:padding="30dp">
 
                     <TextView
                         android:id="@+id/productName"
-                        style="@style/WhiteBoldTextView"
+                        style="@style/BrownBoldTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/dummy_pepsi_title"
                         android:textSize="14sp" />
 
                     <TextView
-                        style="@style/WhiteRegularTextView"
+                        style="@style/BrownRegularTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
@@ -75,20 +77,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:layout_marginBottom="-24dp"
+                        android:layout_marginBottom="-22dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/productPrice"
-                            style="@style/WhiteBlackTextView"
+                            style="@style/BrownBlackTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/dummy_price"
                             android:textSize="40sp" />
 
                         <TextView
-                            style="@style/WhiteRegularTextView"
+                            style="@style/BrownRegularTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -120,8 +122,8 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
                         style="@style/SecondaryBoldTextView"
@@ -157,29 +159,27 @@
                     android:id="@+id/orderBtn"
                     style="@style/WhiteBlackTextOfferBtn"
                     android:layout_width="200dp"
-                    android:layout_height="70dp"
+                    android:layout_height="45dp"
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="8dp"
-                    android:background="@drawable/action_button_shape_green_glow_offer"
-                    android:visibility="visible"
-                    >
+                    android:background="@drawable/primary_color_button_round_10"
+                    android:visibility="visible">
 
                     <TextView
                         android:id="@+id/plusOne"
+                        style="@style/WhiteBoldTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_gravity="start"
-                        android:layout_marginTop="-12dp"
                         android:layout_marginStart="8dp"
-                        android:padding="8dp"
-                        android:gravity="center"
-                        android:text="+"
-                        android:textSize="24sp"
-                        style="@style/WhiteBoldTextView"
-                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:layout_marginTop="-12dp"
                         android:clickable="true"
                         android:focusable="true"
-                        />
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="+"
+                        android:textSize="24sp" />
 
                     <TextView
                         android:id="@+id/orderCount"
@@ -192,20 +192,20 @@
 
                     <TextView
                         android:id="@+id/minusOne"
+                        style="@style/WhiteBoldTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_gravity="end"
-                        android:layout_marginTop="-12dp"
                         android:layout_marginEnd="8dp"
+                        android:layout_marginTop="-12dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackgroundBorderless"
                         android:gravity="center"
                         android:padding="8dp"
                         android:text="-"
                         android:textColor="@color/white"
-                        android:textSize="24sp"
-                        style="@style/WhiteBoldTextView"
-                        android:foreground="?attr/selectableItemBackgroundBorderless"
-                        android:clickable="true"
-                        android:focusable="true"/>
+                        android:textSize="24sp" />
 
                 </FrameLayout>
 
@@ -230,8 +230,7 @@
                 android:id="@+id/miniOffersRV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                 />
+                android:layout_marginTop="8dp" />
 
             <TextView
                 style="@style/PrimaryBlackTextView"
@@ -294,8 +293,7 @@
                 android:id="@+id/similarProductsRV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                />
+                android:layout_marginTop="8dp" />
 
             <Button
                 android:id="@+id/addNowBtn"
