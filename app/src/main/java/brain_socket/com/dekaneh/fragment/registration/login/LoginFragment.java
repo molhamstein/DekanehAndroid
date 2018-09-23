@@ -15,7 +15,7 @@ import brain_socket.com.dekaneh.activity.main.MainActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.custom.DekanehInterpolator;
 import brain_socket.com.dekaneh.fragment.registration.ForgotPasswordFragment;
-import brain_socket.com.dekaneh.fragment.registration.NewAccountFragment;
+import brain_socket.com.dekaneh.fragment.registration.new_account.NewAccountFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 

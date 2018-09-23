@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.fragment.registration;
+package brain_socket.com.dekaneh.fragment.registration.new_account;
 
 
 import android.view.View;
@@ -13,7 +13,6 @@ import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.custom.DekanehInterpolator;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragment;
-import brain_socket.com.dekaneh.fragment.registration.new_account.NewAccountFragmentVP;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -116,6 +115,7 @@ public class NewAccountFragment extends BaseFragment {
     private void performOutAnimation(AnimationListener.Stop onStop) {
         ViewAnimator.animate(phoneCard).translationX(0, 600).alpha(1, 0).duration(600)
                 .andAnimate(storeNameCard).translationX(0, 700).alpha(1, 0).duration(600)
+                .andAnimate(ownerNameLayout).translationX(0, 750).alpha(1, 0).duration(600)
                 .andAnimate(storeAddressCard).translationX(0, 800).alpha(1, 0).duration(600)
                 .andAnimate(passwordCard).translationX(0, 900).alpha(1, 0).duration(600)
                 .andAnimate(policyLayout).translationX(0, 900).alpha(1, 0).duration(600)

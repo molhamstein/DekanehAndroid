@@ -8,6 +8,7 @@ import com.github.florent37.viewanimator.ViewAnimator;
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.custom.DekanehInterpolator;
+import brain_socket.com.dekaneh.fragment.registration.new_account.NewAccountFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 

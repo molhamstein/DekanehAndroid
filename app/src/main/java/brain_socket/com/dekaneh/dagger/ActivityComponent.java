@@ -12,7 +12,7 @@ import brain_socket.com.dekaneh.fragment.profile.ProfileFragment;
 import brain_socket.com.dekaneh.fragment.categories.CategoriesFragment;
 import brain_socket.com.dekaneh.fragment.main.MainFragment;
 import brain_socket.com.dekaneh.fragment.offers.OffersFragment;
-import brain_socket.com.dekaneh.fragment.registration.NewAccountFragment;
+import brain_socket.com.dekaneh.fragment.registration.new_account.NewAccountFragment;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragment;
 import dagger.Component;
 

@@ -4,11 +4,6 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.inject.Singleton;
-
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.cart.CartActivityPresenter;
 import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
@@ -41,15 +36,12 @@ import brain_socket.com.dekaneh.fragment.offers.OffersFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.offers.OffersFragmentVP;
 import brain_socket.com.dekaneh.fragment.profile.ProfileFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.profile.ProfileFragmentVP;
-import brain_socket.com.dekaneh.fragment.registration.NewAccountFragment;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragmentVP;
 import brain_socket.com.dekaneh.fragment.registration.new_account.NewAccountFragmentPresenter;
 import brain_socket.com.dekaneh.fragment.registration.new_account.NewAccountFragmentVP;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.Session;
-import brain_socket.com.dekaneh.network.model.HomeCategory;
-import brain_socket.com.dekaneh.network.model.Offer;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
