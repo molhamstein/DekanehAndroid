@@ -34,7 +34,6 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
                     @Override
                     public void accept(List<Order> orders) throws Exception {
 
-                        Log.d(TAG, "accept: " + orders.get(0).getStatus());
                         getView().hideLoading();
                         getView().addOrders(orders);
 

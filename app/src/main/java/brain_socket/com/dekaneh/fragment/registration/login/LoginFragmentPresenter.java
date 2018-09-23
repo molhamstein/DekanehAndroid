@@ -18,7 +18,7 @@ import brain_socket.com.dekaneh.network.model.LoginResponse;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
-public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends BasePresenterImpl<T> implements LoginFragmentVP.Presenter<T>{
+public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends BasePresenterImpl<T> implements LoginFragmentVP.Presenter<T> {
 
 
     private static final String TAG = LoginFragmentPresenter.class.getSimpleName();
@@ -46,7 +46,7 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
         getView().showLoading();
 
         getCompositeDisposable().add(
-                AppApiHelper.login(new LoginRequest("0936207611", "qwe12345"))
+                AppApiHelper.login(new LoginRequest(phoneNumber, password))
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<LoginResponse>() {
@@ -68,9 +68,9 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
                                 Log.e(TAG, "accept: ", throwable);
                                 getView().hideLoading();
                                 if (throwable instanceof ANError) {
-                                    ANError anError = (ANError) throwable;
-//                                    handleApiError(anError);
-                                    Log.d(TAG, "accept: " + anError.getErrorBody());
+                                    ANError error = (ANError) throwable;
+                                    getView().hideLoading();
+                                    getView().showMessage(error.getErrorBody());
                                 }
                             }
                         })

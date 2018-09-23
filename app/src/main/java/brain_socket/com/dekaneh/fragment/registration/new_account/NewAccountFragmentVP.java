@@ -6,7 +6,7 @@ import brain_socket.com.dekaneh.base.BaseView;
 public class NewAccountFragmentVP {
 
     public interface View extends BaseView {
-
+        void onSuccessfulSignUp();
     }
 
     public interface Presenter<T extends BaseView> extends BasePresenter<T> {

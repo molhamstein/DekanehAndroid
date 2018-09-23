@@ -16,7 +16,7 @@ import brain_socket.com.dekaneh.fragment.registration.login.LoginFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class NewAccountFragment extends BaseFragment {
+public class NewAccountFragment extends BaseFragment implements NewAccountFragmentVP.View {
     @Inject
     NewAccountFragmentVP.Presenter<NewAccountFragmentVP.View> presenter;
 
@@ -63,6 +63,8 @@ public class NewAccountFragment extends BaseFragment {
         if (getActivityComponent() != null)
             getActivityComponent().inject(this);
 
+        presenter.onAttach(this);
+
         ViewAnimator.animate(phoneCard).translationX(-600, 0).alpha(0, 1).duration(800)
                 .andAnimate(storeNameCard).translationX(-700, 0).alpha(0, 1).duration(800)
                 .andAnimate(ownerNameLayout).translationX(-750, 0).alpha(0, 1).duration(800)
@@ -102,7 +104,6 @@ public class NewAccountFragment extends BaseFragment {
         performOutAnimation(new AnimationListener.Stop() {
             @Override
             public void onStop() {
-//                navigationPresenter.replaceFragment(SubmitAccountFragment.newInstance());
                 presenter.signUp(phoneNumber.getText().toString(),
                         storeName.getText().toString(),
                         ownerName.getText().toString(),
@@ -124,5 +125,10 @@ public class NewAccountFragment extends BaseFragment {
                 .interpolator(new DekanehInterpolator(1f))
                 .onStop(onStop)
                 .start();
+    }
+
+    @Override
+    public void onSuccessfulSignUp() {
+        navigationPresenter.replaceFragment(LoginFragment.newInstance());
     }
 }
