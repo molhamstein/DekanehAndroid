@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.RatingActivity">
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/ratingViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <TextView
+        style="@style/PrimaryBoldTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="@string/do_you_like_our_service"
+        android:textSize="28sp" />
+
+    <TextView
+        style="@style/PrimaryBoldTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="70dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="90dp"
+        android:gravity="center"
+        android:alpha=".6"
+        android:text="@string/your_rating_will_help_us_improve_our_services" />
+
+    <Button
+        android:id="@+id/sendRatingBtn"
+        style="@style/WhiteBlackTextOfferBtn"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/primary_color_button_round_10"
+        android:text="@string/submit_rating"
+        android:visibility="visible"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="20dp"
+        style="@style/WhiteRegularTextView"
+        android:text="@string/skip_rating"
+        android:textSize="12sp"
+        />
+</FrameLayout>

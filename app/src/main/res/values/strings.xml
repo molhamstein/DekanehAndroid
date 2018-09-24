@@ -147,5 +147,12 @@
     <string name="contact_us">Contact us</string>
     <string name="log_out">Log out</string>
     <string name="owner_name">Owner Name</string>
+    <string name="do_you_like_our_service">Do you like our service?</string>
+    <string name="your_rating_will_help_us_improve_our_services">Your rating will help us improve our services</string>
+    <string name="great">GREAT</string>
+    <string name="ok">OK</string>
+    <string name="bad">BAD</string>
+    <string name="submit_rating">Submit Rating</string>
+    <string name="skip_rating">Skip rating</string>
 
 </resources>
