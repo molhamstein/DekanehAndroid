@@ -110,4 +110,8 @@ public class Order implements Serializable {
                 ", products=" + products +
                 '}';
     }
+
+    public void setProducts(List<CartItem> products) {
+        this.products = products;
+    }
 }

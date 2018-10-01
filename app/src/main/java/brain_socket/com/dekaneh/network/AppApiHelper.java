@@ -118,6 +118,15 @@ public class AppApiHelper {
                 .getObjectSingle(User.class);
     }
 
+    public static Single<Order> patchOrder(Order order) {
+        return Rx2AndroidNetworking.patch(ApiEndPoint.ORDER)
+                .addPathParameter("id", order.getId())
+                .addApplicationJsonBody(order)
+                .build()
+                .getObjectSingle(Order.class);
+    }
+
+
     public static Single<Order> getOrderDetails(String orderId) {
         return Rx2AndroidNetworking.get(ApiEndPoint.ORDER)
                 .addPathParameter("id", orderId)

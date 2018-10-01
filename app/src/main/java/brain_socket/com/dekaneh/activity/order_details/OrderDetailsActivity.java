@@ -16,12 +16,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
-import brain_socket.com.dekaneh.adapter.CartOrdersAdapter;
 import brain_socket.com.dekaneh.adapter.OrderDetailsItemsAdapter;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Order;
-import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.utils.GsonUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,6 +74,12 @@ public class OrderDetailsActivity extends BaseActivity implements OrderDetailsVP
 
         itemsRV.setLayoutManager(new LinearLayoutManager(this));
         itemsRV.setAdapter(adapter);
+        adapter.setOnItemsChangedListener(new OrderDetailsItemsAdapter.OnQuantityChangedListener() {
+            @Override
+            public void onChanged(List<CartItem> items) {
+                presenter.updateProducts(items);
+            }
+        });
 
     }
 
@@ -87,14 +91,11 @@ public class OrderDetailsActivity extends BaseActivity implements OrderDetailsVP
                 onBackPressed();
                 return false;
             case R.id.action_edit:
-                edit.setVisible(false);
-                submit.setVisible(true);
-                adapter.setEditing(true);
+                edit(true);
                 return false;
             case R.id.action_submit:
-                submit.setVisible(false);
-                edit.setVisible(true);
-                adapter.setEditing(false);
+                edit(false);
+                presenter.updateOrder();
                 return false;
         }
 
@@ -121,5 +122,19 @@ public class OrderDetailsActivity extends BaseActivity implements OrderDetailsVP
         this.orderId.setText(id);
         this.orderStatus.setText(status);
         this.total.setText(total);
+    }
+
+    @Override
+    public void edit(boolean edit) {
+        if (edit) {
+            this.edit.setVisible(false);
+            submit.setVisible(true);
+            adapter.setEditing(true);
+        }
+        else {
+            submit.setVisible(false);
+            this.edit.setVisible(true);
+            adapter.setEditing(false);
+        }
     }
 }

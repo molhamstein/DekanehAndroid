@@ -66,21 +66,37 @@ public class OrderDetailsItemsAdapter extends RecyclerView.Adapter<OrderDetailsI
             holder.orderBtnLayout.setVisibility(View.GONE);
         }
 
+        holder.cancelbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                items.remove(item);
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        ((BaseActivity)holder.itemView.getContext()).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                notifyDataSetChanged();
+                            }
+                        });
+                    }
+                }, 500);
+            }
+        });
+
         holder.plusOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cacheStore.addCartItem(item);
                 item.addOne();
                 notifyDataSetChanged();
                 if (onQuantityChangedListener != null)
-                    onQuantityChangedListener.onChanged(items.isEmpty());
+                    onQuantityChangedListener.onChanged(OrderDetailsItemsAdapter.this.items);
             }
         });
 
         holder.minusOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cacheStore.removeCartItem(item);
                 item.removeOne();
                 notifyDataSetChanged();
 
@@ -100,7 +116,7 @@ public class OrderDetailsItemsAdapter extends RecyclerView.Adapter<OrderDetailsI
                 }
 
                 if (onQuantityChangedListener != null)
-                    onQuantityChangedListener.onChanged(items.isEmpty());
+                    onQuantityChangedListener.onChanged(OrderDetailsItemsAdapter.this.items);
             }
         });
 
@@ -121,7 +137,7 @@ public class OrderDetailsItemsAdapter extends RecyclerView.Adapter<OrderDetailsI
         notifyDataSetChanged();
     }
 
-    public void setOnQuantityChangedListener(OnQuantityChangedListener onQuantityChangedListener) {
+    public void setOnItemsChangedListener(OnQuantityChangedListener onQuantityChangedListener) {
         this.onQuantityChangedListener = onQuantityChangedListener;
     }
 
@@ -156,6 +172,6 @@ public class OrderDetailsItemsAdapter extends RecyclerView.Adapter<OrderDetailsI
     }
 
     public interface OnQuantityChangedListener{
-        void onChanged(boolean isCartClear);
+        void onChanged(List<CartItem> items);
     }
 }
