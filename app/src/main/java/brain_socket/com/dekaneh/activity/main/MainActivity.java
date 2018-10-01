@@ -47,6 +47,8 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     View toolbarLogo;
     @BindView(R.id.search_view)
     MaterialSearchView searchView;
+    @BindView(R.id.searchLayout)
+    View searchLayout;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -109,10 +111,12 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
             public void onSearchViewShown() {
+                searchLayout.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onSearchViewClosed() {
+                searchLayout.setVisibility(View.GONE);
             }
         });
 
