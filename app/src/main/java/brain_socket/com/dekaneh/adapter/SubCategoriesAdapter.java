@@ -1,6 +1,7 @@
 package brain_socket.com.dekaneh.adapter;
 
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,9 +35,30 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
 
     @Override
     public void onBindViewHolder(@NonNull SubCategoriesViewHolder holder, int position) {
-        SubCategory subCategory = subCategories.get(position);
+        final SubCategory subCategory = subCategories.get(position);
 
+        if (subCategory.isSelected()) {
+            holder.title.setBackgroundResource(R.drawable.background_sub_category_textview_selected);
+            holder.title.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
+
+        }
         holder.title.setText(subCategory.getTitleAr());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deselectAll();
+                subCategory.setSelected(true);
+                notifyDataSetChanged();
+            }
+        });
+
+    }
+
+    private void deselectAll() {
+        for (SubCategory sub : this.subCategories) {
+            sub.setSelected(false);
+        }
     }
 
     @Override
