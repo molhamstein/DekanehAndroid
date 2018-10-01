@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.github.florent37.viewanimator.ViewAnimator;
 
@@ -35,6 +36,13 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
     TabLayout tabLayout;
     @BindView(R.id.canopy)
     View canopy;
+    @BindView(R.id.storeName)
+    TextView storeName;
+    @BindView(R.id.ownerName)
+    TextView ownerName;
+    @BindView(R.id.phoneNumber)
+    TextView phoneNumber;
+
     @Inject
     OrdersAdapter ordersAdapter;
 
@@ -67,6 +75,7 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
         behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         tabLayout.addTab(tabLayout.newTab().setCustomView(ViewUtils.getTabTextView(getContext(), "Orders")));
         tabLayout.addTab(tabLayout.newTab().setCustomView(ViewUtils.getTabTextView(getContext(), "Post Orders")));
+
     }
 
     @Override
@@ -92,5 +101,12 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
     @Override
     public void addOrders(List<Order> orders) {
         ordersAdapter.addAllOrderes(orders);
+    }
+
+    @Override
+    public void updateView(String storeName, String ownerName, String phoneNumber) {
+        this.storeName.setText(storeName);
+        this.ownerName.setText(ownerName);
+        this.phoneNumber.setText(phoneNumber);
     }
 }

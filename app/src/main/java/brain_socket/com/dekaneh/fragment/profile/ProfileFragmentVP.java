@@ -10,6 +10,7 @@ public class ProfileFragmentVP {
 
     public interface View extends BaseView {
         void addOrders(List<Order> orders);
+        void updateView(String storeName, String ownerName, String phoneNumber);
     }
 
     public interface Presenter<T extends View> extends BasePresenter<T> {

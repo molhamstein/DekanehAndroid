@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data android:name="com.onesignal.NotificationOpened.DEFAULT" android:value="DISABLE" />
+        <meta-data
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
 
         <activity
             android:name=".activity.SplashActivity"
@@ -34,9 +36,9 @@
         <activity android:name=".activity.cart.CartActivity" />
         <activity android:name=".activity.settings.SettingsActivity" />
         <activity android:name=".activity.manufacturer.ManufacturerActivity" />
-        <activity android:name=".activity.RatingActivity">
-
-        </activity>
+        <activity android:name=".activity.RatingActivity" />
+        <activity android:name=".activity.order_details.OrderDetailsActivity" />
+        <activity android:name=".activity.NotificationsActivity"></activity>
     </application>
 
 </manifest>

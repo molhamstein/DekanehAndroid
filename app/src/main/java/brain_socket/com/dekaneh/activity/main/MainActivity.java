@@ -17,6 +17,7 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.NotificationsActivity;
 import brain_socket.com.dekaneh.activity.cart.CartActivity;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
@@ -158,6 +159,9 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         switch (item.getItemId()) {
             case R.id.action_cart:
                 startActivityForResult(new Intent(this, CartActivity.class), 1);
+                return false;
+            case R.id.action_notifications:
+                NotificationsActivity.start(this);
                 return false;
         }
 

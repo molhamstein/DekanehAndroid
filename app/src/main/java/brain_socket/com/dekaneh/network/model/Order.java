@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Order implements Serializable {
 
+    public static final String TAG = Order.class.getSimpleName();
     @SerializedName("id")
     @Expose
     private String id;

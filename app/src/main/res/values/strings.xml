@@ -154,5 +154,11 @@
     <string name="bad">BAD</string>
     <string name="submit_rating">Submit Rating</string>
     <string name="skip_rating">Skip rating</string>
+    <string name="order_details">Order Detail</string>
+    <string name="cancel_order">Cancel Order</string>
+    <string name="order_id">Order ID</string>
+    <string name="order_status">Order Status</string>
+    <string name="preparing">Preparing</string>
+    <string name="notifications">Notifications</string>
 
 </resources>

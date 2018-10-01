@@ -8,12 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.order_details.OrderDetailsActivity;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.utils.AppDateUtils;
@@ -40,12 +43,19 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrdersView
     @Override
     public void onBindViewHolder(@NonNull OrdersViewHolder holder, int position) {
 
-        Order order = orders.get(position);
+        final Order order = orders.get(position);
 
         holder.date.setText(AppDateUtils.dateToString(order.getOrderDate()));
         holder.id.setText(order.getId());
         holder.price.setText(String.valueOf(order.getTotalPrice()));
         holder.status.setText(order.getStatus());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OrderDetailsActivity.start(view.getContext(), order);
+            }
+        });
 
     }
 

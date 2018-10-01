@@ -1,10 +1,12 @@
 package brain_socket.com.dekaneh.dagger;
 
 
+import brain_socket.com.dekaneh.activity.NotificationsActivity;
 import brain_socket.com.dekaneh.activity.cart.CartActivity;
 import brain_socket.com.dekaneh.activity.category_details.CategoryDetailsActivity;
 import brain_socket.com.dekaneh.activity.main.MainActivity;
 import brain_socket.com.dekaneh.activity.manufacturer.ManufacturerActivity;
+import brain_socket.com.dekaneh.activity.order_details.OrderDetailsActivity;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
 import brain_socket.com.dekaneh.activity.registration.RegistrationActivity;
 import brain_socket.com.dekaneh.activity.settings.SettingsActivity;
@@ -33,6 +35,10 @@ public interface ActivityComponent {
     void inject(SettingsActivity activity);
 
     void inject(ManufacturerActivity activity);
+
+    void inject(OrderDetailsActivity activity);
+
+    void inject(NotificationsActivity activity);
 
     void inject(LoginFragment fragment);
 

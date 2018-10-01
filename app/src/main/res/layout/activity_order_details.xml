@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".activity.order_details.OrderDetailsActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.PopupOverlay">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/orderDetailsToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title=""
+                app:titleTextAppearance="@style/PrimaryBlackTextView">
+            </android.support.v7.widget.Toolbar>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/order_details"
+                style="@style/PrimaryBlackTextView"
+                />
+
+        </FrameLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/creationDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="23/02/2018"
+        style="@style/PrimaryBlackTextView"
+        android:layout_gravity="top|end"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/cancelOrderBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel_order"
+        style="@style/PrimaryBlackTextView"
+        android:layout_gravity="bottom|end"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order_id"
+        style="@style/SecondaryBoldTextView"
+        android:layout_gravity="top|start"
+        android:textSize="12sp"
+        />
+
+    <TextView
+        android:id="@+id/orderId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OPRQS123"
+        style="@style/PrimaryBlackTextView"
+        android:layout_gravity="top|start"
+        android:layout_marginTop="25dp"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order_status"
+        style="@style/SecondaryBoldTextView"
+        android:layout_gravity="bottom|start"
+        android:layout_marginBottom="25dp"
+        android:textSize="12sp"
+        />
+
+    <TextView
+        android:id="@+id/orderStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/preparing"
+        style="@style/PrimaryBlackTextView"
+        android:layout_gravity="bottom|start"
+        android:textSize="16sp"
+        />
+</FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shadow_card_black"
+        android:layout_marginBottom="-12dp"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/itemsRV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="70dp"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="70dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:background="@color/secondaryText" />
+
+        <TextView
+            style="@style/SecondaryBlackTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/currency"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/total"
+            style="@style/PrimaryBlackTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="40dp"
+            android:text="33000"
+            android:textSize="32sp" />
+
+        <TextView
+            style="@style/SecondaryBlackTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="8dp"
+            android:text="الاجمالي"
+            android:textSize="18sp" />
+
+
+    </FrameLayout>
+
+</LinearLayout>

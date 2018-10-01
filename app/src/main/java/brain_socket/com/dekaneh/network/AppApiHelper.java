@@ -1,17 +1,13 @@
 package brain_socket.com.dekaneh.network;
 
-import com.google.gson.JsonObject;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
-
 import java.util.List;
-
-import javax.inject.Singleton;
-
 import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.LoginRequest;
 import brain_socket.com.dekaneh.network.model.LoginResponse;
 import brain_socket.com.dekaneh.network.model.Manufacturer;
+import brain_socket.com.dekaneh.network.model.Notification;
 import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.Product;
@@ -120,6 +116,20 @@ public class AppApiHelper {
                 .addBodyParameter(request)
                 .build()
                 .getObjectSingle(User.class);
+    }
+
+    public static Single<Order> getOrderDetails(String orderId) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.ORDER)
+                .addPathParameter("id", orderId)
+                .build()
+                .getObjectSingle(Order.class);
+    }
+
+    public static Single<List<Notification>> getNotifications(String accessToken) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.NOTIFICATIONS)
+                .addQueryParameter("access_token", accessToken)
+                .build()
+                .getObjectListSingle(Notification.class);
     }
 
 }

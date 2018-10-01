@@ -24,6 +24,14 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
     }
 
     @Override
+    public void onAttach(T mvpView) {
+        super.onAttach(mvpView);
+        getView().updateView(getCacheStore().getSession().getShopName(),
+                getCacheStore().getSession().getOwnerName(),
+                getCacheStore().getSession().getPhoneNumber());
+    }
+
+    @Override
     public void fetchOrders() {
         getView().showLoading();
         getCompositeDisposable().add(

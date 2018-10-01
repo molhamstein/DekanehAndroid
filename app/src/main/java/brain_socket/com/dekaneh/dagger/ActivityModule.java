@@ -13,6 +13,8 @@ import brain_socket.com.dekaneh.activity.main.MainActivityPresenter;
 import brain_socket.com.dekaneh.activity.main.MainActivityVP;
 import brain_socket.com.dekaneh.activity.manufacturer.ManufacturerActivityPresenter;
 import brain_socket.com.dekaneh.activity.manufacturer.ManufacturerActivityVP;
+import brain_socket.com.dekaneh.activity.order_details.OrderDetailsPresenter;
+import brain_socket.com.dekaneh.activity.order_details.OrderDetailsVP;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsPresenter;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsVP;
 import brain_socket.com.dekaneh.activity.registration.RegistrationActivityPresenter;
@@ -24,6 +26,7 @@ import brain_socket.com.dekaneh.adapter.CategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.ManufacturersAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
+import brain_socket.com.dekaneh.adapter.OrderDetailsItemsAdapter;
 import brain_socket.com.dekaneh.adapter.OrdersAdapter;
 import brain_socket.com.dekaneh.adapter.SubCategoriesAdapter;
 import brain_socket.com.dekaneh.application.AppSchedulerProvider;
@@ -128,6 +131,11 @@ public class ActivityModule {
     }
 
     @Provides
+    OrderDetailsVP.Presenter<OrderDetailsVP.View> provideOrderDetailsPresenter(OrderDetailsPresenter<OrderDetailsVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
     CategoriesFragmentVP.Presenter<CategoriesFragmentVP.View> provideCategoriesFragmentPresenter(CategoriesFragmentPresenter<CategoriesFragmentVP.View> presenter) {
         return presenter;
     }
@@ -176,6 +184,11 @@ public class ActivityModule {
     @Provides
     CartOrdersAdapter provideCartAdatper(AppCompatActivity context) {
         return new CartOrdersAdapter(context);
+    }
+
+    @Provides
+    OrderDetailsItemsAdapter provideOrderDetailsAdatper(AppCompatActivity context) {
+        return new OrderDetailsItemsAdapter(context);
     }
 
     @Provides

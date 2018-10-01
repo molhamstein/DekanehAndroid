@@ -53,5 +53,10 @@
     <string name="bad">سيئة</string>
     <string name="submit_rating">ارسال التقييم</string>
     <string name="skip_rating">لا اريد المساعدة بالتقييم</string>
+    <string name="order_details">تفاصيل الطلب</string>
+    <string name="cancel_order">الغاء الطلب</string>
+    <string name="order_id">رقم الطلب</string>
+    <string name="order_status">حالة الطلب</string>
+    <string name="preparing">قيد التوصيل</string>
 
 </resources>

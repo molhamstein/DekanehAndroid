@@ -27,7 +27,7 @@ import brain_socket.com.dekaneh.network.model.CartItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.CartOrderViewHolder>{
+public class OrderDetailsItemsAdapter extends RecyclerView.Adapter<OrderDetailsItemsAdapter.CartOrderViewHolder>{
 
     private List<CartItem> items;
     private CacheStore cacheStore;
@@ -35,7 +35,7 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
 
 
     @Inject
-    public CartOrdersAdapter(Context context) {
+    public OrderDetailsItemsAdapter(Context context) {
         items = new ArrayList<>();
         cacheStore = new CacheStore(context, new Session(context));
     }
@@ -43,7 +43,7 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
     @NonNull
     @Override
     public CartOrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new CartOrderViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_order_cart, parent, false));
+        return new CartOrderViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_order_details_item, parent, false));
     }
 
     @Override
@@ -120,6 +120,8 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
         TextView name;
         @BindView(R.id.quantity)
         TextView quantity;
+        @BindView(R.id.currency)
+        View currency;
         @BindView(R.id.accPrice)
         TextView accPrice;
         @BindView(R.id.plusOne)

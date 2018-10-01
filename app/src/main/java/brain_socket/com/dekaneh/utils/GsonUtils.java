@@ -53,6 +53,10 @@ public class GsonUtils {
         return new Gson().fromJson(json, new TypeToken<Manufacturer>(){}.getType());
     }
 
+    public static Order convertJsonStringToOrderObject(String json) {
+        return new Gson().fromJson(json, new TypeToken<Order>(){}.getType());
+    }
+
     public static List<CartItem> convertJsonStringToCartItemsArray(String json) {
         if (json == null) {
             return new ArrayList<>();
