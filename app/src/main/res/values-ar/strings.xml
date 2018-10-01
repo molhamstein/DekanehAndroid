@@ -58,5 +58,6 @@
     <string name="order_id">رقم الطلب</string>
     <string name="order_status">حالة الطلب</string>
     <string name="preparing">قيد التوصيل</string>
+    <string name="edit">edit</string>
 
 </resources>

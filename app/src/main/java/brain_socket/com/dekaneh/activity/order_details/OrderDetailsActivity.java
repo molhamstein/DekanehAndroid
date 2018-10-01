@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -46,6 +47,8 @@ public class OrderDetailsActivity extends BaseActivity implements OrderDetailsVP
     RecyclerView itemsRV;
     @BindView(R.id.total)
     TextView total;
+    MenuItem edit;
+    MenuItem submit;
 
 
     public static void start(Context context, Order order) {
@@ -79,13 +82,32 @@ public class OrderDetailsActivity extends BaseActivity implements OrderDetailsVP
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                return false;
+            case R.id.action_edit:
+                edit.setVisible(false);
+                submit.setVisible(true);
+                adapter.setEditing(true);
+                return false;
+            case R.id.action_submit:
+                submit.setVisible(false);
+                edit.setVisible(true);
+                adapter.setEditing(false);
                 return false;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.order_menu, menu);
+        submit = menu.getItem(0);
+        edit = menu.getItem(1);
+        return true;
+
     }
 
     @Override

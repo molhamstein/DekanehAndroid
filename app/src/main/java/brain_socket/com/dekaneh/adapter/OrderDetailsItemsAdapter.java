@@ -32,6 +32,7 @@ public class OrderDetailsItemsAdapter extends RecyclerView.Adapter<OrderDetailsI
     private List<CartItem> items;
     private CacheStore cacheStore;
     private OnQuantityChangedListener onQuantityChangedListener;
+    private boolean editing;
 
 
     @Inject
@@ -56,6 +57,14 @@ public class OrderDetailsItemsAdapter extends RecyclerView.Adapter<OrderDetailsI
         holder.accPrice.setText(String.valueOf(item.getRetailPrice() * item.getCount()));
         holder.orderCount.setText(String.valueOf(item.getCount()));
 
+        if (editing) {
+            holder.cancelbtn.setVisibility(View.VISIBLE);
+            holder.orderBtnLayout.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.cancelbtn.setVisibility(View.GONE);
+            holder.orderBtnLayout.setVisibility(View.GONE);
+        }
 
         holder.plusOne.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +116,11 @@ public class OrderDetailsItemsAdapter extends RecyclerView.Adapter<OrderDetailsI
         notifyDataSetChanged();
     }
 
+    public void setEditing(boolean editing) {
+        this.editing = editing;
+        notifyDataSetChanged();
+    }
+
     public void setOnQuantityChangedListener(OnQuantityChangedListener onQuantityChangedListener) {
         this.onQuantityChangedListener = onQuantityChangedListener;
     }
@@ -130,6 +144,10 @@ public class OrderDetailsItemsAdapter extends RecyclerView.Adapter<OrderDetailsI
         View minusOne;
         @BindView(R.id.orderCount)
         TextView orderCount;
+        @BindView(R.id.orderBtnLayout)
+        View orderBtnLayout;
+        @BindView(R.id.cancelBtn)
+        View cancelbtn;
 
         public CartOrderViewHolder(View itemView) {
             super(itemView);
