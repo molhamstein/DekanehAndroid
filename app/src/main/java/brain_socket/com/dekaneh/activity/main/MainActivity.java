@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import javax.inject.Inject;
 
@@ -44,6 +45,8 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     TextView toolbarTitle;
     @BindView(R.id.mainToolbarLogo)
     View toolbarLogo;
+    @BindView(R.id.search_view)
+    MaterialSearchView searchView;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -89,6 +92,31 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         bottomNavigation.enableItemShiftingMode(false);
         bottomNavigation.enableShiftingMode(false);
         Slider.init(new PicassoImageLoadingService());
+
+
+        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
+            @Override
+            public void onSearchViewShown() {
+            }
+
+            @Override
+            public void onSearchViewClosed() {
+            }
+        });
+
+
     }
 
     @Override
@@ -149,6 +177,10 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
+
+        MenuItem item = menu.findItem(R.id.action_search);
+        searchView.setMenuItem(item);
+
         return true;
 
     }
