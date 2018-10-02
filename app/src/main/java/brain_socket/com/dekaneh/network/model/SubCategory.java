@@ -23,6 +23,10 @@ public class SubCategory implements Serializable{
     @Expose
     private String parentCategoryId;
 
+    public SubCategory(String titleAr) {
+        this.titleAr = titleAr;
+    }
+
     private boolean selected = false;
 
     public boolean isSelected() {

@@ -77,4 +77,27 @@ public class CategoryDetailsPresenter<T extends CategoryDetailsVP.View> extends 
                         })
         );
     }
+
+    @Override
+    public void fetchManufacturers(String subCategoryId) {
+        getView().showLoading();
+        getCompositeDisposable().add(
+                AppApiHelper.getCategoryManufacturers(category.getId(), subCategoryId)
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<List<Manufacturer>>() {
+                            @Override
+                            public void accept(List<Manufacturer> manufacturers) throws Exception {
+                                getView().addAllManufacturers(manufacturers);
+                                getView().hideLoading();
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                getView().hideLoading();
+                                Log.e(TAG, "accept: ", throwable);
+                            }
+                        })
+        );
+    }
 }

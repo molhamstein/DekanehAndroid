@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
 public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdapter.SubCategoriesViewHolder> {
 
     private List<SubCategory> subCategories;
+    private OnSubCategoryClickListener onSubCategoryClickListener;
 
     @Inject
     public SubCategoriesAdapter() {
@@ -34,12 +35,17 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SubCategoriesViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final SubCategoriesViewHolder holder, int position) {
         final SubCategory subCategory = subCategories.get(position);
 
         if (subCategory.isSelected()) {
             holder.title.setBackgroundResource(R.drawable.background_sub_category_textview_selected);
             holder.title.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.white));
+
+        }
+        else {
+            holder.title.setBackgroundResource(R.drawable.background_sub_category_textview);
+            holder.title.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.primaryText));
 
         }
         holder.title.setText(subCategory.getTitleAr());
@@ -50,6 +56,9 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
                 deselectAll();
                 subCategory.setSelected(true);
                 notifyDataSetChanged();
+                if (onSubCategoryClickListener != null) {
+                    onSubCategoryClickListener.onClick(subCategory.getId());
+                }
             }
         });
 
@@ -61,13 +70,20 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
         }
     }
 
+    public void setOnSubCategoryClickListener(OnSubCategoryClickListener onSubCategoryClickListener) {
+        this.onSubCategoryClickListener = onSubCategoryClickListener;
+    }
+
     @Override
     public int getItemCount() {
         return subCategories.size();
     }
 
     public void addAllSubCategories(List<SubCategory> subCategories) {
+        SubCategory subCategory = new SubCategory("الكل");
+        subCategory.setSelected(true);
         this.subCategories = subCategories;
+        this.subCategories.add(0, subCategory);
         notifyDataSetChanged();
     }
 
@@ -81,4 +97,13 @@ public class SubCategoriesAdapter extends RecyclerView.Adapter<SubCategoriesAdap
             ButterKnife.bind(this, itemView);
         }
     }
+
+
+
+    public interface OnSubCategoryClickListener {
+
+        void onClick(String subCategoryId);
+
+    }
+
 }

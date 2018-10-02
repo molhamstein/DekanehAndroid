@@ -18,5 +18,6 @@ public class CategoryDetailsVP {
     public interface Presenter<T extends View> extends BasePresenter<T> {
         void fetchSubCategories();
         void fetchManufacturers();
+        void fetchManufacturers(String subCategoryId);
     }
 }

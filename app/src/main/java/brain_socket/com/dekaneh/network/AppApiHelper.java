@@ -90,6 +90,15 @@ public class AppApiHelper {
                 .getObjectListSingle(Manufacturer.class);
     }
 
+    public static Single<List<Manufacturer>> getCategoryManufacturers(String categoryId, String subCategoryId) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.GROUPED_BY_MANUFACTURERS)
+                .addQueryParameter("categoryId", categoryId)
+                .addQueryParameter("subCategoryId", subCategoryId)
+                .addQueryParameter("limit", "10")
+                .build()
+                .getObjectListSingle(Manufacturer.class);
+    }
+
     public static Single<List<SubCategory>> getSubCategories(String categoryId) {
         return Rx2AndroidNetworking.get(ApiEndPoint.SUB_CATEGORIES)
                 .addPathParameter("id", categoryId)
@@ -140,5 +149,8 @@ public class AppApiHelper {
                 .build()
                 .getObjectListSingle(Notification.class);
     }
+
+
+
 
 }

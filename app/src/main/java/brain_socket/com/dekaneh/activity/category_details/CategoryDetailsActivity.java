@@ -69,13 +69,21 @@ public class CategoryDetailsActivity extends BaseActivity implements CategoryDet
         subcategoriesRV.setAdapter(subCategoriesAdapter);
         productsRV.setLayoutManager(new LinearLayoutManager(this));
         productsRV.setAdapter(manufacturersAdapter);
+        subCategoriesAdapter.setOnSubCategoryClickListener(new SubCategoriesAdapter.OnSubCategoryClickListener() {
+            @Override
+            public void onClick(String subCategoryId) {
+                if (subCategoryId != null && !subCategoryId.equals(""))
+                    presenter.fetchManufacturers(subCategoryId);
+                else presenter.fetchManufacturers();
+            }
+        });
 
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 return false;
