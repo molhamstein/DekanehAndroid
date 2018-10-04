@@ -143,6 +143,12 @@
         <item name="android:textSize">24sp</item>
     </style>
 
+    <style name="SecondaryColorPrice" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/cairo_black</item>
+        <item name="android:textColor">@color/secondaryText</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
     <style name="ThirdColorPrice" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:fontFamily">@font/cairo_black</item>
         <item name="android:textColor">@color/thirdText</item>
@@ -152,6 +158,12 @@
     <style name="PrimaryColorCurrency" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:fontFamily">@font/cairo_bold</item>
         <item name="android:textColor">@color/primaryText</item>
+        <item name="android:alpha">.7</item>
+    </style>
+
+    <style name="SecondaryColorCurrency" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/cairo_bold</item>
+        <item name="android:textColor">@color/secondaryText</item>
         <item name="android:alpha">.7</item>
     </style>
 
@@ -189,6 +201,11 @@
         <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless.Colored</item>
         <item name="colorControlHighlight">@color/secondaryText</item>
         <item name="colorAccent">@color/light_green</item>
+    </style>
+
+    <style name="ThirdBlackTextView">
+        <item name="android:fontFamily">@font/cairo_black</item>
+        <item name="android:textColor">@color/thirdText</item>
     </style>
 
 

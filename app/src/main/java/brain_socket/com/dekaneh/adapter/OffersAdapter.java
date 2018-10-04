@@ -108,6 +108,9 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
             }
         });
 
+        holder.price.setText(String.valueOf(offer.getRetailPrice()));
+        holder.oldPrice.setText(String.valueOf(offer.getMarketPrice()));
+
     }
 
     @Override
@@ -138,6 +141,10 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         View minusOne;
         @BindView(R.id.orderCount)
         TextView orderCount;
+        @BindView(R.id.productPrice)
+        TextView price;
+        @BindView(R.id.oldPrice)
+        TextView oldPrice;
 
         OffersViewHolder(View itemView) {
             super(itemView);

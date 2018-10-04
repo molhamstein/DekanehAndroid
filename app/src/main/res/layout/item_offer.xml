@@ -125,5 +125,75 @@
     </FrameLayout>
 
 
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="108dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="32dp"
+        android:text="3*150"
+        style="@style/SecondaryBlackTextView"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="32dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom|end">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="-8dp"
+            android:layout_marginEnd="8dp"
+            android:foreground="@drawable/stroke_secondary_color">
+
+
+            <TextView
+                android:id="@+id/oldPrice"
+                style="@style/SecondaryColorPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/dummy_price"
+                android:textSize="16sp" />
+
+            <TextView
+                style="@style/SecondaryColorCurrency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="-3dp"
+                android:text="@string/currency"
+                android:textSize="8sp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/productPrice"
+            style="@style/PrimaryColorPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:text="@string/dummy_price"
+            android:textSize="22sp"
+            />
+
+        <TextView
+            style="@style/PrimaryColorCurrency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/currency"
+            android:textSize="8sp"
+            />
+
+    </LinearLayout>
+
 
 </FrameLayout>

@@ -58,7 +58,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="-8dp"
                 android:layout_marginEnd="8dp"
-                android:foreground="@drawable/stroke">
+                android:foreground="@drawable/stroke_third_color">
 
 
                 <TextView

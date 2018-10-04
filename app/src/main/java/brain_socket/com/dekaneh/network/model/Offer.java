@@ -14,6 +14,10 @@ public class Offer extends Product implements Serializable {
     @SerializedName("wholeSalePrice")
     @Expose
     private double wholeSalePrice;
+    @SerializedName("marketPrice")
+    @Expose
+    private int marketPrice;
+
     @SerializedName("wholeSaleMarketPrice")
     @Expose
     private double wholeSaleMarketPrice;
@@ -79,6 +83,11 @@ public class Offer extends Product implements Serializable {
 
     private int getDiscountPercentage() {
         return (int) (getRetailPrice() - retailPriceDiscount) * 100 / getRetailPrice();
+    }
+
+    @Override
+    public int getMarketPrice() {
+        return marketPrice;
     }
 
     public String getPercentageString() {
