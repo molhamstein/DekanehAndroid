@@ -10,8 +10,9 @@
     <color name="green0">#69CA35</color>
     <color name="green">#48AE35</color>
     <color name="light_gray">#BCBCBC</color>
-    <color name="primaryText">#4A4A4A</color>
-    <color name="secondaryText">#c6c6c6</color>
+    <color name="primaryText">#422C16</color>
+    <color name="secondaryText">#9F7A65</color>
+    <color name="thirdText">#CCCCCC</color>
     <color name="off_white">#f4f4f4</color>
     <color name="brown">#5A3D1E</color>
     <color name="paige">#F9EDCF</color>

@@ -74,6 +74,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             productViewHolder.price.setText(String.valueOf(product.getRetailPrice()));
             productViewHolder.name.setText(product.getNameAr());
             Picasso.get().load(product.getImage()).into(productViewHolder.image);
+            productViewHolder.oldPrice.setText(String.valueOf(product.getMarketPrice()));
 
             productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -149,6 +150,8 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
         @BindView(R.id.productPrice)
         TextView price;
+        @BindView(R.id.oldPrice)
+        TextView oldPrice;
         @BindView(R.id.productOfferTag)
         View offerTag;
         @BindView(R.id.productName)

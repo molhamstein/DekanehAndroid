@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="145dp"
-    android:layout_height="220dp"
+    android:layout_height="235dp"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?attr/selectableItemBackgroundBorderless"
-    >
+    android:foreground="?attr/selectableItemBackgroundBorderless">
 
 
     <LinearLayout
@@ -14,8 +13,7 @@
         android:layout_marginBottom="4dp"
         android:layout_marginStart="-1dp"
         android:background="@drawable/shadow_card_black"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <TextView
             style="@style/PrimaryTextView"
@@ -51,21 +49,50 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="-16dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="-8dp"
+                android:layout_marginEnd="8dp"
+                android:foreground="@drawable/stroke">
+
+
+                <TextView
+                    android:id="@+id/oldPrice"
+                    style="@style/ThirdColorPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/dummy_price"
+                    android:textSize="14sp" />
+
+                <TextView
+                    style="@style/ThirdColorCurrency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="-3dp"
+                    android:text="@string/currency"
+                    android:textSize="6sp" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/productPrice"
-                style="@style/GreenPrice"
+                style="@style/PrimaryColorPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:text="@string/dummy_price"
-
+                android:textSize="16sp"
                 />
 
             <TextView
-                style="@style/GreenCurrency"
+                style="@style/PrimaryColorCurrency"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/currency"
@@ -96,38 +123,35 @@
         android:id="@+id/orderNowBtn"
         style="@style/WhiteBlackTextItemBtn"
         android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_gravity="bottom|center"
         android:background="@drawable/primary_color_button_round_10"
-        android:text="@string/buy_now"
-        />
+        android:text="@string/buy_now" />
 
     <FrameLayout
         android:id="@+id/orderBtn"
         style="@style/WhiteBlackTextOfferBtn"
         android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_gravity="bottom|center"
         android:background="@drawable/primary_color_button_round_10"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/plusOne"
+            style="@style/WhiteBoldTextView"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_gravity="start"
-            android:layout_marginTop="-12dp"
             android:layout_marginStart="8dp"
-            android:padding="8dp"
-            android:gravity="center"
-            android:text="+"
-            android:textSize="24sp"
-            style="@style/WhiteBoldTextView"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:layout_marginTop="-12dp"
             android:clickable="true"
             android:focusable="true"
-            />
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="+"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/orderCount"
@@ -140,20 +164,20 @@
 
         <TextView
             android:id="@+id/minusOne"
+            style="@style/WhiteBoldTextView"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_gravity="end"
-            android:layout_marginTop="-12dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginTop="-12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:gravity="center"
             android:padding="8dp"
             android:text="-"
             android:textColor="@color/white"
-            android:textSize="24sp"
-            style="@style/WhiteBoldTextView"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:focusable="true"/>
+            android:textSize="24sp" />
 
     </FrameLayout>
 

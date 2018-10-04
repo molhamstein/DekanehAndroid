@@ -137,15 +137,27 @@
 
     <!-- product home item styles -->
 
-    <style name="GreenPrice" parent="@android:style/TextAppearance.Widget.TextView">
+    <style name="PrimaryColorPrice" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:fontFamily">@font/cairo_black</item>
-        <item name="android:textColor">@color/light_green</item>
+        <item name="android:textColor">@color/primaryText</item>
         <item name="android:textSize">24sp</item>
     </style>
 
-    <style name="GreenCurrency" parent="@android:style/TextAppearance.Widget.TextView">
+    <style name="ThirdColorPrice" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/cairo_black</item>
+        <item name="android:textColor">@color/thirdText</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="PrimaryColorCurrency" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:fontFamily">@font/cairo_bold</item>
-        <item name="android:textColor">@color/light_green</item>
+        <item name="android:textColor">@color/primaryText</item>
+        <item name="android:alpha">.7</item>
+    </style>
+
+    <style name="ThirdColorCurrency" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/cairo_bold</item>
+        <item name="android:textColor">@color/thirdText</item>
         <item name="android:alpha">.7</item>
     </style>
 

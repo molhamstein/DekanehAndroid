@@ -21,6 +21,9 @@ public class Product implements Serializable{
     @SerializedName("retailPrice")
     @Expose
     private int retailPrice;
+    @SerializedName("marketPrice")
+    @Expose
+    private int marketPrice;
     @SerializedName("manufacturer")
     @Expose
     private Manufacturer manufacturer;
@@ -54,6 +57,10 @@ public class Product implements Serializable{
 
     public int getRetailPrice() {
         return retailPrice;
+    }
+
+    public int getMarketPrice() {
+        return marketPrice;
     }
 
     public Manufacturer getManufacturer() {
