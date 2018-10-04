@@ -41,7 +41,11 @@ public class User implements Serializable {
     @Expose
     private String gender;
 
-
+    public User(String phoneNumber, String ownerName, String shopName) {
+        this.phoneNumber = phoneNumber;
+        this.ownerName = ownerName;
+        this.shopName = shopName;
+    }
 
     public String getId() {
         return id;

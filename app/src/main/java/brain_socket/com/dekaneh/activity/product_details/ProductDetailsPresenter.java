@@ -1,5 +1,6 @@
 package brain_socket.com.dekaneh.activity.product_details;
 
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,6 +17,7 @@ import io.reactivex.functions.Consumer;
 
 public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends BasePresenterImpl<T> implements ProductDetailsVP.Presenter<T> {
 
+    // in some cases only id is valid. Every other atts are null.
     private Product product;
     private CartItem item;
 
@@ -28,9 +30,35 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
         this.product = GsonUtils.convertJsonStringToProductObject(getView().getIntent().getExtras().getString(Product.TAG));
-        getView().updateView(product);
+        fetchProduct();
         fetchSimilarProducts(product.getId());
-        item = new CartItem(product);
+    }
+
+
+    @Override
+    public void fetchProduct() {
+        getView().showLoading();
+
+        getCompositeDisposable().add(
+                AppApiHelper.getProduct(product)
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<Product>() {
+                            @Override
+                            public void accept(Product product) throws Exception {
+                                ProductDetailsPresenter.this.product = product;
+                                getView().updateView(product);
+                                getView().hideLoading();
+                                item = new CartItem(product);
+
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                getView().hideLoading();
+                            }
+                        })
+        );
     }
 
     @Override

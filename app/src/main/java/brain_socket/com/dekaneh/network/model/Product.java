@@ -36,6 +36,10 @@ public class Product implements Serializable{
         this.retailPrice = product.getRetailPrice();
     }
 
+    public Product(String id) {
+        this.id = id;
+    }
+
     public String getId() {
         return id;
     }

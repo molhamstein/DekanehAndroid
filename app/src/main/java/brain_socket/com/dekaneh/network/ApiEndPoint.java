@@ -6,6 +6,7 @@ public class ApiEndPoint {
 
     private ApiEndPoint(){ }
     public static final String PRODUCTS = BuildConfig.BASE_API_URL + "products";
+    public static final String SINGLE_PRODUCTS = BuildConfig.BASE_API_URL + "products/{id}";
     public static final String USERS = BuildConfig.BASE_API_URL + "users";
     public static final String SIMILAR_PRODUCTS = BuildConfig.BASE_API_URL + "products/similarProduct";
     public static final String LOGIN = BuildConfig.BASE_API_URL + "users/login";

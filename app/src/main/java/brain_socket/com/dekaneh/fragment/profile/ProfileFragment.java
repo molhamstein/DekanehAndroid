@@ -5,6 +5,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.github.florent37.viewanimator.ViewAnimator;
@@ -42,6 +43,13 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
     TextView ownerName;
     @BindView(R.id.phoneNumber)
     TextView phoneNumber;
+    @BindView(R.id.businessNameForm)
+    EditText businessNameForm;
+    @BindView(R.id.phoneNumberForm)
+    EditText phoneNumberForm;
+    @BindView(R.id.ownerNameForm)
+    EditText ownerNameForm;
+
 
     @Inject
     OrdersAdapter ordersAdapter;
@@ -108,5 +116,13 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
         this.storeName.setText(storeName);
         this.ownerName.setText(ownerName);
         this.phoneNumber.setText(phoneNumber);
+        this.businessNameForm.setText(storeName);
+        this.phoneNumberForm.setText(phoneNumber);
+        this.ownerNameForm.setText(ownerName);
+    }
+
+    @OnClick(R.id.updateUserBtn)
+    public void onClickedupdateUserBtn() {
+        presenter.patchUser();
     }
 }

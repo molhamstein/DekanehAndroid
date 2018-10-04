@@ -1,13 +1,19 @@
 package brain_socket.com.dekaneh.adapter;
 
+import android.util.Log;
+import android.view.View;
+
 import java.util.List;
 
+import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
+import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.network.model.SliderImage;
 import ss.com.bannerslider.adapters.SliderAdapter;
 import ss.com.bannerslider.viewholder.ImageSlideViewHolder;
 
 public class MainSliderAdapter extends SliderAdapter {
 
+    private static final String TAG = MainSliderAdapter.class.getSimpleName();
     private List<SliderImage> images;
 
     public MainSliderAdapter(List<SliderImage> images) {
@@ -20,11 +26,14 @@ public class MainSliderAdapter extends SliderAdapter {
     }
 
     @Override
-    public void onBindImageSlide(int position, ImageSlideViewHolder imageSlideViewHolder) {
+    public void onBindImageSlide(int position, final ImageSlideViewHolder imageSlideViewHolder) {
 
-        SliderImage image = images.get(position);
+        final SliderImage image = images.get(position);
         imageSlideViewHolder.bindImageSlide(image.getImage());
 
     }
 
+    public List<SliderImage> getImages() {
+        return images;
+    }
 }

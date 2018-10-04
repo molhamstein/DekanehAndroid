@@ -138,6 +138,14 @@ public class Session {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
+    public User getUser() {
+        return new User(
+                getPhoneNumber(),
+                getOwnerName(),
+                getShopName()
+        );
+    }
+
     public boolean isLoggedOn() {
         return !getAccessToken().equals("");
     }

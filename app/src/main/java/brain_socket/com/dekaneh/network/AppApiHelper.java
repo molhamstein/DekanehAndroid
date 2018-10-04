@@ -135,7 +135,6 @@ public class AppApiHelper {
                 .getObjectSingle(Order.class);
     }
 
-
     public static Single<Order> getOrderDetails(String orderId) {
         return Rx2AndroidNetworking.get(ApiEndPoint.ORDER)
                 .addPathParameter("id", orderId)
@@ -150,7 +149,20 @@ public class AppApiHelper {
                 .getObjectListSingle(Notification.class);
     }
 
+    public static Single<User> patchUser(User user, String accessToken) {
+        return Rx2AndroidNetworking.patch(ApiEndPoint.USERS)
+                .addApplicationJsonBody(user)
+                .addQueryParameter("access_token", accessToken)
+                .build()
+                .getObjectSingle(User.class);
+    }
 
+    public static Single<Product> getProduct(Product product) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.SINGLE_PRODUCTS)
+                .addPathParameter("id", product.getId())
+                .build()
+                .getObjectSingle(Product.class);
+    }
 
 
 }

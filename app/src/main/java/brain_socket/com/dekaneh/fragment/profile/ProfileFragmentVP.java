@@ -15,5 +15,6 @@ public class ProfileFragmentVP {
 
     public interface Presenter<T extends View> extends BasePresenter<T> {
         void fetchOrders();
+        void patchUser();
     }
 }

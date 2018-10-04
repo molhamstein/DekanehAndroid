@@ -2,6 +2,8 @@ package brain_socket.com.dekaneh.fragment.profile;
 
 import android.util.Log;
 
+import com.androidnetworking.error.ANError;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -11,6 +13,7 @@ import brain_socket.com.dekaneh.base.BasePresenterImpl;
 import brain_socket.com.dekaneh.network.AppApiHelper;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.Order;
+import brain_socket.com.dekaneh.network.model.User;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -51,6 +54,31 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
                     public void accept(Throwable throwable) throws Exception {
                         getView().hideLoading();
                         Log.e(TAG, "accept: ", throwable);
+                    }
+                })
+        );
+    }
+
+    @Override
+    public void patchUser() {
+        getView().showLoading();
+        getCompositeDisposable().add(
+                AppApiHelper.patchUser(getCacheStore().getSession().getUser(), getCacheStore().getSession().getAccessToken())
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(new Consumer<User>() {
+                    @Override
+                    public void accept(User user) throws Exception {
+                        Log.d(TAG, "accept: " + user.getOwnerName());
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.e(TAG, "accept: ", throwable);
+                        if (throwable instanceof ANError) {
+                            ANError error = (ANError) throwable;
+                            Log.e(TAG, "accept: " + error.getErrorBody(), error);
+                        }
                     }
                 })
         );

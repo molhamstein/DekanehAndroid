@@ -174,59 +174,62 @@
                 style="@style/PrimaryTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_gravity="start"
                 android:layout_marginTop="30dp"
-                android:text="Business Name" />
+                android:text="@string/store_name" />
 
             <EditText
+                android:id="@+id/businessNameForm"
                 style="@style/PrimaryBoldTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="-4dp"
                 android:layout_marginStart="-4dp"
                 android:layout_marginTop="-22dp"
-                android:hint="Email"
+                android:hint="@string/store_name"
                 android:textSize="22sp" />
 
             <TextView
                 style="@style/PrimaryTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_gravity="start"
                 android:layout_marginTop="-6dp"
-                android:text="Phone number" />
+                android:text="@string/phone_number" />
 
             <EditText
+                android:id="@+id/phoneNumberForm"
                 style="@style/PrimaryBoldTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="-4dp"
                 android:layout_marginStart="-4dp"
                 android:layout_marginTop="-22dp"
-                android:hint="(Optional)"
+                android:hint="@string/phone_number"
                 android:textSize="22sp" />
 
             <TextView
                 style="@style/PrimaryTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_gravity="start"
                 android:layout_marginTop="-6dp"
-                android:text="Owner Name" />
+                android:text="@string/owner_name" />
 
             <EditText
+                android:id="@+id/ownerNameForm"
                 style="@style/PrimaryBoldTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="-4dp"
                 android:layout_marginStart="-4dp"
                 android:layout_marginTop="-22dp"
-                android:hint="Name"
+                android:hint="@string/owner_name"
                 android:textSize="22sp" />
 
 
             <Button
-                android:id="@+id/loginBtn"
+                android:id="@+id/updateUserBtn"
                 style="@style/WhiteBlackTextView"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"

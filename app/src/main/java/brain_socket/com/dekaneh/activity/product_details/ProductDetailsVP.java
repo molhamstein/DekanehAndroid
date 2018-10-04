@@ -16,11 +16,10 @@ public class ProductDetailsVP {
     }
 
     public interface Presenter<T extends BaseView> extends BasePresenter<T> {
-
+        void fetchProduct();
         void fetchSimilarProducts(String id);
         void onMinusBtnClicked();
         void onPlusBtnClicked();
-
     }
 
 }

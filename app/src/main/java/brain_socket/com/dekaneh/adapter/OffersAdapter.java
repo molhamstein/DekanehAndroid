@@ -19,6 +19,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.Session;
 import brain_socket.com.dekaneh.network.model.CartItem;
@@ -97,6 +98,13 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
                     holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
                 }
 
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProductDetailsActivity.start(view.getContext(), offer);
             }
         });
 

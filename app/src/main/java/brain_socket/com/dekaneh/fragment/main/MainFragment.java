@@ -3,6 +3,7 @@ package brain_socket.com.dekaneh.fragment.main;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
 import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.MainSliderAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
@@ -24,6 +26,7 @@ import brain_socket.com.dekaneh.network.model.SliderImage;
 import butterknife.BindView;
 import butterknife.OnClick;
 import ss.com.bannerslider.Slider;
+import ss.com.bannerslider.event.OnSlideClickListener;
 
 public class MainFragment extends BaseFragment implements MainFragmentVP.View {
 
@@ -81,6 +84,16 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
         productsRV.setAdapter(categoriesAdapter);
         productsRV.setNestedScrollingEnabled(true);
 
+        slider.setOnSlideClickListener(new OnSlideClickListener() {
+            @Override
+            public void onSlideClick(int position) {
+                Log.d("ASDASD", "onSlideClick: " + position);
+                if (sliderAdapter.getImages().get(position).getType().equals("product")) {
+                    Product product = new Product(sliderAdapter.getImages().get(position).getId());
+                    ProductDetailsActivity.start(getContext(), product);
+                }
+            }
+        });
 
 
     }
