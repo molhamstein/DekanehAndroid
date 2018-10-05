@@ -109,7 +109,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         });
 
         holder.price.setText(String.valueOf(offer.getRetailPrice()));
-        holder.oldPrice.setText(String.valueOf(offer.getMarketPrice()));
+        holder.oldPrice.setText(String.valueOf(offer.getWholeSaleMarketPrice()));
 
     }
 
