@@ -202,7 +202,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
 
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-//                presenter.restart();
+                presenter.restart();
             }
         }
 
