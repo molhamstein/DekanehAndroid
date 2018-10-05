@@ -54,6 +54,7 @@ public class NewAccountFragmentPresenter<T extends NewAccountFragmentVP.View> ex
                             }, new Consumer<Throwable>() {
                                 @Override
                                 public void accept(Throwable throwable) throws Exception {
+                                    getView().hideLoading();
                                     if (throwable instanceof ANError) {
                                         Log.d("", "accept: " + NetworkUtils.getError(throwable));
                                         getView().showMessage(NetworkUtils.getError(throwable));
