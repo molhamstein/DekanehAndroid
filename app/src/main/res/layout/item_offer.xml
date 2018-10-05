@@ -133,7 +133,7 @@
         android:layout_marginStart="108dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="32dp"
-        android:text="3*150"
+        android:text="2*3 علب"
         style="@style/SecondaryBlackTextView"
         android:textSize="16sp"/>
 

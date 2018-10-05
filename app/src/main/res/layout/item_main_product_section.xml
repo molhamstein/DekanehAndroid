@@ -21,7 +21,7 @@
 
         <TextView
             android:id="@+id/seeAllText"
-            style="@style/PrimaryTextView"
+            style="@style/PrimaryBoldTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
@@ -40,7 +40,7 @@
         android:layout_width="120dp"
         android:layout_height="3dp"
         android:layout_marginStart="8dp"
-        android:background="@color/green" />
+        android:background="@color/primaryText" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mainProductsRV"
