@@ -2,6 +2,7 @@ package brain_socket.com.dekaneh.fragment.registration.new_account;
 
 
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.github.florent37.viewanimator.AnimationListener;
@@ -12,6 +13,7 @@ import javax.inject.Inject;
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.custom.DekanehInterpolator;
+import brain_socket.com.dekaneh.fragment.registration.SubmitAccountFragment;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -36,6 +38,8 @@ public class NewAccountFragment extends BaseFragment implements NewAccountFragme
     View loginLayout;
     @BindView(R.id.newAccountPolicyLayout)
     View policyLayout;
+    @BindView(R.id.checkBox)
+    CheckBox checkBox;
 
     @BindView(R.id.phoneNumber)
     EditText phoneNumber;
@@ -88,10 +92,9 @@ public class NewAccountFragment extends BaseFragment implements NewAccountFragme
         return NewAccountFragment.class.getSimpleName();
     }
 
-
     @OnClick(R.id.signInText)
     public void onSignInTextClicked() {
-        performOutAnimation(new AnimationListener.Stop() {
+        outAnimation(new AnimationListener.Stop() {
             @Override
             public void onStop() {
                 navigationPresenter.replaceFragment(LoginFragment.newInstance());
@@ -101,19 +104,19 @@ public class NewAccountFragment extends BaseFragment implements NewAccountFragme
 
     @OnClick(R.id.newAccountSubmitBtn)
     public void onSubmitBtnClicked() {
-        performOutAnimation(new AnimationListener.Stop() {
-            @Override
-            public void onStop() {
-                presenter.signUp(phoneNumber.getText().toString(),
-                        storeName.getText().toString(),
-                        ownerName.getText().toString(),
-                        "",
-                        password.getText().toString());
+        if (checkBox.isChecked()) {
+            presenter.signUp(phoneNumber.getText().toString(),
+                    storeName.getText().toString(),
+                    ownerName.getText().toString(),
+                    "",
+                    password.getText().toString());
+        }else{
+            showMessage(getString(R.string.terms_conditions_msg));
+        }
             }
-        });
-    }
 
-    private void performOutAnimation(AnimationListener.Stop onStop) {
+    @Override
+    public void outAnimation(AnimationListener.Stop onStop) {
         ViewAnimator.animate(phoneCard).translationX(0, 600).alpha(1, 0).duration(600)
                 .andAnimate(storeNameCard).translationX(0, 700).alpha(1, 0).duration(600)
                 .andAnimate(ownerNameLayout).translationX(0, 750).alpha(1, 0).duration(600)
@@ -128,7 +131,18 @@ public class NewAccountFragment extends BaseFragment implements NewAccountFragme
     }
 
     @Override
-    public void onSuccessfulSignUp() {
-        navigationPresenter.replaceFragment(LoginFragment.newInstance());
+    public boolean areFieldsEmpty() {
+        return !password.getText().toString().isEmpty()
+                && !storeName.getText().toString().isEmpty()
+                && !ownerName.getText().toString().isEmpty()
+                && !phoneNumber.getText().toString().isEmpty()
+                ;
     }
+
+    @Override
+    public void onSuccessfulSignUp() {
+        navigationPresenter.replaceFragment(SubmitAccountFragment.newInstance());
+    }
+
 }
+

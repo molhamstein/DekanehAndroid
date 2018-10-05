@@ -1,5 +1,7 @@
 package brain_socket.com.dekaneh.fragment.registration.new_account;
 
+import com.github.florent37.viewanimator.AnimationListener;
+
 import brain_socket.com.dekaneh.base.BasePresenter;
 import brain_socket.com.dekaneh.base.BaseView;
 
@@ -7,6 +9,8 @@ public class NewAccountFragmentVP {
 
     public interface View extends BaseView {
         void onSuccessfulSignUp();
+        void outAnimation(AnimationListener.Stop onStop);
+        boolean areFieldsEmpty();
     }
 
     public interface Presenter<T extends BaseView> extends BasePresenter<T> {

@@ -161,5 +161,6 @@
     <string name="preparing">Preparing</string>
     <string name="edit">edit</string>
     <string name="submit" />
+    <string name="terms_conditions_msg">Please Agree to our terms and conditions</string>
 
 </resources>
