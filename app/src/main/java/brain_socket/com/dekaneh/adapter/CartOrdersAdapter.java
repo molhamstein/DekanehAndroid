@@ -50,6 +50,7 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
     public void onBindViewHolder(@NonNull final CartOrderViewHolder holder, int position) {
 
         final CartItem item = items.get(position);
+        Log.d("AD", "onBindViewHolder: " + item.getImage());
         Picasso.get().load(item.getImage()).into(holder.image);
         holder.name.setText(item.getNameAr());
         holder.quantity.setText(String.valueOf(item.getRetailPrice()) + " * " + String.valueOf(item.getCount()));

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp">
+    android:layout_height="120dp"
+    android:layout_marginTop="8dp">
 
     <ImageView
         android:id="@+id/itemImage"
@@ -18,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="108dp"
         android:text="@string/dummy_text"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="120dp"
         style="@style/PrimaryBoldTextView"
         android:textSize="11sp"
         android:layout_marginTop="8dp"
@@ -69,7 +70,7 @@
         android:layout_gravity="end|top"
         style="@style/PrimaryBlackTextView"
         android:textSize="32sp"
-        android:layout_marginTop="-12dp"
+        android:layout_marginTop="-8dp"
         android:layout_marginEnd="40dp"
         />
 
@@ -77,7 +78,7 @@
         android:id="@+id/orderBtnLayout"
         style="@style/WhiteBlackTextOfferBtn"
         android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"

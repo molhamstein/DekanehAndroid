@@ -70,4 +70,8 @@ public class Product implements Serializable{
     public String getDescription() {
         return description;
     }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

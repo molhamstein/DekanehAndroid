@@ -53,6 +53,8 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
     public void onBindViewHolder(@NonNull final OffersViewHolder holder, int position) {
 
         final Offer offer = offers.get(position);
+        offer.setImage(offer.getProducts().get(0).getImage());
+        Log.d("", "onBindViewHolder: " + offer.getProducts().get(0).getImage());
         final CartItem item = new CartItem(offer);
 
         for (CartItem mItem : cacheStore.getCartItems())

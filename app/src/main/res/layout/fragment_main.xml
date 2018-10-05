@@ -72,7 +72,8 @@
                 android:layout_height="wrap_content"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-
+     <View android:layout_width="match_parent"
+         android:layout_height="60dp"/>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
