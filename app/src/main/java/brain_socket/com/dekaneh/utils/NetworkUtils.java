@@ -27,4 +27,8 @@ public class NetworkUtils {
         return "Not Instance Of ANError.class";
     }
 
+    public static String getStaticMapUrl(String lat, String lng) {
+        return "http://maps.google.com/maps/api/staticmap?center=33.515311,36.262086&zoom=15&size=400x300&sensor=false";
+    }
+
 }

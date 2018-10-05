@@ -24,8 +24,6 @@ public class LoginFragment extends BaseFragment implements LoginFragmentVP.View 
     @Inject
     LoginFragmentVP.Presenter<LoginFragmentVP.View> presenter;
 
-    @BindView(R.id.loginText1)
-    View text1;
     @BindView(R.id.loginLogo)
     View logo;
     @BindView(R.id.loginPhoneNumber)
@@ -59,8 +57,7 @@ public class LoginFragment extends BaseFragment implements LoginFragmentVP.View 
             getActivityComponent().inject(this);
         presenter.onAttach(this);
 
-        ViewAnimator.animate(text1).slideLeft().fadeIn()
-                .andAnimate(logo).slideLeft().fadeIn()
+        ViewAnimator.animate(logo).slideLeft().fadeIn()
                 .andAnimate(phoneNumberCard).translationX(-800, 0)
                 .alpha(0f, 1f).duration(800)
                 .andAnimate(passwordCard).translationX(-1000, 0)
@@ -117,9 +114,7 @@ public class LoginFragment extends BaseFragment implements LoginFragmentVP.View 
     }
 
     private void performOutAnimation(AnimationListener.Stop onStop) {
-        ViewAnimator.animate(text1).translationX(0, 600)
-                .alpha(1f, 0f).duration(600)
-                .andAnimate(logo).translationX(0, 600)
+        ViewAnimator.animate(logo).translationX(0, 600)
                 .alpha(1f, 0f).duration(600)
                 .andAnimate(phoneNumberCard).translationX(0, 600)
                 .alpha(1f, 0f).duration(600)

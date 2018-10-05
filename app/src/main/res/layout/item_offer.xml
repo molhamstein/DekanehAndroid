@@ -6,7 +6,7 @@
     android:layout_gravity="center"
     android:layout_margin="8dp">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_marginBottom="10dp"
@@ -20,30 +20,18 @@
         <TextView
             android:id="@+id/offerName"
             style="@style/PrimaryBoldItemTextView"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="50dp"
             android:layout_marginStart="100dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:lines="2"
-            android:textSize="12sp"
-            android:text="@string/dummy_text" />
+            android:text="@string/dummy_text"
+            android:textSize="12sp" />
 
-        <TextView
-            android:id="@+id/percent"
-            style="@style/WhiteBlackTextItemOffer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/item_offer_textview_background_red"
-            android:gravity="center"
-            android:paddingBottom="4dp"
-            android:paddingEnd="8dp"
-            android:paddingStart="8dp"
-            android:paddingTop="4dp"
-            android:text="10%" />
 
-    </LinearLayout>
+    </FrameLayout>
 
 
     <ImageView
@@ -58,13 +46,12 @@
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:background="@drawable/primary_color_button_round_10"
         android:text="@string/buy_now"
-        android:visibility="visible"
-        />
+        android:visibility="visible" />
 
     <FrameLayout
         android:id="@+id/orderBtn"
@@ -72,29 +59,27 @@
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:background="@drawable/primary_color_button_round_10"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/plusOne"
+            style="@style/WhiteBoldTextView"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_gravity="start"
-            android:layout_marginTop="-12dp"
             android:layout_marginStart="8dp"
-            android:padding="8dp"
-            android:gravity="center"
-            android:text="+"
-            android:textSize="24sp"
-            style="@style/WhiteBoldTextView"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:layout_marginTop="-12dp"
             android:clickable="true"
             android:focusable="true"
-            />
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="+"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/orderCount"
@@ -107,51 +92,51 @@
 
         <TextView
             android:id="@+id/minusOne"
+            style="@style/WhiteBoldTextView"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_gravity="end"
-            android:layout_marginTop="-12dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginTop="-12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:gravity="center"
             android:padding="8dp"
             android:text="-"
             android:textColor="@color/white"
-            android:textSize="24sp"
-            style="@style/WhiteBoldTextView"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:focusable="true"/>
+            android:textSize="24sp" />
 
     </FrameLayout>
 
 
     <TextView
         android:id="@+id/quantity"
+        style="@style/SecondaryBlackTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
-        android:layout_marginStart="108dp"
-        android:layout_marginEnd="100dp"
         android:layout_marginBottom="32dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginStart="108dp"
         android:text="2*3 علب"
-        style="@style/SecondaryBlackTextView"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
         android:layout_marginBottom="48dp"
         android:layout_marginEnd="32dp"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom|end">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="-8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginStart="-8dp"
             android:foreground="@drawable/stroke_secondary_color">
 
 
@@ -182,18 +167,28 @@
             android:layout_height="wrap_content"
             android:gravity="start"
             android:text="@string/dummy_price"
-            android:textSize="22sp"
-            />
+            android:textSize="22sp" />
 
         <TextView
             style="@style/PrimaryColorCurrency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/currency"
-            android:textSize="8sp"
-            />
+            android:textSize="8sp" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/percent"
+        style="@style/WhiteBlackTextItemOffer"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="top|end"
+        android:background="@drawable/badge_discount"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:text="10%"
+        android:textSize="16sp" />
 
 
 </FrameLayout>

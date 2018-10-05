@@ -14,6 +14,7 @@ import brain_socket.com.dekaneh.network.AppApiHelper;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.User;
+import brain_socket.com.dekaneh.utils.NetworkUtils;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -32,6 +33,8 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
         getView().updateView(getCacheStore().getSession().getShopName(),
                 getCacheStore().getSession().getOwnerName(),
                 getCacheStore().getSession().getPhoneNumber());
+        getView().updateMap(NetworkUtils.getStaticMapUrl("33.515311", "36.262086"));
+
     }
 
     @Override

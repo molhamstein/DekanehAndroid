@@ -8,7 +8,7 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp">
+        >
 
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -25,6 +25,7 @@
                     app:layout_scrollFlags="scroll">
 
                     <ImageView
+                        android:id="@+id/map"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
@@ -243,11 +244,5 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
-    <ImageView
-        android:id="@+id/canopy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-25dp"
-        android:src="@drawable/canopy_down" />
 
 </FrameLayout>

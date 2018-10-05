@@ -165,13 +165,6 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         toolbarTitle.setText(title);
     }
 
-    @Override
-    public void showToolbarCanopy(boolean show) {
-        if (show) toolbar.setBackgroundResource(R.drawable.canopy_up);
-        else toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
-    }
-
-
     private void replaceFragment(BaseFragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.mainContainer, fragment, fragment.TAG())

@@ -4,11 +4,15 @@ import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.TabLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.florent37.viewanimator.ViewAnimator;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -29,14 +33,14 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
     @Inject
     ProfileFragmentVP.Presenter<ProfileFragmentVP.View> presenter;
 
+    @BindView(R.id.map)
+    ImageView map;
     @BindView(R.id.profileOrdersRV)
     RecyclerView profileOrdersRV;
     @BindView(R.id.bottomSheet)
     View bottomSheet;
     @BindView(R.id.tabLayout)
     TabLayout tabLayout;
-    @BindView(R.id.canopy)
-    View canopy;
     @BindView(R.id.storeName)
     TextView storeName;
     @BindView(R.id.ownerName)
@@ -73,10 +77,6 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
         presenter.onAttach(this);
         presenter.fetchOrders();
 
-        ViewAnimator.animate(canopy).translationY(-200, 0)
-                .interpolator(new DekanehInterpolator(1f))
-                .duration(300)
-                .start();
         profileOrdersRV.setLayoutManager(new LinearLayoutManager(getContext()));
         profileOrdersRV.setAdapter(ordersAdapter);
         behavior = BottomSheetBehavior.from(bottomSheet);
@@ -119,6 +119,11 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
         this.businessNameForm.setText(storeName);
         this.phoneNumberForm.setText(phoneNumber);
         this.ownerNameForm.setText(ownerName);
+    }
+
+    @Override
+    public void updateMap(String url) {
+        Picasso.get().load(url).into(map);
     }
 
     @OnClick(R.id.updateUserBtn)

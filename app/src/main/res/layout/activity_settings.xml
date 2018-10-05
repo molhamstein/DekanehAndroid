@@ -51,15 +51,13 @@
                 android:layout_height="150dp"
                 android:background="@color/paige">
 
-                <TextView
+                <ImageView
                     style="@style/WhiteBlackTextView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="-22dp"
-                    android:alpha=".3"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_vertical"
                     android:gravity="center"
-                    android:text="@string/title_activity_settings"
-                    android:textSize="82sp" />
+                    app:srcCompat="@drawable/logo" />
 
             </FrameLayout>
 
