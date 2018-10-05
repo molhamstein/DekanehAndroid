@@ -58,7 +58,7 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
 
     @Override
     public void restart() {
-        getCacheStore().clearCache();
+        getCacheStore().clearProductsCache();
         getView().recreate();
     }
 

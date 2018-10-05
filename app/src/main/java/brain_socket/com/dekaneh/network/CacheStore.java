@@ -180,6 +180,13 @@ public class CacheStore {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
+    public void clearProductsCache() {
+        getPreference().edit().remove(PRODUCTS_LIST).apply();
+        getPreference().edit().remove(HOME_CATEGORIES_LIST).apply();
+        getPreference().edit().remove(FEATURED_OFFERS).apply();
+
+    }
+
     public void clearCache() {
         getPreference().edit().remove(PRODUCTS_LIST).apply();
         getPreference().edit().remove(CATEGORIES_LIST).apply();
