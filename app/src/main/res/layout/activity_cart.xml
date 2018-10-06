@@ -111,7 +111,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@drawable/primary_color_button_round_10"
-                android:text="Send Order"
+                android:text="@string/send_order"
                 android:textColor="@color/white" />
 
         </LinearLayout>
@@ -135,6 +135,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Your cart is empty!"
+        android:text="@string/your_cart_is_empty"
         android:visibility="gone" />
 </LinearLayout>

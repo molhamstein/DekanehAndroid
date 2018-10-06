@@ -15,6 +15,7 @@ import brain_socket.com.dekaneh.network.AppApiHelper;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.LoginRequest;
 import brain_socket.com.dekaneh.network.model.LoginResponse;
+import brain_socket.com.dekaneh.utils.NetworkUtils;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -70,7 +71,8 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
                                 if (throwable instanceof ANError) {
                                     ANError error = (ANError) throwable;
                                     getView().hideLoading();
-                                    getView().showMessage(error.getErrorBody());
+                                    getView().showMessage(NetworkUtils.getError(throwable));
+
                                 }
                             }
                         })

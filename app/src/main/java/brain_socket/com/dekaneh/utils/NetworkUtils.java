@@ -6,6 +6,8 @@ import android.net.NetworkInfo;
 
 import com.androidnetworking.error.ANError;
 
+import brain_socket.com.dekaneh.network.model.Error;
+
 public class NetworkUtils {
 
     private NetworkUtils() { }
@@ -21,10 +23,11 @@ public class NetworkUtils {
     public static String getError(Throwable throwable) {
 
         if (throwable instanceof ANError) {
-            ANError error = (ANError) throwable;
-            return error.getErrorBody();
+            ANError anError = (ANError) throwable;
+            Error error =  anError.getErrorAsObject(Error.class);
+            return error.getMessage();
         }
-        return "Not Instance Of ANError.class";
+        return "Not Instance Of Error.class";
     }
 
     public static String getStaticMapUrl(String lat, String lng) {

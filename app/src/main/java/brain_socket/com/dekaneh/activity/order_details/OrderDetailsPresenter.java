@@ -14,6 +14,7 @@ import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.utils.AppDateUtils;
 import brain_socket.com.dekaneh.utils.GsonUtils;
+import brain_socket.com.dekaneh.utils.NetworkUtils;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -53,6 +54,8 @@ public class OrderDetailsPresenter<T extends OrderDetailsVP.View> extends BasePr
                             @Override
                             public void accept(Throwable throwable) throws Exception {
                                 getView().hideLoading();
+                                getView().showMessage(NetworkUtils.getError(throwable));
+
                             }
                         })
         );
