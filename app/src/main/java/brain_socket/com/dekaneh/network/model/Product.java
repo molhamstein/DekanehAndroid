@@ -39,6 +39,16 @@ public class Product implements Serializable{
         this.retailPrice = product.getRetailPrice();
     }
 
+
+    public Product(Offer offer, String image){
+        this.id = offer.getId();
+        this.nameAr = offer.getNameAr();
+        this.retailPrice = offer.getRetailPrice();
+        this.manufacturer = offer.getManufacturer();
+        this.image = image;
+        this.description = offer.getDescription();
+    }
+
     public Product(String id) {
         this.id = id;
     }
@@ -73,5 +83,9 @@ public class Product implements Serializable{
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

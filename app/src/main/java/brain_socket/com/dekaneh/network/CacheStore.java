@@ -156,7 +156,7 @@ public class CacheStore {
                 return item.getCount();
             }
         }
-        return 1;
+        return 0;
     }
 
     public boolean isCartItemExist(CartItem mItem) {

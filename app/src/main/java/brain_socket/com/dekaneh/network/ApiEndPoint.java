@@ -5,6 +5,7 @@ import brain_socket.com.dekaneh.BuildConfig;
 public class ApiEndPoint {
 
     private ApiEndPoint(){ }
+
     public static final String PRODUCTS = BuildConfig.BASE_API_URL + "products";
     public static final String SINGLE_PRODUCTS = BuildConfig.BASE_API_URL + "products/{id}";
     public static final String USERS = BuildConfig.BASE_API_URL + "users";
@@ -21,5 +22,6 @@ public class ApiEndPoint {
     public static final String ORDER = ORDERS + "/{id}";
     public static final String NOTIFICATIONS = BuildConfig.BASE_API_URL + "notifications";
     public static final String LOGOUT = "users/logout";
+    public static final String PRODUCT_OFFERS = PRODUCTS + "/{id}/offers" ;
 
 }

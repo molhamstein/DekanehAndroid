@@ -1,5 +1,7 @@
 package brain_socket.com.dekaneh.network.model;
 
+import android.util.Log;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -18,6 +20,12 @@ public class CartItem extends Product implements Serializable{
 
     public CartItem(Product product) {
         super(product);
+        Log.d(TAG, "CartItem: " + product.getId());
+    }
+
+    @Override
+    public String getId() {
+        return super.getId();
     }
 
     public void setCount(int count) {

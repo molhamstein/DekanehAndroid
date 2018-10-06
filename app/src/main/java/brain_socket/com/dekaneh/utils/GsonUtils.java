@@ -1,5 +1,7 @@
 package brain_socket.com.dekaneh.utils;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -38,6 +40,7 @@ public class GsonUtils {
     }
 
     public static <T> String convertObjectToJson(T item) {
+        Log.d("DADADA", "convertObjectToJson: " + new Gson().toJson(item));
         return new Gson().toJson(item);
     }
 

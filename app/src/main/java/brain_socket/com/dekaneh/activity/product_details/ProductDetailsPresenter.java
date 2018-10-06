@@ -1,6 +1,8 @@
 package brain_socket.com.dekaneh.activity.product_details;
 
 
+import android.util.Log;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,8 +12,10 @@ import brain_socket.com.dekaneh.base.BasePresenterImpl;
 import brain_socket.com.dekaneh.network.AppApiHelper;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.CartItem;
+import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.utils.GsonUtils;
+import brain_socket.com.dekaneh.utils.NetworkUtils;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -29,14 +33,17 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
     @Override
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
+        Log.d("DADADA", "onAttach: " + getView().getIntent().getExtras().getString(Product.TAG));
         this.product = GsonUtils.convertJsonStringToProductObject(getView().getIntent().getExtras().getString(Product.TAG));
         fetchProduct();
-        fetchSimilarProducts(product.getId());
+        fetchOffers();
+        fetchSimilarProducts();
     }
 
 
     @Override
     public void fetchProduct() {
+
         getView().showLoading();
 
         getCompositeDisposable().add(
@@ -46,26 +53,56 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
                         .subscribe(new Consumer<Product>() {
                             @Override
                             public void accept(Product product) throws Exception {
+                                String imageUrl = ProductDetailsPresenter.this.product.getImage();
+                                item = new CartItem(ProductDetailsPresenter.this.product);
+                                getView().updateOrderCountText(getCacheStore().cartItemCount(item));
                                 ProductDetailsPresenter.this.product = product;
-                                getView().updateView(product);
+                                getView().updateView(product, imageUrl);
                                 getView().hideLoading();
-                                item = new CartItem(product);
 
                             }
                         }, new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
                                 getView().hideLoading();
+                                Log.e("", "accept: " + NetworkUtils.getError(throwable));
                             }
                         })
         );
     }
 
     @Override
-    public void fetchSimilarProducts(String id) {
+    public void fetchOffers() {
+        getView().showLoading();
+
+        getCompositeDisposable().add(
+                AppApiHelper.getProductOffers(product.getId())
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<List<Offer>>() {
+                            @Override
+                            public void accept(List<Offer> offers) throws Exception {
+
+                                if (offers.isEmpty()) getView().hideOffersSection();
+                                else getView().addAllOffers(offers);
+                                getView().hideLoading();
+
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                Log.e("", "accept: " + NetworkUtils.getError(throwable), throwable);
+
+                            }
+                        })
+        );
+    }
+
+    @Override
+    public void fetchSimilarProducts() {
         getView().showLoading();
         getCompositeDisposable().add(
-                AppApiHelper.getSimilarProducts(id)
+                AppApiHelper.getSimilarProducts(product.getId())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<Product>>() {
@@ -80,6 +117,7 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
                             @Override
                             public void accept(Throwable throwable) throws Exception {
                                 getView().hideLoading();
+                                Log.e("", "accept: " + NetworkUtils.getError(throwable));
                             }
                         })
         );

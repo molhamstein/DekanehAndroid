@@ -164,5 +164,14 @@ public class AppApiHelper {
                 .getObjectSingle(Product.class);
     }
 
+    public static Single<List<Offer>> getProductOffers(String productId) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.PRODUCT_OFFERS)
+                .addPathParameter("id", productId)
+                .addQueryParameter("limit", "10")
+                .build()
+                .getObjectListSingle(Offer.class);
+    }
+
+
 
 }

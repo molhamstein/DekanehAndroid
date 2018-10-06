@@ -36,8 +36,9 @@ public class Offer extends Product implements Serializable {
     @Expose
     private List<Product> products;
 
-    public Offer(Product product) {
-        super(product);
+
+    public Offer(Offer offer) {
+        super(offer);
     }
 
     @Override

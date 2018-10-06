@@ -27,6 +27,7 @@ import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseView;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.Session;
+import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.utils.GsonUtils;
 import butterknife.BindView;
@@ -61,11 +62,20 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     TextView description;
     @BindView(R.id.similarProductsLayout)
     View similarProductsLayout;
+    @BindView(R.id.offersView1)
+    View offersView1;
+    @BindView(R.id.offersView2)
+    View offersView2;
+    @BindView(R.id.similarView1)
+    View similarView1;
+    @BindView(R.id.similarView2)
+    View similarView2;
 
     @BindView(R.id.orderCount)
     TextView orderCount;
 
     ProductsAdapter productsAdapter;
+    MiniOfferAdapter miniOfferAdapter;
 
     public static void start(Context context, Product product) {
         Intent starter = new Intent(context, ProductDetailsActivity.class);
@@ -88,9 +98,10 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
 
         presenter.onAttach(this);
         productsAdapter = new ProductsAdapter(new CacheStore(this, new Session(this)));
+        miniOfferAdapter = new MiniOfferAdapter();
 
         miniOffersRV.setLayoutManager(new LinearLayoutManager(this));
-        miniOffersRV.setAdapter(new MiniOfferAdapter());
+        miniOffersRV.setAdapter(miniOfferAdapter);
         similarProductsRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         similarProductsRV.setAdapter(productsAdapter);
 
@@ -109,8 +120,8 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     }
 
     @Override
-    public void updateView(Product product) {
-        Picasso.get().load(product.getImage()).into(this.productImage);
+    public void updateView(Product product, String imageUrl) {
+        Picasso.get().load(imageUrl).into(this.productImage);
         this.name.setText(product.getNameAr());
         this.price.setText(String.valueOf(product.getRetailPrice()));
         this.packName.setText(product.getNameAr());
@@ -124,6 +135,11 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     }
 
     @Override
+    public void addAllOffers(List<Offer> offers) {
+        miniOfferAdapter.addAllOffers(offers);
+    }
+
+    @Override
     public void updateOrderCountText(int count) {
         orderCount.setText(String.valueOf(count));
     }
@@ -131,6 +147,15 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     @Override
     public void hideSimilarProductsSection() {
         similarProductsLayout.setVisibility(View.GONE);
+        similarView1.setVisibility(View.GONE);
+        similarView2.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void hideOffersSection() {
+        offersView1.setVisibility(View.GONE);
+        offersView2.setVisibility(View.GONE);
+        miniOffersRV.setVisibility(View.GONE);
     }
 
 
@@ -144,8 +169,4 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         presenter.onMinusBtnClicked();
     }
 
-    @OnClick(R.id.addNowBtn)
-    public void onAddNowBtnClicked() {
-
-    }
 }

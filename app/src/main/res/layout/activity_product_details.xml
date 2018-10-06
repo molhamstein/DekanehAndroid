@@ -61,7 +61,6 @@
                         style="@style/BrownBoldTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/dummy_pepsi_title"
                         android:textSize="14sp" />
 
                     <TextView
@@ -87,7 +86,6 @@
                             style="@style/BrownBlackTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/dummy_price"
                             android:textSize="40sp" />
 
                         <TextView
@@ -110,7 +108,7 @@
                     android:layout_gravity="end|bottom"
                     android:layout_marginEnd="24dp"
                     android:scaleType="fitStart"
-                    android:src="@drawable/tide" />
+                    />
 
             </FrameLayout>
 
@@ -139,7 +137,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="-16dp"
                         android:textSize="22sp"
-                        android:text="@string/dummy_pepsi_title" />
+                        />
 
                     <TextView
                         style="@style/SecondaryBlackTextView"
@@ -153,7 +151,6 @@
                         style="@style/PrimaryBlackTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/pepsi_co"
                         android:layout_marginTop="-12dp"
                         android:textSize="22sp"/>
 
@@ -164,8 +161,9 @@
                     android:id="@+id/orderBtn"
                     style="@style/WhiteBlackTextOfferBtn"
                     android:layout_width="200dp"
-                    android:layout_height="45dp"
+                    android:layout_height="70dp"
                     android:layout_gravity="bottom|end"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/primary_color_button_round_10"
                     android:visibility="visible">
@@ -216,8 +214,8 @@
 
             </FrameLayout>
 
-
             <TextView
+                android:id="@+id/offersView1"
                 style="@style/PrimaryBlackTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -227,6 +225,7 @@
                 android:text="@string/offers" />
 
             <View
+                android:id="@+id/offersView2"
                 android:layout_width="80dp"
                 android:layout_height="3dp"
                 android:layout_marginStart="16dp"
@@ -272,6 +271,7 @@
 
 
             <TextView
+                android:id="@+id/similarView1"
                 style="@style/SecondaryBlackTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -281,6 +281,7 @@
                 android:textSize="18sp" />
 
             <View
+                android:id="@+id/similarView2"
                 android:layout_width="80dp"
                 android:layout_height="3dp"
                 android:layout_gravity="center"
@@ -310,15 +311,6 @@
                 android:layout_marginTop="8dp" />
 
             </LinearLayout>
-            <Button
-                android:id="@+id/addNowBtn"
-                style="@style/WhiteBlackTextOfferBtn"
-                android:layout_width="200dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="70dp"
-                android:background="@drawable/primary_color_button_round_10"
-                android:text="@string/buy_now" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
