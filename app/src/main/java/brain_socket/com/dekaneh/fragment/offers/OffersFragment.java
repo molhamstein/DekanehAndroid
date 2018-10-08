@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
+import brain_socket.com.dekaneh.adapter.OnItemCountChange;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.network.model.Offer;
 import butterknife.BindView;
@@ -46,6 +47,12 @@ public class OffersFragment extends BaseFragment implements OffersFragmentVP.Vie
         offersRV.setLayoutManager(linearLayoutManager);
         offersRV.setAdapter(offersAdapter);
 
+        offersAdapter.setOnItemCountChange(new OnItemCountChange() {
+            @Override
+            public void onChange() {
+                presenter.updateCartItemsCountText();
+            }
+        });
 
     }
 

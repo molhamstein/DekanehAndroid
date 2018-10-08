@@ -23,6 +23,7 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
         getView().showMainFragment();
         getView().showToolbarTitle(false);
         getView().showToolbarLogo(true);
+
     }
 
     @Override
@@ -54,6 +55,11 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
         getView().showToolbarLogo(false);
         getView().showToolbarTitle(true);
         getView().setToolbarTitle(R.string.profile);
+    }
+
+    @Override
+    public void onResume() {
+
     }
 
     @Override

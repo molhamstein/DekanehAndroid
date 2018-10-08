@@ -16,6 +16,7 @@ import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
 import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.MainSliderAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
+import brain_socket.com.dekaneh.adapter.OnItemCountChange;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.dagger.FragmentMain;
 import brain_socket.com.dekaneh.dagger.Horizontal;
@@ -87,7 +88,6 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
         slider.setOnSlideClickListener(new OnSlideClickListener() {
             @Override
             public void onSlideClick(int position) {
-                Log.d("ASDASD", "onSlideClick: " + position);
                 if (sliderAdapter.getImages().get(position).getType().equals("product")) {
                     Product product = new Product(sliderAdapter.getImages().get(position).getId());
                     ProductDetailsActivity.start(getContext(), product);
@@ -95,6 +95,19 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
             }
         });
 
+        offersAdapter.setOnItemCountChange(new OnItemCountChange() {
+            @Override
+            public void onChange() {
+                presenter.updateCartItemsCountText();
+            }
+        });
+
+        categoriesAdapter.setOnItemCountChange(new OnItemCountChange() {
+            @Override
+            public void onChange() {
+                presenter.updateCartItemsCountText();
+            }
+        });
 
     }
 

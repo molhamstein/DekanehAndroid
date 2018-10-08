@@ -32,6 +32,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     private List<Product> products;
     private CacheStore cacheStore;
     private Category category;
+    private OnItemCountChange onItemCountChange;
 
     public ProductsAdapter(CacheStore cacheStore) {
         this.cacheStore = cacheStore;
@@ -45,6 +46,10 @@ public class ProductsAdapter extends RecyclerView.Adapter {
         }
         this.cacheStore = cacheStore;
         this.category = category;
+    }
+
+    public void setOnItemCountChange(OnItemCountChange onItemCountChange) {
+        this.onItemCountChange = onItemCountChange;
     }
 
     @NonNull
@@ -90,6 +95,9 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                     productViewHolder.orderBtn.setVisibility(View.VISIBLE);
                     cacheStore.addCartItem(item);
                     productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                    if (onItemCountChange != null) {
+                        onItemCountChange.onChange();
+                    }
                 }
             });
 
@@ -98,6 +106,9 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                 public void onClick(View view) {
                     cacheStore.addCartItem(item);
                     productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                    if (onItemCountChange != null) {
+                        onItemCountChange.onChange();
+                    }
 
                 }
             });
@@ -112,6 +123,9 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                     } else {
                         cacheStore.removeCartItem(item);
                         productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                    }
+                    if (onItemCountChange != null) {
+                        onItemCountChange.onChange();
                     }
                 }
             });

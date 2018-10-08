@@ -23,6 +23,8 @@ public interface BaseView {
 
     Intent getIntent();
 
+    void updateMainActivityCartItemsCount(String count);
+
 
 
 }

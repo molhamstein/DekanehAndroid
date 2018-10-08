@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -49,6 +50,8 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     MaterialSearchView searchView;
     @BindView(R.id.searchLayout)
     View searchLayout;
+    @BindView(R.id.cartItemsCount)
+    TextView cartItemsCount;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -77,6 +80,12 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     public static void start(Context context) {
         Intent starter = new Intent(context, MainActivity.class);
         context.startActivity(starter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.updateCartItemsCountText();
     }
 
     @Override
@@ -165,6 +174,13 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         toolbarTitle.setText(title);
     }
 
+    @Override
+    public void updateCartItemCount(String count) {
+
+        cartItemsCount.setText(count);
+
+    }
+
     private void replaceFragment(BaseFragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.mainContainer, fragment, fragment.TAG())
@@ -205,6 +221,5 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
                 presenter.restart();
             }
         }
-
     }
 }

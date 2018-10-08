@@ -87,6 +87,11 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
 
     }
 
+    @Override
+    public void updateCartItemsCountText() {
+        getView().updateMainActivityCartItemsCount(String.valueOf(getCacheStore().getCartItems().size()));
+    }
+
     public static class MvpViewNotAttachedException extends RuntimeException {
         public MvpViewNotAttachedException() {
             super("Please call Presenter.onAttach(MvpView) before" +

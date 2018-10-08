@@ -18,6 +18,7 @@ public interface MainActivityVP {
         void setToolbarTitle(String title);
         void setToolbarTitle(@StringRes int title);
         void recreate();
+        void updateCartItemCount(String count);
     }
 
     interface Presenter<T extends View> extends BasePresenter<T> {
@@ -26,7 +27,7 @@ public interface MainActivityVP {
         void onBottomOffersItemClick();
         void onBottomCategoriesItemClick();
         void onBottomProfileItemClick();
-
+        void onResume();
         void restart();
     }
 

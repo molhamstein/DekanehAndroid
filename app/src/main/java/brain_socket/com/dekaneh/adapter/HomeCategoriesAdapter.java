@@ -26,6 +26,7 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
 
     private CacheStore cacheStore;
     private List<HomeCategory> categories;
+    private OnItemCountChange onItemCountChange;
 
 
     @Inject
@@ -40,15 +41,26 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
         return new HomeCategoriesViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main_product_section, parent, false));
     }
 
+    public void setOnItemCountChange(OnItemCountChange onItemCountChange) {
+        this.onItemCountChange = onItemCountChange;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull HomeCategoriesViewHolder holder, int position) {
 
         final HomeCategory category = categories.get(position);
         holder.header.setText(category.getTitleAr());
         ProductsAdapter adapter = new ProductsAdapter(category.getProducts(), cacheStore ,category);
+        adapter.setOnItemCountChange(new OnItemCountChange() {
+            @Override
+            public void onChange() {
+                if (onItemCountChange != null) {
+                    onItemCountChange.onChange();
+                }
+            }
+        });
         holder.productsRV.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         holder.productsRV.setAdapter(adapter);
-
 
         holder.header.setOnClickListener(new View.OnClickListener() {
             @Override

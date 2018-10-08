@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -81,6 +82,19 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
     @Override
     public void hideKeyboard() {
         closeKeyBoard();
+    }
+
+    @Override
+    public void updateMainActivityCartItemsCount(String count) {
+        TextView cartItemsCount = findViewById(R.id.cartItemsCount);
+        if (cartItemsCount != null) {
+            cartItemsCount.setText(count);
+            if (cartItemsCount.getText().equals("0")) {
+                cartItemsCount.setVisibility(View.GONE);
+            } else {
+                cartItemsCount.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     @Override

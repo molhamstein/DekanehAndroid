@@ -35,6 +35,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
     private List<Offer> offers;
     private int itemLayoutId;
     private CacheStore cacheStore;
+    private OnItemCountChange onItemCountChange;
 
     @Inject
     public OffersAdapter(int itemLayoutId, Context context) {
@@ -47,6 +48,10 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
     @Override
     public OffersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new OffersViewHolder(LayoutInflater.from(parent.getContext()).inflate(itemLayoutId, parent, false));
+    }
+
+    public void setOnItemCountChange(OnItemCountChange onItemCountChange) {
+        this.onItemCountChange = onItemCountChange;
     }
 
     @Override
@@ -76,6 +81,9 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
                 holder.orderBtn.setVisibility(View.VISIBLE);
                 cacheStore.addCartItem(item);
                 holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                if (onItemCountChange != null) {
+                    onItemCountChange.onChange();
+                }
             }
         });
 
@@ -84,6 +92,9 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
             public void onClick(View view) {
                 cacheStore.addCartItem(item);
                 holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                if (onItemCountChange != null) {
+                    onItemCountChange.onChange();
+                }
 
             }
         });
@@ -98,6 +109,9 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
                 } else {
                     cacheStore.removeCartItem(item);
                     holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                }
+                if (onItemCountChange != null) {
+                    onItemCountChange.onChange();
                 }
 
             }

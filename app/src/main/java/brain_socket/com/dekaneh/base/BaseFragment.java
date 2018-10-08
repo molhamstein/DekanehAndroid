@@ -113,6 +113,11 @@ public abstract class BaseFragment extends Fragment implements FragmentNavigatio
     }
 
     @Override
+    public void updateMainActivityCartItemsCount(String count) {
+        activity.updateMainActivityCartItemsCount(count);
+    }
+
+    @Override
     public void hideKeyboard() {
         activity.hideKeyboard();
     }

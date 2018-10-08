@@ -10,5 +10,6 @@ public interface BasePresenter<T extends BaseView> {
 
     void handleApiError(ANError error);
 
+    void updateCartItemsCountText();
 
 }
