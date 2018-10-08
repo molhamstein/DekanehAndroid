@@ -60,7 +60,7 @@
                 style="@style/WhiteBlackTextView"
                 android:background="@drawable/round_green_text_view"
                 android:layout_gravity="end|center_vertical"
-                android:layout_marginEnd="80dp"
+                android:layout_marginEnd="30dp"
                 android:layout_marginBottom="12dp"
                 />
 

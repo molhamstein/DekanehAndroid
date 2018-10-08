@@ -8,6 +8,7 @@
         android:title="@string/notifications"
         app:showAsAction="ifRoom"
         android:orderInCategory="300"
+        android:visible="false"
         />
 
     <item
