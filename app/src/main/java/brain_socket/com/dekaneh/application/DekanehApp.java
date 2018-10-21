@@ -36,7 +36,7 @@ public class DekanehApp extends Application {
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
-        getResources().updateConfiguration(config, null);
+        getResources().updateConfiguration(config, getApplicationContext().getResources().getDisplayMetrics());
 
         OneSignal.startInit(this)
                 .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
