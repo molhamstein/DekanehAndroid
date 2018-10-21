@@ -61,9 +61,16 @@ public class AppApiHelper {
                 .getObjectSingle(Order.class);
     }
 
-    public static Single<List<Order>> getOrders(String userId) {
-        return Rx2AndroidNetworking.get(ApiEndPoint.ORDERS)
-                .addQueryParameter("filter[where][clientId]", userId)
+    public static Single<List<Order>> getCurrentOrders(String userId) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.CURRENT_ORDERS)
+                .addPathParameter("clientId", userId)
+                .build()
+                .getObjectListSingle(Order.class);
+    }
+
+    public static Single<List<Order>> getPastOrders(String userId) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.PAST_ORDERS)
+                .addPathParameter("clientId", userId)
                 .build()
                 .getObjectListSingle(Order.class);
     }

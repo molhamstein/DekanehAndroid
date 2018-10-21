@@ -41,7 +41,7 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
     public void fetchOrders() {
         getView().showLoading();
         getCompositeDisposable().add(
-                AppApiHelper.getOrders(getCacheStore().getSession().getUserId())
+                AppApiHelper.getCurrentOrders(getCacheStore().getSession().getUserId())
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<List<Order>>() {
@@ -89,6 +89,26 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
 
     @Override
     public void fetchPastOrders() {
+        getView().showLoading();
+        getCompositeDisposable().add(
+                AppApiHelper.getPastOrders(getCacheStore().getSession().getUserId())
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<List<Order>>() {
+                            @Override
+                            public void accept(List<Order> orders) throws Exception {
 
+                                getView().hideLoading();
+                                getView().addOrders(orders);
+
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                getView().hideLoading();
+                                Log.e(TAG, "accept: ", throwable);
+                            }
+                        })
+        );
     }
 }

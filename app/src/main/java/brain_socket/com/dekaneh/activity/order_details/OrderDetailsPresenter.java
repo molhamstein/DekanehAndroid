@@ -47,7 +47,7 @@ public class OrderDetailsPresenter<T extends OrderDetailsVP.View> extends BasePr
                             public void accept(Order order) throws Exception {
                                 getView().updateAllItems(order.getItems());
                                 getView().updateView(String.valueOf(order.getId()), AppDateUtils.dateToString(order.getOrderDate()),
-                                        order.getStatus(), String.valueOf(order.getTotalPrice()));
+                                        order.getStatus().toString(), String.valueOf(order.getTotalPrice()));
                                 getView().hideLoading();
                             }
                         }, new Consumer<Throwable>() {
@@ -74,7 +74,7 @@ public class OrderDetailsPresenter<T extends OrderDetailsVP.View> extends BasePr
                             public void accept(Order order) throws Exception {
                                 getView().updateAllItems(order.getItems());
                                 getView().updateView(String.valueOf(order.getId()), AppDateUtils.dateToString(order.getOrderDate()),
-                                        order.getStatus(), String.valueOf(order.getTotalPrice()));
+                                        order.getStatus().toString(), String.valueOf(order.getTotalPrice()));
                                 getView().hideLoading();
                             }
                         }, new Consumer<Throwable>() {

@@ -151,7 +151,7 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
     }
 
     @OnClick(R.id.updateUserBtn)
-    public void onClickedupdateUserBtn() {
+    public void onClickedUpdateUserBtn() {
         presenter.patchUser();
     }
 }

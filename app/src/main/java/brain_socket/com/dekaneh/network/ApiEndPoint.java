@@ -16,6 +16,8 @@ public class ApiEndPoint {
     public static final String FEATURED_OFFERS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"and\":[{\"isOffer\":\"true\"}, {\"isFeatured\":\"true\"}]}}";
     public static final String OFFERS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"and\":[{\"isOffer\":\"true\"}]}}";
     public static final String ORDERS = BuildConfig.BASE_API_URL + "orders";
+    public static final String CURRENT_ORDERS = ORDERS + "?filter={\"where\":{\"and\":[{\"status\":\"pending\"},{\"clientId\":\"{clientId}\"}]}}";
+    public static final String PAST_ORDERS = ORDERS + "?filter={\"where\":{\"and\":[{\"status\":\"delivered\"},{\"clientId\":\"{clientId}\"}]}}";
     public static final String TOP_SLIDERS = BuildConfig.BASE_API_URL + "topSliders";
     public static final String GROUPED_BY_MANUFACTURERS = BuildConfig.BASE_API_URL + "products/groupedByManufacturers";
     public static final String SUB_CATEGORIES = CATEGORIES + "/{id}/subCategories";
