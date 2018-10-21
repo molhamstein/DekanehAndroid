@@ -15,6 +15,7 @@ import brain_socket.com.dekaneh.network.AppApiHelper;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.LoginRequest;
 import brain_socket.com.dekaneh.network.model.LoginResponse;
+import brain_socket.com.dekaneh.network.model.User;
 import brain_socket.com.dekaneh.utils.NetworkUtils;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -45,6 +46,7 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
         }
 
         getView().showLoading();
+        getView().hideKeyboard();
 
         getCompositeDisposable().add(
                 AppApiHelper.login(new LoginRequest(phoneNumber, password))
@@ -53,15 +55,22 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
                         .subscribe(new Consumer<LoginResponse>() {
                             @Override
                             public void accept(final LoginResponse loginResponse) throws Exception {
-                                getCacheStore().getSession().setUser(loginResponse.getUser(), loginResponse.getId());
-                                getView().hideLoading();
-                                getView().startMainActivity();
-                                OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
-                                    @Override
-                                    public void idsAvailable(String userId, String registrationId) {
-                                        OneSignal.sendTag("user_id", loginResponse.getUser().getId());
-                                    }
-                                });
+                                if (loginResponse.getUser().getStatus() == User.Status.activated) {
+                                    getCacheStore().getSession().setUser(loginResponse.getUser(), loginResponse.getId());
+                                    getView().hideLoading();
+                                    getView().startMainActivity();
+                                    OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
+                                        @Override
+                                        public void idsAvailable(String userId, String registrationId) {
+                                            OneSignal.sendTag("user_id", loginResponse.getUser().getId());
+                                        }
+
+                                    });
+                                }
+                                else {
+                                    getView().showMessage("Your account needs to be activated");
+                                    getView().hideLoading();
+                                }
                             }
                         }, new Consumer<Throwable>() {
                             @Override

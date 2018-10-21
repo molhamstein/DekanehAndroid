@@ -30,11 +30,13 @@ public class RegistrationActivity extends BaseActivity implements RegistrationAc
     public static void start(Context context) {
         Intent starter = new Intent(context, RegistrationActivity.class);
         context.startActivity(starter);
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        hideStatusBar();
         setContentView(R.layout.activity_registration);
         ButterKnife.bind(this);
         if (getActivityComponent() != null)

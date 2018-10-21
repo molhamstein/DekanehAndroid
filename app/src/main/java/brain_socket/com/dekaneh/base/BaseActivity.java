@@ -39,7 +39,7 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
         LocaleUtils.updateConfig(this);
     }
 
-    private void hideStatusBar() {
+    public void hideStatusBar() {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
