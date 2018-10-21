@@ -83,6 +83,30 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
         behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         tabLayout.addTab(tabLayout.newTab().setCustomView(ViewUtils.getTabTextView(getContext(), "Orders")));
         tabLayout.addTab(tabLayout.newTab().setCustomView(ViewUtils.getTabTextView(getContext(), "Post Orders")));
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()) {
+                    case 0:
+                        presenter.fetchOrders();
+                        break;
+                    case 1:
+                        presenter.fetchPastOrders();
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
     }
 

@@ -18,7 +18,7 @@ public class Order implements Serializable {
     private Date orderDate;
     @SerializedName("status")
     @Expose
-    private String status;
+    private Status status;
     @SerializedName("totalPrice")
     @Expose
     private int totalPrice;
@@ -58,7 +58,7 @@ public class Order implements Serializable {
         return orderDate;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
@@ -113,5 +113,9 @@ public class Order implements Serializable {
 
     public void setProducts(List<CartItem> products) {
         this.products = products;
+    }
+
+    public enum Status {
+        pending, inDelivery, delivered, canceled
     }
 }

@@ -86,4 +86,9 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
                 })
         );
     }
+
+    @Override
+    public void fetchPastOrders() {
+
+    }
 }
