@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -16,11 +19,16 @@ import android.widget.TextView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.NotificationsActivity;
 import brain_socket.com.dekaneh.activity.cart.CartActivity;
+import brain_socket.com.dekaneh.adapter.OnItemCountChange;
+import brain_socket.com.dekaneh.adapter.ProductsAdapter;
+import brain_socket.com.dekaneh.adapter.SearchAdapter;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.fragment.categories.CategoriesFragment;
@@ -28,6 +36,7 @@ import brain_socket.com.dekaneh.fragment.main.MainFragment;
 import brain_socket.com.dekaneh.fragment.offers.OffersFragment;
 import brain_socket.com.dekaneh.fragment.profile.ProfileFragment;
 import brain_socket.com.dekaneh.network.PicassoImageLoadingService;
+import brain_socket.com.dekaneh.network.model.Product;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import ss.com.bannerslider.Slider;
@@ -37,6 +46,8 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
 
     @Inject
     MainActivityVP.Presenter<MainActivityVP.View> presenter;
+    @Inject
+    SearchAdapter searchAdapter;
 
     @BindView(R.id.mainToolbar)
     Toolbar toolbar;
@@ -50,6 +61,8 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     MaterialSearchView searchView;
     @BindView(R.id.searchLayout)
     View searchLayout;
+    @BindView(R.id.searchRV)
+    RecyclerView searchRV;
     @BindView(R.id.cartItemsCount)
     TextView cartItemsCount;
 
@@ -104,11 +117,20 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         bottomNavigation.enableShiftingMode(false);
         Slider.init(new PicassoImageLoadingService());
 
+        searchRV.setLayoutManager(new GridLayoutManager(this, 2));
+        searchRV.setAdapter(searchAdapter);
+        searchAdapter.setOnItemCountChange(new OnItemCountChange() {
+            @Override
+            public void onChange() {
+                presenter.updateCartItemsCountText();
+            }
+        });
 
         searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                return false;
+                presenter.search(query);
+                return true;
             }
 
             @Override
@@ -126,6 +148,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
             @Override
             public void onSearchViewClosed() {
                 searchLayout.setVisibility(View.GONE);
+                searchAdapter.clear();
             }
         });
 
@@ -179,6 +202,11 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
 
         cartItemsCount.setText(count);
 
+    }
+
+    @Override
+    public void updateSearchView(List<Product> products) {
+        searchAdapter.addAllProducts(products);
     }
 
     private void replaceFragment(BaseFragment fragment) {

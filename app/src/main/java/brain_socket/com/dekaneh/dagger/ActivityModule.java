@@ -28,6 +28,7 @@ import brain_socket.com.dekaneh.adapter.ManufacturersAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
 import brain_socket.com.dekaneh.adapter.OrderDetailsItemsAdapter;
 import brain_socket.com.dekaneh.adapter.OrdersAdapter;
+import brain_socket.com.dekaneh.adapter.SearchAdapter;
 import brain_socket.com.dekaneh.adapter.SubCategoriesAdapter;
 import brain_socket.com.dekaneh.application.AppSchedulerProvider;
 import brain_socket.com.dekaneh.application.SchedulerProvider;
@@ -204,6 +205,11 @@ public class ActivityModule {
     @Provides
     SubCategoriesAdapter provideSubCategoriesAdapter() {
         return new SubCategoriesAdapter();
+    }
+
+    @Provides
+    SearchAdapter providesSearchAdapter(CacheStore cacheStore) {
+        return new SearchAdapter(cacheStore);
     }
 
     @Horizontal

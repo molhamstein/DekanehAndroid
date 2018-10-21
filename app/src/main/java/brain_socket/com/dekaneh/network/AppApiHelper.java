@@ -172,6 +172,12 @@ public class AppApiHelper {
                 .getObjectListSingle(Offer.class);
     }
 
-
+    public static Single<List<Product>> search(String query, String accessToken) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.SEARCH)
+                .addQueryParameter("string", query)
+                .addQueryParameter("access_token", accessToken)
+                .build()
+                .getObjectListSingle(Product.class);
+    }
 
 }

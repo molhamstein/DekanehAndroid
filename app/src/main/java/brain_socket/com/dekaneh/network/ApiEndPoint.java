@@ -23,5 +23,6 @@ public class ApiEndPoint {
     public static final String NOTIFICATIONS = BuildConfig.BASE_API_URL + "notifications";
     public static final String LOGOUT = "users/logout";
     public static final String PRODUCT_OFFERS = PRODUCTS + "/{id}/offers" ;
+    public static final String SEARCH = PRODUCTS + "/search" ;
 
 }

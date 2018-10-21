@@ -2,8 +2,11 @@ package brain_socket.com.dekaneh.activity.main;
 
 import android.support.annotation.StringRes;
 
+import java.util.List;
+
 import brain_socket.com.dekaneh.base.BasePresenter;
 import brain_socket.com.dekaneh.base.BaseView;
+import brain_socket.com.dekaneh.network.model.Product;
 
 public interface MainActivityVP {
 
@@ -19,6 +22,7 @@ public interface MainActivityVP {
         void setToolbarTitle(@StringRes int title);
         void recreate();
         void updateCartItemCount(String count);
+        void updateSearchView(List<Product> products);
     }
 
     interface Presenter<T extends View> extends BasePresenter<T> {
@@ -29,6 +33,7 @@ public interface MainActivityVP {
         void onBottomProfileItemClick();
         void onResume();
         void restart();
+        void search(String query);
     }
 
 }

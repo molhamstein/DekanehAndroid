@@ -4,7 +4,9 @@
     android:layout_height="235dp"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?attr/selectableItemBackgroundBorderless">
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:layout_gravity="center"
+    >
 
 
     <LinearLayout

@@ -72,7 +72,6 @@
         </FrameLayout>
     </android.support.design.widget.AppBarLayout>
 
-
     <FrameLayout
         android:id="@+id/mainContainer"
         android:layout_width="match_parent"
@@ -97,12 +96,19 @@
         android:id="@+id/searchLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#000"
-        android:alpha=".5"
+        android:background="#5e000000"
         android:layout_marginTop="?attr/actionBarSize"
         android:elevation="10dp"
         android:visibility="gone"
-        />
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/searchRV"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
 
 
 </FrameLayout>
