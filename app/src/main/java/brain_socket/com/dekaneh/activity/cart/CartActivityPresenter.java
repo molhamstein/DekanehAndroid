@@ -61,9 +61,8 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
                             @Override
                             public void accept(Throwable throwable) throws Exception {
                                 Log.e(TAG, "accept: ", throwable);
-                                getView().showMessage(NetworkUtils.getError(throwable));
+                                handleApiError((ANError) throwable);
                                 getView().hideLoading();
-
                             }
                         })
         );

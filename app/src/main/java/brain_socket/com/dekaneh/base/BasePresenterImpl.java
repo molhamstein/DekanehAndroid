@@ -65,6 +65,7 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
     @Override
     public void handleApiError(ANError error) {
 
+
         if (error == null || error.getErrorBody() == null) {
             getView().onError(R.string.api_default_error);
         }
@@ -77,6 +78,10 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
         else if (error.getErrorCode() == AppApiHelper.API_STATUS_CODE_LOCAL_ERROR
                 && error.getErrorDetail().equals(ANConstants.REQUEST_CANCELLED_ERROR)) {
             getView().onError(R.string.api_retry_error);
+        }
+
+        else if (error.getErrorCode() == AppApiHelper.TOTAL_PRICE_IS_LOW_ERROR) {
+            getView().onError(R.string.low_total_price_error);
         }
 
         //TODO add custom error handling from server

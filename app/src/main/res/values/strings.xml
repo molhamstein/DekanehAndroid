@@ -164,5 +164,6 @@
     <string name="terms_conditions_msg">Please Agree to our terms and conditions</string>
     <string name="send_order">Send Order</string>
     <string name="your_cart_is_empty">Your cart is empty!</string>
+    <string name="low_total_price_error">Low Total Price</string>
 
 </resources>
