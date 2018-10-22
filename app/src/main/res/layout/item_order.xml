@@ -34,8 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="QRS43W2KU"
-        style="@style/PrimaryBlackTextView"
-        android:textSize="16sp"
+        android:gravity="end"
+        style="@style/PrimaryBoldTextView"
+        android:textSize="13sp"
         android:layout_marginBottom="-8dp"
         android:layout_gravity="start|bottom"
         />
