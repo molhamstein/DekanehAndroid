@@ -35,7 +35,8 @@ public class DekanehApp extends Application {
         Locale locale = new Locale("ar");
         Locale.setDefault(locale);
         Configuration config = new Configuration();
-        config.locale = locale;
+        config.setLocale(locale);
+//        config.setLayoutDirection(locale);
         getResources().updateConfiguration(config, getApplicationContext().getResources().getDisplayMetrics());
 
         OneSignal.startInit(this)
