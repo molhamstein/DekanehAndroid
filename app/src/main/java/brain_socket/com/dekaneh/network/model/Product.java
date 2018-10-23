@@ -37,7 +37,17 @@ public class Product implements Serializable{
         this.id = product.getId();
         this.nameAr = product.getNameAr();
         this.retailPrice = product.getRetailPrice();
+        this.image = product.getImage();
     }
+
+    public Product(Offer offer){
+        this.id = offer.getId();
+        this.nameAr = offer.getNameAr();
+        this.retailPrice = offer.getRetailPrice();
+        this.image = offer.getImage();
+    }
+
+
 
 
     public Product(Offer offer, String image){

@@ -6,10 +6,11 @@
 
     <ImageView
         android:id="@+id/itemImage"
-        android:layout_width="100dp"
+        android:layout_width="80dp"
         android:layout_height="match_parent"
         android:src="@drawable/tide"
         android:layout_gravity="start"
+        android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
         />
 

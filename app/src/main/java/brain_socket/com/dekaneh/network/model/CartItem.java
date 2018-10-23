@@ -13,6 +13,7 @@ public class CartItem extends Product implements Serializable{
     @Expose
     private int count;
 
+
     public CartItem(int count, Product product) {
         super(product);
         this.count = 0;
@@ -20,8 +21,13 @@ public class CartItem extends Product implements Serializable{
 
     public CartItem(Product product) {
         super(product);
-        Log.d(TAG, "CartItem: " + product.getId());
     }
+
+    public CartItem(Offer offer) {
+        super(offer, offer.getProducts().get(0).getImage());
+    }
+
+
 
     @Override
     public String getId() {
@@ -47,4 +53,5 @@ public class CartItem extends Product implements Serializable{
     public int getWholePrice() {
         return getRetailPrice() * getCount();
     }
+
 }
