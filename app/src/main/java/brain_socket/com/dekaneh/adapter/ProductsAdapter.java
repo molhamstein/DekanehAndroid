@@ -73,6 +73,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             if (cacheStore.isCartItemExist(item)) {
                 productViewHolder.orderNowBtn.setVisibility(View.GONE);
                 productViewHolder.orderBtn.setVisibility(View.VISIBLE);
+                ((ProductViewHolder) holder).orderBtn.animate().scaleX(1.2f).setDuration(10).start();
                 productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
             }
 
@@ -94,6 +95,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                     view.setVisibility(View.GONE);
                     productViewHolder.orderBtn.setVisibility(View.VISIBLE);
                     cacheStore.addCartItem(item);
+                    ((ProductViewHolder) holder).orderBtn.animate().scaleX(1.2f).start();
                     productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
                     if (onItemCountChange != null) {
                         onItemCountChange.onChange();
@@ -117,9 +119,15 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View view) {
                     if (cacheStore.cartItemCount(item) <= 1) {
-                        cacheStore.removeCartItem(item);
-                        ((ProductViewHolder) holder).orderNowBtn.setVisibility(View.VISIBLE);
-                        ((ProductViewHolder) holder).orderBtn.setVisibility(View.GONE);
+                        ((ProductViewHolder) holder).orderBtn.animate().scaleX(1).withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+                                cacheStore.removeCartItem(item);
+                                ((ProductViewHolder) holder).orderNowBtn.setVisibility(View.VISIBLE);
+                                ((ProductViewHolder) holder).orderBtn.setVisibility(View.GONE);
+                            }
+                        }).start();
+
                     } else {
                         cacheStore.removeCartItem(item);
                         productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
