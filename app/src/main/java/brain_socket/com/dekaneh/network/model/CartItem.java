@@ -24,7 +24,7 @@ public class CartItem extends Product implements Serializable{
     }
 
     public CartItem(Offer offer) {
-        super(offer, offer.getProducts().get(0).getImage());
+        super(offer, offer.getMedia().getUrl());
     }
 
 

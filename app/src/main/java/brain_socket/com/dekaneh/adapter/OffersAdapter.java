@@ -59,7 +59,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
 
         final Offer offer = offers.get(position);
         offer.setId(offer.getId()); //TODO : change
-        final Product product = new Product(offer, offer.getProducts().get(0).getImage());
+        final Product product = new Product(offer, offer.getMedia().getUrl());
         final CartItem item = new CartItem(offer);
 
         for (CartItem mItem : cacheStore.getCartItems())
@@ -71,7 +71,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
             }
 
         if (offer.getProducts() != null && !offer.getProducts().isEmpty())
-            Picasso.get().load(offer.getProducts().get(0).getImage()).into(holder.image);
+            Picasso.get().load(offer.getMedia().getUrl()).into(holder.image);
         holder.name.setText(offer.getNameAr());
         holder.percent.setText(offer.getPercentageString());
 
