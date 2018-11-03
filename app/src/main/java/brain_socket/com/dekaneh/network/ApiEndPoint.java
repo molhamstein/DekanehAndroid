@@ -26,5 +26,7 @@ public class ApiEndPoint {
     public static final String LOGOUT = "users/logout";
     public static final String PRODUCT_OFFERS = PRODUCTS + "/{id}/offers" ;
     public static final String SEARCH = PRODUCTS + "/search" ;
+    public static final String AREAS = BuildConfig.BASE_API_URL + "areas";
+
 
 }

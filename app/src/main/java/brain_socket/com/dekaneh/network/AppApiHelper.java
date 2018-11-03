@@ -2,6 +2,8 @@ package brain_socket.com.dekaneh.network;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 import java.util.List;
+
+import brain_socket.com.dekaneh.network.model.Area;
 import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.LoginRequest;
@@ -188,4 +190,9 @@ public class AppApiHelper {
                 .getObjectListSingle(Product.class);
     }
 
+    public static Single<List<Area>> getAreas() {
+        return Rx2AndroidNetworking.get(ApiEndPoint.AREAS)
+                .build()
+                .getObjectListSingle(Area.class);
+    }
 }

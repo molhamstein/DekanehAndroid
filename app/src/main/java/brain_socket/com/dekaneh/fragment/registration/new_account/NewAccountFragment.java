@@ -2,11 +2,16 @@ package brain_socket.com.dekaneh.fragment.registration.new_account;
 
 
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.github.florent37.viewanimator.AnimationListener;
 import com.github.florent37.viewanimator.ViewAnimator;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -15,6 +20,7 @@ import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.custom.DekanehInterpolator;
 import brain_socket.com.dekaneh.fragment.registration.SubmitAccountFragment;
 import brain_socket.com.dekaneh.fragment.registration.login.LoginFragment;
+import brain_socket.com.dekaneh.network.model.Area;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -40,6 +46,8 @@ public class NewAccountFragment extends BaseFragment implements NewAccountFragme
     View policyLayout;
     @BindView(R.id.checkBox)
     CheckBox checkBox;
+    @BindView(R.id.newAccountAreasSpinner)
+    Spinner areasSpinner;
 
     @BindView(R.id.phoneNumber)
     EditText phoneNumber;
@@ -109,7 +117,8 @@ public class NewAccountFragment extends BaseFragment implements NewAccountFragme
                     storeName.getText().toString(),
                     ownerName.getText().toString(),
                     "",
-                    password.getText().toString());
+                    password.getText().toString(),
+                    areasSpinner.getSelectedItemPosition());
         }else{
             showMessage(getString(R.string.terms_conditions_msg));
         }
@@ -137,6 +146,13 @@ public class NewAccountFragment extends BaseFragment implements NewAccountFragme
                 && !ownerName.getText().toString().isEmpty()
                 && !phoneNumber.getText().toString().isEmpty()
                 ;
+    }
+
+    @Override
+    public void setAllAreas(List<Area> areas) {
+        ArrayAdapter<Area> adapter =
+                new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, areas);
+        areasSpinner.setAdapter(adapter);
     }
 
     @Override
