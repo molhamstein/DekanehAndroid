@@ -17,6 +17,7 @@ import brain_socket.com.dekaneh.network.model.LoginRequest;
 import brain_socket.com.dekaneh.network.model.LoginResponse;
 import brain_socket.com.dekaneh.network.model.User;
 import brain_socket.com.dekaneh.utils.NetworkUtils;
+import brain_socket.com.dekaneh.utils.ValidationUtils;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -38,6 +39,9 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
         if (phoneNumber == null || phoneNumber.isEmpty()) {
             getView().onError(R.string.empty_email);
             return;
+        }else if(!ValidationUtils.isValidPhoneNumber(phoneNumber)) {
+            getView().onError(R.string.provide_valid_phone_number_statement);
+            return;
         }
 
         if (password == null || password.isEmpty()) {
@@ -49,7 +53,7 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
         getView().hideKeyboard();
 
         getCompositeDisposable().add(
-                AppApiHelper.login(new LoginRequest(phoneNumber, password))
+                AppApiHelper.login(new LoginRequest(ValidationUtils.validatePhoneNumber(phoneNumber), password))
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<LoginResponse>() {
@@ -87,4 +91,6 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
                         })
         );
     }
+
+
 }

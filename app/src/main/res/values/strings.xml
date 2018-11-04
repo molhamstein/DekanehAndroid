@@ -165,5 +165,7 @@
     <string name="send_order">Send Order</string>
     <string name="your_cart_is_empty">Your cart is empty!</string>
     <string name="low_total_price_error">Low Total Price</string>
+    <string name="country_code">00963</string>
+    <string name="provide_valid_phone_number_statement">Please provide a valid phone number</string>
 
 </resources>

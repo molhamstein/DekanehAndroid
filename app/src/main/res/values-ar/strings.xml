@@ -62,5 +62,7 @@
     <string name="send_order">ارسال الطلب</string>
     <string name="your_cart_is_empty">السلة فارغة</string>
     <string name="low_total_price_error">حجم الطلبيه اقل من الحد الادنى المسموح ٢٠٠٠٠ ل.س</string>
+    <string name="country_code">00963</string>
+    <string name="provide_valid_phone_number_statement">الرجاء ادخال رقم هاتف صحيح</string>
 
 </resources>

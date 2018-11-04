@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.application.SchedulerProvider;
 import brain_socket.com.dekaneh.base.BasePresenterImpl;
 import brain_socket.com.dekaneh.network.AppApiHelper;
@@ -17,6 +18,7 @@ import brain_socket.com.dekaneh.network.model.Area;
 import brain_socket.com.dekaneh.network.model.SignUpRequest;
 import brain_socket.com.dekaneh.network.model.User;
 import brain_socket.com.dekaneh.utils.NetworkUtils;
+import brain_socket.com.dekaneh.utils.ValidationUtils;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -32,7 +34,12 @@ public class NewAccountFragmentPresenter<T extends NewAccountFragmentVP.View> ex
     @Override
     public void signUp(String phoneNumber, String storeName, String ownerName, String location, String password, int areaPos) {
 
-        SignUpRequest request = new SignUpRequest(phoneNumber, storeName, ownerName, password, areas.get(areaPos).getId());
+        SignUpRequest request = new SignUpRequest(ValidationUtils.validatePhoneNumber(phoneNumber), storeName, ownerName, password, areas.get(areaPos).getId());
+
+        if(!ValidationUtils.isValidPhoneNumber(phoneNumber)) {
+            getView().onError(R.string.provide_valid_phone_number_statement);
+            return;
+        }
 
         if (!getView().areFieldsEmpty()) {
             getView().showMessage("All Fields are required");
