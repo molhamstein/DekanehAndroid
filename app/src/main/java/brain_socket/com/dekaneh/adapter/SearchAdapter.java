@@ -61,7 +61,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
         holder.price.setText(String.valueOf(product.getRetailPrice()));
         holder.name.setText(product.getNameAr());
-        Picasso.get().load(product.getImage()).into(holder.image);
+        if (!item.getMedia().getUrl().equals(""))
+            Picasso.get().load(product.getMedia().getUrl()).into(holder.image);
         holder.oldPrice.setText(String.valueOf(product.getMarketPrice()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

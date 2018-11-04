@@ -79,7 +79,8 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
             productViewHolder.price.setText(String.valueOf(product.getRetailPrice()));
             productViewHolder.name.setText(product.getNameAr());
-            Picasso.get().load(product.getImage()).into(productViewHolder.image);
+            if (product.getMedia() != null && !product.getMedia().getUrl().equals(""))
+                Picasso.get().load(product.getMedia().getUrl()).into(productViewHolder.image);
             productViewHolder.oldPrice.setText(String.valueOf(product.getMarketPrice()));
 
             productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {

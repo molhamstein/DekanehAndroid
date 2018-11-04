@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Product implements Serializable{
+public class Product implements Serializable {
 
 
     public static final String TAG = Product.class.getSimpleName();
@@ -15,9 +15,6 @@ public class Product implements Serializable{
     @SerializedName("nameAr")
     @Expose
     private String nameAr;
-    @SerializedName("image")
-    @Expose
-    private String image;
     @SerializedName("retailPrice")
     @Expose
     private int retailPrice;
@@ -30,32 +27,35 @@ public class Product implements Serializable{
     @SerializedName("description")
     @Expose
     private String description;
+    @SerializedName("media")
+    @Expose
+    private Media media;
 
 
-
-    public Product(Product product){
+    public Product(Product product) {
         this.id = product.getId();
         this.nameAr = product.getNameAr();
         this.retailPrice = product.getRetailPrice();
-        this.image = product.getImage();
+        if (this.media != null)
+            this.media.url = product.getMedia().url;
     }
 
-    public Product(Offer offer){
+    public Product(Offer offer) {
         this.id = offer.getId();
         this.nameAr = offer.getNameAr();
         this.retailPrice = offer.getRetailPrice();
-        this.image = offer.getImage();
+        if (this.media != null)
+            this.media.url = offer.getMedia().url;
     }
 
 
-
-
-    public Product(Offer offer, String image){
+    public Product(Offer offer, String image) {
         this.id = offer.getId();
         this.nameAr = offer.getNameAr();
         this.retailPrice = offer.getRetailPrice();
         this.manufacturer = offer.getManufacturer();
-        this.image = image;
+        if (this.media != null)
+            this.media.url = image;
         this.description = offer.getDescription();
     }
 
@@ -69,10 +69,6 @@ public class Product implements Serializable{
 
     public String getNameAr() {
         return nameAr;
-    }
-
-    public String getImage() {
-        return image;
     }
 
     public int getRetailPrice() {
@@ -91,11 +87,46 @@ public class Product implements Serializable{
         return description;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Offer.Media getMedia() {
+        return media;
+    }
+
+    public class Media implements Serializable {
+
+        @SerializedName("url")
+        @Expose
+        private String url;
+
+        public Media() {
+            url = "";
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        @Override
+        public String toString() {
+            return "Media{" +
+                    "url='" + url + '\'' +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id='" + id + '\'' +
+                ", nameAr='" + nameAr + '\'' +
+                ", retailPrice=" + retailPrice +
+                ", marketPrice=" + marketPrice +
+                ", manufacturer=" + manufacturer +
+                ", description='" + description + '\'' +
+                ", media=" + media +
+                '}';
     }
 }

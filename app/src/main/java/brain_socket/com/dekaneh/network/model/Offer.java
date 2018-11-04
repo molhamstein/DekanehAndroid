@@ -35,9 +35,6 @@ public class Offer extends Product implements Serializable {
     @SerializedName("products")
     @Expose
     private List<Product> products;
-    @SerializedName("media")
-    @Expose
-    private Media media;
 
 
 
@@ -86,21 +83,8 @@ public class Offer extends Product implements Serializable {
         return (int) (getRetailPrice() - retailPriceDiscount) * 100 / getRetailPrice();
     }
 
-    public Media getMedia() {
-        return media;
-    }
-
     public String getPercentageString() {
         return String.valueOf(getDiscountPercentage()) + "%";
     }
 
-    public class Media implements Serializable {
-        @SerializedName("url")
-        @Expose
-        private String url;
-
-        public String getUrl() {
-            return url;
-        }
-    }
 }
