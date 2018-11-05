@@ -121,7 +121,8 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
 
     @Override
     public void updateView(Product product, String imageUrl) {
-        Picasso.get().load(imageUrl).into(this.productImage);
+        if (!imageUrl.equals(""))
+            Picasso.get().load(imageUrl).into(this.productImage);
         this.name.setText(product.getNameAr());
         this.price.setText(String.valueOf(product.getRetailPrice()));
         this.packName.setText(product.getNameAr());

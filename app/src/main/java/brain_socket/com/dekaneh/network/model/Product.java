@@ -53,13 +53,12 @@ public class Product implements Serializable {
     }
 
 
-    public Product(Offer offer, String image) {
+    public Product(Offer offer, Media media) {
         this.id = offer.getId();
         this.nameAr = offer.getNameAr();
         this.retailPrice = offer.getRetailPrice();
         this.manufacturer = offer.getManufacturer();
-        if (this.media != null)
-            this.media.url = image;
+        this.media = media;
         this.description = offer.getDescription();
     }
 
