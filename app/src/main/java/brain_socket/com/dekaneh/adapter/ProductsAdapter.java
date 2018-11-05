@@ -18,6 +18,7 @@ import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.category_details.CategoryDetailsActivity;
 import brain_socket.com.dekaneh.activity.manufacturer.ManufacturerActivity;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
+import brain_socket.com.dekaneh.custom.DekanehInterpolator;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Category;
@@ -73,7 +74,9 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             if (cacheStore.isCartItemExist(item)) {
                 productViewHolder.orderNowBtn.setVisibility(View.GONE);
                 productViewHolder.orderBtn.setVisibility(View.VISIBLE);
-                ((ProductViewHolder) holder).orderBtn.animate().scaleX(1.2f).setDuration(10).start();
+                ((ProductViewHolder) holder).expandingBtn.animate().scaleX(1.2f).setDuration(10).start();
+                ((ProductViewHolder) holder).plusOneBtn.animate().translationX(30).setInterpolator(new DekanehInterpolator(1)).start();
+                ((ProductViewHolder) holder).minusOne.animate().translationX(-30).setInterpolator(new DekanehInterpolator(1)).start();
                 productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
             }
 
@@ -97,7 +100,9 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                     view.setVisibility(View.GONE);
                     productViewHolder.orderBtn.setVisibility(View.VISIBLE);
                     cacheStore.addCartItem(item);
-                    ((ProductViewHolder) holder).orderBtn.animate().scaleX(1.2f).start();
+                    ((ProductViewHolder) holder).expandingBtn.animate().scaleX(1.2f).start();
+                    ((ProductViewHolder) holder).plusOneBtn.animate().translationX(30).setInterpolator(new DekanehInterpolator(1)).start();
+                    ((ProductViewHolder) holder).minusOne.animate().translationX(-30).setInterpolator(new DekanehInterpolator(1)).start();
                     productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
                     if (onItemCountChange != null) {
                         onItemCountChange.onChange();
@@ -121,7 +126,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View view) {
                     if (cacheStore.cartItemCount(item) <= 1) {
-                        ((ProductViewHolder) holder).orderBtn.animate().scaleX(1).withEndAction(new Runnable() {
+                        ((ProductViewHolder) holder).expandingBtn.animate().scaleX(1).withEndAction(new Runnable() {
                             @Override
                             public void run() {
                                 cacheStore.removeCartItem(item);
@@ -129,6 +134,8 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                                 ((ProductViewHolder) holder).orderBtn.setVisibility(View.GONE);
                             }
                         }).start();
+                        ((ProductViewHolder) holder).plusOneBtn.animate().translationX(-30).start();
+                        ((ProductViewHolder) holder).minusOne.animate().translationX(30).start();
 
                     } else {
                         cacheStore.removeCartItem(item);
@@ -194,6 +201,8 @@ public class ProductsAdapter extends RecyclerView.Adapter {
         TextView orderCount;
         @BindView(R.id.pack)
         TextView pack;
+        @BindView(R.id.expandingBtn)
+        View expandingBtn;
 
         ProductViewHolder(View itemView) {
             super(itemView);
