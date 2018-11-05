@@ -47,43 +47,45 @@
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_gravity="bottom|end"
+        android:layout_marginEnd="26dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:background="@drawable/primary_color_button_round_10"
         android:text="@string/buy_now"
-        android:visibility="visible"
-        />
+        android:visibility="visible" />
 
     <FrameLayout
         android:id="@+id/orderBtn"
         style="@style/WhiteBlackTextOfferBtn"
-        android:layout_width="150dp"
+        android:layout_width="170dp"
         android:layout_height="60dp"
         android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/primary_color_button_round_10"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
+
+        <FrameLayout
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:id="@+id/expandingBtn"
+            android:layout_gravity="center"
+            android:background="@drawable/primary_color_button_round_10"
+            />
 
         <TextView
             android:id="@+id/plusOne"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="start"
-            android:layout_marginTop="-12dp"
-            android:layout_marginStart="8dp"
-            android:padding="8dp"
-            android:gravity="center"
-            android:text="+"
-            android:textSize="24sp"
             style="@style/WhiteBoldTextView"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginStart="32dp"
             android:clickable="true"
             android:focusable="true"
-            />
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
+            android:text="+"
+            android:textSize="32sp" />
 
         <TextView
             android:id="@+id/orderCount"
@@ -96,22 +98,21 @@
 
         <TextView
             android:id="@+id/minusOne"
+            style="@style/WhiteBoldTextView"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginTop="-12dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="32dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             android:gravity="center"
-            android:padding="8dp"
             android:text="-"
             android:textColor="@color/white"
-            android:textSize="24sp"
-            style="@style/WhiteBoldTextView"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:focusable="true"/>
+            android:textSize="32sp" />
 
     </FrameLayout>
+
 
     <TextView
         android:id="@+id/quantity"

@@ -80,7 +80,8 @@ public class Offer extends Product implements Serializable {
     }
 
     private int getDiscountPercentage() {
-        return (int) (getRetailPrice() - retailPriceDiscount) * 100 / getRetailPrice();
+//        return (int) (getRetailPrice() - retailPriceDiscount) * 100 / getRetailPrice();
+        return 1;
     }
 
     public String getPercentageString() {
