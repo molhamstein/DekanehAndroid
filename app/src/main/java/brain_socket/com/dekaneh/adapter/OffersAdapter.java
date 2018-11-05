@@ -20,6 +20,7 @@ import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
+import brain_socket.com.dekaneh.custom.DekanehInterpolator;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.Session;
 import brain_socket.com.dekaneh.network.model.CartItem;
@@ -67,7 +68,9 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
             if (mItem.getId().equals(item.getId())) {
                 holder.orderNowBtn.setVisibility(View.GONE);
                 holder.orderBtn.setVisibility(View.VISIBLE);
-                holder.orderBtn.animate().scaleX(1.2f).setDuration(10).start();
+                holder.expandingBtn.animate().scaleX(1.2f).setDuration(10).start();
+                holder.plusOneBtn.animate().translationX(20).setInterpolator(new DekanehInterpolator(1)).start();
+                holder.minusOne.animate().translationX(-20).setInterpolator(new DekanehInterpolator(1)).start();
                 holder.orderCount.setText(String.valueOf(mItem.getCount()));
             }
 
@@ -82,7 +85,9 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
                 view.setVisibility(View.GONE);
                 holder.orderBtn.setVisibility(View.VISIBLE);
                 cacheStore.addCartItem(item);
-                holder.orderBtn.animate().scaleX(1.2f).start();
+                holder.expandingBtn.animate().scaleX(1.2f).start();
+                holder.plusOneBtn.animate().translationX(20).setInterpolator(new DekanehInterpolator(1)).start();
+                holder.minusOne.animate().translationX(-20).setInterpolator(new DekanehInterpolator(1)).start();
                 holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
                 if (onItemCountChange != null) {
                     onItemCountChange.onChange();
@@ -106,7 +111,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
             @Override
             public void onClick(View view) {
                 if (cacheStore.cartItemCount(item) <= 1) {
-                    holder.orderBtn.animate().scaleX(1).withEndAction(new Runnable() {
+                    holder.expandingBtn.animate().scaleX(1).withEndAction(new Runnable() {
                         @Override
                         public void run() {
                             cacheStore.removeCartItem(item);
@@ -114,6 +119,8 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
                             holder.orderBtn.setVisibility(View.GONE);
                         }
                     }).start();
+                    holder.plusOneBtn.animate().translationX(-20).setInterpolator(new DekanehInterpolator(1)).start();
+                    holder.minusOne.animate().translationX(20).setInterpolator(new DekanehInterpolator(1)).start();
 
                 } else {
                     cacheStore.removeCartItem(item);
@@ -170,6 +177,8 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         TextView price;
         @BindView(R.id.oldPrice)
         TextView oldPrice;
+        @BindView(R.id.expandingBtn)
+        View expandingBtn;
 
         OffersViewHolder(View itemView) {
             super(itemView);
