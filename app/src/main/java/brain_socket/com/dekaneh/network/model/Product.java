@@ -27,6 +27,10 @@ public class Product implements Serializable {
     @SerializedName("description")
     @Expose
     private String description;
+    @SerializedName("pack")
+    @Expose
+    private String pack;
+
     @SerializedName("media")
     @Expose
     private Media media;
@@ -96,6 +100,10 @@ public class Product implements Serializable {
             return media;
         }
         return new Media();
+    }
+
+    public String getPack() {
+        return pack;
     }
 
     public class Media implements Serializable {

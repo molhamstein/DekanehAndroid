@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.splash.SplashActivityPresenter;
+import brain_socket.com.dekaneh.activity.splash.SplashActivityVP;
 import brain_socket.com.dekaneh.activity.cart.CartActivityPresenter;
 import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
 import brain_socket.com.dekaneh.activity.category_details.CategoryDetailsPresenter;
@@ -158,6 +160,11 @@ public class ActivityModule {
 
     @Provides
     NewAccountFragmentVP.Presenter<NewAccountFragmentVP.View> provideNewAccountFragmentPresenter(NewAccountFragmentPresenter<NewAccountFragmentVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    SplashActivityVP.Presenter<SplashActivityVP.View> provideSplashActivityPresenter(SplashActivityPresenter<SplashActivityVP.View> presenter) {
         return presenter;
     }
 

@@ -79,6 +79,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
             productViewHolder.price.setText(String.valueOf(product.getRetailPrice()));
             productViewHolder.name.setText(product.getNameAr());
+            productViewHolder.pack.setText(product.getPack());
             if (product.getMedia() != null && !product.getMedia().getUrl().equals(""))
                 Picasso.get().load(product.getMedia().getUrl()).into(productViewHolder.image);
             productViewHolder.oldPrice.setText(String.valueOf(product.getMarketPrice()));
@@ -191,6 +192,8 @@ public class ProductsAdapter extends RecyclerView.Adapter {
         View minusOne;
         @BindView(R.id.orderCount)
         TextView orderCount;
+        @BindView(R.id.pack)
+        TextView pack;
 
         ProductViewHolder(View itemView) {
             super(itemView);
