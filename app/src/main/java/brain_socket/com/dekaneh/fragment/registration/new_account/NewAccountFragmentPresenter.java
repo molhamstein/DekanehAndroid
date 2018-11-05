@@ -32,6 +32,12 @@ public class NewAccountFragmentPresenter<T extends NewAccountFragmentVP.View> ex
     }
 
     @Override
+    public void onAttach(T mvpView) {
+        super.onAttach(mvpView);
+        fetchAreas();
+    }
+
+    @Override
     public void signUp(String phoneNumber, String storeName, String ownerName, String location, String password, int areaPos) {
 
         SignUpRequest request = new SignUpRequest(ValidationUtils.validatePhoneNumber(phoneNumber), storeName, ownerName, password, areas.get(areaPos).getId());

@@ -150,8 +150,13 @@ public class NewAccountFragment extends BaseFragment implements NewAccountFragme
 
     @Override
     public void setAllAreas(List<Area> areas) {
-        ArrayAdapter<Area> adapter =
-                new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, areas);
+        String[] areaNames = new String[areas.size()];
+        for (int i = 0; i < areas.size(); i++) {
+            if (areas.get(i).getNameAr() != null)
+            areaNames[i] = areas.get(i).getNameAr();
+        }
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_dropdown_item, areaNames);
         areasSpinner.setAdapter(adapter);
     }
 

@@ -16,13 +16,13 @@ import java.util.List;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.category_details.CategoryDetailsActivity;
-import brain_socket.com.dekaneh.activity.manufacturer.ManufacturerActivity;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
 import brain_socket.com.dekaneh.custom.DekanehInterpolator;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.Product;
+import brain_socket.com.dekaneh.utils.ViewUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -34,6 +34,8 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     private CacheStore cacheStore;
     private Category category;
     private OnItemCountChange onItemCountChange;
+    private int plusMinusAnimationBtnVal = 18;
+
 
     public ProductsAdapter(CacheStore cacheStore) {
         this.cacheStore = cacheStore;
@@ -75,8 +77,8 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                 productViewHolder.orderNowBtn.setVisibility(View.GONE);
                 productViewHolder.orderBtn.setVisibility(View.VISIBLE);
                 ((ProductViewHolder) holder).expandingBtn.animate().scaleX(1.2f).setDuration(10).start();
-                ((ProductViewHolder) holder).plusOneBtn.animate().translationX(30).setInterpolator(new DekanehInterpolator(1)).start();
-                ((ProductViewHolder) holder).minusOne.animate().translationX(-30).setInterpolator(new DekanehInterpolator(1)).start();
+                ((ProductViewHolder) holder).plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                ((ProductViewHolder) holder).minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                 productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
             }
 
@@ -101,8 +103,8 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                     productViewHolder.orderBtn.setVisibility(View.VISIBLE);
                     cacheStore.addCartItem(item);
                     ((ProductViewHolder) holder).expandingBtn.animate().scaleX(1.2f).start();
-                    ((ProductViewHolder) holder).plusOneBtn.animate().translationX(30).setInterpolator(new DekanehInterpolator(1)).start();
-                    ((ProductViewHolder) holder).minusOne.animate().translationX(-30).setInterpolator(new DekanehInterpolator(1)).start();
+                    ((ProductViewHolder) holder).plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                    ((ProductViewHolder) holder).minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                     productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
                     if (onItemCountChange != null) {
                         onItemCountChange.onChange();
@@ -134,8 +136,8 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                                 ((ProductViewHolder) holder).orderBtn.setVisibility(View.GONE);
                             }
                         }).start();
-                        ((ProductViewHolder) holder).plusOneBtn.animate().translationX(-30).start();
-                        ((ProductViewHolder) holder).minusOne.animate().translationX(30).start();
+                        ((ProductViewHolder) holder).plusOneBtn.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).start();
+                        ((ProductViewHolder) holder).minusOne.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).start();
 
                     } else {
                         cacheStore.removeCartItem(item);

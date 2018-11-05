@@ -27,6 +27,7 @@ import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.Product;
+import brain_socket.com.dekaneh.utils.ViewUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -37,6 +38,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
     private int itemLayoutId;
     private CacheStore cacheStore;
     private OnItemCountChange onItemCountChange;
+    private int plusMinusAnimationBtnVal = 15;
 
     @Inject
     public OffersAdapter(int itemLayoutId, Context context) {
@@ -69,8 +71,8 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
                 holder.orderNowBtn.setVisibility(View.GONE);
                 holder.orderBtn.setVisibility(View.VISIBLE);
                 holder.expandingBtn.animate().scaleX(1.2f).setDuration(10).start();
-                holder.plusOneBtn.animate().translationX(20).setInterpolator(new DekanehInterpolator(1)).start();
-                holder.minusOne.animate().translationX(-20).setInterpolator(new DekanehInterpolator(1)).start();
+                holder.plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                 holder.orderCount.setText(String.valueOf(mItem.getCount()));
             }
 
@@ -86,8 +88,8 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
                 holder.orderBtn.setVisibility(View.VISIBLE);
                 cacheStore.addCartItem(item);
                 holder.expandingBtn.animate().scaleX(1.2f).start();
-                holder.plusOneBtn.animate().translationX(20).setInterpolator(new DekanehInterpolator(1)).start();
-                holder.minusOne.animate().translationX(-20).setInterpolator(new DekanehInterpolator(1)).start();
+                holder.plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                 holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
                 if (onItemCountChange != null) {
                     onItemCountChange.onChange();
@@ -119,8 +121,8 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
                             holder.orderBtn.setVisibility(View.GONE);
                         }
                     }).start();
-                    holder.plusOneBtn.animate().translationX(-20).setInterpolator(new DekanehInterpolator(1)).start();
-                    holder.minusOne.animate().translationX(20).setInterpolator(new DekanehInterpolator(1)).start();
+                    holder.plusOneBtn.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                    holder.minusOne.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
 
                 } else {
                     cacheStore.removeCartItem(item);

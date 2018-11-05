@@ -15,4 +15,14 @@ public class ViewUtils {
         return textView;
     }
 
+    public static int getPXSize(int dp, Context context) {
+        int px = dp;
+        try {
+            float density = context.getResources().getDisplayMetrics().density;
+            px = Math.round((float) dp * density);
+        } catch (Exception ignored) {
+        }
+        return px;
+    }
+
 }

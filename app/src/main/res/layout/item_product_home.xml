@@ -170,6 +170,8 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:text="+"
             android:textSize="32sp" />
 
@@ -193,6 +195,8 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:gravity="center"
             android:padding="8dp"
             android:text="-"
