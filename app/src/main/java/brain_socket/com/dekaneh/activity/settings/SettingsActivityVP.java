@@ -10,6 +10,7 @@ public class SettingsActivityVP {
     }
 
     public interface Presenter<T extends View> extends BasePresenter<T> {
-        void logout();
+//        void logout();
+        void offlineLogout();
     }
 }

@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.base.BaseActivity;
+import brain_socket.com.dekaneh.utils.NetworkUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -41,7 +42,6 @@ public class SettingsActivity extends BaseActivity implements SettingsActivityVP
         getSupportActionBar().setTitle("");
 
 
-
     }
 
     @Override
@@ -58,6 +58,6 @@ public class SettingsActivity extends BaseActivity implements SettingsActivityVP
 
     @OnClick(R.id.logOutBtn)
     public void onLogOutBtnClicked() {
-        presenter.logout();
+            presenter.offlineLogout();
     }
 }

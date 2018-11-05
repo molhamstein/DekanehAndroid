@@ -17,6 +17,7 @@ import brain_socket.com.dekaneh.network.model.SignUpRequest;
 import brain_socket.com.dekaneh.network.model.SliderImage;
 import brain_socket.com.dekaneh.network.model.SubCategory;
 import brain_socket.com.dekaneh.network.model.User;
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 public class AppApiHelper {
@@ -116,12 +117,12 @@ public class AppApiHelper {
                 .getObjectListSingle(SubCategory.class);
     }
 
-    public static Single<String> logout(String accessToken) {
-        return Rx2AndroidNetworking.post(ApiEndPoint.LOGOUT)
-                .addQueryParameter("access_token", accessToken)
-                .build()
-                .getObjectSingle(String.class);
-    }
+//    public static Maybe<String> logout(String accessToken) {
+//        return Rx2AndroidNetworking.post(ApiEndPoint.LOGOUT)
+//                .addQueryParameter("access_token", accessToken)
+//                .build()
+//                .getStringMaybe();
+//    }
 
     public static Single<List<Offer>> getProductsByManufacturer(String manufacturerId) {
         return Rx2AndroidNetworking.get(ApiEndPoint.PRODUCTS)
