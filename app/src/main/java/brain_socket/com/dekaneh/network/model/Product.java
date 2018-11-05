@@ -91,8 +91,11 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public Offer.Media getMedia() {
-        return media;
+    public Media getMedia() {
+        if (media != null) {
+            return media;
+        }
+        return new Media();
     }
 
     public class Media implements Serializable {

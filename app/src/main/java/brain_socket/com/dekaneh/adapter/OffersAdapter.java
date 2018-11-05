@@ -59,6 +59,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
 
         final Offer offer = offers.get(position);
         offer.setId(offer.getId()); //TODO : change
+
         final Product product = new Product(offer, offer.getMedia().getUrl());
         final CartItem item = new CartItem(offer);
 
