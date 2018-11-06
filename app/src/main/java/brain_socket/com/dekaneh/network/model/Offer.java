@@ -11,18 +11,7 @@ public class Offer extends Product implements Serializable {
     @SerializedName("id")
     @Expose
     private String id;
-    @SerializedName("wholeSalePrice")
-    @Expose
-    private double wholeSalePrice;
-    @SerializedName("wholeSaleMarketPrice")
-    @Expose
-    private double wholeSaleMarketPrice;
-    @SerializedName("retailPriceDiscount")
-    @Expose
-    private double retailPriceDiscount;
-    @SerializedName("wholeSalePriceDiscount")
-    @Expose
-    private double wholeSalePriceDiscount;
+
     @SerializedName("isFeatured")
     @Expose
     private boolean isFeatured;
@@ -45,22 +34,6 @@ public class Offer extends Product implements Serializable {
     @Override
     public String getId() {
         return id;
-    }
-
-    public double getWholeSalePrice() {
-        return wholeSalePrice;
-    }
-
-    public double getWholeSaleMarketPrice() {
-        return wholeSaleMarketPrice;
-    }
-
-    public double getRetailPriceDiscount() {
-        return retailPriceDiscount;
-    }
-
-    public double getWholeSalePriceDiscount() {
-        return wholeSalePriceDiscount;
     }
 
     public boolean isFeatured() {

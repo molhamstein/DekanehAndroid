@@ -19,6 +19,7 @@ public class Session {
     private static final String ACCESS_TOKEN = "access_token";
     private static final String USER_ID = "user_id";
     private static final String PHONE_NUMBER = "phone_number";
+    private static final String CLIENT_TYPE = "client_type";
     private static final String EMAIL = "email";
     private static final String OWNER_NAME = "owner_name";
     private static final String SHOP_NAME = "shop+name";
@@ -62,6 +63,18 @@ public class Session {
     public String getPhoneNumber() {
         return getPreference().getString(PHONE_NUMBER, "");
     }
+
+    public void setClientType(String phoneNumber) {
+        getPreference()
+                .edit()
+                .putString(CLIENT_TYPE, phoneNumber)
+                .apply();
+    }
+
+    public String getClientType() {
+        return getPreference().getString(CLIENT_TYPE, "");
+    }
+
 
     public void setEmail(String email) {
         getPreference()
@@ -127,6 +140,7 @@ public class Session {
         setPhoneNumber(user.getPhoneNumber());
         setOwnerName(user.getOwnerName());
         setShopName(user.getShopName());
+        setClientType(user.getClientType().toString());
     }
 
     public void logout() {

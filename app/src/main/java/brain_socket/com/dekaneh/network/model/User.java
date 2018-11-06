@@ -21,7 +21,7 @@ public class User implements Serializable {
     private String email;
     @SerializedName("clientType")
     @Expose
-    private String clientType;
+    private Type clientType;
     @SerializedName("ownerName")
     @Expose
     private String ownerName;
@@ -63,7 +63,7 @@ public class User implements Serializable {
         return email;
     }
 
-    public String getClientType() {
+    public Type getClientType() {
         return clientType;
     }
 
@@ -93,5 +93,9 @@ public class User implements Serializable {
 
     public enum Status {
         activated, pending, deactivated
+    }
+
+    public enum Type {
+        wholesale, retailCostumer
     }
 }

@@ -15,12 +15,18 @@ public class Product implements Serializable {
     @SerializedName("nameAr")
     @Expose
     private String nameAr;
-    @SerializedName("retailPrice")
+    @SerializedName("horecaPrice")
     @Expose
-    private int retailPrice;
-    @SerializedName("marketPrice")
+    private int horecaPrice;
+    @SerializedName("horecaPriceDiscount")
     @Expose
-    private int marketPrice;
+    private int horecaPriceDiscount;
+    @SerializedName("wholeSalePrice")
+    @Expose
+    private int wholeSalePrice;
+    @SerializedName("wholeSalePriceDiscount")
+    @Expose
+    private int wholeSalePriceDiscount;
     @SerializedName("manufacturer")
     @Expose
     private Manufacturer manufacturer;
@@ -39,7 +45,8 @@ public class Product implements Serializable {
     public Product(Product product) {
         this.id = product.getId();
         this.nameAr = product.getNameAr();
-        this.retailPrice = product.getRetailPrice();
+        this.horecaPrice = product.getHorecaPrice();
+        this.wholeSalePrice = product.getWholeSalePrice();
         if (this.media != null)
             this.media.url = product.getMedia().url;
     }
@@ -47,7 +54,8 @@ public class Product implements Serializable {
     public Product(Offer offer) {
         this.id = offer.getId();
         this.nameAr = offer.getNameAr();
-        this.retailPrice = offer.getRetailPrice();
+        this.horecaPrice = offer.getHorecaPrice();
+        this.wholeSalePrice = offer.getWholeSalePrice();
         if (this.media != null)
             this.media.url = offer.getMedia().url;
     }
@@ -56,7 +64,8 @@ public class Product implements Serializable {
     public Product(Offer offer, Media media) {
         this.id = offer.getId();
         this.nameAr = offer.getNameAr();
-        this.retailPrice = offer.getRetailPrice();
+        this.horecaPrice = offer.getHorecaPrice();
+        this.wholeSalePrice = offer.getWholeSalePrice();
         this.manufacturer = offer.getManufacturer();
         this.media = media;
         this.description = offer.getDescription();
@@ -74,12 +83,20 @@ public class Product implements Serializable {
         return nameAr;
     }
 
-    public int getRetailPrice() {
-        return retailPrice;
+    public int getHorecaPrice() {
+        return horecaPrice;
     }
 
-    public int getMarketPrice() {
-        return marketPrice;
+    public int getWholeSalePrice() {
+        return wholeSalePrice;
+    }
+
+    public int getHorecaPriceDiscount() {
+        return horecaPriceDiscount;
+    }
+
+    public int getWholeSalePriceDiscount() {
+        return wholeSalePriceDiscount;
     }
 
     public Manufacturer getManufacturer() {
@@ -105,6 +122,22 @@ public class Product implements Serializable {
         return pack;
     }
 
+    private int getWholeDiscountPercentage() {
+        return (wholeSalePrice - wholeSalePriceDiscount) * 100 / wholeSalePrice;
+    }
+
+    private int getHorecaDiscountPercentage() {
+        return (horecaPrice - horecaPriceDiscount) * 100 / horecaPrice;
+    }
+
+    public String getWholePercentageString() {
+        return String.valueOf(getWholeDiscountPercentage()) + "%";
+    }
+
+    public String getHorecaPercentageString() {
+        return String.valueOf(getHorecaDiscountPercentage()) + "%";
+    }
+
     public class Media implements Serializable {
 
         @SerializedName("url")
@@ -127,13 +160,16 @@ public class Product implements Serializable {
         }
     }
 
+
     @Override
     public String toString() {
         return "Product{" +
                 "id='" + id + '\'' +
                 ", nameAr='" + nameAr + '\'' +
-                ", retailPrice=" + retailPrice +
-                ", marketPrice=" + marketPrice +
+                ", horecaPrice=" + horecaPrice +
+                ", horecaPriceDiscount=" + horecaPriceDiscount +
+                ", wholeSalePrice=" + wholeSalePrice +
+                ", wholeSalePriceDiscount=" + wholeSalePriceDiscount +
                 ", manufacturer=" + manufacturer +
                 ", description='" + description + '\'' +
                 ", media=" + media +
