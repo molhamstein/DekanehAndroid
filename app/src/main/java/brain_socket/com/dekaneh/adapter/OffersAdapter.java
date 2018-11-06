@@ -120,10 +120,11 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
                             cacheStore.removeCartItem(item);
                             holder.orderNowBtn.setVisibility(View.VISIBLE);
                             holder.orderBtn.setVisibility(View.GONE);
+                            holder.plusOneBtn.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                            holder.minusOne.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                         }
                     }).start();
-                    holder.plusOneBtn.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
-                    holder.minusOne.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+
 
                 } else {
                     cacheStore.removeCartItem(item);

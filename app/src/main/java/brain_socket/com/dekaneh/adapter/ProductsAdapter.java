@@ -141,10 +141,11 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                                 cacheStore.removeCartItem(item);
                                 ((ProductViewHolder) holder).orderNowBtn.setVisibility(View.VISIBLE);
                                 ((ProductViewHolder) holder).orderBtn.setVisibility(View.GONE);
+                                ((ProductViewHolder) holder).plusOneBtn.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).start();
+                                ((ProductViewHolder) holder).minusOne.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).start();
                             }
                         }).start();
-                        ((ProductViewHolder) holder).plusOneBtn.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).start();
-                        ((ProductViewHolder) holder).minusOne.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).start();
+
 
                     } else {
                         cacheStore.removeCartItem(item);
