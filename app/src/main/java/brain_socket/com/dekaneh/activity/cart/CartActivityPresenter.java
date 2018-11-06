@@ -14,7 +14,7 @@ import brain_socket.com.dekaneh.network.AppApiHelper;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Order;
-import brain_socket.com.dekaneh.utils.NetworkUtils;
+import brain_socket.com.dekaneh.network.model.User;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -73,7 +73,7 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
     public int getPrice() {
         int price = 0;
         for (CartItem item : getCacheStore().getCartItems()) {
-            price += item.getWholePrice();
+            price += item.getPrice(getCacheStore().getSession().getClientType().equals(User.Type.retailCostumer));
         }
         return price;
     }

@@ -14,6 +14,7 @@ import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Product;
+import brain_socket.com.dekaneh.network.model.User;
 import brain_socket.com.dekaneh.utils.GsonUtils;
 import brain_socket.com.dekaneh.utils.NetworkUtils;
 import io.reactivex.disposables.CompositeDisposable;
@@ -57,9 +58,8 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
                                 item = new CartItem(ProductDetailsPresenter.this.product);
                                 getView().updateOrderCountText(getCacheStore().cartItemCount(item));
                                 ProductDetailsPresenter.this.product = product;
-                                getView().updateView(product, imageUrl);
+                                getView().updateView(product, imageUrl, getCacheStore().getSession().getClientType().equals(User.Type.retailCostumer));
                                 getView().hideLoading();
-
                             }
                         }, new Consumer<Throwable>() {
                             @Override

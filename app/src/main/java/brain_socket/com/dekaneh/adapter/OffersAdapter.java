@@ -27,6 +27,7 @@ import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Offer;
 import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.Product;
+import brain_socket.com.dekaneh.network.model.User;
 import brain_socket.com.dekaneh.utils.ViewUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -142,8 +143,11 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
             }
         });
 
-        holder.price.setText(String.valueOf(offer.getRetailPrice()));
-        holder.oldPrice.setText(String.valueOf(offer.getWholeSaleMarketPrice()));
+        if (cacheStore.getSession().getClientType().equals(User.Type.retailCostumer.toString())) {
+            setPrice(holder, product.getHorecaPrice(), product.getHorecaPriceDiscount());
+        } else {
+            setPrice(holder, product.getWholeSalePrice(), product.getWholeSalePriceDiscount());
+        }
 
     }
 
@@ -156,6 +160,16 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         this.offers = offers;
         notifyDataSetChanged();
     }
+
+    private void setPrice(OffersViewHolder holder , int price, int discount) {
+        holder.price.setText(String.valueOf(price));
+        if (discount != 0) {
+            holder.oldPrice.setText(String.valueOf(discount));
+        } else {
+            holder.oldPrice.setVisibility(View.GONE);
+        }
+    }
+
 
     class OffersViewHolder extends RecyclerView.ViewHolder {
 

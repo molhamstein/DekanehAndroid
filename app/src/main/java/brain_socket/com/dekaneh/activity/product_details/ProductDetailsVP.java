@@ -10,7 +10,7 @@ import brain_socket.com.dekaneh.network.model.Product;
 public class ProductDetailsVP {
 
     public interface View extends BaseView{
-        void updateView(Product product, String imageUrl);
+        void updateView(Product product, String imageUrl, boolean isHoreca);
         void addAllSimilarProducts(List<Product> products);
         void addAllOffers(List<Offer> offers);
         void updateOrderCountText(int count);

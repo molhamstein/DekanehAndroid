@@ -50,8 +50,9 @@ public class CartItem extends Product implements Serializable{
         --count;
     }
 
-    public int getWholePrice() {
-        return getRetailPrice() * getCount();
+    public int getPrice(boolean isHoreca) {
+        if (isHoreca) return getHorecaPrice() * getCount();
+        else return getWholeSalePrice() * getCount();
     }
 
 }

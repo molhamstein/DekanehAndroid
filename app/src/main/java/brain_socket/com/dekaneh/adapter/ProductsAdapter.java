@@ -85,12 +85,16 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                 productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
             }
 
-            productViewHolder.price.setText(String.valueOf(product.getRetailPrice()));
+            if (cacheStore.getSession().getClientType().equals(User.Type.retailCostumer.toString())) {
+                setPrice(productViewHolder, product.getHorecaPrice(), product.getHorecaPriceDiscount());
+            } else {
+                setPrice(productViewHolder, product.getWholeSalePrice(), product.getWholeSalePriceDiscount());
+            }
+
             productViewHolder.name.setText(product.getNameAr());
             productViewHolder.pack.setText(product.getPack());
             if (product.getMedia() != null && !product.getMedia().getUrl().equals(""))
                 Picasso.get().load(product.getMedia().getUrl()).into(productViewHolder.image);
-            productViewHolder.oldPrice.setText(String.valueOf(product.getMarketPrice()));
 
             productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -182,12 +186,12 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     }
 
     private void setPrice(ProductViewHolder holder ,int price, int discount) {
-        holder.price.setText(String.valueOf(price));
-        if (discount != 0) {
-            holder.oldPrice.setText(String.valueOf(discount));
-        } else {
-            holder.oldPrice.setVisibility(View.GONE);
-        }
+            holder.price.setText(String.valueOf(price));
+            if (discount != 0) {
+                holder.oldPrice.setText(String.valueOf(discount));
+            } else {
+                holder.oldPrice.setVisibility(View.GONE);
+            }
     }
 
     class ProductViewHolder extends RecyclerView.ViewHolder {

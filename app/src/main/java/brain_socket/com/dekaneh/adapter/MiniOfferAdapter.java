@@ -36,8 +36,8 @@ public class MiniOfferAdapter extends RecyclerView.Adapter<MiniOfferAdapter.Mini
 
         holder.percent.setText(offer.getPercentageString());
         holder.body.setText(offer.getDescription());
-        holder.oldPrice.setText(String.valueOf(offer.getMarketPrice()));
-        holder.newPrice.setText(String.valueOf(offer.getRetailPrice()));
+//        holder.oldPrice.setText(String.valueOf(offer.getMarketPrice()));
+//        holder.newPrice.setText(String.valueOf(offer.getRetailPrice()));
 
     }
 

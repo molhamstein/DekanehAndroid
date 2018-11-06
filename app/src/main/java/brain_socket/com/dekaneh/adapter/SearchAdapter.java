@@ -20,6 +20,7 @@ import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Product;
+import brain_socket.com.dekaneh.network.model.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -59,11 +60,18 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
         }
 
-        holder.price.setText(String.valueOf(product.getRetailPrice()));
         holder.name.setText(product.getNameAr());
-        if (!item.getMedia().getUrl().equals(""))
+        if (!item.getMedia().getUrl().equals("")) {
             Picasso.get().load(product.getMedia().getUrl()).into(holder.image);
-        holder.oldPrice.setText(String.valueOf(product.getMarketPrice()));
+        }
+
+
+        if (cacheStore.getSession().getClientType().equals(User.Type.retailCostumer.toString())) {
+            setPrice(holder, product.getHorecaPrice(), product.getHorecaPriceDiscount());
+        } else {
+            setPrice(holder, product.getWholeSalePrice(), product.getWholeSalePriceDiscount());
+        }
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,6 +137,15 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     public void clear() {
         this.products.clear();
         notifyDataSetChanged();
+    }
+
+    private void setPrice(SearchViewHolder holder , int price, int discount) {
+        holder.price.setText(String.valueOf(price));
+        if (discount != 0) {
+            holder.oldPrice.setText(String.valueOf(discount));
+        } else {
+            holder.oldPrice.setVisibility(View.GONE);
+        }
     }
 
     class SearchViewHolder extends RecyclerView.ViewHolder {

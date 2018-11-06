@@ -120,11 +120,15 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     }
 
     @Override
-    public void updateView(Product product, String imageUrl) {
+    public void updateView(Product product, String imageUrl, boolean isHoreca) {
         if (!imageUrl.equals(""))
             Picasso.get().load(imageUrl).into(this.productImage);
         this.name.setText(product.getNameAr());
-        this.price.setText(String.valueOf(product.getRetailPrice()));
+        if (isHoreca) {
+            this.price.setText(String.valueOf(product.getHorecaPrice()));
+        } else {
+            this.price.setText(String.valueOf(product.getWholeSalePrice()));
+        }
         this.packName.setText(product.getNameAr());
         this.manufacturer.setText(product.getManufacturer().getNameAr());
         this.description.setText(product.getDescription());

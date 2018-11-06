@@ -24,6 +24,7 @@ import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.Session;
 import brain_socket.com.dekaneh.network.model.CartItem;
+import brain_socket.com.dekaneh.network.model.User;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -53,8 +54,8 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
         if (item.getMedia() != null && !item.getMedia().getUrl().equals(""))
             Picasso.get().load(item.getMedia().getUrl()).into(holder.image);
         holder.name.setText(item.getNameAr());
-        holder.quantity.setText(String.valueOf(item.getRetailPrice()) + " * " + String.valueOf(item.getCount()));
-        holder.accPrice.setText(String.valueOf(item.getRetailPrice() * item.getCount()));
+        holder.quantity.setText(String.valueOf(item.getPrice(cacheStore.getSession().getClientType().equals(User.Type.retailCostumer))) + " * " + String.valueOf(item.getCount()));
+        holder.accPrice.setText(String.valueOf(item.getPrice(cacheStore.getSession().getClientType().equals(User.Type.retailCostumer)) * item.getCount()));
         holder.orderCount.setText(String.valueOf(item.getCount()));
 
 
