@@ -40,6 +40,8 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
 
     @Inject
     ProductDetailsVP.Presenter<ProductDetailsVP.View> presenter;
+    @Inject
+    ProductsAdapter productsAdapter;
 
     @BindView(R.id.prodDetailsToolbar)
     Toolbar toolbar;
@@ -74,7 +76,6 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     @BindView(R.id.orderCount)
     TextView orderCount;
 
-    ProductsAdapter productsAdapter;
     MiniOfferAdapter miniOfferAdapter;
 
     public static void start(Context context, Product product) {
@@ -97,7 +98,6 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         getActivityComponent().inject(this);
 
         presenter.onAttach(this);
-        productsAdapter = new ProductsAdapter(new CacheStore(this, new Session(this)));
         miniOfferAdapter = new MiniOfferAdapter();
 
         miniOffersRV.setLayoutManager(new LinearLayoutManager(this));

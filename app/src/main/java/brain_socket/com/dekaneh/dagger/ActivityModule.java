@@ -30,6 +30,7 @@ import brain_socket.com.dekaneh.adapter.ManufacturersAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
 import brain_socket.com.dekaneh.adapter.OrderDetailsItemsAdapter;
 import brain_socket.com.dekaneh.adapter.OrdersAdapter;
+import brain_socket.com.dekaneh.adapter.ProductsAdapter;
 import brain_socket.com.dekaneh.adapter.SearchAdapter;
 import brain_socket.com.dekaneh.adapter.SubCategoriesAdapter;
 import brain_socket.com.dekaneh.application.AppSchedulerProvider;
@@ -217,6 +218,11 @@ public class ActivityModule {
     @Provides
     SearchAdapter providesSearchAdapter(CacheStore cacheStore) {
         return new SearchAdapter(cacheStore);
+    }
+
+    @Provides
+    ProductsAdapter provideProductsAdapter(CacheStore cacheStore) {
+        return new ProductsAdapter(cacheStore);
     }
 
     @Horizontal

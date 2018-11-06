@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.category_details.CategoryDetailsActivity;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
@@ -22,6 +24,7 @@ import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.Product;
+import brain_socket.com.dekaneh.network.model.User;
 import brain_socket.com.dekaneh.utils.ViewUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,7 +39,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     private OnItemCountChange onItemCountChange;
     private int plusMinusAnimationBtnVal = 18;
 
-
+    @Inject
     public ProductsAdapter(CacheStore cacheStore) {
         this.cacheStore = cacheStore;
         this.products = new ArrayList<>();
@@ -149,7 +152,6 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                 }
             });
 
-
         } else if (holder instanceof SeeMoreViewHolder) {
             final SeeMoreViewHolder seeMoreViewHolder = (SeeMoreViewHolder) holder;
             seeMoreViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -177,6 +179,15 @@ public class ProductsAdapter extends RecyclerView.Adapter {
         if (products.size() >= MAX_NUM_OF_PRODUCTS)
             return products.get(position) != null ? position : SEE_MORE_VIEW;
         return super.getItemViewType(position);
+    }
+
+    private void setPrice(ProductViewHolder holder ,int price, int discount) {
+        holder.price.setText(String.valueOf(price));
+        if (discount != 0) {
+            holder.oldPrice.setText(String.valueOf(discount));
+        } else {
+            holder.oldPrice.setVisibility(View.GONE);
+        }
     }
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
