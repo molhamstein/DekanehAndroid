@@ -16,6 +16,6 @@ public class SplashActivityPresenter<T extends SplashActivityVP.View> extends Ba
 
     @Override
     public void clearCache() {
-        getCacheStore().clearCache();
+        getCacheStore().clearCacheWithoutCart();
     }
 }
