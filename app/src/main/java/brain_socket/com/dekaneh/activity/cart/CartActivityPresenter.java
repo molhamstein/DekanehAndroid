@@ -73,7 +73,7 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
     public int getPrice() {
         int price = 0;
         for (CartItem item : getCacheStore().getCartItems()) {
-            price += item.getPrice(getCacheStore().getSession().getClientType().equals(User.Type.retailCostumer));
+            price += item.getTotalPrice(getCacheStore().getSession().getClientType().equals(User.Type.retailCostumer));
         }
         return price;
     }

@@ -135,10 +135,10 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View view) {
                     if (cacheStore.cartItemCount(item) <= 1) {
+                        cacheStore.removeCartItem(item);
                         ((ProductViewHolder) holder).expandingBtn.animate().scaleX(1).withEndAction(new Runnable() {
                             @Override
                             public void run() {
-                                cacheStore.removeCartItem(item);
                                 ((ProductViewHolder) holder).orderNowBtn.setVisibility(View.VISIBLE);
                                 ((ProductViewHolder) holder).orderBtn.setVisibility(View.GONE);
                                 ((ProductViewHolder) holder).plusOneBtn.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).start();

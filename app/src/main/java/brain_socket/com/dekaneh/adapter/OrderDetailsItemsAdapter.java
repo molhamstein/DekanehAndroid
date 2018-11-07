@@ -3,7 +3,6 @@ package brain_socket.com.dekaneh.adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,8 +54,8 @@ public class OrderDetailsItemsAdapter extends RecyclerView.Adapter<OrderDetailsI
         if (!item.getMedia().getUrl().equals(""))
         Picasso.get().load(item.getMedia().getUrl()).into(holder.image);
         holder.name.setText(item.getNameAr());
-        holder.quantity.setText(String.valueOf(item.getPrice(cacheStore.getSession().getClientType().equals(User.Type.retailCostumer))) + " * " + String.valueOf(item.getCount()));
-        holder.accPrice.setText(String.valueOf(item.getPrice(cacheStore.getSession().getClientType().equals(User.Type.retailCostumer)) * item.getCount()));
+        holder.quantity.setText(String.valueOf(item.getTotalPrice(cacheStore.getSession().getClientType().equals(User.Type.retailCostumer))) + " * " + String.valueOf(item.getCount()));
+        holder.accPrice.setText(String.valueOf(item.getTotalPrice(cacheStore.getSession().getClientType().equals(User.Type.retailCostumer)) * item.getCount()));
         holder.orderCount.setText(String.valueOf(item.getCount()));
 
         if (editing) {
