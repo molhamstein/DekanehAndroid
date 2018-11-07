@@ -114,10 +114,10 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
             @Override
             public void onClick(View view) {
                 if (cacheStore.cartItemCount(item) <= 1) {
+                    cacheStore.removeCartItem(item);
                     holder.expandingBtn.animate().scaleX(1).withEndAction(new Runnable() {
                         @Override
                         public void run() {
-                            cacheStore.removeCartItem(item);
                             holder.orderNowBtn.setVisibility(View.VISIBLE);
                             holder.orderBtn.setVisibility(View.GONE);
                             holder.plusOneBtn.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
@@ -162,7 +162,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         notifyDataSetChanged();
     }
 
-    private void setPrice(OffersViewHolder holder , int price, int discount) {
+    private void setPrice(OffersViewHolder holder, int price, int discount) {
         holder.price.setText(String.valueOf(price));
         if (discount != 0) {
             holder.oldPrice.setText(String.valueOf(discount));

@@ -136,6 +136,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                 public void onClick(View view) {
                     if (cacheStore.cartItemCount(item) <= 1) {
                         cacheStore.removeCartItem(item);
+                        productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
                         ((ProductViewHolder) holder).expandingBtn.animate().scaleX(1).withEndAction(new Runnable() {
                             @Override
                             public void run() {
