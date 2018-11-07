@@ -40,7 +40,7 @@ public class NewAccountFragmentPresenter<T extends NewAccountFragmentVP.View> ex
     @Override
     public void signUp(String phoneNumber, String storeName, String ownerName, String location, String password, int areaPos) {
 
-        SignUpRequest request = new SignUpRequest(ValidationUtils.validatePhoneNumber(phoneNumber), storeName, ownerName, password, areas.get(areaPos).getId());
+        SignUpRequest request = new SignUpRequest(ValidationUtils.validatePhoneNumber(phoneNumber), storeName, ownerName, password, areas.get(areaPos).getId(), User.Type.retailCostumer);
 
         if(!ValidationUtils.isValidPhoneNumber(phoneNumber)) {
             getView().onError(R.string.provide_valid_phone_number_statement);
