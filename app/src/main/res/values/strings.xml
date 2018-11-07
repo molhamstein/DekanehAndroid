@@ -3,15 +3,15 @@
 
 
     <!--Date -->
-    <string name="DATE_FORMATE_TODAY">today</string>
-    <string name="DATE_FORMATE_YESTERDAY">yesterday</string>
-    <string name="DATE_fiew_minutes_ago">%1$d minutes ago</string>
-    <string name="DATE_fiew_hours_ago">%1$d hours ago</string>
-    <string name="DATE_fiew_days_ago">%1$d days ago</string>
-    <string name="DATE_fiew_seconds_ago">few seconds ago</string>
+    <string name="DATE_FORMATE_TODAY" translatable="false">today</string>
+    <string name="DATE_FORMATE_YESTERDAY" translatable="false">yesterday</string>
+    <string name="DATE_fiew_minutes_ago" translatable="false">%1$d minutes ago</string>
+    <string name="DATE_fiew_hours_ago" translatable="false">%1$d hours ago</string>
+    <string name="DATE_fiew_days_ago" translatable="false">%1$d days ago</string>
+    <string name="DATE_fiew_seconds_ago" translatable="false">few seconds ago</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="phone_number">Phone number</string>
     <string name="password">Password</string>
     <string name="forgot_password">Forgot password?</string>
@@ -32,15 +32,15 @@
     <string name="connection_error">Internet connection lost!</string>
 
     <!--Login Validation-->
-    <string name="empty_email">Please provide a non empty email.</string>
-    <string name="invalid_email">Please provide a valid email.</string>
+    <string name="empty_email">Please provide a non empty phone number.</string>
+    <string name="invalid_email">Please provide a valid phone number.</string>
     <string name="empty_password">Please provide a non empty password.</string>
     <string name="buy_now">Buy now</string>
     <string name="dummy_text">dummy text dummy text dummy text dummy text dummy text dummy text</string>
-    <string name="title_activity_main">Main</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_main" translatable="false">Main</string>
+    <string name="title_home" translatable="false">Home</string>
+    <string name="title_dashboard" translatable="false">Dashboard</string>
+    <string name="title_notifications" translatable="false">Notifications</string>
     <string name="profile">Profile</string>
     <string name="offers">Offers</string>
     <string name="categories">Categories</string>
@@ -58,11 +58,11 @@
     <string name="back_to_sign_in">Back to sign in</string>
     <string name="visit_text">We\'ll visit you soon</string>
     <string name="request_submitted_text">Request submitted</string>
-    <string name="search">Search</string>
+    <string name="search" translatable="false">Search</string>
     <string name="dummy_pepsi_title"><![CDATA[Pepsi bottle &#188; L]]></string>
     <string name="price">Price</string>
     <string name="product">Product</string>
-    <string name="pepsi_co">PEPSI co</string>
+    <string name="pepsi_co" translatable="false">PEPSI co</string>
     <string name="about_the_product">About the product</string>
     <string name="similar_products">Similar Products</string>
     <string name="more">More</string>
@@ -75,17 +75,17 @@
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
-    <string name="pref_header_general">General</string>
+    <string name="pref_header_general" translatable="false">General</string>
 
-    <string name="pref_title_social_recommendations">Enable social recommendations</string>
-    <string name="pref_description_social_recommendations">Recommendations for people to contact
+    <string name="pref_title_social_recommendations" translatable="false">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations" translatable="false">Recommendations for people to contact
         based on your message history
     </string>
 
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
+    <string name="pref_title_display_name" translatable="false">Display name</string>
+    <string name="pref_default_display_name" translatable="false">John Smith</string>
 
-    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string name="pref_title_add_friends_to_messages" translatable="false">Add friends to messages</string>
     <string-array name="pref_example_list_titles">
         <item>Always</item>
         <item>When possible</item>
@@ -98,9 +98,9 @@
     </string-array>
 
     <!-- Example settings for Data & Sync -->
-    <string name="pref_header_data_sync">Data &amp; sync</string>
+    <string name="pref_header_data_sync" translatable="false">Data &amp; sync</string>
 
-    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string name="pref_title_sync_frequency" translatable="false">Sync frequency</string>
     <string-array name="pref_sync_frequency_titles">
         <item>15 minutes</item>
         <item>30 minutes</item>
@@ -132,17 +132,17 @@
 
     <string-array name="multi_select_list_preference_default_value" />
 
-    <string name="pref_title_system_sync_settings">System sync settings</string>
+    <string name="pref_title_system_sync_settings" translatable="false">System sync settings</string>
 
     <!-- Example settings for Notifications -->
-    <string name="pref_header_notifications">Notifications</string>
+    <string name="pref_header_notifications" translatable="false">Notifications</string>
 
-    <string name="pref_title_new_message_notifications">New message notifications</string>
+    <string name="pref_title_new_message_notifications" translatable="false">New message notifications</string>
 
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
+    <string name="pref_title_ringtone" translatable="false">Ringtone</string>
+    <string name="pref_ringtone_silent" translatable="false">Silent</string>
 
-    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="pref_title_vibrate" translatable="false">Vibrate</string>
     <string name="privacy_policy">Privacy Policy</string>
     <string name="contact_us">Contact us</string>
     <string name="log_out">Log out</string>
@@ -160,12 +160,17 @@
     <string name="order_status">Order Status</string>
     <string name="preparing">Preparing</string>
     <string name="edit">edit</string>
-    <string name="submit" />
+    <string name="submit" >Submit</string>
     <string name="terms_conditions_msg">Please Agree to our terms and conditions</string>
     <string name="send_order">Send Order</string>
     <string name="your_cart_is_empty">Your cart is empty!</string>
     <string name="low_total_price_error">Low Total Price</string>
     <string name="country_code">00963</string>
     <string name="provide_valid_phone_number_statement">Please provide a valid phone number</string>
+    <string name="total">Total</string>
+    <string name="no_notifications">No Notifications!</string>
+    <string name="pack">Pack</string>
+    <string name="name">Name</string>
+    <string name="update">Update</string>
 
 </resources>

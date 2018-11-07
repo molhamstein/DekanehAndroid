@@ -50,7 +50,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="No Notifications!"
+            android:text="@string/no_notifications"
             style="@style/SecondaryBlackTextView"
             android:textSize="22sp"
             android:gravity="center"

@@ -64,5 +64,20 @@
     <string name="low_total_price_error">حجم الطلبيه اقل من الحد الادنى المسموح ٢٠٠٠٠ ل.س</string>
     <string name="country_code">00963</string>
     <string name="provide_valid_phone_number_statement">الرجاء ادخال رقم هاتف صحيح</string>
+    <string name="api_retry_error">الرجاء اعادة المحاولة</string>
+    <string name="api_default_error">حصل خطأ غير متوقع</string>
+    <string name="connection_error">لا يوجد اتصال بالانترنت</string>
+    <string name="empty_email">لا يجب ان يكون رقم الهاتف خاليا</string>
+    <string name="invalid_email">رقم الهاتف غير صالح</string>
+    <string name="empty_password">لا يجب ان تكون كلمة السر خاليةخاليا</string>
+    <string name="more">المزيد</string>
+    <string name="log_out">تسجيل الخروج</string>
+    <string name="terms_conditions_msg">الرجاء الموافقة على شروط الخدمة</string>
+    <string name="submit">حفظ</string>
+    <string name="total">الاجمالي</string>
+    <string name="no_notifications">لا يوجد اشعارات</string>
+    <string name="pack">العبوة</string>
+    <string name="name">الاسم</string>
+    <string name="update">تحديث</string>
 
 </resources>

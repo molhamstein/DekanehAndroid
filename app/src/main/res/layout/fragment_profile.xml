@@ -50,7 +50,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="-8dp"
                             android:alpha=".7"
-                            android:text="Name" />
+                            android:text="@string/name" />
 
                         <TextView
                             android:id="@+id/storeName"
@@ -58,7 +58,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="-18dp"
-                            android:text="Store Name"
+                            android:text="@string/store_name"
                             android:textSize="22sp" />
 
                         <TextView
@@ -67,7 +67,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="-8dp"
                             android:alpha=".7"
-                            android:text="Owner name" />
+                            android:text="@string/owner_name" />
 
                         <TextView
                             android:id="@+id/ownerName"
@@ -84,7 +84,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="-8dp"
                             android:alpha=".7"
-                            android:text="Phone number" />
+                            android:text="@string/phone_number" />
 
                         <TextView
                             android:id="@+id/phoneNumber"
@@ -237,7 +237,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="80dp"
                 android:background="@drawable/primary_color_button_round_10"
-                android:text="Update"
+                android:text="@string/update"
                 android:textColor="@color/white" />
 
         </LinearLayout>
