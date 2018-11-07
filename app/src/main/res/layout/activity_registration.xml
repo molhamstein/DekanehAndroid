@@ -16,7 +16,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/pattern_top"
-        android:scaleType="centerCrop"
+        android:scaleType="fitStart"
+        android:paddingStart="50dp"
+        android:paddingEnd="0dp"
         />
 
     <ImageView
@@ -25,6 +27,8 @@
         app:srcCompat="@drawable/pattern_top"
         android:scaleType="centerCrop"
         android:rotation="180"
+        android:paddingStart="50dp"
+        android:paddingEnd="0dp"
         />
 
 
