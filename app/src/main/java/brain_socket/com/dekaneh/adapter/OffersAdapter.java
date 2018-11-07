@@ -167,7 +167,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         if (discount != 0) {
             holder.oldPrice.setText(String.valueOf(discount));
         } else {
-            holder.oldPrice.setVisibility(View.GONE);
+            holder.offerDiscount.setVisibility(View.GONE);
         }
     }
 
@@ -196,6 +196,8 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         TextView oldPrice;
         @BindView(R.id.expandingBtn)
         View expandingBtn;
+        @BindView(R.id.offerDiscount)
+        View offerDiscount;
 
         OffersViewHolder(View itemView) {
             super(itemView);

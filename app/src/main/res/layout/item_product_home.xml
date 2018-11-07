@@ -60,6 +60,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/productDiscount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -119,8 +120,8 @@
         android:text="@string/offers_available"
         android:gravity="center"
         android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        android:paddingBottom="16dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="12dp"
         android:lineSpacingMultiplier=".6"
         android:textSize="10sp"
         android:visibility="visible"

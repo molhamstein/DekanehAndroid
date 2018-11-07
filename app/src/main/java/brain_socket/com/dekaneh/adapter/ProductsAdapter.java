@@ -186,13 +186,13 @@ public class ProductsAdapter extends RecyclerView.Adapter {
         return super.getItemViewType(position);
     }
 
-    private void setPrice(ProductViewHolder holder ,int price, int discount) {
-            holder.price.setText(String.valueOf(price));
-            if (discount != 0) {
-                holder.oldPrice.setText(String.valueOf(discount));
-            } else {
-                holder.oldPrice.setVisibility(View.GONE);
-            }
+    private void setPrice(ProductViewHolder holder, int price, int discount) {
+        holder.price.setText(String.valueOf(price));
+        if (discount != 0) {
+            holder.oldPrice.setText(String.valueOf(discount));
+        } else {
+            holder.productDiscount.setVisibility(View.GONE);
+        }
     }
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
@@ -221,6 +221,8 @@ public class ProductsAdapter extends RecyclerView.Adapter {
         TextView pack;
         @BindView(R.id.expandingBtn)
         View expandingBtn;
+        @BindView(R.id.productDiscount)
+        View productDiscount;
 
         ProductViewHolder(View itemView) {
             super(itemView);
