@@ -172,5 +172,6 @@
     <string name="pack">Pack</string>
     <string name="name">Name</string>
     <string name="update">Update</string>
+    <string name="address">Address</string>
 
 </resources>

@@ -79,5 +79,6 @@
     <string name="pack">العبوة</string>
     <string name="name">الاسم</string>
     <string name="update">تحديث</string>
+    <string name="address">العنوان</string>
 
 </resources>
