@@ -27,7 +27,7 @@ public class SignUpRequest implements Serializable {
     private String areaId;
     @SerializedName("clientType")
     @Expose
-    private User.Type clientType;
+    private String clientType;
 
 
     public SignUpRequest(String phoneNumber, String shopName, String ownerName, String password, String areaId, User.Type clientType) {
@@ -36,7 +36,7 @@ public class SignUpRequest implements Serializable {
         this.ownerName = ownerName;
         this.password = password;
         this.areaId = areaId;
-        this.clientType = clientType;
+        this.clientType = clientType.toString();
     }
 
 }
