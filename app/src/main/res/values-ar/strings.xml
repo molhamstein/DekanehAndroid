@@ -86,5 +86,6 @@
     <string name="delivered">تم التوصيل</string>
     <string name="canceled">تم لغي الطلب</string>
     <string name="inDelivery">قيد التوصيل</string>
+    <string name="status">حالة الطلب</string>
 
 </resources>
