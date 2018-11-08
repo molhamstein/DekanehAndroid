@@ -66,12 +66,6 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     View similarProductsLayout;
     @BindView(R.id.offersView1)
     View offersView1;
-    @BindView(R.id.offersView2)
-    View offersView2;
-    @BindView(R.id.similarView1)
-    View similarView1;
-    @BindView(R.id.similarView2)
-    View similarView2;
 
     @BindView(R.id.orderCount)
     TextView orderCount;
@@ -152,14 +146,11 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     @Override
     public void hideSimilarProductsSection() {
         similarProductsLayout.setVisibility(View.GONE);
-        similarView1.setVisibility(View.GONE);
-        similarView2.setVisibility(View.GONE);
     }
 
     @Override
     public void hideOffersSection() {
         offersView1.setVisibility(View.GONE);
-        offersView2.setVisibility(View.GONE);
         miniOffersRV.setVisibility(View.GONE);
     }
 

@@ -26,7 +26,6 @@ public class Offer extends Product implements Serializable {
     private List<Product> products;
 
 
-
     public Offer(Offer offer) {
         super(offer);
     }
@@ -52,13 +51,17 @@ public class Offer extends Product implements Serializable {
         return products;
     }
 
-    private int getDiscountPercentage() {
-//        return (int) (getRetailPrice() - retailPriceDiscount) * 100 / getRetailPrice();
-        return 1;
+    private int getDiscountPercentage(String clientType) {
+        if (clientType.equals(User.Type.retailCostumer.toString()))
+            if (getHorecaPrice() != 0 && getWholeSalePriceDiscount() != 0)
+                return (int) (getHorecaPrice() - getHorecaPriceDiscount()) * 100 / getHorecaPrice();
+            else if (getWholeSalePrice() != 0 && getWholeSalePriceDiscount() != 0)
+                return (int) (getWholeSalePrice() - getWholeSalePriceDiscount()) * 100 / getWholeSalePrice();
+            return 0;
     }
 
-    public String getPercentageString() {
-        return String.valueOf(getDiscountPercentage()) + "%";
+    public String getPercentageString(String clientType) {
+        return String.valueOf(getDiscountPercentage(clientType)) + "%";
     }
 
 }
