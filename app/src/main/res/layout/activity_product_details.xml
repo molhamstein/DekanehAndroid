@@ -216,19 +216,15 @@
             <TextView
                 android:id="@+id/offersView1"
                 style="@style/PrimaryBlackTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="48dp"
+                android:padding="8dp"
+                android:background="@drawable/seperator"
                 android:text="@string/offers" />
 
-            <View
-                android:id="@+id/offersView2"
-                android:layout_width="80dp"
-                android:layout_height="3dp"
-                android:layout_marginStart="16dp"
-                android:background="@color/green" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/miniOffersRV"
@@ -238,18 +234,14 @@
 
             <TextView
                 style="@style/PrimaryBlackTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="40dp"
+                android:padding="8dp"
+                android:background="@drawable/seperator"
                 android:text="@string/about_the_product" />
-
-            <View
-                android:layout_width="80dp"
-                android:layout_height="3dp"
-                android:layout_marginStart="16dp"
-                android:background="@color/green" />
 
             <TextView
                 android:id="@+id/productDescription"
@@ -272,36 +264,26 @@
             <TextView
                 android:id="@+id/similarView1"
                 style="@style/SecondaryBlackTextView"
-                android:layout_width="match_parent"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:gravity="center"
                 android:text="@string/more"
+                android:layout_gravity="center_horizontal"
+                android:padding="8dp"
+                android:background="@drawable/seperator"
                 android:textSize="18sp" />
-
-            <View
-                android:id="@+id/similarView2"
-                android:layout_width="80dp"
-                android:layout_height="3dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:background="@color/green" />
-
 
             <TextView
                 style="@style/PrimaryBlackTextView"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="40dp"
+                android:padding="8dp"
+                android:background="@drawable/seperator"
                 android:text="@string/similar_products" />
-
-            <View
-                android:layout_width="130dp"
-                android:layout_height="3dp"
-                android:layout_marginStart="16dp"
-                android:background="@color/green" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/similarProductsRV"
