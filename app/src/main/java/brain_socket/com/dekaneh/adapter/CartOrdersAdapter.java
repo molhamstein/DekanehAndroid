@@ -53,8 +53,8 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
         if (item.getMedia() != null && !item.getMedia().getUrl().equals(""))
             Picasso.get().load(item.getMedia().getUrl()).into(holder.image);
         holder.name.setText(item.getNameAr());
-        holder.quantity.setText(String.valueOf(item.getPrice(cacheStore.getSession().getClientType().equals(User.Type.retailCostumer))) + " * " + String.valueOf(item.getCount()));
-        holder.accPrice.setText(String.valueOf(item.getTotalPrice(cacheStore.getSession().getClientType().equals(User.Type.retailCostumer))));
+        holder.quantity.setText(String.valueOf(item.getPrice(cacheStore.getSession().getClientType().equals(User.Type.retailCostumer.toString()))) + " * " + String.valueOf(item.getCount()));
+        holder.accPrice.setText(String.valueOf(item.getTotalPrice(cacheStore.getSession().getClientType().equals(User.Type.retailCostumer.toString()))));
         holder.orderCount.setText(String.valueOf(item.getCount()));
 
 

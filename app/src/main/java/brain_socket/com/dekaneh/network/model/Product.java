@@ -175,4 +175,10 @@ public class Product implements Serializable {
                 ", media=" + media +
                 '}';
     }
+
+    public int getPrice(boolean isHoreca) {
+        if (isHoreca) return getHorecaPrice();
+        else return getWholeSalePrice();
+    }
+
 }

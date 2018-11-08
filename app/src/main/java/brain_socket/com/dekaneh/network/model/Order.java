@@ -47,7 +47,7 @@ public class Order implements Serializable {
     public Order(int totalPrice, String clientId, List<CartItem> items) {
         this.clientId = clientId;
         this.products = items;
-        this.totalPrice = totalPrice;
+//        this.totalPrice = totalPrice;
     }
 
     public String getId() {
