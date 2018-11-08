@@ -12,6 +12,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.main.MainActivity;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
 import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.MainSliderAdapter;
@@ -141,7 +142,7 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
 
     @OnClick(R.id.seeAllOffersText)
     public void onSeeAllOffersText() {
-
+        ((MainActivity) getActivity()).navigateToOffersFragment();
     }
 
 }

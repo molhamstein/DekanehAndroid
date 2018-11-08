@@ -250,4 +250,8 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
             }
         }
     }
+
+    public void navigateToOffersFragment() {
+        bottomNavigation.setCurrentItem(2);
+    }
 }

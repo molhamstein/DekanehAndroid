@@ -17,7 +17,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
-            android:text="@string/dummy_header" />
+            android:text="@string/dummy_header"
+            android:paddingStart="8dp"
+            android:paddingTop="8dp"
+            android:layout_marginEnd="200dp"
+            android:background="@drawable/seperator"
+            />
 
         <TextView
             android:id="@+id/seeAllText"
@@ -35,12 +40,6 @@
 
 
     </FrameLayout>
-
-    <View
-        android:layout_width="120dp"
-        android:layout_height="3dp"
-        android:layout_marginStart="8dp"
-        android:background="@color/primaryText" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mainProductsRV"
