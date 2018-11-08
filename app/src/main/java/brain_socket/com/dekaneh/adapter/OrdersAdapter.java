@@ -48,7 +48,20 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrdersView
         holder.date.setText(AppDateUtils.dateToString(order.getOrderDate()));
         holder.id.setText(order.getId());
         holder.price.setText(String.valueOf(order.getTotalPrice()));
-        holder.status.setText(order.getStatus().toString());
+        switch (order.getStatus()) {
+            case pending:
+                holder.status.setText(R.string.pending);
+                break;
+            case delivered:
+                holder.status.setText(R.string.delivered);
+                break;
+            case canceled:
+                holder.status.setText(R.string.canceled);
+                break;
+            case inDelivery:
+                holder.status.setText(R.string.inDelivery);
+                break;
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

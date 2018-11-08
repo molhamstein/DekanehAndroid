@@ -13,10 +13,18 @@ public class OrderRequest implements Serializable {
     private String clientId;
     @SerializedName("products")
     @Expose
-    private List<CartItem> products;
+    private List<Orderitem> products;
 
-    public OrderRequest(String clientId, List<CartItem> products) {
+    public OrderRequest(String clientId, List<Orderitem> orderitems) {
         this.clientId = clientId;
-        this.products = products;
+        this.products = orderitems;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderRequest{" +
+                "clientId='" + clientId + '\'' +
+                ", products=" + products +
+                '}';
     }
 }

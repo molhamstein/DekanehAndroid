@@ -78,7 +78,7 @@
     <FrameLayout
         android:id="@+id/orderBtnLayout"
         style="@style/WhiteBlackTextOfferBtn"
-        android:layout_width="150dp"
+        android:layout_width="130dp"
         android:layout_height="60dp"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"

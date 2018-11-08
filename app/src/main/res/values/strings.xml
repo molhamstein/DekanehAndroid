@@ -175,5 +175,10 @@
     <string name="address">Address</string>
     <string name="terms_and_conditions">Accept privacy policy and Terms and Conditions</string>
     <string name="activate_account_error">Your account needs to be activated</string>
+    <string name="pending">Pending</string>
+    <string name="delivered">Delivered</string>
+    <string name="canceled">Canceled</string>
+    <string name="inDelivery">In Delivery</string>
+    <string name="status">Status</string>
 
 </resources>

@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Order id"
+        android:text="@string/order_id"
         style="@style/SecondaryBoldTextView"
         android:textSize="12sp"
         android:layout_gravity="start|center_vertical"
@@ -61,13 +61,13 @@
         style="@style/PrimaryBlackTextView"
         android:textSize="32sp"
         android:layout_marginTop="-20dp"
-        android:layout_marginEnd="54dp"
+        android:layout_marginEnd="60dp"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Status"
+        android:text="@string/status"
         style="@style/SecondaryBoldTextView"
         android:textSize="12sp"
         android:layout_gravity="end|center_vertical"

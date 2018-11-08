@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.androidnetworking.error.ANError;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -15,7 +16,9 @@ import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.OrderRequest;
+import brain_socket.com.dekaneh.network.model.Orderitem;
 import brain_socket.com.dekaneh.network.model.User;
+import brain_socket.com.dekaneh.utils.NetworkUtils;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -40,8 +43,14 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
 
     @Override
     public void sendOrder() {
+        List<Orderitem> orderItems = new ArrayList<>();
+        for (CartItem item : getCacheStore().getCartItems()) {
+            orderItems.add(new Orderitem(item.getCount(), item.getId()));
+        }
 
-        OrderRequest order = new OrderRequest(getCacheStore().getSession().getUserId(), getCacheStore().getCartItems());
+        OrderRequest order = new OrderRequest(getCacheStore().getSession().getUserId(), orderItems);
+
+        Log.d(TAG, "sendOrder: " + order.toString());
 
         getView().showLoading();
         getCompositeDisposable().add(
