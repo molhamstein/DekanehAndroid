@@ -173,5 +173,7 @@
     <string name="name">Name</string>
     <string name="update">Update</string>
     <string name="address">Address</string>
+    <string name="terms_and_conditions">Accept privacy policy and Terms and Conditions</string>
+    <string name="activate_account_error">Your account needs to be activated</string>
 
 </resources>

@@ -95,6 +95,7 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
             }
         });
 
+
         offersAdapter.setOnItemCountChange(new OnItemCountChange() {
             @Override
             public void onChange() {

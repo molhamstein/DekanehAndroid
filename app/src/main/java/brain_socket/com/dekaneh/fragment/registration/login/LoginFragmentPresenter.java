@@ -72,7 +72,7 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
                                     });
                                 }
                                 else {
-                                    getView().showMessage("Your account needs to be activated");
+                                    getView().showMessage(R.string.activate_account_error);
                                     getView().hideLoading();
                                 }
                             }

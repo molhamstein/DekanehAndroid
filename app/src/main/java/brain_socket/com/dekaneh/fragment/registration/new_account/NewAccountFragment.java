@@ -48,6 +48,8 @@ public class NewAccountFragment extends BaseFragment implements NewAccountFragme
     CheckBox checkBox;
     @BindView(R.id.newAccountAreasSpinner)
     Spinner areasSpinner;
+    @BindView(R.id.newAccountAreasSpinnerLayout)
+    View AreasSpinnerLayout;
 
     @BindView(R.id.phoneNumber)
     EditText phoneNumber;
@@ -80,6 +82,7 @@ public class NewAccountFragment extends BaseFragment implements NewAccountFragme
         ViewAnimator.animate(phoneCard).translationX(-600, 0).alpha(0, 1).duration(800)
                 .andAnimate(storeNameCard).translationX(-700, 0).alpha(0, 1).duration(800)
                 .andAnimate(ownerNameLayout).translationX(-750, 0).alpha(0, 1).duration(800)
+                .andAnimate(AreasSpinnerLayout).translationX(-750, 0).alpha(0, 1).duration(800)
                 .andAnimate(storeAddressCard).translationX(-800, 0).alpha(0, 1).duration(800)
                 .andAnimate(passwordCard).translationX(-900, 0).alpha(0, 1).duration(800)
                 .andAnimate(policyLayout).slideLeft().fadeIn().duration(800)
@@ -129,6 +132,7 @@ public class NewAccountFragment extends BaseFragment implements NewAccountFragme
         ViewAnimator.animate(phoneCard).translationX(0, 600).alpha(1, 0).duration(600)
                 .andAnimate(storeNameCard).translationX(0, 700).alpha(1, 0).duration(600)
                 .andAnimate(ownerNameLayout).translationX(0, 750).alpha(1, 0).duration(600)
+                .andAnimate(AreasSpinnerLayout).translationX(0, 750).alpha(1, 0).duration(600)
                 .andAnimate(storeAddressCard).translationX(0, 800).alpha(1, 0).duration(600)
                 .andAnimate(passwordCard).translationX(0, 900).alpha(1, 0).duration(600)
                 .andAnimate(policyLayout).translationX(0, 900).alpha(1, 0).duration(600)
