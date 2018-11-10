@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:orientation="vertical"
     android:padding="8dp">
-    
-    <TextView
-        android:id="@+id/category_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:text="@string/offers"
-        style="@style/PrimaryBlackTextView"
-        android:textSize="32sp"
-        />
-    
+
+
     <ImageView
+        android:id="@+id/categoryImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/thing"
         android:scaleType="centerCrop"/>
 
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/category_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/offers"
+        android:layout_marginTop="-8dp"
+        style="@style/PrimaryBlackTextView"
+        android:textSize="32sp"
+        />
+
+</FrameLayout>

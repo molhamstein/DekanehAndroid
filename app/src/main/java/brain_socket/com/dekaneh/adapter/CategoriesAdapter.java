@@ -5,7 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +42,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
         final Category category = categories.get(position);
 
         holder.title.setText(category.getTitleAr());
+        if (category.getIcon() != null && !category.getIcon().equals(""))
+            Picasso.get().load(category.getIcon()).into(holder.image);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +67,9 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
 
         @BindView(R.id.category_title)
         TextView title;
+        @BindView(R.id.categoryImage)
+        ImageView image;
+
 
         CategoriesViewHolder(View itemView) {
             super(itemView);

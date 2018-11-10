@@ -17,6 +17,9 @@ public class Category implements Serializable{
     @SerializedName("id")
     @Expose
     private String id;
+    @SerializedName("icon")
+    @Expose
+    private String icon;
 
     public String getTitleAr() {
         return titleAr;
@@ -28,5 +31,9 @@ public class Category implements Serializable{
 
     public String getId() {
         return id;
+    }
+
+    public String getIcon() {
+        return icon;
     }
 }
