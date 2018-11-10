@@ -49,7 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:background="@drawable/square_shape_paige_background_brown_stroke"
-                    android:padding="38dp">
+                    android:padding="44dp">
 
                     <TextView
                         android:id="@+id/productName"

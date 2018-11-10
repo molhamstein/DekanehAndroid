@@ -11,7 +11,7 @@
     </item>
     <item android:drawable="@drawable/details_header_border"
         android:bottom="8dp"
-        android:left="8dp"
-        android:right="8dp"
+        android:end="8dp"
+        android:start="8dp"
         android:top="8dp"/>
 </layer-list>
