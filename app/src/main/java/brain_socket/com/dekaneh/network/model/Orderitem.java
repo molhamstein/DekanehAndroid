@@ -10,7 +10,7 @@ public class Orderitem implements Serializable {
     @SerializedName("count")
     @Expose
     private int count;
-    @SerializedName("id")
+    @SerializedName("productId")
     @Expose
     private String productId;
 
