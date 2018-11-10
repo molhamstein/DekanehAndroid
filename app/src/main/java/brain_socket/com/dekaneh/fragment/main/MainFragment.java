@@ -54,6 +54,8 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
     RecyclerView offersRV;
     @BindView(R.id.mainProductRV)
     RecyclerView productsRV;
+    @BindView(R.id.mainBanner)
+    View mainBanner;
 
     private MainSliderAdapter sliderAdapter;
 
@@ -86,15 +88,28 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
         productsRV.setAdapter(categoriesAdapter);
         productsRV.setNestedScrollingEnabled(true);
 
-        slider.setOnSlideClickListener(new OnSlideClickListener() {
+        mainBanner.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSlideClick(int position) {
-                if (sliderAdapter.getImages().get(position).getType().equals("product")) {
-                    Product product = new Product(sliderAdapter.getImages().get(position).getId());
+            public void onClick(View view) {
+                Log.d("ASDASD", "onClick: out");
+                if (sliderAdapter.getImages().get(slider.selectedSlidePosition).getType().equals("product")) {
+                    Log.d("ASDASD", "onClick: in");
+                    Product product = new Product(sliderAdapter.getImages().get(slider.selectedSlidePosition).getId());
                     ProductDetailsActivity.start(getContext(), product);
                 }
             }
         });
+
+//        slider.setOnSlideClickListener(new OnSlideClickListener() {
+//            @Override
+//            public void onSlideClick(int position) {
+//                Log.d("ASDASDASDSDASDASDASD", "onSlideClick: " + position);
+//                if (sliderAdapter.getImages().get(position).getType().equals("product")) {
+//                    Product product = new Product(sliderAdapter.getImages().get(position).getId());
+//                    ProductDetailsActivity.start(getContext(), product);
+//                }
+//            }
+//        });
 
 
         offersAdapter.setOnItemCountChange(new OnItemCountChange() {
