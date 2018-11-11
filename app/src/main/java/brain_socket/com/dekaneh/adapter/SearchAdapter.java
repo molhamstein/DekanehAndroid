@@ -17,10 +17,12 @@ import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.activity.product_details.ProductDetailsActivity;
+import brain_socket.com.dekaneh.custom.DekanehInterpolator;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.network.model.User;
+import brain_socket.com.dekaneh.utils.ViewUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -29,6 +31,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     private List<Product> products;
     private CacheStore cacheStore;
     private OnItemCountChange onItemCountChange;
+    private int plusMinusAnimationBtnVal = 18;
 
 
     @Inject
@@ -52,19 +55,17 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
         final Product product = products.get(position);
 
+
         final CartItem item = new CartItem(product);
 
         if (cacheStore.isCartItemExist(item)) {
             holder.orderNowBtn.setVisibility(View.GONE);
             holder.orderBtn.setVisibility(View.VISIBLE);
+            holder.expandingBtn.animate().scaleX(1.2f).setDuration(10).start();
+            holder.plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+            holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
             holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
         }
-
-        holder.name.setText(product.getNameAr());
-        if (!item.getMedia().getUrl().equals("")) {
-            Picasso.get().load(product.getMedia().getUrl()).into(holder.image);
-        }
-
 
         if (cacheStore.getSession().getClientType().equals(User.Type.retailCostumer.toString())) {
             setPrice(holder, product.getHorecaPrice(), product.getHorecaPriceDiscount());
@@ -72,6 +73,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             setPrice(holder, product.getWholeSalePrice(), product.getWholeSalePriceDiscount());
         }
 
+        holder.name.setText(product.getNameAr());
+        holder.pack.setText(product.getPack());
+        if (product.getMedia() != null && !product.getMedia().getUrl().equals(""))
+            Picasso.get().load(product.getMedia().getUrl()).into(holder.image);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +91,9 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
                 view.setVisibility(View.GONE);
                 holder.orderBtn.setVisibility(View.VISIBLE);
                 cacheStore.addCartItem(item);
+                holder.expandingBtn.animate().scaleX(1.2f).start();
+                holder.plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                 holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
                 if (onItemCountChange != null) {
                     onItemCountChange.onChange();
@@ -110,8 +118,18 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             public void onClick(View view) {
                 if (cacheStore.cartItemCount(item) <= 1) {
                     cacheStore.removeCartItem(item);
-                    holder.orderNowBtn.setVisibility(View.VISIBLE);
-                    holder.orderBtn.setVisibility(View.GONE);
+                    holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                    holder.expandingBtn.animate().scaleX(1).withEndAction(new Runnable() {
+                        @Override
+                        public void run() {
+                            holder.orderNowBtn.setVisibility(View.VISIBLE);
+                            holder.orderBtn.setVisibility(View.GONE);
+                            holder.plusOneBtn.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).start();
+                            holder.minusOne.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).start();
+                        }
+                    }).start();
+
+
                 } else {
                     cacheStore.removeCartItem(item);
                     holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
@@ -139,7 +157,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         notifyDataSetChanged();
     }
 
-    private void setPrice(SearchViewHolder holder , int price, int discount) {
+    private void setPrice(SearchViewHolder holder, int price, int discount) {
         holder.price.setText(String.valueOf(price));
         if (discount != 0) {
             holder.oldPrice.setText(String.valueOf(discount));
@@ -149,6 +167,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     }
 
     class SearchViewHolder extends RecyclerView.ViewHolder {
+
 
         @BindView(R.id.productPrice)
         TextView price;
@@ -170,6 +189,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         View minusOne;
         @BindView(R.id.orderCount)
         TextView orderCount;
+        @BindView(R.id.pack)
+        TextView pack;
+        @BindView(R.id.expandingBtn)
+        View expandingBtn;
+        @BindView(R.id.productDiscount)
+        View productDiscount;
 
         public SearchViewHolder(View itemView) {
             super(itemView);
