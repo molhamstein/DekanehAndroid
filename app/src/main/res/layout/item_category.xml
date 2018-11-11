@@ -3,16 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:orientation="vertical"
-    android:padding="8dp">
-
+    >
 
     <ImageView
         android:id="@+id/categoryImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/thing"
         android:scaleType="centerCrop"/>
-
 
     <TextView
         android:id="@+id/category_title"
@@ -20,6 +17,7 @@
         android:layout_height="wrap_content"
         android:text="@string/offers"
         android:layout_marginTop="-8dp"
+        android:padding="8dp"
         style="@style/PrimaryBlackTextView"
         android:textSize="32sp"
         />

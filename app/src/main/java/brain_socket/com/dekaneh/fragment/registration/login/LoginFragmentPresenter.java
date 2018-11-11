@@ -84,6 +84,7 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
                                 if (throwable instanceof ANError) {
                                     ANError error = (ANError) throwable;
                                     getView().hideLoading();
+                                    Log.d(TAG, "accept: " + error);
                                     getView().showMessage(NetworkUtils.getError(throwable));
 
                                 }

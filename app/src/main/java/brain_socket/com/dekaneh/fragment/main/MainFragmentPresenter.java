@@ -53,7 +53,6 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
                                            getView().addCategoriesWithProducts(homeCategories);
                                            getCacheStore().cacheHomeCategories(homeCategories);
                                            getView().hideLoading();
-                                           Log.d(TAG, "accept: " + homeCategories.get(0).getProducts().toString());
 
                                        }
                                    }, new Consumer<Throwable>() {

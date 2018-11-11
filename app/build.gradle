@@ -3,14 +3,52 @@ apply plugin: 'com.android.application'
 def androidSupportVersion = "27.1.0"
 
 
+ext.versionMajor = 0 // major change - Api changes or major UI/UX change
+ext.versionMinor = 0 // minor change
+ext.versionPatch = 0 // bug-fixes
+ext.versionClassifier = 'alpha'
+ext.minimumSdkVersion = 17
+
+
+private Integer generateVersionCode() {
+    return ext.minimumSdkVersion * 10000000 + ext.versionMajor * 10000 + ext.versionMinor * 100 + ext.versionPatch
+}
+
+private String generateVersionName() {
+    String versionName = "${ext.versionMajor}.${ext.versionMinor}.${ext.versionPatch}"
+//    if (ext.versionClassifier == null) {
+//        if (ext.isSnapshot) {
+//            ext.versionClassifier = "SNAPSHOT"
+//        }
+//    }
+
+    if (ext.versionClassifier != null) {
+        versionName += "-" + ext.versionClassifier
+    }
+    return versionName
+}
+
 android {
+    signingConfigs {
+        config {
+            keyAlias 'key0'
+            keyPassword 'w31c0m31'
+            storeFile file('/Users/ayham/Desktop/Dekaneh/Untitled')
+            storePassword 'w31c0m31'
+        }
+    }
+    lintOptions {
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
     compileSdkVersion 27
     defaultConfig {
         applicationId "brain_socket.com.dekaneh"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        versionCode generateVersionCode()
+        versionName generateVersionName()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [
                 onesignal_app_id               : 'b19828bb-c6a3-48d5-ad66-1040026d8d8e',
@@ -24,8 +62,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "BASE_API_URL", '"http://104.217.253.15:3003/api/"'
-
+            buildConfigField "String", "BASE_API_URL", '"http://167.99.214.78/api/"'
+            debuggable true
+            signingConfig signingConfigs.config
         }
         debug {
             minifyEnabled false
@@ -36,13 +75,13 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:$androidSupportVersion"
     implementation "com.android.support:design:$androidSupportVersion"
     implementation "com.android.support:cardview-v7:$androidSupportVersion"
     implementation "com.android.support:support-v4:$androidSupportVersion"
     implementation "com.android.support:design:$androidSupportVersion"
-//    implementation "com.android.support:support-vector-drawable:$androidSupportVersion"
+    //    implementation "com.android.support:support-vector-drawable:$androidSupportVersion"
     implementation "com.android.support:support-v4:$androidSupportVersion"
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.jakewharton:butterknife:8.8.1'
