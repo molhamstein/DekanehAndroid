@@ -124,7 +124,7 @@
         android:paddingBottom="12dp"
         android:lineSpacingMultiplier=".6"
         android:textSize="10sp"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layout_gravity="top|end"
         android:layout_marginBottom="-16dp"
         />

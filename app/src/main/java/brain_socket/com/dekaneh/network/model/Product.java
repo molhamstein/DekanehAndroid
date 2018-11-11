@@ -27,6 +27,9 @@ public class Product implements Serializable {
     @SerializedName("wholeSalePriceDiscount")
     @Expose
     private int wholeSalePriceDiscount;
+    @SerializedName("isOffer")
+    @Expose
+    private boolean isOffer;
     @SerializedName("manufacturer")
     @Expose
     private Manufacturer manufacturer;
@@ -124,6 +127,10 @@ public class Product implements Serializable {
 
     private int getWholeDiscountPercentage() {
         return (wholeSalePrice - wholeSalePriceDiscount) * 100 / wholeSalePrice;
+    }
+
+    public boolean isOffer() {
+        return isOffer;
     }
 
     private int getHorecaDiscountPercentage() {

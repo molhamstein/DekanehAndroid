@@ -67,6 +67,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
         }
 
+        if (product.isOffer()) {
+            holder.offerTag.setVisibility(View.VISIBLE);
+        }
+
         if (cacheStore.getSession().getClientType().equals(User.Type.retailCostumer.toString())) {
             setPrice(holder, product.getHorecaPrice(), product.getHorecaPriceDiscount());
         } else {

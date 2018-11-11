@@ -76,6 +76,10 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
             final CartItem item = new CartItem(product);
 
+            if (product.isOffer()) {
+                productViewHolder.offerTag.setVisibility(View.VISIBLE);
+            }
+
             if (cacheStore.isCartItemExist(item)) {
                 productViewHolder.orderNowBtn.setVisibility(View.GONE);
                 productViewHolder.orderBtn.setVisibility(View.VISIBLE);
