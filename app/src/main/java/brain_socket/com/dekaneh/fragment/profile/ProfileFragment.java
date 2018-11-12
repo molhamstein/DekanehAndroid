@@ -79,6 +79,7 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
 
         profileOrdersRV.setLayoutManager(new LinearLayoutManager(getContext()));
         profileOrdersRV.setAdapter(ordersAdapter);
+        profileOrdersRV.setNestedScrollingEnabled(false);
         behavior = BottomSheetBehavior.from(bottomSheet);
         behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         tabLayout.addTab(tabLayout.newTab().setCustomView(ViewUtils.getTabTextView(getContext(), "Orders")));
