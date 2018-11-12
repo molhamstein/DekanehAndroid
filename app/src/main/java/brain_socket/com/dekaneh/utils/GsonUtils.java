@@ -40,7 +40,6 @@ public class GsonUtils {
     }
 
     public static <T> String convertObjectToJson(T item) {
-        Log.d("DADADA", "convertObjectToJson: " + new Gson().toJson(item));
         return new Gson().toJson(item);
     }
 
