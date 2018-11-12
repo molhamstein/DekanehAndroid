@@ -9,7 +9,7 @@ import com.onesignal.OneSignal;
 
 import org.json.JSONObject;
 
-import brain_socket.com.dekaneh.activity.RatingActivity;
+import brain_socket.com.dekaneh.activity.rating.RatingActivity;
 
 public class DockaanNotificationOpenedHandler implements OneSignal.NotificationOpenedHandler {
 
@@ -27,10 +27,11 @@ public class DockaanNotificationOpenedHandler implements OneSignal.NotificationO
 
         if (data != null) {
             rate = data.optString("openActivity", null);
+            String orderId = data.optString("orderId", null);
             if (rate != null)
                 if (rate.equals("Rating")) {
                     Log.i("OneSignalExample", "customkey set with value: " + rate);
-                    RatingActivity.start(context);
+                    RatingActivity.start(context, orderId);
                 }
         }
 

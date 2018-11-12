@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.RatingActivity">
+    tools:context=".activity.rating.RatingActivity">
 
 
     <android.support.v4.view.ViewPager
@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:text="@string/do_you_like_our_service"
         android:textSize="28sp" />
@@ -29,7 +29,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginEnd="70dp"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
         android:alpha=".6"
         android:text="@string/your_rating_will_help_us_improve_our_services" />
@@ -40,8 +40,8 @@
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:layout_gravity="bottom|center"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/primary_color_button_round_10"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/brown_button_round_10"
         android:text="@string/submit_rating"
         android:visibility="visible"
         />
@@ -50,9 +50,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="30dp"
         style="@style/WhiteRegularTextView"
         android:text="@string/skip_rating"
-        android:textSize="12sp"
+        android:textSize="16sp"
         />
 </FrameLayout>

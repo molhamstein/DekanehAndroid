@@ -12,6 +12,7 @@ public class ApiEndPoint {
     public static final String SIMILAR_PRODUCTS = BuildConfig.BASE_API_URL + "products/similarProduct";
     public static final String LOGIN = BuildConfig.BASE_API_URL + "users/login";
     public static final String HOME_CATEGORIES = BuildConfig.BASE_API_URL + "products/groupedByCategories";
+    public static final String ONLY_CATEGORIES = BuildConfig.BASE_API_URL + "categories?filter={\"where\":{\"parentCategoryId\" : {\"exists\" : false}},\"include\":\"subCategories\"}";
     public static final String CATEGORIES = BuildConfig.BASE_API_URL + "categories";
     public static final String FEATURED_OFFERS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"and\":[{\"isOffer\":\"true\"}, {\"isFeatured\":\"true\"}]}}";
     public static final String OFFERS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"and\":[{\"isOffer\":\"true\"}]}}";
@@ -27,6 +28,7 @@ public class ApiEndPoint {
     public static final String PRODUCT_OFFERS = PRODUCTS + "/{id}/offers" ;
     public static final String SEARCH = PRODUCTS + "/search" ;
     public static final String AREAS = BuildConfig.BASE_API_URL + "areas";
+    public static final String RATINGS = BuildConfig.BASE_API_URL + "ratings";
 
 
 }

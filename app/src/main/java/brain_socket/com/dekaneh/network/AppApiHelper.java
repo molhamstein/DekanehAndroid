@@ -1,8 +1,10 @@
 package brain_socket.com.dekaneh.network;
 
+import com.google.gson.JsonObject;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 import java.util.List;
 
+import brain_socket.com.dekaneh.Rating;
 import brain_socket.com.dekaneh.network.model.Area;
 import brain_socket.com.dekaneh.network.model.Category;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
@@ -18,7 +20,6 @@ import brain_socket.com.dekaneh.network.model.SignUpRequest;
 import brain_socket.com.dekaneh.network.model.SliderImage;
 import brain_socket.com.dekaneh.network.model.SubCategory;
 import brain_socket.com.dekaneh.network.model.User;
-import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 public class AppApiHelper {
@@ -41,7 +42,7 @@ public class AppApiHelper {
     }
 
     public static Single<List<Category>> getCategories() {
-        return Rx2AndroidNetworking.get(ApiEndPoint.CATEGORIES)
+        return Rx2AndroidNetworking.get(ApiEndPoint.ONLY_CATEGORIES)
                 .build()
                 .getObjectListSingle(Category.class);
     }
@@ -196,5 +197,15 @@ public class AppApiHelper {
         return Rx2AndroidNetworking.get(ApiEndPoint.AREAS)
                 .build()
                 .getObjectListSingle(Area.class);
+    }
+
+    public static Single<JsonObject> postRating(String accessToken, Rating.Rate rate, String userId, String orderId) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.RATINGS)
+                .addQueryParameter("access_token", accessToken)
+                .addBodyParameter("rate" ,rate.toString())
+                .addBodyParameter("userId" ,userId)
+                .addBodyParameter("orderId" ,orderId)
+                .build()
+                .getObjectSingle(JsonObject.class);
     }
 }

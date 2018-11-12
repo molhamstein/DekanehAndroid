@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.Rating;
 
 public class RatingViewPagerAdapter extends PagerAdapter {
 
@@ -76,7 +77,7 @@ public class RatingViewPagerAdapter extends PagerAdapter {
             @Override
             public void onClick(View view) {
                 if (listener != null)
-                    listener.onClick(0);
+                    listener.onClick(Rating.Rate.happy, 0);
             }
         });
 
@@ -84,7 +85,7 @@ public class RatingViewPagerAdapter extends PagerAdapter {
             @Override
             public void onClick(View view) {
                 if (listener != null)
-                    listener.onClick(1);
+                    listener.onClick(Rating.Rate.normal, 1);
             }
         });
 
@@ -92,7 +93,7 @@ public class RatingViewPagerAdapter extends PagerAdapter {
             @Override
             public void onClick(View view) {
                 if (listener != null)
-                    listener.onClick(2);
+                    listener.onClick(Rating.Rate.sad, 2);
             }
         });
 
@@ -101,6 +102,18 @@ public class RatingViewPagerAdapter extends PagerAdapter {
         container.addView(view);
 
         return view;
+    }
+
+    public Rating.Rate getRatingInPosition(int position) {
+        switch (position) {
+            case 0:
+                return Rating.Rate.happy;
+            case 1:
+                return Rating.Rate.normal;
+            case 2:
+                return Rating.Rate.sad;
+        }
+        return Rating.Rate.happy;
     }
 
     @Override
@@ -117,6 +130,6 @@ public class RatingViewPagerAdapter extends PagerAdapter {
     }
 
     public interface OnRatingTextClickListener {
-        void onClick(int position);
+        void onClick(Rating.Rate rate, int position);
     }
 }

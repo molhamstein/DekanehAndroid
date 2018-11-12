@@ -24,7 +24,7 @@
         style="@style/PrimaryBlackTextView"
         android:text="@string/great"
         android:layout_gravity="bottom|start"
-        android:layout_marginBottom="130dp"
+        android:layout_marginBottom="160dp"
         android:layout_marginStart="48dp"
         android:textSize="22sp"
         />
@@ -36,7 +36,7 @@
         style="@style/PrimaryBlackTextView"
         android:text="@string/ok"
         android:layout_gravity="bottom|center"
-        android:layout_marginBottom="130dp"
+        android:layout_marginBottom="160dp"
         android:textSize="22sp"
         />
 
@@ -47,7 +47,7 @@
         style="@style/PrimaryBlackTextView"
         android:text="@string/bad"
         android:layout_gravity="bottom|end"
-        android:layout_marginBottom="130dp"
+        android:layout_marginBottom="160dp"
         android:layout_marginEnd="48dp"
         android:textSize="22sp"
         />

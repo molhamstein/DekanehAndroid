@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
 import brain_socket.com.dekaneh.R;
+import brain_socket.com.dekaneh.activity.rating.RatingActivityPesenter;
+import brain_socket.com.dekaneh.activity.rating.RatingActivityVP;
 import brain_socket.com.dekaneh.activity.splash.SplashActivityPresenter;
 import brain_socket.com.dekaneh.activity.splash.SplashActivityVP;
 import brain_socket.com.dekaneh.activity.cart.CartActivityPresenter;
@@ -166,6 +168,11 @@ public class ActivityModule {
 
     @Provides
     SplashActivityVP.Presenter<SplashActivityVP.View> provideSplashActivityPresenter(SplashActivityPresenter<SplashActivityVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    RatingActivityVP.Presenter<RatingActivityVP.View> provideRatingActivityPresenter(RatingActivityPesenter<RatingActivityVP.View> presenter) {
         return presenter;
     }
 

@@ -54,8 +54,6 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
     RecyclerView offersRV;
     @BindView(R.id.mainProductRV)
     RecyclerView productsRV;
-    @BindView(R.id.mainBanner)
-    View mainBanner;
 
     private MainSliderAdapter sliderAdapter;
 
@@ -88,17 +86,17 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
         productsRV.setAdapter(categoriesAdapter);
         productsRV.setNestedScrollingEnabled(true);
 
-        mainBanner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("ASDASD", "onClick: out");
-                if (sliderAdapter.getImages().get(slider.selectedSlidePosition).getType().equals("product")) {
-                    Log.d("ASDASD", "onClick: in");
-                    Product product = new Product(sliderAdapter.getImages().get(slider.selectedSlidePosition).getId());
-                    ProductDetailsActivity.start(getContext(), product);
-                }
-            }
-        });
+//        main.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Log.d("ASDASD", "onClick: out");
+//                if (sliderAdapter.getImages().get(slider.selectedSlidePosition).getType().equals("product")) {
+//                    Log.d("ASDASD", "onClick: in");
+//                    Product product = new Product(sliderAdapter.getImages().get(slider.selectedSlidePosition).getId());
+//                    ProductDetailsActivity.start(getContext(), product);
+//                }
+//            }
+//        });
 
 //        slider.setOnSlideClickListener(new OnSlideClickListener() {
 //            @Override
@@ -153,6 +151,11 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
         sliderAdapter = new MainSliderAdapter(images);
         slider.setAdapter(sliderAdapter);
 
+    }
+
+    @OnClick(R.id.mainSlider)
+    public void test() {
+        Log.d("ASDQWDQWD", "test: ");
     }
 
     @OnClick(R.id.seeAllOffersText)

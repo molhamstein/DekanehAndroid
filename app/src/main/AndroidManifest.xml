@@ -38,7 +38,7 @@
         <activity android:name=".activity.cart.CartActivity" />
         <activity android:name=".activity.settings.SettingsActivity" />
         <activity android:name=".activity.manufacturer.ManufacturerActivity" />
-        <activity android:name=".activity.RatingActivity" />
+        <activity android:name=".activity.rating.RatingActivity" />
         <activity android:name=".activity.order_details.OrderDetailsActivity" />
         <activity android:name=".activity.NotificationsActivity"></activity>
     </application>
