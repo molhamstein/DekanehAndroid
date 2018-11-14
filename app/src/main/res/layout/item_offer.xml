@@ -121,7 +121,7 @@
 
 
     <TextView
-        android:id="@+id/quantity"
+        android:id="@+id/pack"
         style="@style/SecondaryBlackTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

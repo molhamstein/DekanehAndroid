@@ -81,6 +81,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
             Picasso.get().load(offer.getMedia().getUrl()).into(holder.image);
         holder.name.setText(offer.getNameAr());
         holder.percent.setText(offer.getPercentageString(cacheStore.getSession().getClientType()));
+        holder.pack.setText(String.valueOf(offer.getPack()));
 
         holder.orderNowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -198,6 +199,8 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         View expandingBtn;
         @BindView(R.id.offerDiscount)
         View offerDiscount;
+        @BindView(R.id.pack)
+        TextView pack;
 
         OffersViewHolder(View itemView) {
             super(itemView);

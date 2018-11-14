@@ -102,7 +102,6 @@
                     android:layout_height="180dp"
                     android:layout_gravity="end|bottom"
                     android:layout_marginEnd="24dp"
-                    android:src="@drawable/tide"
                     android:scaleType="centerInside"
                     />
 
@@ -135,6 +134,21 @@
                         android:layout_marginTop="-16dp"
                         android:textSize="22sp"
                         />
+
+                    <TextView
+                        style="@style/SecondaryBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/product"
+                        android:textSize="14sp"/>
+
+                    <TextView
+                        android:id="@+id/productOfficialPrice"
+                        style="@style/PrimaryBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-12dp"
+                        android:textSize="22sp"/>
 
                     <TextView
                         style="@style/SecondaryBlackTextView"

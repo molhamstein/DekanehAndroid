@@ -39,6 +39,9 @@ public class Product implements Serializable {
     @SerializedName("pack")
     @Expose
     private String pack;
+    @SerializedName("marketOfficialPrice")
+    @Expose
+    private String marketOfficialPrice;
 
     @SerializedName("media")
     @Expose
@@ -143,6 +146,10 @@ public class Product implements Serializable {
 
     public String getHorecaPercentageString() {
         return String.valueOf(getHorecaDiscountPercentage()) + "%";
+    }
+
+    public String getMarketOfficialPrice() {
+        return marketOfficialPrice;
     }
 
     public class Media implements Serializable {
