@@ -27,6 +27,7 @@ import brain_socket.com.dekaneh.activity.settings.SettingsActivityPresenter;
 import brain_socket.com.dekaneh.activity.settings.SettingsActivityVP;
 import brain_socket.com.dekaneh.adapter.CartOrdersAdapter;
 import brain_socket.com.dekaneh.adapter.CategoriesAdapter;
+import brain_socket.com.dekaneh.adapter.CouponsAdapter;
 import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.ManufacturersAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
@@ -230,6 +231,11 @@ public class ActivityModule {
     @Provides
     ProductsAdapter provideProductsAdapter(CacheStore cacheStore) {
         return new ProductsAdapter(cacheStore);
+    }
+
+    @Provides
+    CouponsAdapter provideCouponsAdapter() {
+        return new CouponsAdapter();
     }
 
     @Horizontal

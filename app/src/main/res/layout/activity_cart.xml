@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.cart.CartActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="80dp">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -23,16 +29,14 @@
                 android:layout_height="?attr/actionBarSize"
                 app:popupTheme="@style/AppTheme.PopupOverlay"
                 app:title=""
-                app:titleTextAppearance="@style/PrimaryBlackTextView">
-            </android.support.v7.widget.Toolbar>
+                app:titleTextAppearance="@style/PrimaryBlackTextView" />
 
             <TextView
+                style="@style/PrimaryBlackTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/cart"
-                style="@style/PrimaryBlackTextView"
-                />
+                android:text="@string/cart" />
 
         </FrameLayout>
 
@@ -55,21 +59,21 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:background="@drawable/shadow_card_black"
-                android:minHeight="400dp">
+                android:minHeight="420dp">
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/cartOrderRV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="100dp" />
+                    android:paddingBottom="140dp" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_gravity="bottom"
-                    android:layout_marginBottom="70dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="130dp"
                     android:background="@color/secondaryText" />
 
                 <TextView
@@ -77,8 +81,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="12dp"
                     android:text="@string/currency"
                     android:textSize="10sp" />
 
@@ -89,19 +93,115 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
                     android:layout_marginEnd="40dp"
+                    android:layout_marginBottom="-8dp"
                     android:text="33000"
-                    android:textSize="32sp" />
+                    android:textSize="38sp" />
 
                 <TextView
                     style="@style/SecondaryBlackTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|start"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginBottom="12dp"
                     android:text="@string/total"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
+                <FrameLayout
+                    android:id="@+id/couponDiscountLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="45dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/percent"
+                        style="@style/SecondaryBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center"
+                        android:layout_marginEnd="32dp"
+                        android:text="%"
+                        android:layout_marginTop="4dp"
+                        android:textSize="16sp"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/fixed"
+                        style="@style/SecondaryBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center"
+                        android:layout_marginEnd="20dp"
+                        android:text="@string/currency"
+                        android:layout_marginTop="4dp"
+                        android:textSize="9sp"
+                        android:visibility="gone"/>
+
+                    <TextView
+                        android:id="@+id/couponDiscount"
+                        style="@style/PrimaryBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|end"
+                        android:layout_marginEnd="46dp"
+                        android:text="20"
+                        android:textSize="24sp"
+                        />
+
+                    <TextView
+                        style="@style/SecondaryBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_gravity="start|center"
+                        android:layout_marginEnd="12dp"
+                        android:textSize="16dp"
+                        android:text="@string/discount" />
+
+                </FrameLayout>
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="90dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    >
+
+                    <TextView
+                        style="@style/SecondaryBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|center"
+                        android:layout_marginEnd="12dp"
+                        android:text="@string/currency"
+                        android:layout_marginTop="4dp"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/subTotal"
+                        style="@style/PrimaryBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|end"
+                        android:layout_marginEnd="38dp"
+                        android:text="33000"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        style="@style/SecondaryBlackTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical|start"
+                        android:layout_marginStart="12dp"
+                        android:text="@string/sub_total"
+                        android:textSize="16sp" />
+
+                </FrameLayout>
             </FrameLayout>
 
             <Button
@@ -137,4 +237,92 @@
         android:gravity="center"
         android:text="@string/your_cart_is_empty"
         android:visibility="gone" />
-</LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/bottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-8dp"
+        android:layout_marginEnd="-8dp"
+        android:layout_marginBottom="-16dp"
+        android:background="@drawable/shadow_card_black"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:behavior_peekHeight="80dp"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+            <Button
+                android:id="@+id/addCouponBtn"
+                style="@style/PrimaryBlackTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="@string/add_coupon" />
+
+        <Button
+            style="@style/GreenBlackTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:layout_gravity="center_horizontal|end"
+            android:layout_marginTop="80dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:text="@string/add" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/shadow_card_black"
+            android:gravity="center_vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_gravity="center_vertical|start"
+                app:srcCompat="@drawable/ic_offers" />
+
+            <EditText
+                android:id="@+id/loginPhoneNumber"
+                style="@style/PrimaryBlackTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="8dp"
+                android:background="@null"
+                android:hint="@string/coupon_code"
+                android:inputType="phone"
+                android:maxHeight="40dp"
+                android:textAlignment="viewStart"
+                android:textColorHint="@color/light_gray" />
+
+
+        </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/couponsRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="160dp"/>
+
+    </FrameLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -3,6 +3,8 @@ package brain_socket.com.dekaneh.activity.cart;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -17,8 +19,10 @@ import javax.inject.Inject;
 
 import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.adapter.CartOrdersAdapter;
+import brain_socket.com.dekaneh.adapter.CouponsAdapter;
 import brain_socket.com.dekaneh.base.BaseActivity;
 import brain_socket.com.dekaneh.network.model.CartItem;
+import brain_socket.com.dekaneh.network.model.Coupon;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -27,6 +31,10 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
 
     @Inject
     CartActivityVP.Presenter<CartActivityVP.View> presenter;
+    @Inject
+    CouponsAdapter couponsAdapter;
+
+
     @BindView(R.id.cartOrderRV)
     RecyclerView ordersRV;
     @BindView(R.id.cartToolbar)
@@ -43,6 +51,25 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
     View emptyCartText;
     @BindView(R.id.sendBtn)
     Button orderButton;
+    @BindView(R.id.bottomSheet)
+    View bottomSheet;
+    @BindView(R.id.couponsRV)
+    RecyclerView couponsRV;
+    @BindView(R.id.couponDiscount)
+    TextView couponDiscount;
+    @BindView(R.id.couponDiscountLayout)
+    View couponDiscountLayout;
+    @BindView(R.id.subTotal)
+    TextView subTotal;
+    @BindView(R.id.percent)
+    View percent;
+    @BindView(R.id.fixed)
+    View fixed;
+    @BindView(R.id.addCouponBtn)
+    Button addCouponBtn;
+
+
+    BottomSheetBehavior bottomSheetBehavior;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, CartActivity.class);
@@ -58,6 +85,9 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
             getActivityComponent().inject(this);
         presenter.onAttach(this);
 
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -70,6 +100,7 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
             @Override
             public void onChanged(boolean isCartClear) {
                 total.setText(String.valueOf(presenter.getPrice()));
+                subTotal.setText(String.valueOf(presenter.getSubtotalPrice()));
                 if (isCartClear) {
                     setOrderViewClear(true);
                 }
@@ -77,7 +108,39 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
             }
         });
         total.setText(String.valueOf(presenter.getPrice()));
+        subTotal.setText(String.valueOf(presenter.getSubtotalPrice()));
 
+
+        couponsRV.setLayoutManager(new LinearLayoutManager(this));
+        couponsRV.setAdapter(couponsAdapter);
+
+        presenter.getCoupons();
+
+        couponsAdapter.setOnCouponClick(new CouponsAdapter.OnCouponClick() {
+            @Override
+            public void onClick(Coupon coupon, int position) {
+                presenter.setCoupon(coupon);
+
+            }
+        });
+        ordersRV.setNestedScrollingEnabled(false);
+
+        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+                    addCouponBtn.setText(R.string.add_coupon);
+                }
+                else if(newState == BottomSheetBehavior.STATE_EXPANDED) {
+                    addCouponBtn.setText(R.string.coupons);
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
+            }
+        });
     }
 
     @Override
@@ -117,14 +180,39 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
 
     @Override
     public void disableOrderBtn() {
-            orderButton.setEnabled(false);
-            orderButton.setClickable(false);
-            orderButton.setBackgroundResource(R.drawable.disabled_button_round_10);
+        orderButton.setEnabled(false);
+        orderButton.setClickable(false);
+        orderButton.setBackgroundResource(R.drawable.disabled_button_round_10);
+    }
+
+    @Override
+    public void addAllCoupons(List<Coupon> coupons) {
+        couponsAdapter.addAllCoupons(coupons);
+    }
+
+    @Override
+    public void updatePriceAfterCoupon(int couponValue, boolean isFixed) {
+        couponDiscountLayout.setVisibility(View.VISIBLE);
+        couponDiscount.setText(String.valueOf(couponValue));
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        total.setText(String.valueOf(presenter.getPrice()));
+        if (isFixed) {
+            fixed.setVisibility(View.VISIBLE);
+            percent.setVisibility(View.GONE);
+        } else {
+            percent.setVisibility(View.VISIBLE);
+            fixed.setVisibility(View.GONE);
+        }
     }
 
     @OnClick(R.id.sendBtn)
     public void onSendOrderBtnClicked() {
         presenter.sendOrder();
+    }
+
+    @OnClick(R.id.addCouponBtn)
+    public void onAddCouponBtn() {
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
     }
 
     @Override

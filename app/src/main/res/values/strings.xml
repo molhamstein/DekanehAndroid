@@ -180,5 +180,13 @@
     <string name="canceled">Canceled</string>
     <string name="inDelivery">In Delivery</string>
     <string name="status">Status</string>
+    <string name="discount">Discount</string>
+    <string name="sub_total">Subtotal</string>
+    <string name="coupon_code">Coupon code</string>
+    <string name="add">Add</string>
+    <string name="add_coupon">Add Coupon</string>
+    <string name="usage">Usage</string>
+    <string name="expiry">Expiry</string>
+    <string name="coupons">Coupons</string>
 
 </resources>

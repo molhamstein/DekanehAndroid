@@ -14,6 +14,7 @@ import brain_socket.com.dekaneh.base.BasePresenterImpl;
 import brain_socket.com.dekaneh.network.AppApiHelper;
 import brain_socket.com.dekaneh.network.CacheStore;
 import brain_socket.com.dekaneh.network.model.CartItem;
+import brain_socket.com.dekaneh.network.model.Coupon;
 import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.OrderRequest;
 import brain_socket.com.dekaneh.network.model.Orderitem;
@@ -25,6 +26,7 @@ import io.reactivex.functions.Consumer;
 public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePresenterImpl<T> implements CartActivityVP.Presenter<T> {
 
     public static final String TAG = CartActivityPresenter.class.getSimpleName();
+    Coupon coupon;
 
     @Inject
     public CartActivityPresenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable, CacheStore cacheStore) {
@@ -48,9 +50,8 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
             orderItems.add(new Orderitem(item.getCount(), item.getId()));
         }
 
-        OrderRequest order = new OrderRequest(getCacheStore().getSession().getUserId(), orderItems);
+        OrderRequest order = new OrderRequest(getCacheStore().getSession().getUserId(), orderItems, coupon);
 
-        Log.d(TAG, "sendOrder: " + order.toString());
 
         getView().showLoading();
         getCompositeDisposable().add(
@@ -80,7 +81,48 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
     }
 
     @Override
+    public void getCoupons() {
+        getCompositeDisposable().add(
+                AppApiHelper.getCoupons(getCacheStore().getSession().getAccessToken())
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<List<Coupon>>() {
+                            @Override
+                            public void accept(List<Coupon> coupons) throws Exception {
+                                getView().addAllCoupons(coupons);
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+
+                            }
+                        })
+        );
+    }
+
+    @Override
+    public void setCoupon(Coupon coupon) {
+        this.coupon = coupon;
+        getView().updatePriceAfterCoupon(coupon.getValue(), coupon.getType() == Coupon.Type.fixed);
+    }
+
+
+    @Override
     public int getPrice() {
+        int price = 0;
+        for (CartItem item : getCacheStore().getCartItems()) {
+            price += item.getTotalPrice(getCacheStore().getSession().getClientType().equals(User.Type.retailCostumer.toString()));
+        }
+        if (coupon != null) {
+            if (coupon.getType() == Coupon.Type.fixed) return price - coupon.getValue();
+            else return (int) Math.ceil(price * ((double) (100 - coupon.getValue()) / 100.0));
+        }
+        return price;
+    }
+
+
+    @Override
+    public int getSubtotalPrice() {
         int price = 0;
         for (CartItem item : getCacheStore().getCartItems()) {
             price += item.getTotalPrice(getCacheStore().getSession().getClientType().equals(User.Type.retailCostumer.toString()));

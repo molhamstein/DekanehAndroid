@@ -7,6 +7,7 @@ import java.util.List;
 import brain_socket.com.dekaneh.Rating;
 import brain_socket.com.dekaneh.network.model.Area;
 import brain_socket.com.dekaneh.network.model.Category;
+import brain_socket.com.dekaneh.network.model.Coupon;
 import brain_socket.com.dekaneh.network.model.HomeCategory;
 import brain_socket.com.dekaneh.network.model.LoginRequest;
 import brain_socket.com.dekaneh.network.model.LoginResponse;
@@ -208,4 +209,13 @@ public class AppApiHelper {
                 .build()
                 .getObjectSingle(JsonObject.class);
     }
+
+
+    public static Single<List<Coupon>> getCoupons(String accessToken) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.COUPONS)
+                .addQueryParameter("access_token", accessToken)
+                .build()
+                .getObjectListSingle(Coupon.class);
+    }
+
 }
