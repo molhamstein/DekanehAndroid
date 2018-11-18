@@ -99,5 +99,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     implementation 'org.jetbrains:annotations-java5:15.0'
+    implementation 'me.angeldevil:AutoScrollViewPager:1.0.8'
+
 }
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'

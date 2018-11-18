@@ -13,6 +13,9 @@ public class SliderImage implements Serializable{
     @SerializedName("type")
     @Expose
     private String type;
+    @SerializedName("target")
+    @Expose
+    private String target;
     @SerializedName("status")
     @Expose
     private String status;
@@ -41,5 +44,9 @@ public class SliderImage implements Serializable{
 
     public String getId() {
         return id;
+    }
+
+    public String getTarget() {
+        return target;
     }
 }

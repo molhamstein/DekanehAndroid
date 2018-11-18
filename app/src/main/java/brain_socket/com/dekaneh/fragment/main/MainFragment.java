@@ -1,6 +1,7 @@
 package brain_socket.com.dekaneh.fragment.main;
 
 
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,6 +19,7 @@ import brain_socket.com.dekaneh.adapter.HomeCategoriesAdapter;
 import brain_socket.com.dekaneh.adapter.MainSliderAdapter;
 import brain_socket.com.dekaneh.adapter.OffersAdapter;
 import brain_socket.com.dekaneh.adapter.OnItemCountChange;
+import brain_socket.com.dekaneh.adapter.SliderPagerAdapter;
 import brain_socket.com.dekaneh.base.BaseFragment;
 import brain_socket.com.dekaneh.dagger.FragmentMain;
 import brain_socket.com.dekaneh.dagger.Horizontal;
@@ -27,6 +29,7 @@ import brain_socket.com.dekaneh.network.model.Product;
 import brain_socket.com.dekaneh.network.model.SliderImage;
 import butterknife.BindView;
 import butterknife.OnClick;
+import me.angeldevil.autoscrollviewpager.AutoScrollViewPager;
 import ss.com.bannerslider.Slider;
 import ss.com.bannerslider.event.OnSlideClickListener;
 
@@ -46,14 +49,14 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
     @Horizontal
     LinearLayoutManager offersLinearLayoutManager;
 
-    @BindView(R.id.mainParent)
-    View parent;
-    @BindView(R.id.mainSlider)
-    Slider slider;
     @BindView(R.id.mainOffersRV)
     RecyclerView offersRV;
     @BindView(R.id.mainProductRV)
     RecyclerView productsRV;
+    @BindView(R.id.mainSlider)
+    AutoScrollViewPager mainPager;
+
+    SliderPagerAdapter sliderPagerAdapter;
 
     private MainSliderAdapter sliderAdapter;
 
@@ -85,29 +88,6 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
         });
         productsRV.setAdapter(categoriesAdapter);
         productsRV.setNestedScrollingEnabled(true);
-
-//        main.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.d("ASDASD", "onClick: out");
-//                if (sliderAdapter.getImages().get(slider.selectedSlidePosition).getType().equals("product")) {
-//                    Log.d("ASDASD", "onClick: in");
-//                    Product product = new Product(sliderAdapter.getImages().get(slider.selectedSlidePosition).getId());
-//                    ProductDetailsActivity.start(getContext(), product);
-//                }
-//            }
-//        });
-
-//        slider.setOnSlideClickListener(new OnSlideClickListener() {
-//            @Override
-//            public void onSlideClick(int position) {
-//                Log.d("ASDASDASDSDASDASDASD", "onSlideClick: " + position);
-//                if (sliderAdapter.getImages().get(position).getType().equals("product")) {
-//                    Product product = new Product(sliderAdapter.getImages().get(position).getId());
-//                    ProductDetailsActivity.start(getContext(), product);
-//                }
-//            }
-//        });
 
 
         offersAdapter.setOnItemCountChange(new OnItemCountChange() {
@@ -148,10 +128,11 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
 
     @Override
     public void addSliderImages(List<SliderImage> images) {
-        sliderAdapter = new MainSliderAdapter(images);
-        slider.setAdapter(sliderAdapter);
-
+        mainPager.setAdapter(new SliderPagerAdapter(images));
+        mainPager.startAutoScroll(4000);
+        mainPager.setScrollFactor(2);
     }
+
 
     @OnClick(R.id.mainSlider)
     public void test() {

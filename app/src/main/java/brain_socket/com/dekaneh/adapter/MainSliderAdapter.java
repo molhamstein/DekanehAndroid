@@ -30,6 +30,12 @@ public class MainSliderAdapter extends SliderAdapter {
 
         final SliderImage image = images.get(position);
         imageSlideViewHolder.bindImageSlide(image.getImage());
+        imageSlideViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick: seeexsd");
+            }
+        });
 
     }
 
