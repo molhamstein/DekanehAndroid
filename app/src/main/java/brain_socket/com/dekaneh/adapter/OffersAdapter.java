@@ -164,11 +164,13 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
     }
 
     private void setPrice(OffersViewHolder holder, int price, int discount) {
-        holder.price.setText(String.valueOf(price));
+        Log.d("QWEQWE", "setPrice: " + discount);
         if (discount != 0) {
-            holder.oldPrice.setText(String.valueOf(discount));
+            holder.price.setText(String.valueOf(discount));
+            holder.oldPrice.setText(String.valueOf(price));
         } else {
             holder.offerDiscount.setVisibility(View.GONE);
+            holder.price.setText(String.valueOf(price));
         }
     }
 

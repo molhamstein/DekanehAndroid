@@ -61,7 +61,9 @@ public class Product implements Serializable {
         this.id = offer.getId();
         this.nameAr = offer.getNameAr();
         this.horecaPrice = offer.getHorecaPrice();
+        this.horecaPriceDiscount = offer.getHorecaPriceDiscount();
         this.wholeSalePrice = offer.getWholeSalePrice();
+        this.wholeSalePriceDiscount = offer.getWholeSalePriceDiscount();
         if (this.media != null)
             this.media.url = offer.getMedia().url;
     }
@@ -71,7 +73,9 @@ public class Product implements Serializable {
         this.id = offer.getId();
         this.nameAr = offer.getNameAr();
         this.horecaPrice = offer.getHorecaPrice();
+        this.horecaPriceDiscount = offer.getHorecaPriceDiscount();
         this.wholeSalePrice = offer.getWholeSalePrice();
+        this.wholeSalePriceDiscount = offer.getWholeSalePriceDiscount();
         this.manufacturer = offer.getManufacturer();
         this.media = media;
         this.description = offer.getDescription();
