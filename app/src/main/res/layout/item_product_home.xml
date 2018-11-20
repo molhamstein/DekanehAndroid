@@ -28,7 +28,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/tide" />
+            />
 
         <TextView
             android:id="@+id/productName"
