@@ -276,19 +276,6 @@
 
 
             <TextView
-                android:id="@+id/similarView1"
-                style="@style/SecondaryBlackTextView"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:gravity="center"
-                android:text="@string/more"
-                android:layout_gravity="center_horizontal"
-                android:padding="8dp"
-                android:background="@drawable/seperator"
-                android:textSize="18sp" />
-
-            <TextView
                 style="@style/PrimaryBlackTextView"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
