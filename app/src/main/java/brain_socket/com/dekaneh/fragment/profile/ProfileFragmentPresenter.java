@@ -12,6 +12,7 @@ import brain_socket.com.dekaneh.application.SchedulerProvider;
 import brain_socket.com.dekaneh.base.BasePresenterImpl;
 import brain_socket.com.dekaneh.network.AppApiHelper;
 import brain_socket.com.dekaneh.network.CacheStore;
+import brain_socket.com.dekaneh.network.Session;
 import brain_socket.com.dekaneh.network.model.Order;
 import brain_socket.com.dekaneh.network.model.User;
 import brain_socket.com.dekaneh.utils.NetworkUtils;
@@ -33,7 +34,7 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
         getView().updateView(getCacheStore().getSession().getShopName(),
                 getCacheStore().getSession().getOwnerName(),
                 getCacheStore().getSession().getPhoneNumber());
-        getView().updateMap(NetworkUtils.getStaticMapUrl("33.515311", "36.262086"));
+        getView().updateMap(NetworkUtils.getStaticMapUrl(getCacheStore().getSession().getLatitude(), getCacheStore().getSession().getLongitude()));
 
     }
 

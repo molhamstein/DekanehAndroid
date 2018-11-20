@@ -31,7 +31,7 @@ public class NetworkUtils {
     }
 
     public static String getStaticMapUrl(String lat, String lng) {
-        return "http://maps.google.com/maps/api/staticmap?center=33.515311,36.262086&zoom=15&size=400x300&sensor=false&key=AIzaSyDs_UQQeTsGjeMrtFRMsehMfd584asTf8s";
+        return "http://maps.google.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=15&size=400x300&sensor=false&key=AIzaSyDyhbojoipNUc6r1H5lsm0KJpTqKrJ94DM";
     }
 
 }

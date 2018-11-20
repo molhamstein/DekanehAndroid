@@ -25,6 +25,8 @@ public class Session {
     private static final String SHOP_NAME = "shop+name";
     private static final String USER_NAME = "user_name";
     private static final String GENDER = "gender";
+    private static final String LATITUDE = "latitude";
+    private static final String LONGITUDE = "longitude";
 
     @Inject
     public Session(Context context) {
@@ -131,6 +133,31 @@ public class Session {
         return getPreference().getString(GENDER, "");
     }
 
+    public void setLatitude(String latitude) {
+        getPreference()
+                .edit()
+                .putString(LATITUDE, latitude)
+                .apply();
+    }
+
+    public String getLatitude() {
+        return getPreference().getString(LATITUDE, "");
+    }
+
+
+    public void setLongitude(String longitude) {
+        getPreference()
+                .edit()
+                .putString(LONGITUDE, longitude)
+                .apply();
+    }
+
+    public String getLongitude() {
+        return getPreference().getString(LONGITUDE, "");
+    }
+
+
+
     public void setUser(User user, String accessToken) {
         setAccessToken(accessToken);
         setUserId(user.getId());
@@ -141,6 +168,8 @@ public class Session {
         setOwnerName(user.getOwnerName());
         setShopName(user.getShopName());
         setClientType(user.getClientType().toString());
+        setLatitude(user.getLocationPoint().getLat());
+        setLongitude(user.getLocationPoint().getLng());
     }
 
     public void logout() {
