@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.network;
+package com.socket.dekaneh.network;
 
 import com.google.gson.JsonObject;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
@@ -20,6 +20,8 @@ import com.socket.dekaneh.network.model.SignUpRequest;
 import com.socket.dekaneh.network.model.SliderImage;
 import com.socket.dekaneh.network.model.SubCategory;
 import com.socket.dekaneh.network.model.User;
+
+import brain_socket.com.dekaneh.network.model.Coupon;
 import io.reactivex.Single;
 
 public class AppApiHelper {

@@ -26,9 +26,9 @@ import android.widget.Toast;
 import java.util.Locale;
 
 import com.socket.dekaneh.dagger.ActivityComponent;
-import com.socket.dekaneh.dagger.ActivityModule;
 import com.socket.dekaneh.application.DekanehApp;
 import com.socket.dekaneh.R;
+import com.socket.dekaneh.dagger.ActivityModule;
 import com.socket.dekaneh.dagger.DaggerActivityComponent;
 import com.socket.dekaneh.utils.LocaleUtils;
 import com.socket.dekaneh.utils.NetworkUtils;

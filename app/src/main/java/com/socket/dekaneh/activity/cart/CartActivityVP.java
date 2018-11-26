@@ -6,6 +6,8 @@ import com.socket.dekaneh.base.BasePresenter;
 import com.socket.dekaneh.base.BaseView;
 import com.socket.dekaneh.network.model.CartItem;
 
+import brain_socket.com.dekaneh.network.model.Coupon;
+
 public class CartActivityVP {
 
     public interface View extends BaseView {

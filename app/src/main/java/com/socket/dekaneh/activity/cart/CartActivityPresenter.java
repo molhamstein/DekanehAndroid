@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.activity.cart;
+package com.socket.dekaneh.activity.cart;
 
 import android.util.Log;
 
@@ -18,13 +18,16 @@ import com.socket.dekaneh.network.model.Order;
 import com.socket.dekaneh.network.model.OrderRequest;
 import com.socket.dekaneh.network.model.Orderitem;
 import com.socket.dekaneh.network.model.User;
+
+import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
+import brain_socket.com.dekaneh.network.model.Coupon;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
 public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePresenterImpl<T> implements CartActivityVP.Presenter<T> {
 
     public static final String TAG = CartActivityPresenter.class.getSimpleName();
-    Coupon coupon;
+    private Coupon coupon;
 
     @Inject
     public CartActivityPresenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable, CacheStore cacheStore) {

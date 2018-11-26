@@ -32,6 +32,7 @@ import com.socket.dekaneh.fragment.main.MainFragment;
 import com.socket.dekaneh.fragment.offers.OffersFragment;
 import com.socket.dekaneh.fragment.profile.ProfileFragment;
 import com.socket.dekaneh.network.model.Product;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

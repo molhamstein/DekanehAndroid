@@ -1,16 +1,15 @@
-package brain_socket.com.dekaneh.dagger;
+package com.socket.dekaneh.dagger;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
 import com.socket.dekaneh.R;
+import com.socket.dekaneh.activity.cart.CartActivityPresenter;
 import com.socket.dekaneh.activity.rating.RatingActivityPesenter;
 import com.socket.dekaneh.activity.rating.RatingActivityVP;
 import com.socket.dekaneh.activity.splash.SplashActivityPresenter;
 import com.socket.dekaneh.activity.splash.SplashActivityVP;
-import com.socket.dekaneh.activity.cart.CartActivityPresenter;
-import com.socket.dekaneh.activity.cart.CartActivityVP;
 import com.socket.dekaneh.activity.category_details.CategoryDetailsPresenter;
 import com.socket.dekaneh.activity.category_details.CategoryDetailsVP;
 import com.socket.dekaneh.activity.main.MainActivityPresenter;
@@ -51,6 +50,9 @@ import com.socket.dekaneh.fragment.registration.new_account.NewAccountFragmentPr
 import com.socket.dekaneh.fragment.registration.new_account.NewAccountFragmentVP;
 import com.socket.dekaneh.network.CacheStore;
 import com.socket.dekaneh.network.Session;
+
+import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
+import brain_socket.com.dekaneh.adapter.CouponsAdapter;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;

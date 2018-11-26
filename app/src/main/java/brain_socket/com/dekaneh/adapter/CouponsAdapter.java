@@ -7,14 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.socket.dekaneh.R;
+import com.socket.dekaneh.utils.AppDateUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import brain_socket.com.dekaneh.R;
 import brain_socket.com.dekaneh.network.model.Coupon;
-import brain_socket.com.dekaneh.utils.AppDateUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

@@ -2,9 +2,9 @@ package com.socket.dekaneh.dagger;
 
 
 import com.socket.dekaneh.activity.NotificationsActivity;
+import com.socket.dekaneh.activity.cart.CartActivity;
 import com.socket.dekaneh.activity.rating.RatingActivity;
 import com.socket.dekaneh.activity.splash.SplashActivity;
-import com.socket.dekaneh.activity.cart.CartActivity;
 import com.socket.dekaneh.activity.category_details.CategoryDetailsActivity;
 import com.socket.dekaneh.activity.main.MainActivity;
 import com.socket.dekaneh.activity.manufacturer.ManufacturerActivity;
@@ -18,6 +18,7 @@ import com.socket.dekaneh.fragment.main.MainFragment;
 import com.socket.dekaneh.fragment.offers.OffersFragment;
 import com.socket.dekaneh.fragment.registration.new_account.NewAccountFragment;
 import com.socket.dekaneh.fragment.registration.login.LoginFragment;
+
 import dagger.Component;
 
 @PerActivity

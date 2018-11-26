@@ -9,6 +9,7 @@ import com.socket.dekaneh.R;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.network.AppApiHelper;
 import com.socket.dekaneh.network.CacheStore;
+
 import io.reactivex.disposables.CompositeDisposable;
 
 public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {

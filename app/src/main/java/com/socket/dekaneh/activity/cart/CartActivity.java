@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.activity.cart;
+package com.socket.dekaneh.activity.cart;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +21,10 @@ import com.socket.dekaneh.R;
 import com.socket.dekaneh.adapter.CartOrdersAdapter;
 import com.socket.dekaneh.base.BaseActivity;
 import com.socket.dekaneh.network.model.CartItem;
+
+import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
+import brain_socket.com.dekaneh.adapter.CouponsAdapter;
+import brain_socket.com.dekaneh.network.model.Coupon;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
+import brain_socket.com.dekaneh.network.model.Coupon;
+
 public class OrderRequest implements Serializable {
 
     @SerializedName("clientId")

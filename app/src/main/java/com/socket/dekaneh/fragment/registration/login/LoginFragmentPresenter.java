@@ -18,6 +18,7 @@ import com.socket.dekaneh.network.model.LoginResponse;
 import com.socket.dekaneh.network.model.User;
 import com.socket.dekaneh.utils.NetworkUtils;
 import com.socket.dekaneh.utils.ValidationUtils;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
