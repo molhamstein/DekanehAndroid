@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.adapter;
+package com.socket.dekaneh.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,7 +15,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import brain_socket.com.dekaneh.network.model.Coupon;
+import com.socket.dekaneh.network.model.Coupon;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

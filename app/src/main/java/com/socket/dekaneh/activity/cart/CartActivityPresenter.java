@@ -20,7 +20,7 @@ import com.socket.dekaneh.network.model.Orderitem;
 import com.socket.dekaneh.network.model.User;
 
 import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
-import brain_socket.com.dekaneh.network.model.Coupon;
+import com.socket.dekaneh.network.model.Coupon;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 

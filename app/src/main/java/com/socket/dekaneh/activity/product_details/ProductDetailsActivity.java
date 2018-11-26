@@ -62,6 +62,8 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     View offersView1;
     @BindView(R.id.productOfficialPrice)
     TextView productOfficialPrice;
+    @BindView(R.id.productDescriptionTitle)
+    View productDescriptionTitle;
 
     @BindView(R.id.orderCount)
     TextView orderCount;
@@ -120,9 +122,12 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
             this.price.setText(String.valueOf(product.getWholeSalePrice()));
         }
         this.productOfficialPrice.setText(String.valueOf(product.getMarketOfficialPrice()));
-        this.packName.setText(product.getNameAr());
+        this.packName.setText(product.getPack());
         this.manufacturer.setText(product.getManufacturer().getNameAr());
-        if (product.getDescription().isEmpty()) this.description.setVisibility(View.GONE);
+        if (product.getDescription().isEmpty() || product.getDescription().equals("")){
+            this.productDescriptionTitle.setVisibility(View.GONE);
+            this.description.setVisibility(View.GONE);
+        }
         else this.description.setText(product.getDescription());
     }
 

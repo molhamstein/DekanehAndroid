@@ -1,4 +1,4 @@
-package brain_socket.com.dekaneh.network.model;
+package com.socket.dekaneh.network.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

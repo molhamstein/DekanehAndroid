@@ -2,6 +2,7 @@ package com.socket.dekaneh.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,7 +95,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
             productViewHolder.name.setText(product.getNameAr());
             productViewHolder.pack.setText(product.getPack());
-            if (product.getMedia() != null && !product.getMedia().getUrl().equals(""))
+//            if (product.getMedia() != null && !product.getMedia().getUrl().equals(""))
 //                Picasso.get().load(product.getMedia().getUrl()).into(productViewHolder.image);
 
             productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {

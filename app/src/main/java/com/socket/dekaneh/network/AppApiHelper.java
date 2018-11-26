@@ -21,7 +21,7 @@ import com.socket.dekaneh.network.model.SliderImage;
 import com.socket.dekaneh.network.model.SubCategory;
 import com.socket.dekaneh.network.model.User;
 
-import brain_socket.com.dekaneh.network.model.Coupon;
+import com.socket.dekaneh.network.model.Coupon;
 import io.reactivex.Single;
 
 public class AppApiHelper {

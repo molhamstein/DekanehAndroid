@@ -9,7 +9,10 @@ import com.onesignal.OneSignal;
 
 import org.json.JSONObject;
 
+import com.socket.dekaneh.activity.main.MainActivity;
 import com.socket.dekaneh.activity.rating.RatingActivity;
+import com.socket.dekaneh.activity.registration.RegistrationActivity;
+import com.socket.dekaneh.network.Session;
 
 public class DockaanNotificationOpenedHandler implements OneSignal.NotificationOpenedHandler {
 
@@ -29,11 +32,12 @@ public class DockaanNotificationOpenedHandler implements OneSignal.NotificationO
             rate = data.optString("openActivity", null);
             String orderId = data.optString("orderId", null);
             if (rate != null)
-                if (rate.equals("Rating")) {
+                if (rate.equals("Rating".toLowerCase())) {
                     Log.i("OneSignalExample", "customkey set with value: " + rate);
                     RatingActivity.start(context, orderId);
-                }
-        }
+                } else onEmptyNotification();
+        } else onEmptyNotification();
+
 
         if (actionType == OSNotificationAction.ActionType.ActionTaken)
             Log.i("OneSignalExample", "Button pressed with id: " + result.action.actionID);
@@ -45,7 +49,6 @@ public class DockaanNotificationOpenedHandler implements OneSignal.NotificationO
         // startActivity(intent);
 
 
-
         // Add the following to your AndroidManifest.xml to prevent the launching of your main Activity
         //   if you are calling startActivity above.
      /*
@@ -53,5 +56,10 @@ public class DockaanNotificationOpenedHandler implements OneSignal.NotificationO
           <meta-data android:name="com.onesignal.NotificationOpened.DEFAULT" android:value="DISABLE" />
         </application>
      */
+    }
+
+
+    public void onEmptyNotification() {
+        RegistrationActivity.start(context);
     }
 }

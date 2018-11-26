@@ -55,7 +55,7 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_API_URL", '"http://167.99.214.78/api/"'
             signingConfig signingConfigs.config
@@ -63,7 +63,7 @@ android {
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "BASE_API_URL", '"http://167.99.214.78/api/"'
+            buildConfigField "String", "BASE_API_URL", '"http://104.217.253.15:3003/api/"'
         }
     }
 }
@@ -84,7 +84,7 @@ dependencies {
     implementation 'com.github.florent37:viewanimator:1.0.5'
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.2'
     implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation 'com.onesignal:OneSignal:3.10.1'
+    implementation 'com.onesignal:OneSignal:3.10.3'
     implementation 'com.jakewharton:process-phoenix:2.0.0'
     implementation 'com.miguelcatalan:materialsearchview:1.4.0'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.16'

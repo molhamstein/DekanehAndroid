@@ -161,6 +161,11 @@ public class Product implements Serializable {
         @SerializedName("url")
         @Expose
         private String url;
+        @SerializedName("thumbnail")
+        @Expose
+        private String thumbnail;
+
+
 
         public Media() {
             url = "";
@@ -168,6 +173,10 @@ public class Product implements Serializable {
 
         public String getUrl() {
             return url;
+        }
+
+        public String getThumbnail() {
+            return thumbnail;
         }
 
         @Override

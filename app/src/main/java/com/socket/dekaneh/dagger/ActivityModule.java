@@ -52,7 +52,7 @@ import com.socket.dekaneh.network.CacheStore;
 import com.socket.dekaneh.network.Session;
 
 import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
-import brain_socket.com.dekaneh.adapter.CouponsAdapter;
+import com.socket.dekaneh.adapter.CouponsAdapter;
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
