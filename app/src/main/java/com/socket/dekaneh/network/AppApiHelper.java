@@ -1,4 +1,4 @@
-package com.socket.dekaneh.network;
+package brain_socket.com.dekaneh.network;
 
 import com.google.gson.JsonObject;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
@@ -208,4 +208,13 @@ public class AppApiHelper {
                 .build()
                 .getObjectSingle(JsonObject.class);
     }
+
+
+    public static Single<List<Coupon>> getCoupons(String accessToken) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.COUPONS)
+                .addQueryParameter("access_token", accessToken)
+                .build()
+                .getObjectListSingle(Coupon.class);
+    }
+
 }

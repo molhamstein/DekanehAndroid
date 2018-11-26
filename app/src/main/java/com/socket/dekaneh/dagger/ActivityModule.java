@@ -1,4 +1,4 @@
-package com.socket.dekaneh.dagger;
+package brain_socket.com.dekaneh.dagger;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -230,6 +230,11 @@ public class ActivityModule {
     @Provides
     ProductsAdapter provideProductsAdapter(CacheStore cacheStore) {
         return new ProductsAdapter(cacheStore);
+    }
+
+    @Provides
+    CouponsAdapter provideCouponsAdapter() {
+        return new CouponsAdapter();
     }
 
     @Horizontal

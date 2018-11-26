@@ -87,6 +87,14 @@
     <string name="canceled">تم لغي الطلب</string>
     <string name="inDelivery">قيد التوصيل</string>
     <string name="status">حالة الطلب</string>
+    <string name="discount">الحسم</string>
+    <string name="sub_total">المجموع قبل الحسم</string>
+    <string name="coupon_code">رقم القسيمة</string>
+    <string name="add">اضافة</string>
+    <string name="add_coupon">اضافة قسيمة</string>
+    <string name="usage">مرات الاستخدام</string>
+    <string name="expiry">تاريخ الصلاحية</string>
+    <string name="coupons">القسائم</string>
     <string name="officalPrice">السعر للمستهلك</string>
     <string name="see_more">مشاهدة المزيد</string>
 

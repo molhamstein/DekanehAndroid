@@ -29,6 +29,8 @@ public class ApiEndPoint {
     public static final String SEARCH = PRODUCTS + "/search" ;
     public static final String AREAS = BuildConfig.BASE_API_URL + "areas";
     public static final String RATINGS = BuildConfig.BASE_API_URL + "ratings";
+    public static final String COUPONS = BuildConfig.BASE_API_URL + "coupons";
+
 
 
 }
