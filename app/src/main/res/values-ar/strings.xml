@@ -87,5 +87,7 @@
     <string name="canceled">تم لغي الطلب</string>
     <string name="inDelivery">قيد التوصيل</string>
     <string name="status">حالة الطلب</string>
+    <string name="officalPrice">السعر للمستهلك</string>
+    <string name="see_more">مشاهدة المزيد</string>
 
 </resources>
