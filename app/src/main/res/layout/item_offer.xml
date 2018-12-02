@@ -30,6 +30,19 @@
             android:textSize="12sp" />
 
 
+        <TextView
+            android:id="@+id/pack"
+            style="@style/SecondaryBlackTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_marginEnd="100dp"
+            android:layout_marginStart="80dp"
+            android:text="2*3 علب"
+            android:textSize="16sp" />
+
+
+
     </FrameLayout>
 
 
@@ -116,18 +129,6 @@
 
     </FrameLayout>
 
-
-    <TextView
-        android:id="@+id/pack"
-        style="@style/SecondaryBlackTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginStart="90dp"
-        android:text="2*3 علب"
-        android:textSize="16sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
