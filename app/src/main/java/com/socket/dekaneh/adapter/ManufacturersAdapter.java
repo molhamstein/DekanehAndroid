@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.socket.dekaneh.activity.manufacturer.ManufacturerActivity;
 import com.socket.dekaneh.network.CacheStore;
 import com.socket.dekaneh.network.Session;
 import com.socket.dekaneh.network.model.Manufacturer;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -44,8 +46,7 @@ public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdap
     public void onBindViewHolder(@NonNull HomeCategoriesViewHolder holder, int position) {
 
         final Manufacturer manufacturer = manufacturers.get(position);
-        holder.header.setText(manufacturer.getNameAr()
-        );
+        holder.header.setText(manufacturer.getNameAr());
         ProductsAdapter adapter = new ProductsAdapter(manufacturer.getProducts(), cacheStore, null);
         holder.productsRV.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         holder.productsRV.setAdapter(adapter);
@@ -71,6 +72,7 @@ public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdap
     }
 
     public void addAllManufacturers(List<Manufacturer> manufacturers) {
+        Log.d("CategoryDetailsPresent", "(ADAPTER) addAllManufacturers: " + manufacturers.toString());
         this.manufacturers = manufacturers;
         notifyDataSetChanged();
     }

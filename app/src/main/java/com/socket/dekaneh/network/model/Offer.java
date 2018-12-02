@@ -64,4 +64,16 @@ public class Offer extends Product implements Serializable {
         return String.valueOf(getDiscountPercentage(clientType)) + "%";
     }
 
+
+    @Override
+    public String toString() {
+        return "Offer{" +
+                "id='" + id + '\'' +
+                "super=" + super.toString() +
+                ", isFeatured=" + isFeatured +
+                ", status='" + status + '\'' +
+                ", category=" + category +
+                ", products=" + products +
+                '}';
+    }
 }

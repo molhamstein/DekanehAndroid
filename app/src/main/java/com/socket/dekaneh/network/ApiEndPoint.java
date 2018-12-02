@@ -7,6 +7,7 @@ public class ApiEndPoint {
     private ApiEndPoint(){ }
 
     public static final String PRODUCTS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"status\":\"available\"}}";
+    public static final String PRODUCTS_RAW = BuildConfig.BASE_API_URL + "products";
     public static final String SINGLE_PRODUCTS = BuildConfig.BASE_API_URL + "products/{id}";
     public static final String USERS = BuildConfig.BASE_API_URL + "users";
     public static final String SIMILAR_PRODUCTS = BuildConfig.BASE_API_URL + "products/similarProduct";
@@ -26,7 +27,7 @@ public class ApiEndPoint {
     public static final String NOTIFICATIONS = BuildConfig.BASE_API_URL + "notifications";
     public static final String LOGOUT = "users/logout";
     public static final String PRODUCT_OFFERS = PRODUCTS + "/{id}/offers" ;
-    public static final String SEARCH = PRODUCTS + "/search" ;
+    public static final String SEARCH = PRODUCTS_RAW + "/search" ;
     public static final String AREAS = BuildConfig.BASE_API_URL + "areas";
     public static final String RATINGS = BuildConfig.BASE_API_URL + "ratings";
     public static final String COUPONS = BuildConfig.BASE_API_URL + "coupons";

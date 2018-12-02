@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.socket.dekaneh.activity.manufacturer.ManufacturerActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -112,7 +113,7 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     }
 
     @Override
-    public void updateView(Product product, String imageUrl, boolean isHoreca) {
+    public void updateView(final Product product, String imageUrl, boolean isHoreca) {
         if (!imageUrl.equals(""))
             Picasso.get().load(imageUrl).into(this.productImage);
         this.name.setText(product.getNameAr());
@@ -129,6 +130,13 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
             this.description.setVisibility(View.GONE);
         }
         else this.description.setText(product.getDescription());
+
+        this.manufacturer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ManufacturerActivity.start(view.getContext(), product.getManufacturer());
+            }
+        });
     }
 
     @Override

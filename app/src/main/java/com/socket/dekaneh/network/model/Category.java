@@ -14,7 +14,7 @@ public class Category implements Serializable{
     @SerializedName("titleEn")
     @Expose
     private String titleEn;
-    @SerializedName("_id")
+    @SerializedName("id")
     @Expose
     private String id;
     @SerializedName("icon")

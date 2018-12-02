@@ -27,6 +27,7 @@ import com.socket.dekaneh.activity.settings.SettingsActivityVP;
 import com.socket.dekaneh.adapter.CartOrdersAdapter;
 import com.socket.dekaneh.adapter.CategoriesAdapter;
 import com.socket.dekaneh.adapter.HomeCategoriesAdapter;
+import com.socket.dekaneh.adapter.ManufacturerProductsAdapter;
 import com.socket.dekaneh.adapter.ManufacturersAdapter;
 import com.socket.dekaneh.adapter.OffersAdapter;
 import com.socket.dekaneh.adapter.OrderDetailsItemsAdapter;
@@ -52,7 +53,9 @@ import com.socket.dekaneh.network.CacheStore;
 import com.socket.dekaneh.network.Session;
 
 import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
+
 import com.socket.dekaneh.adapter.CouponsAdapter;
+
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
@@ -69,12 +72,12 @@ public class ActivityModule {
 
     @Provides
     @ActivityContext
-    Context provideContext(){
+    Context provideContext() {
         return activity;
     }
 
     @Provides
-    AppCompatActivity providesActivity(){
+    AppCompatActivity providesActivity() {
         return activity;
     }
 
@@ -89,7 +92,7 @@ public class ActivityModule {
     }
 
     @Provides
-    CompositeDisposable provideCompositeDisposable(){
+    CompositeDisposable provideCompositeDisposable() {
         return new CompositeDisposable();
     }
 
@@ -192,6 +195,11 @@ public class ActivityModule {
     @Provides
     OffersAdapter providesOffersAdapter(AppCompatActivity context) {
         return new OffersAdapter(R.layout.item_offer_fragment_offers, context);
+    }
+
+    @Provides
+    ManufacturerProductsAdapter provideManufacturerProductsAdapter(AppCompatActivity context) {
+        return new ManufacturerProductsAdapter(R.layout.item_offer_fragment_offers, context);
     }
 
     @Provides

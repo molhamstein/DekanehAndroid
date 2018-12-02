@@ -25,6 +25,7 @@ public class CartItem extends Product implements Serializable{
         super(offer, offer.getMedia());
     }
 
+
     @Override
     public String getId() {
         return super.getId();

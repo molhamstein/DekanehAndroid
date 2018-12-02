@@ -20,7 +20,7 @@
             android:text="@string/dummy_header"
             android:paddingStart="8dp"
             android:paddingTop="8dp"
-            android:layout_marginEnd="200dp"
+            android:layout_marginEnd="80dp"
             />
 
         <View

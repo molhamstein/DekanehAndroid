@@ -11,6 +11,7 @@ import com.socket.dekaneh.network.model.HomeCategory;
 import com.socket.dekaneh.network.model.LoginRequest;
 import com.socket.dekaneh.network.model.LoginResponse;
 import com.socket.dekaneh.network.model.Manufacturer;
+import com.socket.dekaneh.network.model.ManufacturerProduct;
 import com.socket.dekaneh.network.model.Notification;
 import com.socket.dekaneh.network.model.Offer;
 import com.socket.dekaneh.network.model.Order;
@@ -128,11 +129,11 @@ public class AppApiHelper {
 //                .getStringMaybe();
 //    }
 
-    public static Single<List<Offer>> getProductsByManufacturer(String manufacturerId) {
-        return Rx2AndroidNetworking.get(ApiEndPoint.PRODUCTS)
+    public static Single<List<ManufacturerProduct>> getProductsByManufacturer(String manufacturerId) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.PRODUCTS_RAW)
                 .addQueryParameter("filter[where][manufacturerId]", manufacturerId)
                 .build()
-                .getObjectListSingle(Offer.class);
+                .getObjectListSingle(ManufacturerProduct.class);
     }
 
     public static Single<User> signUp(SignUpRequest request) {

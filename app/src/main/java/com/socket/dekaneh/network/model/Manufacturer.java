@@ -39,5 +39,18 @@ public class Manufacturer implements Serializable {
     public List<Product> getProducts() {
         return products;
     }
+
+
+    @Override
+    public String toString() {
+        return "Manufacturer{" +
+                "id='" + id + '\'' +
+                ", nameAr='" + nameAr + '\'' +
+                ", nameEn='" + nameEn + '\'' +
+                ", products=" + products +
+                '}';
+    }
 }
+
+
 

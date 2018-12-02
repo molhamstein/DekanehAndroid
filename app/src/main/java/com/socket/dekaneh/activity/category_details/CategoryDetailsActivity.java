@@ -78,7 +78,7 @@ public class CategoryDetailsActivity extends BaseActivity implements CategoryDet
             }
         });
 
-        productsRV.setNestedScrollingEnabled(false);
+//        productsRV.setNestedScrollingEnabled(false);
 
     }
 
@@ -101,7 +101,6 @@ public class CategoryDetailsActivity extends BaseActivity implements CategoryDet
 
     @Override
     public void addAllSubCategories(List<SubCategory> subCategories) {
-        Log.d("ASDQWEASDQWE", "addAllSubCategories: " + subCategories.size());
         subCategoriesAdapter.addAllSubCategories(subCategories);
     }
 

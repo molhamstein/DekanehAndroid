@@ -69,6 +69,8 @@ public class CategoryDetailsPresenter<T extends CategoryDetailsVP.View> extends 
                             public void accept(List<Manufacturer> manufacturers) throws Exception {
                                 getView().addAllManufacturers(manufacturers);
                                 getView().hideLoading();
+                                Log.d(TAG, "accept: " + manufacturers.toString());
+                                Log.d(TAG, "accept:  cat id =   " + category.getId());
                             }
                         }, new Consumer<Throwable>() {
                             @Override

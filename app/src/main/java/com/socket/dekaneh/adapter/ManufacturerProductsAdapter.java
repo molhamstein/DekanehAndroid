@@ -10,6 +10,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.socket.dekaneh.R;
+import com.socket.dekaneh.activity.product_details.ProductDetailsActivity;
+import com.socket.dekaneh.custom.DekanehInterpolator;
+import com.socket.dekaneh.network.CacheStore;
+import com.socket.dekaneh.network.Session;
+import com.socket.dekaneh.network.model.CartItem;
+import com.socket.dekaneh.network.model.ManufacturerProduct;
+import com.socket.dekaneh.network.model.Product;
+import com.socket.dekaneh.network.model.User;
+import com.socket.dekaneh.utils.ViewUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -17,30 +27,20 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import com.socket.dekaneh.R;
-import com.socket.dekaneh.activity.product_details.ProductDetailsActivity;
-import com.socket.dekaneh.custom.DekanehInterpolator;
-import com.socket.dekaneh.network.CacheStore;
-import com.socket.dekaneh.network.Session;
-import com.socket.dekaneh.network.model.CartItem;
-import com.socket.dekaneh.network.model.Offer;
-import com.socket.dekaneh.network.model.Product;
-import com.socket.dekaneh.network.model.User;
-import com.socket.dekaneh.utils.ViewUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersViewHolder> {
+public class ManufacturerProductsAdapter extends RecyclerView.Adapter<ManufacturerProductsAdapter.OffersViewHolder> {
 
 
-    private List<Offer> offers;
+    private List<ManufacturerProduct> offers;
     private int itemLayoutId;
     private CacheStore cacheStore;
     private OnItemCountChange onItemCountChange;
     private int plusMinusAnimationBtnVal = 15;
 
     @Inject
-    public OffersAdapter(int itemLayoutId, Context context) {
+    public ManufacturerProductsAdapter(int itemLayoutId, Context context) {
         this.offers = new ArrayList<>();
         this.itemLayoutId = itemLayoutId;
         cacheStore = new CacheStore(context, new Session(context));
@@ -59,11 +59,11 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
     @Override
     public void onBindViewHolder(@NonNull final OffersViewHolder holder, int position) {
 
-        final Offer offer = offers.get(position);
-        offer.setId(offer.getId()); //TODO : change
+        final ManufacturerProduct manufacturerProduct = offers.get(position);
+        manufacturerProduct.setId(manufacturerProduct.getId()); //TODO : change
 
-        final Product product = new Product(offer, offer.getMedia());
-        final CartItem item = new CartItem(offer);
+        final Product product = manufacturerProduct.getAsProduct();
+        final CartItem item = new CartItem(manufacturerProduct.getAsProduct());
 
         for (CartItem mItem : cacheStore.getCartItems())
             if (mItem.getId().equals(item.getId())) {
@@ -75,11 +75,11 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
                 holder.orderCount.setText(String.valueOf(mItem.getCount()));
             }
 
-        if (offer.getMedia() != null && !offer.getMedia().getUrl().equals(""))
-            Picasso.get().load(offer.getMedia().getUrl()).into(holder.image);
-        holder.name.setText(offer.getNameAr());
-        holder.percent.setText(offer.getPercentageString(cacheStore.getSession().getClientType()));
-        holder.pack.setText(String.valueOf(offer.getPack()));
+        if (manufacturerProduct.getMedia() != null && !manufacturerProduct.getMedia().getUrl().equals(""))
+            Picasso.get().load(manufacturerProduct.getMedia().getThumbnail()).into(holder.image);
+        holder.name.setText(manufacturerProduct.getNameAr());
+        holder.percent.setText(manufacturerProduct.getPercentageString(cacheStore.getSession().getClientType()));
+        holder.pack.setText(String.valueOf(manufacturerProduct.getPack()));
 
         holder.orderNowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,7 +156,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         return offers.size();
     }
 
-    public void addAllOffers(List<Offer> offers) {
+    public void addAllOffers(List<ManufacturerProduct> offers) {
         this.offers = offers;
         notifyDataSetChanged();
     }

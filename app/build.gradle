@@ -59,6 +59,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_API_URL", '"http://167.99.214.78/api/"'
             signingConfig signingConfigs.config
+            debuggable true
         }
         debug {
             minifyEnabled false
@@ -93,6 +94,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     implementation 'org.jetbrains:annotations-java5:15.0'
     implementation 'me.angeldevil:AutoScrollViewPager:1.0.8'
-
 }
 apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'

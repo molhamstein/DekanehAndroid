@@ -47,6 +47,8 @@ public class Product implements Serializable {
     @Expose
     private Media media;
 
+    public Product() {
+    }
 
     public Product(Product product) {
         this.id = product.getId();
@@ -166,7 +168,6 @@ public class Product implements Serializable {
         private String thumbnail;
 
 
-
         public Media() {
             url = "";
         }
@@ -208,4 +209,47 @@ public class Product implements Serializable {
         else return getWholeSalePrice();
     }
 
+    public void setNameAr(String nameAr) {
+        this.nameAr = nameAr;
+    }
+
+    public void setHorecaPrice(int horecaPrice) {
+        this.horecaPrice = horecaPrice;
+    }
+
+    public void setHorecaPriceDiscount(int horecaPriceDiscount) {
+        this.horecaPriceDiscount = horecaPriceDiscount;
+    }
+
+    public void setWholeSalePrice(int wholeSalePrice) {
+        this.wholeSalePrice = wholeSalePrice;
+    }
+
+    public void setWholeSalePriceDiscount(int wholeSalePriceDiscount) {
+        this.wholeSalePriceDiscount = wholeSalePriceDiscount;
+    }
+
+    public void setOffer(boolean offer) {
+        isOffer = offer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPack(String pack) {
+        this.pack = pack;
+    }
+
+    public void setMarketOfficialPrice(String marketOfficialPrice) {
+        this.marketOfficialPrice = marketOfficialPrice;
+    }
+
+    public void setMedia(Media media) {
+        this.media = media;
+    }
 }

@@ -24,6 +24,8 @@ import com.socket.dekaneh.network.model.Category;
 import com.socket.dekaneh.network.model.Product;
 import com.socket.dekaneh.network.model.User;
 import com.socket.dekaneh.utils.ViewUtils;
+import com.squareup.picasso.Picasso;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -45,6 +47,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
     public ProductsAdapter(List<Product> products, CacheStore cacheStore, Category category) {
         this.products = products;
+        Log.d("CategoryDetailsPresent", "onBindViewHolder: size = " + products.size());
         if (products.size() >= MAX_NUM_OF_PRODUCTS) {
             products.add(null);
         }
@@ -95,8 +98,8 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
             productViewHolder.name.setText(product.getNameAr());
             productViewHolder.pack.setText(product.getPack());
-//            if (product.getMedia() != null && !product.getMedia().getUrl().equals(""))
-//                Picasso.get().load(product.getMedia().getUrl()).into(productViewHolder.image);
+            if (product.getMedia() != null && !product.getMedia().getUrl().equals(""))
+                Picasso.get().load(product.getMedia().getThumbnail()).into(productViewHolder.image);
 
             productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -191,7 +194,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
     private void setPrice(ProductViewHolder holder, int price, int discount) {
         holder.price.setText(String.valueOf(price));
-        if (discount != 0) {
+        if (discount != 0 && discount != price) {
             holder.oldPrice.setText(String.valueOf(discount));
         } else {
             holder.productDiscount.setVisibility(View.GONE);

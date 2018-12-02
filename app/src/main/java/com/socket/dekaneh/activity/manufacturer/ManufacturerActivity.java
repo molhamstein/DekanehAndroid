@@ -14,9 +14,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.socket.dekaneh.R;
+import com.socket.dekaneh.adapter.ManufacturerProductsAdapter;
 import com.socket.dekaneh.adapter.OffersAdapter;
 import com.socket.dekaneh.base.BaseActivity;
 import com.socket.dekaneh.network.model.Manufacturer;
+import com.socket.dekaneh.network.model.ManufacturerProduct;
 import com.socket.dekaneh.network.model.Offer;
 import com.socket.dekaneh.utils.GsonUtils;
 import butterknife.BindView;
@@ -28,7 +30,7 @@ public class ManufacturerActivity extends BaseActivity implements ManufacturerAc
     @Inject
     ManufacturerActivityVP.Presenter<ManufacturerActivityVP.View> presenter;
     @Inject
-    OffersAdapter adapter;
+    ManufacturerProductsAdapter adapter;
 
     @BindView(R.id.manufacturerToolbar)
     Toolbar toolbar;
@@ -81,7 +83,7 @@ public class ManufacturerActivity extends BaseActivity implements ManufacturerAc
 
 
     @Override
-    public void addAllProducts(List<Offer> offers) {
+    public void addAllProducts(List<ManufacturerProduct> offers) {
         adapter.addAllOffers(offers);
     }
 
