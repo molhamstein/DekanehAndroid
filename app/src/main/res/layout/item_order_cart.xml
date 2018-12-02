@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|start"
-        android:layout_marginStart="108dp"
+        android:layout_marginStart="100dp"
         android:layout_marginEnd="100dp"
         android:layout_marginTop="16dp"
         android:text="@string/quantity"
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
-        android:layout_marginStart="108dp"
+        android:layout_marginStart="100dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="8dp"
         android:text="3*150"
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:text="@string/dummy_price"
             style="@style/PrimaryBlackTextView"
-            android:textSize="32sp"
+            android:textSize="24sp"
             android:layout_marginTop="-8dp"
             />
 
