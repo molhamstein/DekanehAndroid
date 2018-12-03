@@ -34,8 +34,8 @@
     <string name="request_submitted_text">تم تسجيل طلبك</string>
     <string name="dummy_pepsi_title">بيبسي تنك ربع لتر</string>
     <string name="price">السعر</string>
-    <string name="product">المنتج</string>
-    <string name="about_the_product">عن المنتج</string>
+    <string name="manufacturer">المنتِج</string>
+    <string name="about_the_product">عن المنتَج</string>
     <string name="similar_products">منتجات مشابهة</string>
     <string name="product_details">تفاصيل المنتج</string>
     <string name="sub_categories">التصنيفات الفرعية</string>

@@ -96,6 +96,6 @@ public class User implements Serializable {
     }
 
     public enum Type {
-        wholesale, retailCostumer
+        wholesale, horeca
     }
 }

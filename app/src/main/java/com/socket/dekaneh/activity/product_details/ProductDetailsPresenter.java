@@ -59,7 +59,7 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
                                 item = new CartItem(ProductDetailsPresenter.this.product);
                                 getView().updateOrderCountText(getCacheStore().cartItemCount(item));
                                 ProductDetailsPresenter.this.product = product;
-                                getView().updateView(product, imageUrl, getCacheStore().getSession().getClientType().equals(User.Type.retailCostumer));
+                                getView().updateView(product, imageUrl, getCacheStore().getSession().getClientType().equals(User.Type.horeca));
                                 getView().hideLoading();
                             }
                         }, new Consumer<Throwable>() {

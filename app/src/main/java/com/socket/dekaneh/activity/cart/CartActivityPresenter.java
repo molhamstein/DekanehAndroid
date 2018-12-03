@@ -112,7 +112,7 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
     public int getPrice() {
         int price = 0;
         for (CartItem item : getCacheStore().getCartItems()) {
-            price += item.getTotalPrice(getCacheStore().getSession().getClientType().equals(User.Type.retailCostumer.toString()));
+            price += item.getTotalPrice(getCacheStore().getSession().getClientType().equals(User.Type.horeca.toString()));
         }
         if (coupon != null) {
             if (coupon.getType() == Coupon.Type.fixed) return price - coupon.getValue();
@@ -126,7 +126,7 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
     public int getSubtotalPrice() {
         int price = 0;
         for (CartItem item : getCacheStore().getCartItems()) {
-            price += item.getTotalPrice(getCacheStore().getSession().getClientType().equals(User.Type.retailCostumer.toString()));
+            price += item.getTotalPrice(getCacheStore().getSession().getClientType().equals(User.Type.horeca.toString()));
         }
         return price;
     }

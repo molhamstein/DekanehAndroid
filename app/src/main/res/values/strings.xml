@@ -61,7 +61,7 @@
     <string name="search" translatable="false">Search</string>
     <string name="dummy_pepsi_title"><![CDATA[Pepsi bottle &#188; L]]></string>
     <string name="price">Price</string>
-    <string name="product">Product</string>
+    <string name="manufacturer">Manufacturer</string>
     <string name="pepsi_co" translatable="false">PEPSI co</string>
     <string name="about_the_product">About the product</string>
     <string name="similar_products">Similar Products</string>

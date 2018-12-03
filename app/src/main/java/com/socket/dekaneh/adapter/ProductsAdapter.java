@@ -90,7 +90,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                 productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
             }
 
-            if (cacheStore.getSession().getClientType().equals(User.Type.retailCostumer.toString())) {
+            if (cacheStore.getSession().getClientType().equals(User.Type.horeca.toString())) {
                 setPrice(productViewHolder, product.getHorecaPrice(), product.getHorecaPriceDiscount());
             } else {
                 setPrice(productViewHolder, product.getWholeSalePrice(), product.getWholeSalePriceDiscount());
@@ -193,11 +193,12 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     }
 
     private void setPrice(ProductViewHolder holder, int price, int discount) {
-        holder.price.setText(String.valueOf(price));
         if (discount != 0 && discount != price) {
-            holder.oldPrice.setText(String.valueOf(discount));
+            holder.price.setText(String.valueOf(discount));
+            holder.oldPrice.setText(String.valueOf(price));
         } else {
-            holder.productDiscount.setVisibility(View.GONE);
+            holder.price.setText(String.valueOf(price));
+            holder.productDiscount.setVisibility(View.GONE); // layout
         }
     }
 

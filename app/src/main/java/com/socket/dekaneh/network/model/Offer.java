@@ -52,7 +52,7 @@ public class Offer extends Product implements Serializable {
     }
 
     private int getDiscountPercentage(String clientType) {
-        if (clientType.equals(User.Type.retailCostumer.toString())) {
+        if (clientType.equals(User.Type.horeca.toString())) {
             if (getHorecaPrice() != 0 && getHorecaPriceDiscount() != 0)
                 return (int) (getHorecaPrice() - getHorecaPriceDiscount()) * 100 / getHorecaPrice();
         } else if (getWholeSalePrice() != 0 && getWholeSalePriceDiscount() != 0)
