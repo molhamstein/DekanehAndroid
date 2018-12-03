@@ -87,7 +87,13 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
             final CartItem item = new CartItem(product);
 
-            if (product.isOffer()) {
+            if (product.hasDiscount(cacheStore.getSession().getClientType())) {
+                productViewHolder.offerTag.setVisibility(View.VISIBLE);
+                productViewHolder.offerTag.setTextSize(16);
+                productViewHolder.offerTag.setText(product.getPercentageString(cacheStore.getSession().getClientType()));
+            }
+
+            else if (!product.getOffersIds().isEmpty()) {
                 productViewHolder.offerTag.setVisibility(View.VISIBLE);
             }
 
@@ -219,7 +225,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
         @BindView(R.id.oldPrice)
         TextView oldPrice;
         @BindView(R.id.productOfferTag)
-        View offerTag;
+        TextView offerTag;
         @BindView(R.id.productName)
         TextView name;
         @BindView(R.id.productImage)

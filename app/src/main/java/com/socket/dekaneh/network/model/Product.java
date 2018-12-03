@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Product implements Serializable {
 
@@ -42,6 +43,10 @@ public class Product implements Serializable {
     @SerializedName("marketOfficialPrice")
     @Expose
     private String marketOfficialPrice;
+    @SerializedName("offersIds")
+    @Expose
+    private List<String> offersIds;
+
 
     @SerializedName("media")
     @Expose
@@ -251,5 +256,30 @@ public class Product implements Serializable {
 
     public void setMedia(Media media) {
         this.media = media;
+    }
+
+    public List<String> getOffersIds() {
+        return offersIds;
+    }
+
+    private int getDiscountPercentage(String clientType) {
+        if (clientType.equals(User.Type.horeca.toString())) {
+            if (getHorecaPrice() != 0 && getHorecaPriceDiscount() != 0)
+                return (int) (getHorecaPrice() - getHorecaPriceDiscount()) * 100 / getHorecaPrice();
+        } else if (getWholeSalePrice() != 0 && getWholeSalePriceDiscount() != 0)
+            return (int) (getWholeSalePrice() - getWholeSalePriceDiscount()) * 100 / getWholeSalePrice();
+        return 0;
+    }
+
+    public String getPercentageString(String clientType) {
+        return String.valueOf(getDiscountPercentage(clientType)) + "%";
+    }
+
+    public boolean hasDiscount(String clientType) {
+        if (clientType.equals(User.Type.horeca.toString())) {
+            return getHorecaPrice() != 0 && getHorecaPriceDiscount() != 0 && getHorecaPrice() != getHorecaPriceDiscount();
+        } else {
+            return getWholeSalePrice() != 0 && getWholeSalePriceDiscount() != 0 && getWholeSalePrice() != getWholeSalePriceDiscount();
+        }
     }
 }
