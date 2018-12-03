@@ -21,6 +21,7 @@ import com.socket.dekaneh.dagger.FragmentMain;
 import com.socket.dekaneh.dagger.Horizontal;
 import com.socket.dekaneh.network.model.HomeCategory;
 import com.socket.dekaneh.network.model.Offer;
+import com.socket.dekaneh.network.model.Product;
 import com.socket.dekaneh.network.model.SliderImage;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -125,10 +126,9 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
         mainPager.setScrollFactor(2);
     }
 
-
-    @OnClick(R.id.mainSlider)
-    public void test() {
-        Log.d("ASDQWDQWD", "test: ");
+    @Override
+    public void addFeaturedProducts(List<Product> products) {
+        categoriesAdapter.addFeaturedProducts(products, getContext());
     }
 
     @OnClick(R.id.seeAllOffersText)

@@ -18,7 +18,10 @@ import com.socket.dekaneh.R;
 import com.socket.dekaneh.activity.category_details.CategoryDetailsActivity;
 import com.socket.dekaneh.network.CacheStore;
 import com.socket.dekaneh.network.Session;
+import com.socket.dekaneh.network.model.Category;
 import com.socket.dekaneh.network.model.HomeCategory;
+import com.socket.dekaneh.network.model.Product;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -27,6 +30,7 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
     private CacheStore cacheStore;
     private List<HomeCategory> categories;
     private OnItemCountChange onItemCountChange;
+    private HomeCategory featuredCategory;
 
 
     @Inject
@@ -50,7 +54,12 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
 
         final HomeCategory category = categories.get(position);
         holder.header.setText(category.getTitleAr());
-        ProductsAdapter adapter = new ProductsAdapter(category.getProducts(), cacheStore ,category);
+        ProductsAdapter adapter;
+        if (category.getId().isEmpty()){
+            adapter = new ProductsAdapter(category.getProducts(), cacheStore ,category, false);
+        } else {
+            adapter = new ProductsAdapter(category.getProducts(), cacheStore ,category);
+        }
         adapter.setOnItemCountChange(new OnItemCountChange() {
             @Override
             public void onChange() {
@@ -84,6 +93,20 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
 
     public void addAllCategories(List<HomeCategory> categories) {
         this.categories = categories;
+        if (featuredCategory != null) {
+            this.categories.add(0, featuredCategory);
+        }
+        notifyDataSetChanged();
+    }
+
+    public void addFeaturedProducts(List<Product> products, Context context) {
+        HomeCategory category = new HomeCategory();
+        category.setId("");
+        category.setTitleAr(context.getString(R.string.featured_products));
+        category.setTitleEn(context.getString(R.string.featured_products));
+        category.setProducts(products);
+        this.featuredCategory = category;
+        this.categories.add(0, category);
         notifyDataSetChanged();
     }
 

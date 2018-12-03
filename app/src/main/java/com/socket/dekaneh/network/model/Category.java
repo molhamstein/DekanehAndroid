@@ -36,4 +36,20 @@ public class Category implements Serializable{
     public String getIcon() {
         return icon;
     }
+
+    public void setTitleAr(String titleAr) {
+        this.titleAr = titleAr;
+    }
+
+    public void setTitleEn(String titleEn) {
+        this.titleEn = titleEn;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 }

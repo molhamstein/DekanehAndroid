@@ -55,6 +55,16 @@ public class ProductsAdapter extends RecyclerView.Adapter {
         this.category = category;
     }
 
+    public ProductsAdapter(List<Product> products, CacheStore cacheStore, Category category, boolean seeMore) {
+        this.products = products;
+        Log.d("CategoryDetailsPresent", "onBindViewHolder: size = " + products.size());
+        if (products.size() >= MAX_NUM_OF_PRODUCTS && seeMore) {
+            products.add(null);
+        }
+        this.cacheStore = cacheStore;
+        this.category = category;
+    }
+
     public void setOnItemCountChange(OnItemCountChange onItemCountChange) {
         this.onItemCountChange = onItemCountChange;
     }

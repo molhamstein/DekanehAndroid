@@ -13,6 +13,7 @@ import com.socket.dekaneh.network.AppApiHelper;
 import com.socket.dekaneh.network.CacheStore;
 import com.socket.dekaneh.network.model.HomeCategory;
 import com.socket.dekaneh.network.model.Offer;
+import com.socket.dekaneh.network.model.Product;
 import com.socket.dekaneh.network.model.SliderImage;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -37,7 +38,6 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
             fetchFeaturedOffers();
             fetchCategories();
         }
-
     }
 
     @Override
@@ -80,6 +80,36 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
                                 getView().hideLoading();
                                 getView().addFeaturedOffers(offers);
                                 getCacheStore().cacheFeaturedOffers(offers);
+                                fetchFeaturedProducts();
+
+
+
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                getView().hideLoading();
+
+                            }
+                        })
+        );
+    }
+
+    @Override
+    public void fetchFeaturedProducts() {
+        getView().showLoading();
+        getCompositeDisposable().add(
+                AppApiHelper.getFeaturedProducts()
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<List<Product>>() {
+                            @Override
+                            public void accept(List<Product> products) throws Exception {
+
+                                getView().hideLoading();
+                                getView().addFeaturedProducts(products);
+//                                getView().addFeaturedOffers(offers);
+//                                getCacheStore().cacheFeaturedOffers(offers);
 
 
                             }
