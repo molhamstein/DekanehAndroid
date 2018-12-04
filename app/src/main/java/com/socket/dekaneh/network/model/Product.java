@@ -10,7 +10,7 @@ public class Product implements Serializable {
 
 
     public static final String TAG = Product.class.getSimpleName();
-    @SerializedName("_id")
+    @SerializedName("id")
     @Expose
     private String id;
     @SerializedName("nameAr")
