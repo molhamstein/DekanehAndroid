@@ -81,7 +81,8 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
             }
         });
         productsRV.setAdapter(categoriesAdapter);
-        productsRV.setNestedScrollingEnabled(true);
+        productsRV.setNestedScrollingEnabled(false);
+        productsRV.setHasFixedSize(true);
 
 
         offersAdapter.setOnItemCountChange(new OnItemCountChange() {
