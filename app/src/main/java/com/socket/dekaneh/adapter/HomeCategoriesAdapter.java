@@ -93,7 +93,7 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
 
     public void addAllCategories(List<HomeCategory> categories) {
         this.categories = categories;
-        if (featuredCategory != null) {
+        if (!this.categories.get(0).getId().isEmpty()) {
             this.categories.add(0, featuredCategory);
         }
         notifyDataSetChanged();
@@ -106,13 +106,6 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
         category.setTitleEn("Featured Products");
         category.setProducts(products);
         this.featuredCategory = category;
-        if (!this.categories.isEmpty() && this.categories.get(0) != null && this.categories.get(0).getId().isEmpty()){
-            this.categories.remove(0);
-            this.categories.add(0, category);
-        } else {
-            this.categories.add(0, category);
-        }
-        notifyDataSetChanged();
     }
 
     class HomeCategoriesViewHolder extends RecyclerView.ViewHolder {
