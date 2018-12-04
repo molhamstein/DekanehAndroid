@@ -51,7 +51,7 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
 
         final CartItem item = items.get(position);
         if (item.getMedia() != null && !item.getMedia().getUrl().equals(""))
-            Picasso.get().load(item.getMedia().getUrl()).into(holder.image);
+            Picasso.get().load(item.getMedia().getThumbnail()).into(holder.image);
         holder.name.setText(item.getNameAr());
         holder.quantity.setText(String.valueOf(item.getPrice(cacheStore.getSession().getClientType().equals(User.Type.horeca.toString()))) + " * " + String.valueOf(item.getCount()));
         holder.accPrice.setText(String.valueOf(item.getTotalPrice(cacheStore.getSession().getClientType().equals(User.Type.horeca.toString()))));

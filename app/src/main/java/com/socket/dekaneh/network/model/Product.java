@@ -59,9 +59,11 @@ public class Product implements Serializable {
         this.id = product.getId();
         this.nameAr = product.getNameAr();
         this.horecaPrice = product.getHorecaPrice();
+        this.horecaPriceDiscount = product.getHorecaPriceDiscount();
         this.wholeSalePrice = product.getWholeSalePrice();
-        if (this.media != null)
-            this.media.url = product.getMedia().url;
+        this.wholeSalePriceDiscount = product.getWholeSalePriceDiscount();
+        if (product.media != null)
+            this.media = product.getMedia();
     }
 
     public Product(Offer offer) {
@@ -210,8 +212,17 @@ public class Product implements Serializable {
     }
 
     public int getPrice(boolean isHoreca) {
-        if (isHoreca) return getHorecaPrice();
-        else return getWholeSalePrice();
+        if (isHoreca){
+            if (hasDiscount(User.Type.horeca.toString()))
+                return getHorecaPriceDiscount();
+            return getHorecaPrice();
+        }
+        else {
+            if (hasDiscount(User.Type.wholesale.toString())) {
+                return getWholeSalePriceDiscount();
+            }
+            return getWholeSalePrice();
+        }
     }
 
     public void setNameAr(String nameAr) {
