@@ -29,6 +29,7 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
     }
 
     private void updateFromCacheOrNetwork(){
+        fetchFeaturedProducts();
         if (getCacheStore().getHomeCategories() != null) {
             getView().addCategoriesWithProducts(getCacheStore().getHomeCategories());
         } else {
@@ -87,7 +88,6 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
                                 getView().hideLoading();
                                 getView().addFeaturedOffers(offers);
                                 getCacheStore().cacheFeaturedOffers(offers);
-                                fetchFeaturedProducts();
 
 
                             }

@@ -28,9 +28,6 @@ public class CartItem extends Product implements Serializable{
         super(offer, offer.getMedia());
     }
 
-    public int getPrice() {
-        return price;
-    }
 
     @Override
     public String getId() {
@@ -45,6 +42,10 @@ public class CartItem extends Product implements Serializable{
         return count;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     public void addOne() {
         ++count;
     }
@@ -53,9 +54,13 @@ public class CartItem extends Product implements Serializable{
         --count;
     }
 
+    public int getTotalPrice(boolean isHoreca) {
+        if (isHoreca) return getHorecaPrice() * getCount();
+        else return getWholeSalePrice() * getCount();
+    }
+
     public int getTotalPrice() {
         return price * count;
     }
-
 
 }
