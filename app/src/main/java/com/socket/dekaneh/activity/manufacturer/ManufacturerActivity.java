@@ -3,8 +3,10 @@ package com.socket.dekaneh.activity.manufacturer;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -14,12 +16,10 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.socket.dekaneh.R;
-import com.socket.dekaneh.adapter.ManufacturerProductsAdapter;
-import com.socket.dekaneh.adapter.OffersAdapter;
+import com.socket.dekaneh.adapter.ManufacturerGridProductsAdapter;
 import com.socket.dekaneh.base.BaseActivity;
 import com.socket.dekaneh.network.model.Manufacturer;
-import com.socket.dekaneh.network.model.ManufacturerProduct;
-import com.socket.dekaneh.network.model.Offer;
+import com.socket.dekaneh.network.model.Product;
 import com.socket.dekaneh.utils.GsonUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,7 +30,7 @@ public class ManufacturerActivity extends BaseActivity implements ManufacturerAc
     @Inject
     ManufacturerActivityVP.Presenter<ManufacturerActivityVP.View> presenter;
     @Inject
-    ManufacturerProductsAdapter adapter;
+    ManufacturerGridProductsAdapter adapter;
 
     @BindView(R.id.manufacturerToolbar)
     Toolbar toolbar;
@@ -63,7 +63,7 @@ public class ManufacturerActivity extends BaseActivity implements ManufacturerAc
 
         presenter.onAttach(this);
 
-        productsRV.setLayoutManager(new LinearLayoutManager(this));
+        productsRV.setLayoutManager(new GridLayoutManager(this, 2));
         productsRV.setAdapter(adapter);
         presenter.fetchProducts();
 
@@ -83,8 +83,8 @@ public class ManufacturerActivity extends BaseActivity implements ManufacturerAc
 
 
     @Override
-    public void addAllProducts(List<ManufacturerProduct> offers) {
-        adapter.addAllOffers(offers);
+    public void addAllProducts(List<Product> offers) {
+        adapter.addAllProducts(offers);
     }
 
     @Override

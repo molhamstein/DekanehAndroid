@@ -1,21 +1,17 @@
 package com.socket.dekaneh.activity.manufacturer;
 
-import android.util.Log;
-
-import java.util.List;
-
-import javax.inject.Inject;
-
 import com.androidnetworking.error.ANError;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
 import com.socket.dekaneh.network.AppApiHelper;
 import com.socket.dekaneh.network.CacheStore;
 import com.socket.dekaneh.network.model.Manufacturer;
-import com.socket.dekaneh.network.model.ManufacturerProduct;
-import com.socket.dekaneh.network.model.Offer;
+import com.socket.dekaneh.network.model.Product;
 import com.socket.dekaneh.utils.GsonUtils;
-import com.socket.dekaneh.utils.NetworkUtils;
+
+import java.util.List;
+
+import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -44,11 +40,11 @@ public class ManufacturerActivityPresenter<T extends ManufacturerActivityVP.View
                 AppApiHelper.getProductsByManufacturer(manufacturer.getId())
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<ManufacturerProduct>>() {
+                .subscribe(new Consumer<List<Product>>() {
                     @Override
-                    public void accept(List<ManufacturerProduct> offers) throws Exception {
+                    public void accept(List<Product> products) throws Exception {
                         getView().hideLoading();
-                        getView().addAllProducts(offers);
+                        getView().addAllProducts(products);
 
                     }
                 }, new Consumer<Throwable>() {

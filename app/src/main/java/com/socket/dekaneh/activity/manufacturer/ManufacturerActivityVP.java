@@ -6,11 +6,12 @@ import com.socket.dekaneh.base.BasePresenter;
 import com.socket.dekaneh.base.BaseView;
 import com.socket.dekaneh.network.model.ManufacturerProduct;
 import com.socket.dekaneh.network.model.Offer;
+import com.socket.dekaneh.network.model.Product;
 
 public class ManufacturerActivityVP {
 
     public interface View extends BaseView {
-        void addAllProducts(List<ManufacturerProduct> offers);
+        void addAllProducts(List<Product> offers);
         void setTitle(String title);
 
     }

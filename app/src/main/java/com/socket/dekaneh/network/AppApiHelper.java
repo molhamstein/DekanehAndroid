@@ -135,11 +135,11 @@ public class AppApiHelper {
 //                .getStringMaybe();
 //    }
 
-    public static Single<List<ManufacturerProduct>> getProductsByManufacturer(String manufacturerId) {
+    public static Single<List<Product>> getProductsByManufacturer(String manufacturerId) {
         return Rx2AndroidNetworking.get(ApiEndPoint.PRODUCTS_RAW)
                 .addQueryParameter("filter[where][manufacturerId]", manufacturerId)
                 .build()
-                .getObjectListSingle(ManufacturerProduct.class);
+                .getObjectListSingle(Product.class);
     }
 
     public static Single<User> signUp(SignUpRequest request) {
