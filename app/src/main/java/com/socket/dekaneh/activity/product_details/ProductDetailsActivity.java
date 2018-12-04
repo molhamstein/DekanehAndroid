@@ -65,6 +65,8 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     TextView productOfficialPrice;
     @BindView(R.id.productDescriptionTitle)
     View productDescriptionTitle;
+    @BindView(R.id.percent)
+    TextView percentage;
 
     @BindView(R.id.orderCount)
     TextView orderCount;
@@ -75,6 +77,17 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         Intent starter = new Intent(context, ProductDetailsActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString(Product.TAG, GsonUtils.convertObjectToJson(product));
+        bundle.putBoolean("isOffer", false);
+        starter.putExtras(bundle);
+        context.startActivity(starter);
+    }
+
+    public static void startAsOffer(Context context, Product product, String percentage) {
+        Intent starter = new Intent(context, ProductDetailsActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(Product.TAG, GsonUtils.convertObjectToJson(product));
+        bundle.putBoolean("isOffer", true);
+        bundle.putString("percentage", percentage);
         starter.putExtras(bundle);
         context.startActivity(starter);
     }
@@ -137,6 +150,12 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
                 ManufacturerActivity.start(view.getContext(), product.getManufacturer());
             }
         });
+
+        if (getIntent().getBooleanExtra("isOffer", false)) {
+            percentage.setText(getIntent().getStringExtra("percentage"));
+        } else {
+            percentage.setVisibility(View.GONE);
+        }
     }
 
     @Override

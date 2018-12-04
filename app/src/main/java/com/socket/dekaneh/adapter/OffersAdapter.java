@@ -139,7 +139,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProductDetailsActivity.start(view.getContext(), product);
+                ProductDetailsActivity.startAsOffer(view.getContext(), product, offer.getPercentageString(cacheStore.getSession().getClientType()));
             }
         });
 
