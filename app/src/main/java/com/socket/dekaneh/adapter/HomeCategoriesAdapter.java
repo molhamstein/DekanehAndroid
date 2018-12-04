@@ -106,7 +106,12 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
         category.setTitleEn("Featured Products");
         category.setProducts(products);
         this.featuredCategory = category;
-        this.categories.add(0, category);
+        if (this.categories.get(0) != null && this.categories.get(0).getId().isEmpty()){
+            this.categories.remove(0);
+            this.categories.add(0, category);
+        } else {
+            this.categories.add(0, category);
+        }
         notifyDataSetChanged();
     }
 
