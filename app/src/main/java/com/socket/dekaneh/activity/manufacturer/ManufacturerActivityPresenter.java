@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.androidnetworking.error.ANError;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
 import com.socket.dekaneh.network.AppApiHelper;
@@ -48,15 +49,14 @@ public class ManufacturerActivityPresenter<T extends ManufacturerActivityVP.View
                     public void accept(List<ManufacturerProduct> offers) throws Exception {
                         getView().hideLoading();
                         getView().addAllProducts(offers);
-                        Log.d("ADASDASD", "accept: " + offers.toString());
 
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        Log.d("ASDQWEASDZXCSDFDGF", "accept: " + NetworkUtils.getError(throwable));
                         getView().hideLoading();
-                        getView().showMessage(throwable.toString());
+                        handleApiError((ANError) throwable);
+
 
                     }
                 })

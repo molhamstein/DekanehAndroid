@@ -39,7 +39,7 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
         if (phoneNumber == null || phoneNumber.isEmpty()) {
             getView().onError(R.string.empty_email);
             return;
-        }else if(!ValidationUtils.isValidPhoneNumber(phoneNumber)) {
+        } else if (!ValidationUtils.isValidPhoneNumber(phoneNumber)) {
             getView().onError(R.string.provide_valid_phone_number_statement);
             return;
         }
@@ -63,8 +63,7 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
                                     getCacheStore().getSession().setUser(loginResponse.getUser(), loginResponse.getId());
                                     getView().hideLoading();
                                     getView().startMainActivity();
-                                }
-                                else {
+                                } else {
                                     getView().showMessage(R.string.activate_account_error);
                                     getView().hideLoading();
                                 }
@@ -74,13 +73,7 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
                             public void accept(Throwable throwable) throws Exception {
                                 Log.e(TAG, "accept: ", throwable);
                                 getView().hideLoading();
-                                if (throwable instanceof ANError) {
-                                    ANError error = (ANError) throwable;
-                                    getView().hideLoading();
-                                    Log.d(TAG, "accept: " + error);
-                                    getView().showMessage(NetworkUtils.getError(throwable));
-
-                                }
+                                handleApiError((ANError) throwable);
                             }
                         })
         );

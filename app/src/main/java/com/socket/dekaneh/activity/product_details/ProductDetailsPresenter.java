@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.androidnetworking.error.ANError;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
 import com.socket.dekaneh.network.AppApiHelper;
@@ -66,7 +67,8 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
                             @Override
                             public void accept(Throwable throwable) throws Exception {
                                 getView().hideLoading();
-                                Log.e("", "accept: " + NetworkUtils.getError(throwable));
+                                handleApiError((ANError) throwable);
+
                             }
                         })
         );
@@ -92,7 +94,7 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
                         }, new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
-                                Log.e("", "accept: " + NetworkUtils.getError(throwable), throwable);
+                                handleApiError((ANError) throwable);
 
                             }
                         })
@@ -118,7 +120,7 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
                             @Override
                             public void accept(Throwable throwable) throws Exception {
                                 getView().hideLoading();
-                                Log.e("", "accept: " + NetworkUtils.getError(throwable));
+                                handleApiError((ANError) throwable);
                             }
                         })
         );

@@ -67,13 +67,17 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
     public void handleApiError(ANError error) {
 
 
-        if (error == null || error.getErrorBody() == null) {
+        if (error == null) {
             getView().onError(R.string.api_default_error);
         }
 
         else if (error.getErrorCode() == AppApiHelper.API_STATUS_CODE_LOCAL_ERROR
                 && error.getErrorDetail().equals(ANConstants.CONNECTION_ERROR)) {
             getView().onError(R.string.connection_error);
+        }
+
+        else if (error.getErrorBody() == null) {
+            getView().onError(R.string.api_default_error);
         }
 
         else if (error.getErrorCode() == AppApiHelper.API_STATUS_CODE_LOCAL_ERROR

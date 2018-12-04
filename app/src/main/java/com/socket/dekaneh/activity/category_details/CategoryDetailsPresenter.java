@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.androidnetworking.error.ANError;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
 import com.socket.dekaneh.network.AppApiHelper;
@@ -51,7 +52,7 @@ public class CategoryDetailsPresenter<T extends CategoryDetailsVP.View> extends 
                         }, new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
-                                Log.d(TAG, "accept: " + NetworkUtils.getError(throwable));
+                                handleApiError((ANError) throwable);
                             }
                         })
         );

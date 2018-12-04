@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.androidnetworking.error.ANError;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
 import com.socket.dekaneh.network.AppApiHelper;
@@ -54,7 +55,7 @@ public class OrderDetailsPresenter<T extends OrderDetailsVP.View> extends BasePr
                             @Override
                             public void accept(Throwable throwable) throws Exception {
                                 getView().hideLoading();
-                                getView().showMessage(NetworkUtils.getError(throwable));
+                                handleApiError((ANError) throwable);
 
                             }
                         })

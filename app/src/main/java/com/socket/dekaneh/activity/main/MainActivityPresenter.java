@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.androidnetworking.error.ANError;
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
@@ -93,9 +94,9 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        NetworkUtils.getError(throwable);
+                        handleApiError((ANError) throwable);
                         getView().hideLoading();
-                        Log.e("ASD", "accept: " + NetworkUtils.getError(throwable), throwable);
+
                     }
                 })
         );
