@@ -20,16 +20,6 @@ public class NetworkUtils {
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }
 
-    public static String getError(Throwable throwable) {
-
-        if (throwable instanceof ANError) {
-            ANError anError = (ANError) throwable;
-            Error error =  anError.getErrorAsObject(Error.class);
-            return error.getMessage();
-        }
-        return "Not Instance Of Error.class";
-    }
-
     public static String getStaticMapUrl(String lat, String lng) {
         return "http://maps.google.com/maps/api/staticmap?center=" + lat + "," + lng + "&zoom=15&size=400x300&sensor=false&key=AIzaSyDyhbojoipNUc6r1H5lsm0KJpTqKrJ94DM";
     }
