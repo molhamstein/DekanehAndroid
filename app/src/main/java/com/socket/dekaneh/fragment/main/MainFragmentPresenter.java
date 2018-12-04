@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.androidnetworking.error.ANError;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
 import com.socket.dekaneh.network.AppApiHelper;
@@ -28,7 +29,7 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
         super(schedulerProvider, compositeDisposable, cacheStore);
     }
 
-    private void updateFromCacheOrNetwork(){
+    private void updateFromCacheOrNetwork() {
         fetchFeaturedProducts();
         if (getCacheStore().getHomeCategories() != null) {
             getView().addCategoriesWithProducts(getCacheStore().getHomeCategories());
@@ -66,7 +67,7 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
                                    }, new Consumer<Throwable>() {
                                        @Override
                                        public void accept(Throwable throwable) throws Exception {
-                                           getView().showMessage(throwable.getMessage());
+                                           handleApiError((ANError) throwable);
                                            getView().hideLoading();
                                        }
                                    }

@@ -85,11 +85,6 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
             getView().onError(R.string.low_total_price_error);
         }
 
-        //TODO add custom error handling from server
-//        final GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
-//        final Gson gson = builder.create();
-//
-//            ApiError apiError = gson.fromJson(error.getErrorBody(), ApiError.class);
 
     }
 
