@@ -10,6 +10,9 @@ public class CartItem extends Product implements Serializable{
     @SerializedName("count")
     @Expose
     private int count;
+    @SerializedName("price")
+    @Expose
+    private int price;
 
 
     public CartItem(int count, Product product) {
@@ -25,6 +28,9 @@ public class CartItem extends Product implements Serializable{
         super(offer, offer.getMedia());
     }
 
+    public int getPrice() {
+        return price;
+    }
 
     @Override
     public String getId() {
@@ -47,9 +53,8 @@ public class CartItem extends Product implements Serializable{
         --count;
     }
 
-    public int getTotalPrice(boolean isHoreca) {
-        if (isHoreca) return getHorecaPrice() * getCount();
-        else return getWholeSalePrice() * getCount();
+    public int getTotalPrice() {
+        return price * count;
     }
 
 

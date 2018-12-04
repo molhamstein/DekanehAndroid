@@ -23,5 +23,6 @@ public class MainFragmentVP {
         void fetchFeaturedOffers();
         void fetchFeaturedProducts();
         void fetchSliderImages();
+        void onFragmentResume();
     }
 }

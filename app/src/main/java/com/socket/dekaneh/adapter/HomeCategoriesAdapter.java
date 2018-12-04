@@ -99,11 +99,11 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
         notifyDataSetChanged();
     }
 
-    public void addFeaturedProducts(List<Product> products, Context context) {
+    public void addFeaturedProducts(List<Product> products) {
         HomeCategory category = new HomeCategory();
         category.setId("");
-        category.setTitleAr(context.getString(R.string.featured_products));
-        category.setTitleEn(context.getString(R.string.featured_products));
+        category.setTitleAr("المنتجات المميزة"); //TODO change to res
+        category.setTitleEn("Featured Products");
         category.setProducts(products);
         this.featuredCategory = category;
         this.categories.add(0, category);

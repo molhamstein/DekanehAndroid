@@ -15,6 +15,7 @@ import com.socket.dekaneh.network.model.HomeCategory;
 import com.socket.dekaneh.network.model.Offer;
 import com.socket.dekaneh.network.model.Product;
 import com.socket.dekaneh.network.model.SliderImage;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -27,17 +28,23 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
         super(schedulerProvider, compositeDisposable, cacheStore);
     }
 
+    private void updateFromCacheOrNetwork(){
+        if (getCacheStore().getHomeCategories() != null) {
+            getView().addCategoriesWithProducts(getCacheStore().getHomeCategories());
+        } else {
+            fetchCategories();
+        }
+        if (getCacheStore().getFeaturedOffers() != null) {
+            getView().addFeaturedOffers(getCacheStore().getFeaturedOffers());
+        } else {
+            fetchFeaturedOffers();
+        }
+    }
+
     @Override
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
-        if (getCacheStore().getHomeCategories() != null && getCacheStore().getFeaturedOffers() != null) {
-            getView().addCategoriesWithProducts(getCacheStore().getHomeCategories());
-            getView().addFeaturedOffers(getCacheStore().getFeaturedOffers());
-        }
-        else {
-            fetchFeaturedOffers();
-            fetchCategories();
-        }
+        updateFromCacheOrNetwork();
     }
 
     @Override
@@ -83,7 +90,6 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
                                 fetchFeaturedProducts();
 
 
-
                             }
                         }, new Consumer<Throwable>() {
                             @Override
@@ -108,8 +114,6 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
 
                                 getView().hideLoading();
                                 getView().addFeaturedProducts(products);
-//                                getView().addFeaturedOffers(offers);
-//                                getCacheStore().cacheFeaturedOffers(offers);
 
 
                             }
@@ -128,21 +132,26 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
         getView().showLoading();
         getCompositeDisposable().add(
                 AppApiHelper.getSliderImages()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<SliderImage>>() {
-                    @Override
-                    public void accept(List<SliderImage> sliderImages) throws Exception {
-                        getView().addSliderImages(sliderImages);
-                        getView().hideLoading();
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        getView().hideLoading();
-                        Log.e(TAG, "accept: ", throwable);
-                    }
-                })
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<List<SliderImage>>() {
+                            @Override
+                            public void accept(List<SliderImage> sliderImages) throws Exception {
+                                getView().addSliderImages(sliderImages);
+                                getView().hideLoading();
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                getView().hideLoading();
+                                Log.e(TAG, "accept: ", throwable);
+                            }
+                        })
         );
+    }
+
+    @Override
+    public void onFragmentResume() {
+        updateFromCacheOrNetwork();
     }
 }

@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
         />
 
     <TextView
@@ -69,8 +70,7 @@
         android:text="@string/dummy_price"
         android:layout_gravity="end|top"
         style="@style/PrimaryBlackTextView"
-        android:textSize="32sp"
-        android:layout_marginTop="-12dp"
+        android:textSize="24sp"
         android:layout_marginEnd="40dp"
         />
 

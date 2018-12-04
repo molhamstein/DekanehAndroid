@@ -23,6 +23,7 @@ import com.socket.dekaneh.network.model.HomeCategory;
 import com.socket.dekaneh.network.model.Offer;
 import com.socket.dekaneh.network.model.Product;
 import com.socket.dekaneh.network.model.SliderImage;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import me.angeldevil.autoscrollviewpager.AutoScrollViewPager;
@@ -128,7 +129,7 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
 
     @Override
     public void addFeaturedProducts(List<Product> products) {
-        categoriesAdapter.addFeaturedProducts(products, getContext());
+        categoriesAdapter.addFeaturedProducts(products);
     }
 
     @OnClick(R.id.seeAllOffersText)
@@ -136,4 +137,11 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
         ((MainActivity) getActivity()).navigateToOffersFragment();
     }
 
+
+    @Override
+    public void onResume() {
+        if (presenter != null)
+            presenter.onFragmentResume();
+        super.onResume();
+    }
 }

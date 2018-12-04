@@ -15,9 +15,13 @@
         android:testOnly="false"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="com.onesignal.NotificationOpened.DEFAULT"
-            android:value="DISABLE" />
+
+
+        <service android:name=".DockaanFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <activity
             android:name="com.socket.dekaneh.activity.splash.SplashActivity"
@@ -42,7 +46,7 @@
         <activity android:name="com.socket.dekaneh.activity.manufacturer.ManufacturerActivity" />
         <activity android:name="com.socket.dekaneh.activity.rating.RatingActivity" />
         <activity android:name="com.socket.dekaneh.activity.order_details.OrderDetailsActivity" />
-        <activity android:name="com.socket.dekaneh.activity.NotificationsActivity"></activity>
+        <activity android:name="com.socket.dekaneh.activity.NotificationsActivity"/>
     </application>
 
 </manifest>

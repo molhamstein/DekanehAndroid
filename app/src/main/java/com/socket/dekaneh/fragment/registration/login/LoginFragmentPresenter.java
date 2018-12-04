@@ -4,7 +4,6 @@ package com.socket.dekaneh.fragment.registration.login;
 import android.util.Log;
 
 import com.androidnetworking.error.ANError;
-import com.onesignal.OneSignal;
 
 import javax.inject.Inject;
 
@@ -64,13 +63,6 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
                                     getCacheStore().getSession().setUser(loginResponse.getUser(), loginResponse.getId());
                                     getView().hideLoading();
                                     getView().startMainActivity();
-                                    OneSignal.idsAvailable(new OneSignal.IdsAvailableHandler() {
-                                        @Override
-                                        public void idsAvailable(String userId, String registrationId) {
-                                            OneSignal.sendTag("user_id", loginResponse.getUser().getId());
-                                        }
-
-                                    });
                                 }
                                 else {
                                     getView().showMessage(R.string.activate_account_error);

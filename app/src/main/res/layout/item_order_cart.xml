@@ -69,8 +69,8 @@
             android:layout_height="wrap_content"
             android:text="@string/dummy_price"
             style="@style/PrimaryBlackTextView"
-            android:textSize="24sp"
-            android:layout_marginTop="-8dp"
+            android:textSize="20sp"
+            android:layout_marginTop="-4dp"
             />
 
         <TextView
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:text="@string/currency"
             style="@style/SecondaryBlackTextView"
-            android:textSize="10sp"
+            android:textSize="8sp"
             />
 
 

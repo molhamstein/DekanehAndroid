@@ -54,8 +54,8 @@ public class OrderDetailsItemsAdapter extends RecyclerView.Adapter<OrderDetailsI
         if (!item.getMedia().getUrl().equals(""))
         Picasso.get().load(item.getMedia().getUrl()).into(holder.image);
         holder.name.setText(item.getNameAr());
-        holder.quantity.setText(String.valueOf(item.getTotalPrice(cacheStore.getSession().getClientType().equals(User.Type.horeca))) + " * " + String.valueOf(item.getCount()));
-        holder.accPrice.setText(String.valueOf(item.getTotalPrice(cacheStore.getSession().getClientType().equals(User.Type.horeca)) * item.getCount()));
+        holder.quantity.setText(String.valueOf(item.getPrice()) + " * " + String.valueOf(item.getCount()));
+        holder.accPrice.setText(String.valueOf(item.getTotalPrice()));
         holder.orderCount.setText(String.valueOf(item.getCount()));
 
         if (editing) {
