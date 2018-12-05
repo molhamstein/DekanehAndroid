@@ -152,9 +152,8 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         });
 
         if (getIntent().getBooleanExtra("isOffer", false)) {
+            percentage.setVisibility(View.VISIBLE);
             percentage.setText(getIntent().getStringExtra("percentage"));
-        } else {
-            percentage.setVisibility(View.GONE);
         }
     }
 

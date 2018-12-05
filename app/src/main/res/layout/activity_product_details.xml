@@ -62,7 +62,8 @@
                     android:layout_margin="16dp"
                     android:paddingBottom="8dp"
                     android:text="10%"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
 
 
             </FrameLayout>
