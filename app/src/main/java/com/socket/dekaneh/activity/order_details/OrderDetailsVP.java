@@ -12,6 +12,7 @@ public class OrderDetailsVP {
         void updateAllItems(List<CartItem> items);
         void updateView(String id, String creationDate, String status, String total);
         void edit(boolean edit);
+        void finish();
     }
 
     public interface Presenter<T extends BaseView> extends BasePresenter<T> {

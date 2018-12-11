@@ -30,6 +30,11 @@ public class OrderRequest implements Serializable {
         }
     }
 
+    public OrderRequest(String clientId, List<Orderitem> orderitems) {
+        this.clientId = clientId;
+        this.products = orderitems;
+    }
+
     @Override
     public String toString() {
         return "OrderRequest{" +
