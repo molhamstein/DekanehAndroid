@@ -151,9 +151,10 @@ public class AppApiHelper {
                 .getObjectSingle(User.class);
     }
 
-    public static Single<Order> patchOrder(Order order) {
+    public static Single<Order> patchOrder(String accessToken, Order order) {
         return Rx2AndroidNetworking.patch(ApiEndPoint.ORDER)
                 .addPathParameter("id", order.getId())
+                .addQueryParameter("access_token", accessToken)
                 .addApplicationJsonBody(order)
                 .build()
                 .getObjectSingle(Order.class);

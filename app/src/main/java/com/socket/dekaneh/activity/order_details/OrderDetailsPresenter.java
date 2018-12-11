@@ -67,7 +67,7 @@ public class OrderDetailsPresenter<T extends OrderDetailsVP.View> extends BasePr
         getView().showLoading();
 
         getCompositeDisposable().add(
-                AppApiHelper.patchOrder(order)
+                AppApiHelper.patchOrder(getCacheStore().getSession().getAccessToken(), order)
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<Order>() {
@@ -82,6 +82,7 @@ public class OrderDetailsPresenter<T extends OrderDetailsVP.View> extends BasePr
                             @Override
                             public void accept(Throwable throwable) throws Exception {
                                 Log.e("EEEEE", "accept: ", throwable);
+                                handleApiError((ANError) throwable);
                                 getView().hideLoading();
                             }
                         })

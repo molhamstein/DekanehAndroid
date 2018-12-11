@@ -16,7 +16,7 @@
     <string name="enter_code_info">قم بادخال رمز الاستعادة الذي حصلت عليه كرسالة نصية SMS</string>
     <string name="buy_now">اشتري الآن</string>
     <string name="dummy_text">اشتري علبتين ملمع الزجاج بوفالو و احصل على الثالثة مجانا</string>
-    <string name="profile">صفحتي</string>
+    <string name="profile">حسابي</string>
     <string name="offers">العروض</string>
     <string name="categories">التصنيفات</string>
     <string name="main">الرئيسية</string>
@@ -98,5 +98,6 @@
     <string name="officalPrice">السعر للمستهلك</string>
     <string name="see_more">مشاهدة المزيد</string>
     <string name="featured_products">المنتجات المميزة</string>
+    <string name="slogan">خليك ربحان</string>
 
 </resources>
