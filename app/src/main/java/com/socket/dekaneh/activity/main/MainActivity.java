@@ -105,6 +105,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         getSupportActionBar().setTitle("");
         getActivityComponent().inject(this);
         presenter.onAttach(this);
+        presenter.checkUserActivated();
 
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         bottomNavigation.enableAnimation(false);

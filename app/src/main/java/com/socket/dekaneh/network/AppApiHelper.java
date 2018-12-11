@@ -2,6 +2,7 @@ package com.socket.dekaneh.network;
 
 import com.google.gson.JsonObject;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
+
 import java.util.List;
 
 import com.socket.dekaneh.Rating;
@@ -23,6 +24,7 @@ import com.socket.dekaneh.network.model.SubCategory;
 import com.socket.dekaneh.network.model.User;
 
 import com.socket.dekaneh.network.model.Coupon;
+
 import io.reactivex.Single;
 
 public class AppApiHelper {
@@ -211,11 +213,19 @@ public class AppApiHelper {
     public static Single<JsonObject> postRating(String accessToken, Rating.Rate rate, String userId, String orderId) {
         return Rx2AndroidNetworking.post(ApiEndPoint.RATINGS)
                 .addQueryParameter("access_token", accessToken)
-                .addBodyParameter("rate" ,rate.toString())
-                .addBodyParameter("userId" ,userId)
-                .addBodyParameter("orderId" ,orderId)
+                .addBodyParameter("rate", rate.toString())
+                .addBodyParameter("userId", userId)
+                .addBodyParameter("orderId", orderId)
                 .build()
                 .getObjectSingle(JsonObject.class);
+    }
+
+
+    public static Single<Boolean> isActivated(String accessToken) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.CHECK_STATUS)
+                .addQueryParameter("access_token", accessToken)
+                .build()
+                .getObjectSingle(Boolean.class);
     }
 
 

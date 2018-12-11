@@ -34,6 +34,7 @@ public interface MainActivityVP {
         void onResume();
         void restart();
         void search(String query);
+        void checkUserActivated();
     }
 
 }

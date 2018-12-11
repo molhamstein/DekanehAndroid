@@ -102,4 +102,24 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
         );
     }
 
+    @Override
+    public void checkUserActivated() {
+        getView().showLoading();
+        getCompositeDisposable().add(AppApiHelper.isActivated(getCacheStore().getSession().getAccessToken())
+        .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+
+                        if (!aBoolean) {
+                            getCacheStore().getSession().logout();
+                        }
+                        getView().hideLoading();
+
+                    }
+                })
+        );
+    }
+
 }
