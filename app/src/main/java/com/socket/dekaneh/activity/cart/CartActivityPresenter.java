@@ -53,7 +53,8 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
 
         OrderRequest order = new OrderRequest(getCacheStore().getSession().getUserId(), orderItems, coupon);
 
-
+        Log.d(TAG, "sendOrder: " + order.toString());
+        Log.d(TAG, "sendOrder: TOKEN " + getCacheStore().getSession().getAccessToken() );
         getView().showLoading();
         getCompositeDisposable().add(
                 AppApiHelper.sendOrder(getCacheStore().getSession().getAccessToken(), order)

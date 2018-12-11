@@ -11,7 +11,7 @@ public class OrderRequest implements Serializable {
     @SerializedName("clientId")
     @Expose
     private String clientId;
-    @SerializedName("products")
+    @SerializedName("orderProducts")
     @Expose
     private List<Orderitem> products;
     @SerializedName("code")

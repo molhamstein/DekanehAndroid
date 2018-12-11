@@ -40,7 +40,7 @@ public class Order implements Serializable {
     @SerializedName("couponId")
     @Expose
     private String couponId;
-    @SerializedName("products")
+    @SerializedName("orderProducts")
     @Expose
     private List<CartItem> products;
 

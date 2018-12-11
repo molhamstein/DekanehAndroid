@@ -1,5 +1,7 @@
 package com.socket.dekaneh.base;
 
+import android.util.Log;
+
 import com.androidnetworking.common.ANConstants;
 import com.androidnetworking.error.ANError;
 
@@ -87,6 +89,10 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
 
         else if (error.getErrorCode() == AppApiHelper.TOTAL_PRICE_IS_LOW_ERROR) {
             getView().onError(R.string.low_total_price_error);
+        }
+
+        else {
+            Log.e("ERRRRRRRRRRR", "handleApiError: " + error.getErrorBody());
         }
 
 

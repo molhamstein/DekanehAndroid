@@ -3,6 +3,7 @@ package com.socket.dekaneh.network;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.jakewharton.processphoenix.ProcessPhoenix;
 
@@ -22,11 +23,12 @@ public class Session {
     private static final String CLIENT_TYPE = "client_type";
     private static final String EMAIL = "email";
     private static final String OWNER_NAME = "owner_name";
-    private static final String SHOP_NAME = "shop+name";
+    private static final String SHOP_NAME = "shop_name";
     private static final String USER_NAME = "user_name";
     private static final String GENDER = "gender";
     private static final String LATITUDE = "latitude";
     private static final String LONGITUDE = "longitude";
+    private static final String IS_LOGGED_ON = "is_logged_on";
 
     @Inject
     public Session(Context context) {
@@ -156,7 +158,16 @@ public class Session {
         return getPreference().getString(LONGITUDE, "");
     }
 
+    public void setLoggedOn(boolean loggedOn) {
+        getPreference()
+                .edit()
+                .putBoolean(IS_LOGGED_ON, loggedOn)
+                .apply();
+    }
 
+    public boolean isLoggedOn() {
+        return getPreference().getBoolean(IS_LOGGED_ON, false);
+    }
 
     public void setUser(User user, String accessToken) {
         setAccessToken(accessToken);
@@ -167,6 +178,7 @@ public class Session {
         setPhoneNumber(user.getPhoneNumber());
         setOwnerName(user.getOwnerName());
         setShopName(user.getShopName());
+        setLoggedOn(true);
         setClientType(user.getClientType().toString());
         if (user.getLocationPoint() != null) {
             setLatitude(user.getLocationPoint().getLat());
@@ -175,6 +187,7 @@ public class Session {
     }
 
     public void logout() {
+        setLoggedOn(false); // to make sure :P
         getPreference().edit().clear().apply();
         ProcessPhoenix.triggerRebirth(context);
     }
@@ -191,7 +204,4 @@ public class Session {
         );
     }
 
-    public boolean isLoggedOn() {
-        return !getAccessToken().equals("");
-    }
 }
