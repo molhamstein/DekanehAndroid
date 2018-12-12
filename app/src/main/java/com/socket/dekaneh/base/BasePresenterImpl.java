@@ -91,6 +91,14 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
             getView().onError(R.string.low_total_price_error);
         }
 
+        else if (error.getErrorCode() == AppApiHelper.ALREADY_IN_FAVORITE_ERROR) {
+            getView().onError(R.string.already_favorite);
+        }
+
+        else if (error.getErrorCode() == AppApiHelper.FAVORITE_NOT_SET_ERROR) {
+            getView().onError(R.string.no_in_favorite);
+        }
+
         else {
             Log.e("ERRRRRRRRRRR", "handleApiError: " + error.getErrorBody());
         }

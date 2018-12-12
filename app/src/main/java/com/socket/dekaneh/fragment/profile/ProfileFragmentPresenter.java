@@ -42,7 +42,7 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
     public void fetchOrders() {
         getView().showLoading();
         getCompositeDisposable().add(
-                AppApiHelper.getCurrentOrders(getCacheStore().getSession().getUserId())
+                AppApiHelper.getCurrentOrders(getCacheStore().getSession().getUserId(), getCacheStore().getSession().getAccessToken())
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<List<Order>>() {
@@ -92,7 +92,7 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
     public void fetchPastOrders() {
         getView().showLoading();
         getCompositeDisposable().add(
-                AppApiHelper.getPastOrders(getCacheStore().getSession().getUserId())
+                AppApiHelper.getPastOrders(getCacheStore().getSession().getUserId(), getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<Order>>() {

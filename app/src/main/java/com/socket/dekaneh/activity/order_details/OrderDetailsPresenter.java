@@ -43,7 +43,7 @@ public class OrderDetailsPresenter<T extends OrderDetailsVP.View> extends BasePr
         getView().showLoading();
 
         getCompositeDisposable().add(
-                AppApiHelper.getOrderDetails(order.getId())
+                AppApiHelper.getOrderDetails(order.getId(), getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<Order>() {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ import com.socket.dekaneh.base.BaseActivity;
 import com.socket.dekaneh.network.model.Offer;
 import com.socket.dekaneh.network.model.Product;
 import com.socket.dekaneh.utils.GsonUtils;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -32,6 +34,7 @@ import butterknife.OnClick;
 public class ProductDetailsActivity extends BaseActivity implements ProductDetailsVP.View {
 
     private Product product;
+    private Menu menu;
 
     @Inject
     ProductDetailsVP.Presenter<ProductDetailsVP.View> presenter;
@@ -113,13 +116,23 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
 
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.prod_details_menu, menu);
+        this.menu = menu;
+        presenter.setFavorite();
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 return false;
+            case R.id.action_favorite:
+                presenter.favorite();
         }
 
         return super.onOptionsItemSelected(item);
@@ -138,11 +151,10 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         this.productOfficialPrice.setText(String.valueOf(product.getMarketOfficialPrice()));
         this.packName.setText(product.getPack());
         this.manufacturer.setText(product.getManufacturer().getNameAr());
-        if (product.getDescription().isEmpty() || product.getDescription().equals("")){
+        if (product.getDescription().isEmpty() || product.getDescription().equals("")) {
             this.productDescriptionTitle.setVisibility(View.GONE);
             this.description.setVisibility(View.GONE);
-        }
-        else this.description.setText(product.getDescription());
+        } else this.description.setText(product.getDescription());
 
         this.manufacturer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,6 +193,13 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     public void hideOffersSection() {
         offersView1.setVisibility(View.GONE);
         miniOffersRV.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setFavorite(boolean isFav) {
+        if (isFav) menu.getItem(0).setIcon(R.drawable.ic_star_black_24dp);
+        else menu.getItem(0).setIcon(R.drawable.ic_star_border_black_24dp);
+
     }
 
     @OnClick(R.id.plusOne)

@@ -232,6 +232,9 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
             case R.id.action_notifications:
                 NotificationsActivity.start(this);
                 return false;
+                case R.id.action_favorite:
+//                NotificationsActivity.start(this);
+                return false;
         }
 
         return super.onOptionsItemSelected(item);

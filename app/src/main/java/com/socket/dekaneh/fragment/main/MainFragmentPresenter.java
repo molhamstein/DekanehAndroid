@@ -53,7 +53,7 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
     public void fetchCategories() {
         getView().showLoading();
         getCompositeDisposable().add(
-                AppApiHelper.getHomeCategories()
+                AppApiHelper.getHomeCategories(getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<HomeCategory>>() {
@@ -79,7 +79,7 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
     public void fetchFeaturedOffers() {
         getView().showLoading();
         getCompositeDisposable().add(
-                AppApiHelper.getFeaturedOffers()
+                AppApiHelper.getFeaturedOffers(getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<Offer>>() {
@@ -106,7 +106,7 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
     public void fetchFeaturedProducts() {
         getView().showLoading();
         getCompositeDisposable().add(
-                AppApiHelper.getFeaturedProducts()
+                AppApiHelper.getFeaturedProducts(getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<Product>>() {
@@ -132,7 +132,7 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
     public void fetchSliderImages() {
         getView().showLoading();
         getCompositeDisposable().add(
-                AppApiHelper.getSliderImages()
+                AppApiHelper.getSliderImages(getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<SliderImage>>() {

@@ -41,7 +41,7 @@ public class CategoryDetailsPresenter<T extends CategoryDetailsVP.View> extends 
     public void fetchSubCategories() {
         Log.d(TAG, "fetchSubCategories: " + category.getId());
         getCompositeDisposable().add(
-                AppApiHelper.getSubCategories(category.getId())
+                AppApiHelper.getSubCategories(category.getId(), getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<SubCategory>>() {
@@ -62,7 +62,7 @@ public class CategoryDetailsPresenter<T extends CategoryDetailsVP.View> extends 
     public void fetchManufacturers() {
         getView().showLoading();
         getCompositeDisposable().add(
-                AppApiHelper.getCategoryManufacturers(category.getId())
+                AppApiHelper.getCategoryManufacturers(category.getId(), getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<Manufacturer>>() {
@@ -87,7 +87,7 @@ public class CategoryDetailsPresenter<T extends CategoryDetailsVP.View> extends 
     public void fetchManufacturers(String subCategoryId) {
         getView().showLoading();
         getCompositeDisposable().add(
-                AppApiHelper.getCategoryManufacturers(category.getId(), subCategoryId)
+                AppApiHelper.getCategoryManufacturers(category.getId(), subCategoryId, getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<Manufacturer>>() {

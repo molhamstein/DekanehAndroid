@@ -30,7 +30,7 @@ public class CategoriesFragmentPresenter<T extends CategoriesFragmentVP.View> ex
     @Override
     public void fetchCategories() {
         getCompositeDisposable().add(
-                AppApiHelper.getCategories()
+                AppApiHelper.getCategories(getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<Category>>() {

@@ -24,7 +24,7 @@ public class OffersFragmentPresenter<T extends OffersFragmentVP.View> extends Ba
     public void fetchOffers() {
         getView().showLoading();
         getCompositeDisposable().add(
-                AppApiHelper.getOffers()
+                AppApiHelper.getOffers(getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<Offer>>() {

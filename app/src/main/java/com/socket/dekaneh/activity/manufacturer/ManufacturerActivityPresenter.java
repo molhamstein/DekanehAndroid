@@ -37,7 +37,7 @@ public class ManufacturerActivityPresenter<T extends ManufacturerActivityVP.View
     public void fetchProducts() {
         getView().showLoading();
         getCompositeDisposable().add(
-                AppApiHelper.getProductsByManufacturer(manufacturer.getId())
+                AppApiHelper.getProductsByManufacturer(manufacturer.getId(), getCacheStore().getSession().getAccessToken())
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<List<Product>>() {

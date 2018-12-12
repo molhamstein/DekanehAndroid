@@ -84,7 +84,7 @@ public class NewAccountFragmentPresenter<T extends NewAccountFragmentVP.View> ex
     @Override
     public void fetchAreas() {
         getCompositeDisposable().add(
-                AppApiHelper.getAreas()
+                AppApiHelper.getAreas(getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<Area>>() {

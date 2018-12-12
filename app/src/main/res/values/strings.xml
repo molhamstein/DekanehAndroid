@@ -154,5 +154,10 @@
     <string name="see_more">See more</string>
     <string name="featured_products">Featured Products</string>
     <string name="slogan">Some slogan about Dekaneh service</string>
+    <string name="favorite">Favorite</string>
+    <string name="fav_added">Added to Favorite</string>
+    <string name="already_favorite">Product is already in favorite</string>
+    <string name="no_in_favorite">This product doesnt exist in favorite</string>
+    <string name="fav_removed">Product removed from favorite</string>
 
 </resources>

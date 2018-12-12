@@ -99,5 +99,10 @@
     <string name="see_more">مشاهدة المزيد</string>
     <string name="featured_products">المنتجات المميزة</string>
     <string name="slogan">خليك ربحان</string>
+    <string name="favorite">المفضلة</string>
+    <string name="fav_added">تمت الاضافة الى المفضلة</string>
+    <string name="already_favorite">تمت اضافة المنتج الى المفضلة مسبقا</string>
+    <string name="no_in_favorite">هذا المنتج غير موجود موجود بالمفضلة</string>
+    <string name="fav_removed">تم ازالة المنتج من المفضلة</string>
 
 </resources>

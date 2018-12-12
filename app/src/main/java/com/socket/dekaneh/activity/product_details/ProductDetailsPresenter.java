@@ -8,11 +8,13 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.androidnetworking.error.ANError;
+import com.socket.dekaneh.R;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
 import com.socket.dekaneh.network.AppApiHelper;
 import com.socket.dekaneh.network.CacheStore;
 import com.socket.dekaneh.network.model.CartItem;
+import com.socket.dekaneh.network.model.Favorite;
 import com.socket.dekaneh.network.model.Offer;
 import com.socket.dekaneh.network.model.Product;
 import com.socket.dekaneh.network.model.User;
@@ -50,7 +52,7 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
         getView().showLoading();
 
         getCompositeDisposable().add(
-                AppApiHelper.getProduct(product)
+                AppApiHelper.getProduct(product, getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<Product>() {
@@ -61,6 +63,7 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
                                 getView().updateOrderCountText(getCacheStore().cartItemCount(item));
                                 ProductDetailsPresenter.this.product = product;
                                 getView().updateView(product, imageUrl, getCacheStore().getSession().getClientType().equals(User.Type.horeca));
+//                                getView().setFavorite(product.isFavorite());
                                 getView().hideLoading();
                             }
                         }, new Consumer<Throwable>() {
@@ -79,7 +82,7 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
         getView().showLoading();
 
         getCompositeDisposable().add(
-                AppApiHelper.getProductOffers(product.getId())
+                AppApiHelper.getProductOffers(product.getId(), getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<Offer>>() {
@@ -105,7 +108,7 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
     public void fetchSimilarProducts() {
         getView().showLoading();
         getCompositeDisposable().add(
-                AppApiHelper.getSimilarProducts(product.getId())
+                AppApiHelper.getSimilarProducts(product.getId(), getCacheStore().getSession().getAccessToken())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<Product>>() {
@@ -137,5 +140,56 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
     public void onPlusBtnClicked() {
         getCacheStore().addCartItem(item);
         getView().updateOrderCountText(getCacheStore().cartItemCount(item));
+    }
+
+    @Override
+    public void favorite() {
+        getView().setFavorite(!product.isFavorite()); // bcz i iz smart :)
+
+        if (product.isFavorite()) {
+            getCompositeDisposable().add(
+                    AppApiHelper.deleteFavorite(getCacheStore().getSession().getAccessToken(), product.getId())
+                            .subscribeOn(getSchedulerProvider().io())
+                            .observeOn(getSchedulerProvider().ui())
+                            .subscribe(new Consumer<String>() {
+                                @Override
+                                public void accept(String s) throws Exception {
+                                    getView().showMessage(R.string.fav_removed);
+                                    product.setFavorite(false);
+                                }
+                            }, new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    handleApiError((ANError) throwable);
+                                    getView().setFavorite(product.isFavorite());
+                                }
+                            })
+            );
+        } else {
+            getCompositeDisposable().add(
+                    AppApiHelper.setFavorite(getCacheStore().getSession().getAccessToken(), product.getId())
+                            .subscribeOn(getSchedulerProvider().io())
+                            .observeOn(getSchedulerProvider().ui())
+                            .subscribe(new Consumer<Favorite>() {
+                                @Override
+                                public void accept(Favorite favorite) throws Exception {
+                                    getView().showMessage(R.string.fav_added);
+                                    product.setFavorite(true);
+                                }
+                            }, new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    handleApiError((ANError) throwable);
+                                    getView().setFavorite(product.isFavorite());
+                                }
+                            })
+            );
+
+        }
+    }
+
+    @Override
+    public void setFavorite() {
+        getView().setFavorite(product.isFavorite());
     }
 }

@@ -46,6 +46,9 @@ public class Product implements Serializable {
     @SerializedName("offersIds")
     @Expose
     private List<String> offersIds;
+    @SerializedName("isFavorite")
+    @Expose
+    private boolean favorite;
 
 
     @SerializedName("media")
@@ -292,5 +295,13 @@ public class Product implements Serializable {
         } else {
             return getWholeSalePrice() != 0 && getWholeSalePriceDiscount() != 0 && getWholeSalePrice() != getWholeSalePriceDiscount();
         }
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 }
