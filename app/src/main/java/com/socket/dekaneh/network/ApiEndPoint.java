@@ -36,5 +36,6 @@ class ApiEndPoint {
     static final String SET_FIREBASE_TOKEN = USERS + "/setFirebaseToken";
     static final String FAVORITE = BuildConfig.BASE_API_URL + "/favorite";
     static final String DELETE_FAVORITE = FAVORITE + "/deleteFavorite";
+    static final String FAVORITE_PRODUCTS = FAVORITE + "/getFavorite";
 
 }

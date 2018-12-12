@@ -1,6 +1,7 @@
 package com.socket.dekaneh.dagger;
 
 
+import com.socket.dekaneh.activity.favorite.FavoriteActivity;
 import com.socket.dekaneh.activity.NotificationsActivity;
 import com.socket.dekaneh.activity.cart.CartActivity;
 import com.socket.dekaneh.activity.rating.RatingActivity;
@@ -46,6 +47,8 @@ public interface ActivityComponent {
     void inject(SplashActivity activity);
 
     void inject(RatingActivity activity);
+
+    void inject(FavoriteActivity activity);
 
     void inject(LoginFragment fragment);
 

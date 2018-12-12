@@ -38,7 +38,6 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
     @Override
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
-        Log.d("DADADA", "onAttach: " + getView().getIntent().getExtras().getString(Product.TAG));
         this.product = GsonUtils.convertJsonStringToProductObject(getView().getIntent().getExtras().getString(Product.TAG));
         fetchProduct();
         fetchOffers();
@@ -63,7 +62,7 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
                                 getView().updateOrderCountText(getCacheStore().cartItemCount(item));
                                 ProductDetailsPresenter.this.product = product;
                                 getView().updateView(product, imageUrl, getCacheStore().getSession().getClientType().equals(User.Type.horeca));
-//                                getView().setFavorite(product.isFavorite());
+                                getView().setFavorite(product.isFavorite());
                                 getView().hideLoading();
                             }
                         }, new Consumer<Throwable>() {
@@ -188,8 +187,4 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
         }
     }
 
-    @Override
-    public void setFavorite() {
-        getView().setFavorite(product.isFavorite());
-    }
 }

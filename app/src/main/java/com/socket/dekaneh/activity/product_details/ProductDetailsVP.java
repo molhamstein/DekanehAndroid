@@ -38,8 +38,6 @@ public class ProductDetailsVP {
 
         void favorite();
 
-        void setFavorite();
-
     }
 
 }

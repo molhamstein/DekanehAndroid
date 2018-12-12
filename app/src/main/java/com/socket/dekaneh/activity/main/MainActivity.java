@@ -23,6 +23,7 @@ import javax.inject.Inject;
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.activity.NotificationsActivity;
 import com.socket.dekaneh.activity.cart.CartActivity;
+import com.socket.dekaneh.activity.favorite.FavoriteActivity;
 import com.socket.dekaneh.adapter.OnItemCountChange;
 import com.socket.dekaneh.adapter.SearchAdapter;
 import com.socket.dekaneh.base.BaseActivity;
@@ -233,7 +234,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
                 NotificationsActivity.start(this);
                 return false;
                 case R.id.action_favorite:
-//                NotificationsActivity.start(this);
+                    FavoriteActivity.start(this);
                 return false;
         }
 

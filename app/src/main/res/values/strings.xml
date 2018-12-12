@@ -122,7 +122,7 @@
     <string name="order_status">Order Status</string>
     <string name="preparing">Preparing</string>
     <string name="edit">edit</string>
-    <string name="submit" >Submit</string>
+    <string name="submit">Submit</string>
     <string name="terms_conditions_msg">Please Agree to our terms and conditions</string>
     <string name="send_order">Send Order</string>
     <string name="your_cart_is_empty">Your cart is empty!</string>

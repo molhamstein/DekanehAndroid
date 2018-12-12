@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.activity.cart.CartActivityPresenter;
+import com.socket.dekaneh.activity.favorite.FavoriteActivityPresenter;
+import com.socket.dekaneh.activity.favorite.FavoriteActivityVP;
 import com.socket.dekaneh.activity.rating.RatingActivityPesenter;
 import com.socket.dekaneh.activity.rating.RatingActivityVP;
 import com.socket.dekaneh.activity.splash.SplashActivityPresenter;
@@ -26,8 +28,8 @@ import com.socket.dekaneh.activity.settings.SettingsActivityPresenter;
 import com.socket.dekaneh.activity.settings.SettingsActivityVP;
 import com.socket.dekaneh.adapter.CartOrdersAdapter;
 import com.socket.dekaneh.adapter.CategoriesAdapter;
+import com.socket.dekaneh.adapter.GridProductsAdapter;
 import com.socket.dekaneh.adapter.HomeCategoriesAdapter;
-import com.socket.dekaneh.adapter.ManufacturerGridProductsAdapter;
 import com.socket.dekaneh.adapter.ManufacturerProductsAdapter;
 import com.socket.dekaneh.adapter.ManufacturersAdapter;
 import com.socket.dekaneh.adapter.OffersAdapter;
@@ -183,6 +185,11 @@ public class ActivityModule {
     }
 
     @Provides
+    FavoriteActivityVP.Presenter<FavoriteActivityVP.View> provideFavoriteActivityPresenter(FavoriteActivityPresenter<FavoriteActivityVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
     HomeCategoriesAdapter providesHomeCategoriesAdapter(AppCompatActivity context) {
         return new HomeCategoriesAdapter(context);
     }
@@ -244,8 +251,8 @@ public class ActivityModule {
     }
 
     @Provides
-    ManufacturerGridProductsAdapter provideManufacturerGridProductsAdapter(CacheStore cacheStore) {
-        return new ManufacturerGridProductsAdapter(cacheStore);
+    GridProductsAdapter provideManufacturerGridProductsAdapter(CacheStore cacheStore) {
+        return new GridProductsAdapter(cacheStore);
     }
 
     @Provides

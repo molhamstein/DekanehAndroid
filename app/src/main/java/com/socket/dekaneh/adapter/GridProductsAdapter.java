@@ -29,7 +29,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ManufacturerGridProductsAdapter extends RecyclerView.Adapter {
+public class GridProductsAdapter extends RecyclerView.Adapter {
 
     private List<Product> products;
     private CacheStore cacheStore;
@@ -38,7 +38,7 @@ public class ManufacturerGridProductsAdapter extends RecyclerView.Adapter {
     private int plusMinusAnimationBtnVal = 18;
 
     @Inject
-    public ManufacturerGridProductsAdapter(CacheStore cacheStore) {
+    public GridProductsAdapter(CacheStore cacheStore) {
         this.cacheStore = cacheStore;
         this.products = new ArrayList<>();
     }

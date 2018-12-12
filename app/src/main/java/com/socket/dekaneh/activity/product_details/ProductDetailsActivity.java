@@ -33,8 +33,6 @@ import butterknife.OnClick;
 
 public class ProductDetailsActivity extends BaseActivity implements ProductDetailsVP.View {
 
-    private Product product;
-    private Menu menu;
 
     @Inject
     ProductDetailsVP.Presenter<ProductDetailsVP.View> presenter;
@@ -70,6 +68,8 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     View productDescriptionTitle;
     @BindView(R.id.percent)
     TextView percentage;
+    @BindView(R.id.fav)
+    ImageView btnFav;
 
     @BindView(R.id.orderCount)
     TextView orderCount;
@@ -117,13 +117,6 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.prod_details_menu, menu);
-        this.menu = menu;
-        presenter.setFavorite();
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -131,8 +124,6 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
             case android.R.id.home:
                 onBackPressed();
                 return false;
-            case R.id.action_favorite:
-                presenter.favorite();
         }
 
         return super.onOptionsItemSelected(item);
@@ -197,9 +188,14 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
 
     @Override
     public void setFavorite(boolean isFav) {
-        if (isFav) menu.getItem(0).setIcon(R.drawable.ic_star_black_24dp);
-        else menu.getItem(0).setIcon(R.drawable.ic_star_border_black_24dp);
+        if (isFav) btnFav.setImageResource(R.drawable.star_active);
+        else btnFav.setImageResource(R.drawable.star);
 
+    }
+
+    @OnClick(R.id.fav)
+    public void onFavBtnClicked() {
+        presenter.favorite();
     }
 
     @OnClick(R.id.plusOne)

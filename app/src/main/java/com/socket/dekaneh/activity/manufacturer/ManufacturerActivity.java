@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -16,7 +14,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.socket.dekaneh.R;
-import com.socket.dekaneh.adapter.ManufacturerGridProductsAdapter;
+import com.socket.dekaneh.adapter.GridProductsAdapter;
 import com.socket.dekaneh.base.BaseActivity;
 import com.socket.dekaneh.network.model.Manufacturer;
 import com.socket.dekaneh.network.model.Product;
@@ -30,7 +28,7 @@ public class ManufacturerActivity extends BaseActivity implements ManufacturerAc
     @Inject
     ManufacturerActivityVP.Presenter<ManufacturerActivityVP.View> presenter;
     @Inject
-    ManufacturerGridProductsAdapter adapter;
+    GridProductsAdapter adapter;
 
     @BindView(R.id.manufacturerToolbar)
     Toolbar toolbar;

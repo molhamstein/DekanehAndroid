@@ -13,7 +13,6 @@ import com.socket.dekaneh.network.model.HomeCategory;
 import com.socket.dekaneh.network.model.LoginRequest;
 import com.socket.dekaneh.network.model.LoginResponse;
 import com.socket.dekaneh.network.model.Manufacturer;
-import com.socket.dekaneh.network.model.ManufacturerProduct;
 import com.socket.dekaneh.network.model.Notification;
 import com.socket.dekaneh.network.model.Offer;
 import com.socket.dekaneh.network.model.Order;
@@ -280,5 +279,12 @@ public class AppApiHelper {
                 .addBodyParameter("productId", productId)
                 .build()
                 .getObjectSingle(String.class);
+    }
+
+    public static Single<List<Product>> getFavorites(String accessToken) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.FAVORITE_PRODUCTS)
+                .addHeaders("Authorization", accessToken)
+                .build()
+                .getObjectListSingle(Product.class);
     }
 }
