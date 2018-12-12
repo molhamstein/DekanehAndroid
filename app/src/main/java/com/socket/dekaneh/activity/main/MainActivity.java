@@ -106,6 +106,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         getActivityComponent().inject(this);
         presenter.onAttach(this);
         presenter.checkUserActivated();
+        presenter.updateFirebaseToken();
 
         bottomNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         bottomNavigation.enableAnimation(false);

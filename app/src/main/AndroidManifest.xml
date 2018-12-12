@@ -45,7 +45,12 @@
         <activity android:name="com.socket.dekaneh.activity.cart.CartActivity" />
         <activity android:name="com.socket.dekaneh.activity.settings.SettingsActivity" />
         <activity android:name="com.socket.dekaneh.activity.manufacturer.ManufacturerActivity" />
-        <activity android:name="com.socket.dekaneh.activity.rating.RatingActivity" />
+        <activity android:name="com.socket.dekaneh.activity.rating.RatingActivity">
+            <intent-filter>
+                <action android:name="rating" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name="com.socket.dekaneh.activity.order_details.OrderDetailsActivity" />
         <activity android:name="com.socket.dekaneh.activity.NotificationsActivity"/>
     </application>

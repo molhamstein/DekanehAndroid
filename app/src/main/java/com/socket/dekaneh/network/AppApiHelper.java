@@ -237,4 +237,12 @@ public class AppApiHelper {
                 .getObjectListSingle(Coupon.class);
     }
 
+    public static Single<String> putFirebaseToken(String accessToken, String firebaseToken) {
+        return Rx2AndroidNetworking.put(ApiEndPoint.SET_FIREBASE_TOKEN)
+                .addQueryParameter("access_token", accessToken)
+                .addBodyParameter("token", firebaseToken)
+                .build()
+                .getObjectSingle(String.class);
+    }
+
 }

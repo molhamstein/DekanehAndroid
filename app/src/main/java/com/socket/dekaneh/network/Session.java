@@ -29,6 +29,7 @@ public class Session {
     private static final String LATITUDE = "latitude";
     private static final String LONGITUDE = "longitude";
     private static final String IS_LOGGED_ON = "is_logged_on";
+    private static final String FIREBASE_TOKEN = "firebase_token";
 
     @Inject
     public Session(Context context) {
@@ -167,6 +168,18 @@ public class Session {
 
     public boolean isLoggedOn() {
         return getPreference().getBoolean(IS_LOGGED_ON, false);
+    }
+
+
+    public void setFirebaseToken(String token) {
+        getPreference()
+                .edit()
+                .putString(FIREBASE_TOKEN, token)
+                .apply();
+    }
+
+    public String getFirebaseToken() {
+        return getPreference().getString(FIREBASE_TOKEN, "");
     }
 
     public void setUser(User user, String accessToken) {

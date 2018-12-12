@@ -8,6 +8,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.androidnetworking.error.ANError;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
@@ -15,6 +18,7 @@ import com.socket.dekaneh.network.AppApiHelper;
 import com.socket.dekaneh.network.CacheStore;
 import com.socket.dekaneh.network.model.Product;
 import com.socket.dekaneh.utils.NetworkUtils;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -83,22 +87,22 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
 
         getCompositeDisposable().add(
                 AppApiHelper.search(query, getCacheStore().getSession().getAccessToken())
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<Product>>() {
-                    @Override
-                    public void accept(List<Product> products) throws Exception {
-                        getView().updateSearchView(products);
-                        getView().hideLoading();
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        handleApiError((ANError) throwable);
-                        getView().hideLoading();
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<List<Product>>() {
+                            @Override
+                            public void accept(List<Product> products) throws Exception {
+                                getView().updateSearchView(products);
+                                getView().hideLoading();
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                handleApiError((ANError) throwable);
+                                getView().hideLoading();
 
-                    }
-                })
+                            }
+                        })
         );
     }
 
@@ -106,7 +110,7 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
     public void checkUserActivated() {
         getView().showLoading();
         getCompositeDisposable().add(AppApiHelper.isActivated(getCacheStore().getSession().getAccessToken())
-        .subscribeOn(getSchedulerProvider().io())
+                .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<Boolean>() {
                     @Override
@@ -120,6 +124,33 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
                     }
                 })
         );
+    }
+
+    @Override
+    public void updateFirebaseToken() {
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String newToken = instanceIdResult.getToken();
+                Log.d("ASDADQWEASDQWEASD", "onSuccess: " + newToken);
+                getCompositeDisposable().add(AppApiHelper.putFirebaseToken(getCacheStore().getSession().getAccessToken(), newToken)
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<String>() {
+                            @Override
+                            public void accept(String s) throws Exception {
+
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                handleApiError((ANError) throwable);
+                            }
+                        }));
+            }
+        });
+
     }
 
 }

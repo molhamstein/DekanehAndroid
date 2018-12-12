@@ -35,6 +35,7 @@ public interface MainActivityVP {
         void restart();
         void search(String query);
         void checkUserActivated();
+        void updateFirebaseToken();
     }
 
 }

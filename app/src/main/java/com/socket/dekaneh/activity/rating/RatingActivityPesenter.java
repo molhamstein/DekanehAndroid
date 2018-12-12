@@ -1,5 +1,6 @@
 package com.socket.dekaneh.activity.rating;
 
+import com.androidnetworking.error.ANError;
 import com.google.gson.JsonObject;
 
 import javax.inject.Inject;
@@ -20,10 +21,12 @@ public class RatingActivityPesenter<T extends RatingActivityVP.View> extends Bas
     @Inject
     public RatingActivityPesenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable, CacheStore cacheStore) {
         super(schedulerProvider, compositeDisposable, cacheStore);
+        rate = Rating.Rate.happy;
     }
 
     @Override
     public void submitRate() {
+        getView().showLoading();
         getCompositeDisposable().add(
                 AppApiHelper.postRating(getCacheStore().getSession().getAccessToken(),
                         rate,
@@ -34,12 +37,14 @@ public class RatingActivityPesenter<T extends RatingActivityVP.View> extends Bas
                         .subscribe(new Consumer<JsonObject>() {
                             @Override
                             public void accept(JsonObject jsonObject) throws Exception {
-
+                                getView().hideLoading();
+                                getView().finish();
                             }
                         }, new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
-
+                                getView().hideLoading();
+                                handleApiError((ANError) throwable);
                             }
                         })
         );

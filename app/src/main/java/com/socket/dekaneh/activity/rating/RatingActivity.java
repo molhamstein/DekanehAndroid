@@ -4,16 +4,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 
 import javax.inject.Inject;
 
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.Rating;
 import com.socket.dekaneh.RatingPagerTranformer;
+import com.socket.dekaneh.activity.main.MainActivity;
 import com.socket.dekaneh.adapter.RatingViewPagerAdapter;
 import com.socket.dekaneh.base.BaseActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RatingActivity extends BaseActivity implements RatingActivityVP.View {
 
@@ -67,8 +70,21 @@ public class RatingActivity extends BaseActivity implements RatingActivityVP.Vie
             }
         });
 
+    }
 
+    @OnClick(R.id.sendRatingBtn)
+    public void onSubmitRatingBtnClick() {
+        presenter.submitRate();
+    }
 
+    @OnClick(R.id.noHelpBtn)
+    public void onNoHelpBtnClick() {
+        finish();
+    }
 
+    @Override
+    public void finish() {
+        MainActivity.start(this);
+        super.finish();
     }
 }
