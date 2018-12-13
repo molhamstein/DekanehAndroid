@@ -16,7 +16,7 @@
         android:icon="@drawable/ic_cart"
         android:title="@string/cart"
         app:showAsAction="ifRoom"
-        android:orderInCategory="200"
+        android:orderInCategory="300"
         />
 
     <item
@@ -24,7 +24,7 @@
         android:icon="@drawable/ic_search"
         android:title="@string/search"
         app:showAsAction="ifRoom"
-        android:orderInCategory="100"
+        android:orderInCategory="200"
         />
 
     <item
@@ -32,7 +32,7 @@
         android:icon="@drawable/ic_star_black_24dp"
         android:title="@string/favorite"
         app:showAsAction="ifRoom"
-        android:orderInCategory="300"
+        android:orderInCategory="100"
         />
 
 </menu>

@@ -39,6 +39,12 @@ public class FavoriteActivity extends BaseActivity implements FavoriteActivityVP
     }
 
     @Override
+    protected void onResume() {
+        presenter.fetchProducts();
+        super.onResume();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite);

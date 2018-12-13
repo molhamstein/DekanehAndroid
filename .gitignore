@@ -2,7 +2,8 @@
 .gradle
 /local.properties
 /.idea/*
-.DS_Store
-/build
-/captures
-.externalNativeBuild
+Dockaan.keystore.jks
+keyStore.properties
+app/libs/
+app/release/*
+app/src/main/res/mipmap-anydpi-v26/

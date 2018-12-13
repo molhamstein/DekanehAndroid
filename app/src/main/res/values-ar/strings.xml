@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dekaneh</string>
+    <string name="app_name">دَكّان</string>
     <string name="phone_number">رقم الموبايل</string>
     <string name="password">كلمة السر</string>
     <string name="forgot_password">نسيت كلمة السر؟</string>
