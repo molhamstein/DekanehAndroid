@@ -13,6 +13,9 @@ public class Product implements Serializable {
     @SerializedName("id")
     @Expose
     private String id;
+    @SerializedName("_id")
+    @Expose
+    private String _id;
     @SerializedName("nameAr")
     @Expose
     private String nameAr;
@@ -98,7 +101,8 @@ public class Product implements Serializable {
     }
 
     public String getId() {
-        return id;
+        if(id == null) return _id;
+        else return id;
     }
 
     public String getNameAr() {

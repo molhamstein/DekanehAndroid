@@ -91,6 +91,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             if (product.hasDiscount(cacheStore.getSession().getClientType())) {
                 productViewHolder.offerTag.setVisibility(View.VISIBLE);
                 productViewHolder.offerTag.setTextSize(16);
+                productViewHolder.offerTag.setBackgroundResource(R.drawable.badge_discount);
                 productViewHolder.offerTag.setText(product.getPercentageString(cacheStore.getSession().getClientType()));
             }
 

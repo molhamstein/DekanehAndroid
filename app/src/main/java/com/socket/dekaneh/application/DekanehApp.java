@@ -1,7 +1,9 @@
 package com.socket.dekaneh.application;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.res.Configuration;
+import android.support.multidex.MultiDex;
 
 import com.androidnetworking.AndroidNetworking;
 import com.socket.dekaneh.dagger.ApplicationComponent;
@@ -35,6 +37,11 @@ public class DekanehApp extends Application {
         getResources().updateConfiguration(config, getApplicationContext().getResources().getDisplayMetrics());
 
 
+    }
+
+    @Override
+    protected void attachBaseContext(Context context) {
+        super.attachBaseContext(context);
     }
 
     public ApplicationComponent getApplicationComponent() {

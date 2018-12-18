@@ -44,7 +44,7 @@ public class AppApiHelper {
 
     public static Single<List<HomeCategory>> getHomeCategories(String accessToken) {
         return Rx2AndroidNetworking.get(ApiEndPoint.HOME_CATEGORIES)
-                .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(HomeCategory.class);
     }
@@ -65,7 +65,6 @@ public class AppApiHelper {
 
     public static Single<List<Product>> getFeaturedProducts(String accessToken) {
         return Rx2AndroidNetworking.get(ApiEndPoint.FEATURED_PRODUCTS)
-                .addHeaders("Authorization", accessToken)
                 .build()
                 .getObjectListSingle(Product.class);
     }
@@ -223,9 +222,8 @@ public class AppApiHelper {
                 .getObjectListSingle(Product.class);
     }
 
-    public static Single<List<Area>> getAreas(String accessToken) {
+    public static Single<List<Area>> getAreas() {
         return Rx2AndroidNetworking.get(ApiEndPoint.AREAS)
-                .addHeaders("Authorization", accessToken)
                 .build()
                 .getObjectListSingle(Area.class);
     }

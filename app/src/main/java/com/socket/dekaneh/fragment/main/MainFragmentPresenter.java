@@ -31,16 +31,17 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
 
     private void updateFromCacheOrNetwork() {
         fetchFeaturedProducts();
-        if (getCacheStore().getHomeCategories() != null) {
-            getView().addCategoriesWithProducts(getCacheStore().getHomeCategories());
-        } else {
-            fetchCategories();
-        }
-        if (getCacheStore().getFeaturedOffers() != null) {
-            getView().addFeaturedOffers(getCacheStore().getFeaturedOffers());
-        } else {
-            fetchFeaturedOffers();
-        }
+//        fetchFeaturedProducts();
+//        if (getCacheStore().getHomeCategories() != null) {
+//            getView().addCategoriesWithProducts(getCacheStore().getHomeCategories());
+//        } else {
+//            fetchCategories();
+//        }
+//        if (getCacheStore().getFeaturedOffers() != null) {
+//            getView().addFeaturedOffers(getCacheStore().getFeaturedOffers());
+//        } else {
+//            fetchFeaturedOffers();
+//        }
     }
 
     @Override
@@ -69,6 +70,7 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
                                        public void accept(Throwable throwable) throws Exception {
                                            handleApiError((ANError) throwable);
                                            getView().hideLoading();
+                                           Log.e(TAG, "accept: fetchCategories");
                                        }
                                    }
                         )
@@ -95,8 +97,9 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
                         }, new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
+                                Log.e(TAG, "accept: fetchFeaturedOffers", throwable);
+                                handleApiError((ANError) throwable);
                                 getView().hideLoading();
-
                             }
                         })
         );
@@ -121,8 +124,9 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
                         }, new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
+                                Log.e(TAG, "accept: fetchFeaturedProducts");
+                                handleApiError((ANError) throwable);
                                 getView().hideLoading();
-
                             }
                         })
         );
@@ -144,8 +148,9 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
                         }, new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
+                                Log.e(TAG, "accept: fetchSliderImages");
+                                handleApiError((ANError) throwable);
                                 getView().hideLoading();
-                                Log.e(TAG, "accept: ", throwable);
                             }
                         })
         );

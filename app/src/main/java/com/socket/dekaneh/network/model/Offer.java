@@ -8,10 +8,6 @@ import java.util.List;
 
 public class Offer extends Product implements Serializable {
 
-    @SerializedName("id")
-    @Expose
-    private String id;
-
     @SerializedName("isFeatured")
     @Expose
     private boolean isFeatured;
@@ -30,10 +26,6 @@ public class Offer extends Product implements Serializable {
         super(offer);
     }
 
-    @Override
-    public String getId() {
-        return id;
-    }
 
     public boolean isFeatured() {
         return isFeatured;
@@ -68,7 +60,7 @@ public class Offer extends Product implements Serializable {
     @Override
     public String toString() {
         return "Offer{" +
-                "id='" + id + '\'' +
+                "id='" + getId() + '\'' +
                 "super=" + super.toString() +
                 ", isFeatured=" + isFeatured +
                 ", status='" + status + '\'' +
