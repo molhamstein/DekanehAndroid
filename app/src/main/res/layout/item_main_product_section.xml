@@ -14,12 +14,14 @@
         <TextView
             android:id="@+id/productSectionHeader"
             style="@style/ItemHeader"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
             android:text="@string/dummy_header"
             android:paddingStart="8dp"
             android:paddingTop="8dp"
+            android:textSize="18sp"
+            android:maxLines="1"
             android:layout_marginEnd="80dp"
             />
 
