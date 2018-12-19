@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import javax.inject.Inject;
 
@@ -57,5 +59,15 @@ public class SettingsActivity extends BaseActivity implements SettingsActivityVP
     @OnClick(R.id.logOutBtn)
     public void onLogOutBtnClicked() {
             presenter.offlineLogout();
+    }
+
+    @OnClick(R.id.callUsLayout)
+    public void onCallUsLayoutClicked() {
+        presenter.callSupport(this);
+    }
+
+    @OnClick(R.id.privacyLayout)
+    public void onPrivacyLayoutClicked() {
+        presenter.openUrl(this);
     }
 }

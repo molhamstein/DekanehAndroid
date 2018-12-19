@@ -19,7 +19,8 @@
         android:layout_marginTop="-8dp"
         android:padding="8dp"
         style="@style/PrimaryBlackTextView"
-        android:textSize="32sp"
+        android:textSize="22sp"
+        android:lineSpacingMultiplier=".7"
         />
 
 </FrameLayout>

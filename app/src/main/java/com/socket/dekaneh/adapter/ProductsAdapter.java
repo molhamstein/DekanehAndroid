@@ -32,7 +32,7 @@ import butterknife.ButterKnife;
 public class ProductsAdapter extends RecyclerView.Adapter {
 
     private final int SEE_MORE_VIEW = -1;
-    private final int MAX_NUM_OF_PRODUCTS = 8;
+    private final int MAX_NUM_OF_PRODUCTS = 9;
     private List<Product> products;
     private CacheStore cacheStore;
     private Category category;
@@ -48,9 +48,9 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     public ProductsAdapter(List<Product> products, CacheStore cacheStore, Category category) {
         this.products = products;
         Log.d("CategoryDetailsPresent", "onBindViewHolder: size = " + products.size());
-        if (products.size() >= MAX_NUM_OF_PRODUCTS) {
-            products.add(null);
-        }
+//        if (products.size() >= MAX_NUM_OF_PRODUCTS) {
+//            products.add(new Product());
+//        }
         this.cacheStore = cacheStore;
         this.category = category;
     }
@@ -58,9 +58,9 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     public ProductsAdapter(List<Product> products, CacheStore cacheStore, Category category, boolean seeMore) {
         this.products = products;
         Log.d("CategoryDetailsPresent", "onBindViewHolder: size = " + products.size());
-        if (products.size() >= MAX_NUM_OF_PRODUCTS && seeMore) {
-            products.add(null);
-        }
+//        if (products.size() >= MAX_NUM_OF_PRODUCTS && seeMore) {
+//            products.add(new Product());
+//        }
         this.cacheStore = cacheStore;
         this.category = category;
     }
@@ -80,9 +80,9 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int position) {
 
-        final Product product = products.get(position);
         holder.setIsRecyclable(false);
         if (holder instanceof ProductViewHolder) {
+            final Product product = products.get(position);
 
             final ProductViewHolder productViewHolder = (ProductViewHolder) holder;
 
@@ -195,7 +195,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return products.size();
+        return products.size() >= MAX_NUM_OF_PRODUCTS ? products.size() + 1: products.size();
     }
 
     public void addAllProducts(List<Product> products) {
@@ -206,7 +206,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemViewType(int position) {
         if (products.size() >= MAX_NUM_OF_PRODUCTS)
-            return products.get(position) != null ? position : SEE_MORE_VIEW;
+            return position < products.size() ? position : SEE_MORE_VIEW;
         return super.getItemViewType(position);
     }
 

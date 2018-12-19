@@ -73,7 +73,10 @@
                 android:textSize="18sp" />
 
             <FrameLayout
+                android:id="@+id/callUsLayout"
                 android:layout_width="match_parent"
+                android:clickable="true"
+                android:focusable="true"
                 android:layout_height="70dp">
 
                 <TextView
@@ -106,7 +109,10 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/privacyLayout"
                 android:layout_width="match_parent"
+                android:clickable="true"
+                android:focusable="true"
                 android:layout_height="70dp">
 
                 <TextView

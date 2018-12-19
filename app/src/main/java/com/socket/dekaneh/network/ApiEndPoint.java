@@ -22,7 +22,7 @@ class ApiEndPoint {
     static final String ORDERS = BuildConfig.BASE_API_URL + "orders";
     static final String CURRENT_ORDERS = ORDERS + "?filter={\"where\":{\"and\":[{\"status\":\"pending\"},{\"clientId\":\"{clientId}\"}]}}";
     static final String PAST_ORDERS = ORDERS + "?filter={\"where\":{\"and\":[{\"status\":\"delivered\"},{\"clientId\":\"{clientId}\"}]}}";
-    static final String TOP_SLIDERS = BuildConfig.BASE_API_URL + "topSliders";
+    static final String TOP_SLIDERS = BuildConfig.BASE_API_URL + "topSliders?filter[where][status]=activated";
     static final String GROUPED_BY_MANUFACTURERS = BuildConfig.BASE_API_URL + "products/groupedByManufacturers";
     static final String SUB_CATEGORIES = CATEGORIES + "/{id}/subCategories";
     static final String ORDER = ORDERS + "/{id}";

@@ -132,7 +132,7 @@
 
 
                 <FrameLayout
-                    android:layout_width="260dp"
+                    android:layout_width="340dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="190dp"
@@ -140,7 +140,7 @@
 
                     <android.support.design.widget.TabLayout
                         android:id="@+id/tabLayout"
-                        android:layout_width="215dp"
+                        android:layout_width="300dp"
                         android:layout_height="40dp"
                         android:layout_gravity="center"
                         app:tabGravity="fill"

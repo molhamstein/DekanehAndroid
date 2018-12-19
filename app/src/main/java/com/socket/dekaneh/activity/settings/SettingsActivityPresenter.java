@@ -1,10 +1,14 @@
 package com.socket.dekaneh.activity.settings;
 
+import android.content.Context;
+
 import javax.inject.Inject;
 
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
 import com.socket.dekaneh.network.CacheStore;
+import com.socket.dekaneh.utils.ViewUtils;
+
 import io.reactivex.disposables.CompositeDisposable;
 
 public class SettingsActivityPresenter<T extends SettingsActivityVP.View> extends BasePresenterImpl<T> implements SettingsActivityVP.Presenter<T> {
@@ -45,5 +49,15 @@ public class SettingsActivityPresenter<T extends SettingsActivityVP.View> extend
     @Override
     public void offlineLogout() {
         getCacheStore().getSession().logout();
+    }
+
+    @Override
+    public void callSupport(Context context) {
+        ViewUtils.makeCall(context, "00963947331047");
+    }
+
+    @Override
+    public void openUrl(Context context) {
+        ViewUtils.openUrl(context, "http://dockaan.com/privacy");
     }
 }
