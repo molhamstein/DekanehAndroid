@@ -106,5 +106,7 @@
     <string name="fav_removed">تم ازالة المنتج من المفضلة</string>
     <string name="forgetPasswordMsg">شكرا لك, سيتم تزويدك بمعلومات التسجيل قريبا</string>
     <string name="send">ارسال</string>
+    <string name="order">الطلبات</string>
+    <string name="past_orders">الطلبات السابقة</string>
 
 </resources>

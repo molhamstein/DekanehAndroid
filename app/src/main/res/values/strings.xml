@@ -161,5 +161,7 @@
     <string name="fav_removed">Product removed from favorite</string>
     <string name="forgetPasswordMsg">Thank you, we will contact you to provide you with the information you need.</string>
     <string name="send">Send</string>
+    <string name="order">Order</string>
+    <string name="past_orders">Past Orders</string>
 
 </resources>
