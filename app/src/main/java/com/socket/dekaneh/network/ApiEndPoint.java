@@ -16,7 +16,7 @@ class ApiEndPoint {
     static final String ONLY_CATEGORIES = BuildConfig.BASE_API_URL + "categories?filter={\"where\":{\"parentCategoryId\" : {\"exists\" : false}},\"include\":\"subCategories\"}";
     static final String CATEGORIES = BuildConfig.BASE_API_URL + "categories";
     static final String FEATURED_OFFERS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"and\":[{\"isOffer\":\"true\"}, {\"isFeatured\":\"true\"}]}}";
-    static final String FEATURED_PRODUCTS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"and\":[{\"isOffer\":\"false\"}, {\"isFeatured\":\"true\"}]}}";
+    static final String FEATURED_PRODUCTS = BuildConfig.BASE_API_URL + "products/productsFeatured";
     static final String OFFERS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"and\":[{\"isOffer\":\"true\"}]}}";
     static final String ORDERS = BuildConfig.BASE_API_URL + "orders";
     static final String CURRENT_ORDERS = ORDERS + "?filter={\"where\":{\"and\":[{\"status\":\"pending\"},{\"clientId\":\"{clientId}\"}]}}";
@@ -28,7 +28,7 @@ class ApiEndPoint {
     static final String NOTIFICATIONS = BuildConfig.BASE_API_URL + "notifications";
     static final String LOGOUT = "users/logout";
     static final String PRODUCT_OFFERS = PRODUCTS + "/{id}/offers" ;
-    static final String SEARCH = PRODUCTS_RAW + "/search" ;
+    static final String SEARCH = PRODUCTS_RAW + "/searchClient" ;
     static final String AREAS = BuildConfig.BASE_API_URL + "areas";
     static final String RATINGS = BuildConfig.BASE_API_URL + "ratings";
     static final String COUPONS = BuildConfig.BASE_API_URL + "coupons";
