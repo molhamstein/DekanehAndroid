@@ -162,11 +162,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     }
 
     private void setPrice(SearchViewHolder holder, int price, int discount) {
-        holder.price.setText(String.valueOf(price));
-        if (discount != 0) {
-            holder.oldPrice.setText(String.valueOf(discount));
+        if (discount != 0 && discount != price) {
+            holder.price.setText(String.valueOf(discount));
+            holder.oldPrice.setText(String.valueOf(price));
         } else {
-            holder.oldPrice.setVisibility(View.GONE);
+            holder.price.setText(String.valueOf(price));
+            holder.productDiscount.setVisibility(View.GONE); // layout
         }
     }
 
