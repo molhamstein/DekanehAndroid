@@ -22,7 +22,7 @@ public class RegistrationActivityPresenter<T extends RegistrationActivityVP.View
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
         if (getCacheStore().getSession().isLoggedOn()){
-            Log.d("xcvxcvxcv", "onAttach: on" );
+            Log.d("access token ", getCacheStore().getSession().getAccessToken());
             getView().startMainActivity();
             getView().finish();
         }

@@ -31,17 +31,16 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
 
     private void updateFromCacheOrNetwork() {
         fetchFeaturedProducts();
-//        fetchFeaturedProducts();
-//        if (getCacheStore().getHomeCategories() != null) {
-//            getView().addCategoriesWithProducts(getCacheStore().getHomeCategories());
-//        } else {
-//            fetchCategories();
-//        }
-//        if (getCacheStore().getFeaturedOffers() != null) {
-//            getView().addFeaturedOffers(getCacheStore().getFeaturedOffers());
-//        } else {
-//            fetchFeaturedOffers();
-//        }
+        if (getCacheStore().getHomeCategories() != null) {
+            getView().addCategoriesWithProducts(getCacheStore().getHomeCategories());
+        } else {
+            fetchCategories();
+        }
+        if (getCacheStore().getFeaturedOffers() != null) {
+            getView().addFeaturedOffers(getCacheStore().getFeaturedOffers());
+        } else {
+            fetchFeaturedOffers();
+        }
     }
 
     @Override
