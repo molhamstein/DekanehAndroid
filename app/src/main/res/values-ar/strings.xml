@@ -104,5 +104,7 @@
     <string name="already_favorite">تمت اضافة المنتج الى المفضلة مسبقا</string>
     <string name="no_in_favorite">هذا المنتج غير موجود موجود بالمفضلة</string>
     <string name="fav_removed">تم ازالة المنتج من المفضلة</string>
+    <string name="forgetPasswordMsg">شكرا لك, سيتم تزويدك بمعلومات التسجيل قريبا</string>
+    <string name="send">ارسال</string>
 
 </resources>

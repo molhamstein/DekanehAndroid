@@ -151,8 +151,8 @@ public class AppApiHelper {
 //    }
 
     public static Single<List<Product>> getProductsByManufacturer(String manufacturerId, String accessToken) {
-        return Rx2AndroidNetworking.get(ApiEndPoint.PRODUCTS_RAW)
-                .addQueryParameter("filter[where][manufacturerId]", manufacturerId)
+        return Rx2AndroidNetworking.get(ApiEndPoint.PRODUCTS_MANUFACTURER)
+                .addQueryParameter("manufacturerId", manufacturerId)
                 .addHeaders("Authorization", accessToken)
                 .build()
                 .getObjectListSingle(Product.class);
@@ -284,5 +284,12 @@ public class AppApiHelper {
                 .addHeaders("Authorization", accessToken)
                 .build()
                 .getObjectListSingle(Product.class);
+    }
+
+    public static Single<String> forgetPassword(String phoneNumber) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.FORGET_PASSWORD)
+                .addBodyParameter("phoneNumber", phoneNumber)
+                .build()
+                .getObjectSingle(String.class);
     }
 }

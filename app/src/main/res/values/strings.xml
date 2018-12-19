@@ -159,5 +159,7 @@
     <string name="already_favorite">Product is already in favorite</string>
     <string name="no_in_favorite">This product doesnt exist in favorite</string>
     <string name="fav_removed">Product removed from favorite</string>
+    <string name="forgetPasswordMsg">Thank you, we will contact you to provide you with the information you need.</string>
+    <string name="send">Send</string>
 
 </resources>

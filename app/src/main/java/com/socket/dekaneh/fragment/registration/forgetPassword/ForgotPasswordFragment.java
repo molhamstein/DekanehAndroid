@@ -1,7 +1,8 @@
-package com.socket.dekaneh.fragment.registration;
+package com.socket.dekaneh.fragment.registration.forgetPassword;
 
 
 import android.view.View;
+import android.widget.EditText;
 
 import com.github.florent37.viewanimator.AnimationListener;
 import com.github.florent37.viewanimator.ViewAnimator;
@@ -10,10 +11,16 @@ import com.socket.dekaneh.R;
 import com.socket.dekaneh.base.BaseFragment;
 import com.socket.dekaneh.custom.DekanehInterpolator;
 import com.socket.dekaneh.fragment.registration.login.LoginFragment;
+
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
 public class ForgotPasswordFragment extends BaseFragment {
+
+    @Inject
+    ForgetPasswordVP.Presenter<ForgetPasswordVP.View> presenter;
 
     @BindView(R.id.forgetPasswordSubmitBtn)
     View submitBtn;
@@ -23,6 +30,8 @@ public class ForgotPasswordFragment extends BaseFragment {
     View text1;
     @BindView(R.id.forgotPassText2)
     View text2;
+    @BindView(R.id.phoneNumber)
+    EditText phoneNumber;
 
     public ForgotPasswordFragment() { }
 
@@ -60,7 +69,7 @@ public class ForgotPasswordFragment extends BaseFragment {
         performOutAnimation(new AnimationListener.Stop() {
             @Override
             public void onStop() {
-                navigationPresenter.replaceFragment(LoginFragment.newInstance());
+                presenter.forgetPasswordRequest(phoneNumber.getText().toString());
             }
         });
     }

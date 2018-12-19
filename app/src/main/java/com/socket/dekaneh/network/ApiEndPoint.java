@@ -8,6 +8,7 @@ class ApiEndPoint {
 
     static final String PRODUCTS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"status\":\"available\"}}";
     static final String PRODUCTS_RAW = BuildConfig.BASE_API_URL + "products";
+    static final String PRODUCTS_MANUFACTURER = BuildConfig.BASE_API_URL + "products/productsManufacturer";
     static final String SINGLE_PRODUCTS = BuildConfig.BASE_API_URL + "products/{id}";
     static final String USERS = BuildConfig.BASE_API_URL + "users";
     static final String SIMILAR_PRODUCTS = BuildConfig.BASE_API_URL + "products/similarProduct";
@@ -37,5 +38,6 @@ class ApiEndPoint {
     static final String FAVORITE = BuildConfig.BASE_API_URL + "/favorite";
     static final String DELETE_FAVORITE = FAVORITE + "/deleteFavorite";
     static final String FAVORITE_PRODUCTS = FAVORITE + "/getFavorite";
+    static final String FORGET_PASSWORD = USERS + "/forgetPassword";
 
 }

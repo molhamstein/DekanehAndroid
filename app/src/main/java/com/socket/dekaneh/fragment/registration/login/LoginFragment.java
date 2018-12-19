@@ -14,7 +14,7 @@ import com.socket.dekaneh.R;
 import com.socket.dekaneh.activity.main.MainActivity;
 import com.socket.dekaneh.base.BaseFragment;
 import com.socket.dekaneh.custom.DekanehInterpolator;
-import com.socket.dekaneh.fragment.registration.ForgotPasswordFragment;
+import com.socket.dekaneh.fragment.registration.forgetPassword.ForgotPasswordFragment;
 import com.socket.dekaneh.fragment.registration.new_account.NewAccountFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
