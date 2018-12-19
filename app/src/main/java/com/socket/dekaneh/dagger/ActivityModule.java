@@ -8,6 +8,8 @@ import com.socket.dekaneh.R;
 import com.socket.dekaneh.activity.cart.CartActivityPresenter;
 import com.socket.dekaneh.activity.favorite.FavoriteActivityPresenter;
 import com.socket.dekaneh.activity.favorite.FavoriteActivityVP;
+import com.socket.dekaneh.activity.featured_products.FeaturedActivityPresenter;
+import com.socket.dekaneh.activity.featured_products.FeaturedActivityVP;
 import com.socket.dekaneh.activity.rating.RatingActivityPesenter;
 import com.socket.dekaneh.activity.rating.RatingActivityVP;
 import com.socket.dekaneh.activity.splash.SplashActivityPresenter;
@@ -186,6 +188,11 @@ public class ActivityModule {
 
     @Provides
     FavoriteActivityVP.Presenter<FavoriteActivityVP.View> provideFavoriteActivityPresenter(FavoriteActivityPresenter<FavoriteActivityVP.View> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    FeaturedActivityVP.Presenter<FeaturedActivityVP.View> provideFeaturedActivityPresenter(FeaturedActivityPresenter<FeaturedActivityVP.View> presenter) {
         return presenter;
     }
 

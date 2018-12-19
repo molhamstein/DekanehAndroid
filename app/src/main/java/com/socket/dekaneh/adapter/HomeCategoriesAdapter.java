@@ -16,6 +16,7 @@ import javax.inject.Inject;
 
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.activity.category_details.CategoryDetailsActivity;
+import com.socket.dekaneh.activity.featured_products.FeaturedProductsActivity;
 import com.socket.dekaneh.network.CacheStore;
 import com.socket.dekaneh.network.Session;
 import com.socket.dekaneh.network.model.Category;
@@ -55,10 +56,10 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
         final HomeCategory category = categories.get(position);
         holder.header.setText(category.getTitleAr());
         ProductsAdapter adapter;
-        if (category.getId().isEmpty()){
-            adapter = new ProductsAdapter(category.getProducts(), cacheStore ,category, false);
+        if (category.getId().isEmpty()) {
+            adapter = new ProductsAdapter(category.getProducts(), cacheStore, category, false);
         } else {
-            adapter = new ProductsAdapter(category.getProducts(), cacheStore ,category);
+            adapter = new ProductsAdapter(category.getProducts(), cacheStore, category);
         }
         adapter.setOnItemCountChange(new OnItemCountChange() {
             @Override
@@ -74,13 +75,21 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
         holder.header.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CategoryDetailsActivity.start(view.getContext(), category);
+                if (category.getId().isEmpty()) {
+                    FeaturedProductsActivity.start(view.getContext());
+                } else {
+                    CategoryDetailsActivity.start(view.getContext(), category);
+                }
             }
         });
         holder.seeAllText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CategoryDetailsActivity.start(view.getContext(), category);
+                if (category.getId().isEmpty()) {
+                    FeaturedProductsActivity.start(view.getContext());
+                } else {
+                    CategoryDetailsActivity.start(view.getContext(), category);
+                }
             }
         });
 
