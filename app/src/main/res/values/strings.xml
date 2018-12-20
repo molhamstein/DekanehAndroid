@@ -163,5 +163,7 @@
     <string name="send">Send</string>
     <string name="order">Order</string>
     <string name="past_orders">Past Orders</string>
+    <string name="coupon_not_found_error">Coupon Not Found or Date is Expired</string>
+    <string name="coupon_in_use_error">Coupon already in use</string>
 
 </resources>

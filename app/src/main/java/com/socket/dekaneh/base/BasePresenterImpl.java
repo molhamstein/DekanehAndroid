@@ -71,35 +71,25 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
 
         if (error == null) {
             getView().onError(R.string.api_default_error);
-        }
-
-        else if (error.getErrorCode() == AppApiHelper.API_STATUS_CODE_LOCAL_ERROR
+        } else if (error.getErrorCode() == AppApiHelper.API_STATUS_CODE_LOCAL_ERROR
                 && error.getErrorDetail().equals(ANConstants.CONNECTION_ERROR)) {
             getView().onError(R.string.connection_error);
-        }
-
-        else if (error.getErrorBody() == null) {
+        } else if (error.getErrorBody() == null) {
             getView().onError(R.string.api_default_error);
-        }
-
-        else if (error.getErrorCode() == AppApiHelper.API_STATUS_CODE_LOCAL_ERROR
+        } else if (error.getErrorCode() == AppApiHelper.API_STATUS_CODE_LOCAL_ERROR
                 && error.getErrorDetail().equals(ANConstants.REQUEST_CANCELLED_ERROR)) {
             getView().onError(R.string.api_retry_error);
-        }
-
-        else if (error.getErrorCode() == AppApiHelper.TOTAL_PRICE_IS_LOW_ERROR) {
+        } else if (error.getErrorCode() == AppApiHelper.TOTAL_PRICE_IS_LOW_ERROR) {
             getView().onError(R.string.low_total_price_error);
-        }
-
-        else if (error.getErrorCode() == AppApiHelper.ALREADY_IN_FAVORITE_ERROR) {
+        } else if (error.getErrorCode() == AppApiHelper.ALREADY_IN_FAVORITE_ERROR) {
             getView().onError(R.string.already_favorite);
-        }
-
-        else if (error.getErrorCode() == AppApiHelper.FAVORITE_NOT_SET_ERROR) {
+        } else if (error.getErrorCode() == AppApiHelper.FAVORITE_NOT_SET_ERROR) {
             getView().onError(R.string.no_in_favorite);
-        }
-
-        else {
+        } else if (error.getErrorCode() == AppApiHelper.COUPON_NOT_FOUND_ERROR) {
+            getView().onError(R.string.coupon_not_found_error);
+        } else if (error.getErrorCode() == AppApiHelper.COUPON_IN_USE) {
+            getView().onError(R.string.coupon_in_use_error);
+        } else {
             Log.e("ERRRRRRRRRRR", "handleApiError: " + error.getErrorBody());
         }
 

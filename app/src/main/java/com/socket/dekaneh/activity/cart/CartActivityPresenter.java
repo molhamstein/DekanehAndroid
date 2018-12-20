@@ -20,7 +20,9 @@ import com.socket.dekaneh.network.model.Orderitem;
 import com.socket.dekaneh.network.model.User;
 
 import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
+
 import com.socket.dekaneh.network.model.Coupon;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -54,7 +56,7 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
         OrderRequest order = new OrderRequest(getCacheStore().getSession().getUserId(), orderItems, coupon);
 
         Log.d(TAG, "sendOrder: " + order.toString());
-        Log.d(TAG, "sendOrder: TOKEN " + getCacheStore().getSession().getAccessToken() );
+        Log.d(TAG, "sendOrder: TOKEN " + getCacheStore().getSession().getAccessToken());
         getView().showLoading();
         getCompositeDisposable().add(
                 AppApiHelper.sendOrder(getCacheStore().getSession().getAccessToken(), order)
@@ -85,7 +87,7 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
     @Override
     public void getCoupons() {
         getCompositeDisposable().add(
-                AppApiHelper.getCoupons(getCacheStore().getSession().getAccessToken())
+                AppApiHelper.getCoupons(getCacheStore().getSession().getAccessToken(), getCacheStore().getSession().getUserId())
                         .subscribeOn(getSchedulerProvider().io())
                         .observeOn(getSchedulerProvider().ui())
                         .subscribe(new Consumer<List<Coupon>>() {
@@ -130,6 +132,29 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
             price += item.getTotalPrice(getCacheStore().getSession().getClientType().equals(User.Type.horeca.toString()));
         }
         return price;
+    }
+
+    @Override
+    public void getCoupon(String couponCode) {
+        getView().showLoading();
+        getCompositeDisposable().add(
+            AppApiHelper.addCoupon(getCacheStore().getSession().getAccessToken(), couponCode)
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(new Consumer<Coupon>() {
+                    @Override
+                    public void accept(Coupon coupon) throws Exception {
+                        getView().hideLoading();
+                        getCoupons();
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        getView().hideLoading();
+                        handleApiError((ANError) throwable);
+                    }
+                })
+        );
     }
 
 }

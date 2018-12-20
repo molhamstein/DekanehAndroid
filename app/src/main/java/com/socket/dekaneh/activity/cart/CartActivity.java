@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.List;
@@ -69,6 +70,8 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
     View fixed;
     @BindView(R.id.addCouponBtn)
     Button addCouponBtn;
+    @BindView(R.id.couponCodeText)
+    EditText couponCodeText;
 
 
     BottomSheetBehavior bottomSheetBehavior;
@@ -215,6 +218,11 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
     @OnClick(R.id.addCouponBtn)
     public void onAddCouponBtn() {
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+    }
+
+    @OnClick(R.id.addCouponCodeBtn)
+    public void onAddCouponCodeBtn() {
+        presenter.getCoupon(couponCodeText.getText().toString());
     }
 
     @Override

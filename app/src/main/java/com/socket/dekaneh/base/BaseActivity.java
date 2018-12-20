@@ -291,5 +291,11 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
         resources.updateConfiguration(configuration, resources.getDisplayMetrics());
         return context;
     }
+
+    @Override
+    protected void onDestroy() {
+        mProgressDialog.dismiss();
+        super.onDestroy();
+    }
 }
 

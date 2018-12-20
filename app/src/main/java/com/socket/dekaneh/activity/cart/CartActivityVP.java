@@ -26,5 +26,7 @@ public class CartActivityVP {
         void getCoupons();
         void setCoupon(Coupon coupon);
         int getSubtotalPrice();
+
+        void getCoupon(String couponCode);
     }
 }

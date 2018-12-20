@@ -33,6 +33,8 @@ public class AppApiHelper {
     public static final int TOTAL_PRICE_IS_LOW_ERROR = 602;
     public static final int ALREADY_IN_FAVORITE_ERROR = 600;
     public static final int FAVORITE_NOT_SET_ERROR = 601;
+    public static final int COUPON_NOT_FOUND_ERROR = 605;
+    public static final int COUPON_IN_USE = 606;
 
     public static Single<LoginResponse> login(LoginRequest request) {
         return Rx2AndroidNetworking.post(ApiEndPoint.LOGIN)
@@ -65,6 +67,7 @@ public class AppApiHelper {
 
     public static Single<List<Product>> getFeaturedProducts(String accessToken) {
         return Rx2AndroidNetworking.get(ApiEndPoint.FEATURED_PRODUCTS)
+                .addHeaders("Authorization", accessToken)
                 .build()
                 .getObjectListSingle(Product.class);
     }
@@ -247,8 +250,9 @@ public class AppApiHelper {
     }
 
 
-    public static Single<List<Coupon>> getCoupons(String accessToken) {
+    public static Single<List<Coupon>> getCoupons(String accessToken, String userId) {
         return Rx2AndroidNetworking.get(ApiEndPoint.COUPONS)
+                .addPathParameter("userId", userId)
                 .addHeaders("Authorization", accessToken)
                 .build()
                 .getObjectListSingle(Coupon.class);
@@ -291,5 +295,13 @@ public class AppApiHelper {
                 .addBodyParameter("phoneNumber", phoneNumber)
                 .build()
                 .getObjectSingle(String.class);
+    }
+
+    public static Single<Coupon> addCoupon(String accessToken, String couponCode) {
+        return Rx2AndroidNetworking.put(ApiEndPoint.ADD_COUPON)
+                .addBodyParameter("code", couponCode)
+                .addHeaders("Authorization", accessToken)
+                .build()
+                .getObjectSingle(Coupon.class);
     }
 }
