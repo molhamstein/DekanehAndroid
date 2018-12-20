@@ -32,7 +32,7 @@ class ApiEndPoint {
     static final String SEARCH = PRODUCTS_RAW + "/searchClient" ;
     static final String AREAS = BuildConfig.BASE_API_URL + "areas";
     static final String RATINGS = BuildConfig.BASE_API_URL + "ratings";
-    static final String COUPONS = BuildConfig.BASE_API_URL + "coupons?filter[where][userId]={userId}";
+    static final String COUPONS = BuildConfig.BASE_API_URL + "coupons?filter[where][and][0][userId]={user_id}&filter[where][and][1][status][neq]=used";
     static final String COUPONS_RAW = BuildConfig.BASE_API_URL + "coupons";
     static final String CHECK_STATUS = USERS + "/isActivated";
     static final String SET_FIREBASE_TOKEN = USERS + "/setFirebaseToken";
@@ -41,5 +41,8 @@ class ApiEndPoint {
     static final String FAVORITE_PRODUCTS = FAVORITE + "/getFavorite";
     static final String FORGET_PASSWORD = USERS + "/forgetPassword";
     static final String ADD_COUPON = COUPONS_RAW + "/useCoupon";
+
+
+
 
 }

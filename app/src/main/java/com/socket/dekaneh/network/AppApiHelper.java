@@ -252,7 +252,7 @@ public class AppApiHelper {
 
     public static Single<List<Coupon>> getCoupons(String accessToken, String userId) {
         return Rx2AndroidNetworking.get(ApiEndPoint.COUPONS)
-                .addPathParameter("userId", userId)
+                .addPathParameter("user_id", userId)
                 .addHeaders("Authorization", accessToken)
                 .build()
                 .getObjectListSingle(Coupon.class);
