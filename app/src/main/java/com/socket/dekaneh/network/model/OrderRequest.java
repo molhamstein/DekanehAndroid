@@ -20,10 +20,15 @@ public class OrderRequest implements Serializable {
     @SerializedName("couponCode")
     @Expose
     private String couponCode;
+    @SerializedName("note")
+    @Expose
+    private String note;
 
-    public OrderRequest(String clientId, List<Orderitem> orderitems, Coupon coupon) {
+
+    public OrderRequest(String clientId, List<Orderitem> orderitems, Coupon coupon, String note) {
         this.clientId = clientId;
         this.products = orderitems;
+        this.note = note;
         if (coupon != null) {
             this.code = coupon.getCode();
             this.couponCode = coupon.getCode();
@@ -31,6 +36,7 @@ public class OrderRequest implements Serializable {
     }
 
     public OrderRequest(String clientId, List<Orderitem> orderitems) {
+        this.note = note;
         this.clientId = clientId;
         this.products = orderitems;
     }

@@ -254,7 +254,13 @@ public class ActivityModule {
 
     @Provides
     ProductsAdapter provideProductsAdapter(CacheStore cacheStore) {
-        return new ProductsAdapter(cacheStore);
+        return new ProductsAdapter(cacheStore, true);
+    }
+
+    @ProductDetails
+    @Provides
+    ProductsAdapter provideProductsAdapterWithoutSeeMore(CacheStore cacheStore) {
+        return new ProductsAdapter(cacheStore, false);
     }
 
     @Provides

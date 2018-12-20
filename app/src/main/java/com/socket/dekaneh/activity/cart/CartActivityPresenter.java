@@ -30,10 +30,17 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
 
     public static final String TAG = CartActivityPresenter.class.getSimpleName();
     private Coupon coupon;
+    private String note;
 
     @Inject
     public CartActivityPresenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable, CacheStore cacheStore) {
         super(schedulerProvider, compositeDisposable, cacheStore);
+    }
+
+    @Override
+    public void onAttach(T mvpView) {
+        super.onAttach(mvpView);
+        this.note = "";
     }
 
     @Override
@@ -53,7 +60,7 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
             orderItems.add(new Orderitem(item.getCount(), item.getId()));
         }
 
-        OrderRequest order = new OrderRequest(getCacheStore().getSession().getUserId(), orderItems, coupon);
+        OrderRequest order = new OrderRequest(getCacheStore().getSession().getUserId(), orderItems, coupon, note);
 
         Log.d(TAG, "sendOrder: " + order.toString());
         Log.d(TAG, "sendOrder: TOKEN " + getCacheStore().getSession().getAccessToken());
@@ -132,6 +139,11 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
             price += item.getTotalPrice(getCacheStore().getSession().getClientType().equals(User.Type.horeca.toString()));
         }
         return price;
+    }
+
+    @Override
+    public void setNote(String note) {
+        this.note = note;
     }
 
     @Override

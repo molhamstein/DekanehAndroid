@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.socket.dekaneh.activity.manufacturer.ManufacturerActivity;
+import com.socket.dekaneh.dagger.ProductDetails;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -37,6 +38,7 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     @Inject
     ProductDetailsVP.Presenter<ProductDetailsVP.View> presenter;
     @Inject
+    @ProductDetails
     ProductsAdapter productsAdapter;
 
     @BindView(R.id.prodDetailsToolbar)
@@ -117,7 +119,6 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         similarProductsRV.setAdapter(productsAdapter);
 
     }
-
 
 
     @Override

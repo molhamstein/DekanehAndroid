@@ -24,8 +24,10 @@ import com.socket.dekaneh.base.BaseActivity;
 import com.socket.dekaneh.network.model.CartItem;
 
 import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
+
 import com.socket.dekaneh.adapter.CouponsAdapter;
 import com.socket.dekaneh.network.model.Coupon;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -72,9 +74,18 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
     Button addCouponBtn;
     @BindView(R.id.couponCodeText)
     EditText couponCodeText;
+    @BindView(R.id.note)
+    EditText noteEditText;
+    @BindView(R.id.notesBottomSheet)
+    View notesBottomSheet;
+    @BindView(R.id.submitNoteBtn)
+    View submitNoteBtn;
+    @BindView(R.id.addNoteBtn)
+    View addNoteBtn;
 
 
     BottomSheetBehavior bottomSheetBehavior;
+    BottomSheetBehavior noteBottomSheetBehavior;
 
     public static void start(Context context) {
         Intent starter = new Intent(context, CartActivity.class);
@@ -92,6 +103,7 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
 
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        noteBottomSheetBehavior = BottomSheetBehavior.from(notesBottomSheet);
 
 
         setSupportActionBar(toolbar);
@@ -135,8 +147,7 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                     addCouponBtn.setText(R.string.add_coupon);
-                }
-                else if(newState == BottomSheetBehavior.STATE_EXPANDED) {
+                } else if (newState == BottomSheetBehavior.STATE_EXPANDED) {
                     addCouponBtn.setText(R.string.coupons);
                 }
             }
@@ -168,6 +179,7 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
     @Override
     public void setOrderViewClear(boolean clear) {
         if (clear) {
+            noteEditText.setText("");
             ordersView.setVisibility(View.GONE);
             emptyCartImg.setVisibility(View.VISIBLE);
             emptyCartText.setVisibility(View.VISIBLE);
@@ -225,6 +237,18 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
         presenter.getCoupon(couponCodeText.getText().toString());
         couponCodeText.setText("");
     }
+
+    @OnClick(R.id.submitNoteBtn)
+    public void onSubmitNoteBtnClicked() {
+        presenter.setNote(noteEditText.getText().toString());
+        noteBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+    }
+
+    @OnClick(R.id.addNoteBtn)
+    public void onAddNoteBtn() {
+        noteBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+    }
+
 
     @Override
     public void onBackPressed() {

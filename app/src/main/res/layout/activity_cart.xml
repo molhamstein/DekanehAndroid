@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context=".activity.cart.CartActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -57,7 +58,9 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/shadow_card_black"
                 android:minHeight="420dp">
 
@@ -204,6 +207,23 @@
                 </FrameLayout>
             </FrameLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/addNoteBtn"
+                    style="@style/GreenBlackTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_notes"
+                    android:padding="16dp"
+                    android:layout_marginStart="16dp"
+                    />
+
+            </LinearLayout>
+
             <Button
                 android:id="@+id/sendBtn"
                 style="@style/WhiteBlackTextView"
@@ -325,5 +345,42 @@
             android:layout_marginTop="160dp"/>
 
     </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/notesBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-8dp"
+        android:layout_marginEnd="-8dp"
+        android:layout_marginBottom="-16dp"
+        android:background="@drawable/shadow_card_black"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+        <EditText
+            style="@style/PrimaryBoldTextView"
+            android:id="@+id/note"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="start"
+            android:padding="16dp"
+            android:hint="@string/add_notes"/>
+
+
+        <TextView
+            android:id="@+id/submitNoteBtn"
+            style="@style/GreenBlackTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="16dp"
+            />
+
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

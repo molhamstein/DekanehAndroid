@@ -38,31 +38,27 @@ public class ProductsAdapter extends RecyclerView.Adapter {
     private Category category;
     private OnItemCountChange onItemCountChange;
     private int plusMinusAnimationBtnVal = 18;
+    private boolean seeMore;
 
     @Inject
-    public ProductsAdapter(CacheStore cacheStore) {
+    public ProductsAdapter(CacheStore cacheStore, boolean seeMore) {
         this.cacheStore = cacheStore;
         this.products = new ArrayList<>();
+        this.seeMore = seeMore;
     }
 
     public ProductsAdapter(List<Product> products, CacheStore cacheStore, Category category) {
         this.products = products;
-        Log.d("CategoryDetailsPresent", "onBindViewHolder: size = " + products.size());
-//        if (products.size() >= MAX_NUM_OF_PRODUCTS) {
-//            products.add(new Product());
-//        }
         this.cacheStore = cacheStore;
         this.category = category;
+        this.seeMore = true;
     }
 
     public ProductsAdapter(List<Product> products, CacheStore cacheStore, Category category, boolean seeMore) {
         this.products = products;
-        Log.d("CategoryDetailsPresent", "onBindViewHolder: size = " + products.size());
-//        if (products.size() >= MAX_NUM_OF_PRODUCTS && seeMore) {
-//            products.add(new Product());
-//        }
         this.cacheStore = cacheStore;
         this.category = category;
+        this.seeMore = seeMore;
     }
 
     public void setOnItemCountChange(OnItemCountChange onItemCountChange) {
@@ -79,6 +75,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int position) {
+        Log.d("ASDASDADSASDADS", "ProductsAdapter: " + this.seeMore);
 
         holder.setIsRecyclable(false);
         if (holder instanceof ProductViewHolder) {
@@ -193,7 +190,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return products.size() >= MAX_NUM_OF_PRODUCTS ? products.size() + 1 : products.size();
+        return (products.size() >= MAX_NUM_OF_PRODUCTS && seeMore) ? products.size() + 1 : products.size();
     }
 
     public void addAllProducts(List<Product> products) {

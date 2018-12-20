@@ -108,5 +108,8 @@
     <string name="send">ارسال</string>
     <string name="order">الطلبات</string>
     <string name="past_orders">الطلبات السابقة</string>
+    <string name="coupon_not_found_error">لم يتم العثور على القسيمة</string>
+    <string name="coupon_in_use_error">القسيمة قيد الاستخدام</string>
+    <string name="add_notes">اضافة ملاحظة</string>
 
 </resources>
