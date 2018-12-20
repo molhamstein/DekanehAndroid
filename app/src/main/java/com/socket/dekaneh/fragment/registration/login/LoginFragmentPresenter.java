@@ -1,12 +1,7 @@
 package com.socket.dekaneh.fragment.registration.login;
 
 
-import android.util.Log;
-
 import com.androidnetworking.error.ANError;
-
-import javax.inject.Inject;
-
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
@@ -15,8 +10,9 @@ import com.socket.dekaneh.network.CacheStore;
 import com.socket.dekaneh.network.model.LoginRequest;
 import com.socket.dekaneh.network.model.LoginResponse;
 import com.socket.dekaneh.network.model.User;
-import com.socket.dekaneh.utils.NetworkUtils;
 import com.socket.dekaneh.utils.ValidationUtils;
+
+import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -71,7 +67,6 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
                         }, new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
-                                Log.e(TAG, "accept: ", throwable);
                                 getView().hideLoading();
                                 handleApiError((ANError) throwable);
                             }

@@ -17,16 +17,16 @@ public class OrderRequest implements Serializable {
     @SerializedName("code")
     @Expose
     private String code;
-    @SerializedName("couponId")
+    @SerializedName("couponCode")
     @Expose
-    private String couponId;
+    private String couponCode;
 
     public OrderRequest(String clientId, List<Orderitem> orderitems, Coupon coupon) {
         this.clientId = clientId;
         this.products = orderitems;
         if (coupon != null) {
             this.code = coupon.getCode();
-            this.couponId = coupon.getId();
+            this.couponCode = coupon.getCode();
         }
     }
 
