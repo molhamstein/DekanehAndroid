@@ -89,14 +89,12 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             final CartItem item = new CartItem(product);
 
             if (product.hasDiscount(cacheStore.getSession().getClientType())) {
-                productViewHolder.offerTag.setVisibility(View.VISIBLE);
+                productViewHolder.productOfferTagLayout.setVisibility(View.VISIBLE);
                 productViewHolder.offerTag.setTextSize(16);
-                productViewHolder.offerTag.setBackgroundResource(R.drawable.badge_discount);
+                productViewHolder.productOfferTagImage.setImageResource(R.drawable.badge_discount);
                 productViewHolder.offerTag.setText(product.getPercentageString(cacheStore.getSession().getClientType()));
-            }
-
-            else if (!product.getOffersIds().isEmpty()) {
-                productViewHolder.offerTag.setVisibility(View.VISIBLE);
+            } else if (!product.getOffersIds().isEmpty()) {
+                productViewHolder.productOfferTagLayout.setVisibility(View.VISIBLE);
             }
 
             if (cacheStore.isCartItemExist(item)) {
@@ -195,7 +193,7 @@ public class ProductsAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return products.size() >= MAX_NUM_OF_PRODUCTS ? products.size() + 1: products.size();
+        return products.size() >= MAX_NUM_OF_PRODUCTS ? products.size() + 1 : products.size();
     }
 
     public void addAllProducts(List<Product> products) {
@@ -248,6 +246,10 @@ public class ProductsAdapter extends RecyclerView.Adapter {
         View expandingBtn;
         @BindView(R.id.productDiscount)
         View productDiscount;
+        @BindView(R.id.productOfferTagLayout)
+        View productOfferTagLayout;
+        @BindView(R.id.productOfferTagImage)
+        ImageView productOfferTagImage;
 
         ProductViewHolder(View itemView) {
             super(itemView);

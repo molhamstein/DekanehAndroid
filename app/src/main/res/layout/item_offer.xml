@@ -187,17 +187,35 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/percent"
-        style="@style/WhiteBlackTextItemOffer"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+    <FrameLayout
+        android:id="@+id/productOfferTagLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="top|end"
-        android:background="@drawable/badge_discount"
-        android:gravity="center"
-        android:paddingBottom="8dp"
-        android:text="10%"
-        android:textSize="16sp" />
+        >
+
+        <ImageView
+            android:id="@+id/productOfferTagImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/badge_discount" />
+
+
+        <TextView
+            android:id="@+id/percent"
+            style="@style/WhiteBlackTextItemOffer"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="top|end"
+            android:background="@drawable/badge_discount"
+            android:gravity="center"
+            android:paddingBottom="8dp"
+            android:text="10%"
+            android:textSize="16sp" />
+
+
+
+    </FrameLayout>
 
 
 </FrameLayout>

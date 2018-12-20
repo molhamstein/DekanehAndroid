@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="145dp"
     android:layout_height="223dp"
+    android:layout_gravity="center"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?attr/selectableItemBackgroundBorderless"
-    android:layout_gravity="center"
-    >
+    android:foreground="?attr/selectableItemBackgroundBorderless">
 
 
     <LinearLayout
         android:layout_width="145dp"
         android:layout_height="195dp"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="18dp"
         android:layout_marginBottom="4dp"
-        android:paddingTop="24dp"
-        android:layout_gravity="center"
         android:background="@drawable/shadow_card_black"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="24dp">
 
 
         <ImageView
@@ -26,23 +27,21 @@
             android:layout_height="70dp"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
-            android:scaleType="fitCenter"
-            />
+            android:scaleType="fitCenter" />
 
         <TextView
             android:id="@+id/productName"
             style="@style/PrimaryBoldTextViewDroidKufi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:gravity="center"
+            android:layout_marginEnd="8dp"
             android:ellipsize="end"
-            android:lines="2"
+            android:gravity="center"
             android:lineSpacingMultiplier=".7"
+            android:lines="2"
             android:text="@string/dummy_item_title"
-            android:textSize="12sp"
-            />
+            android:textSize="12sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,8 +87,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:text="@string/dummy_price"
-                android:textSize="16sp"
-                />
+                android:textSize="16sp" />
 
             <TextView
                 style="@style/PrimaryColorCurrency"
@@ -103,24 +101,36 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/productOfferTag"
-        style="@style/WhiteBoldTextItem"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/badge_offer"
-        android:text="@string/offers_available"
-        android:gravity="center"
-        android:paddingStart="8dp"
-        android:paddingEnd="12dp"
-        android:paddingBottom="12dp"
-        android:lineSpacingMultiplier=".6"
-        android:textSize="10sp"
-        android:visibility="gone"
-        android:layout_gravity="top|end"
-        android:layout_marginBottom="-16dp"
-        />
 
+    <FrameLayout
+        android:id="@+id/productOfferTagLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/productOfferTagImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/badge_offer" />
+
+        <TextView
+            android:id="@+id/productOfferTag"
+            style="@style/WhiteBoldTextItem"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="-16dp"
+            android:gravity="center"
+            android:lineSpacingMultiplier=".6"
+            android:paddingStart="8dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="12dp"
+            android:text="@string/offers_available"
+            android:textSize="10sp" />
+
+
+    </FrameLayout>
 
     <Button
         android:id="@+id/orderNowBtn"
@@ -130,8 +140,7 @@
         android:layout_gravity="bottom|center"
         android:background="@drawable/primary_color_button_round_10"
         android:text="@string/buy_now"
-        android:visibility="visible"
-        />
+        android:visibility="visible" />
 
     <FrameLayout
         android:id="@+id/orderBtn"
@@ -142,60 +151,58 @@
         android:visibility="gone">
 
         <FrameLayout
+            android:id="@+id/expandingBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/expandingBtn"
             android:background="@drawable/primary_color_button_round_10"
             android:minWidth="100dp"
-            android:minHeight="60dp"
-            />
+            android:minHeight="60dp" />
 
         <ImageView
             android:id="@+id/plusOne"
             android:layout_width="50dp"
             android:layout_height="40dp"
-            app:srcCompat="@drawable/ic_add_white_24dp"
-            android:gravity="center"
             android:layout_gravity="start|center_vertical"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="-2dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:layout_marginTop="-2dp"
             android:text="+"
             android:textColor="@color/white"
+            android:textSize="32sp"
             android:textStyle="bold"
-            android:textSize="32sp" />
+            app:srcCompat="@drawable/ic_add_white_24dp" />
 
         <TextView
             android:id="@+id/orderCount"
+            style="@style/WhiteBoldTextItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="0"
             android:layout_marginTop="-4dp"
-            android:textStyle="bold"
-            style="@style/WhiteBoldTextItem"
+            android:text="0"
             android:textColor="@color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/minusOne"
             android:layout_width="50dp"
             android:layout_height="40dp"
-            app:srcCompat="@drawable/ic_remove_white_24dp"
             android:layout_gravity="end"
+            android:layout_marginTop="6dp"
             android:layout_marginEnd="8dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:gravity="center"
-            android:layout_marginTop="6dp"
-            />
+            app:srcCompat="@drawable/ic_remove_white_24dp" />
 
     </FrameLayout>
 
@@ -204,12 +211,11 @@
         style="@style/BrownBoldTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="18dp"
+        android:gravity="start"
         android:text="@string/dummy_item_top_text"
         android:textSize="10sp" />
-
 
 
 </FrameLayout>

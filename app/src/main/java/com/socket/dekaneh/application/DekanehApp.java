@@ -3,7 +3,7 @@ package com.socket.dekaneh.application;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.support.multidex.MultiDex;
+import android.support.v7.app.AppCompatDelegate;
 
 import com.androidnetworking.AndroidNetworking;
 import com.socket.dekaneh.dagger.ApplicationComponent;
@@ -22,6 +22,7 @@ public class DekanehApp extends Application {
     public void onCreate() {
         super.onCreate();
 
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this)).build();

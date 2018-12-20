@@ -70,6 +70,8 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     TextView percentage;
     @BindView(R.id.fav)
     ImageView btnFav;
+    @BindView(R.id.productOfferTagLayout)
+    View productOfferTagLayout;
 
     @BindView(R.id.orderCount)
     TextView orderCount;
@@ -155,7 +157,7 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         });
 
         if (getIntent().getBooleanExtra("isOffer", false)) {
-            percentage.setVisibility(View.VISIBLE);
+            productOfferTagLayout.setVisibility(View.VISIBLE);
             percentage.setText(getIntent().getStringExtra("percentage"));
         }
     }

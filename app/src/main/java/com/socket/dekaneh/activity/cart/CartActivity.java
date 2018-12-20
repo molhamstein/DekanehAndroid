@@ -223,6 +223,7 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
     @OnClick(R.id.addCouponCodeBtn)
     public void onAddCouponCodeBtn() {
         presenter.getCoupon(couponCodeText.getText().toString());
+        couponCodeText.setText("");
     }
 
     @Override
