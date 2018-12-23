@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.socket.dekaneh.R;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
 import com.socket.dekaneh.network.AppApiHelper;
@@ -77,6 +78,7 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
                                 getView().hideLoading();
                                 getView().setOrderViewClear(true);
                                 getView().setOkResult();
+                                getView().showMessage(R.string.after_order_msg);
 
                             }
                         }, new Consumer<Throwable>() {

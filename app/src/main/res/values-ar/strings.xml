@@ -111,5 +111,6 @@
     <string name="coupon_not_found_error">لم يتم العثور على القسيمة</string>
     <string name="coupon_in_use_error">القسيمة قيد الاستخدام</string>
     <string name="add_notes">اضافة ملاحظة</string>
+    <string name="after_order_msg">سيتم توصيل خلال ٢٤ ساعة عمل</string>
 
 </resources>

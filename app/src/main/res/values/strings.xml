@@ -166,6 +166,7 @@
     <string name="coupon_not_found_error">Coupon Not Found or Date is Expired</string>
     <string name="coupon_in_use_error">Coupon already in use</string>
     <string name="add_notes">Add notes</string>
-    <string name="todo">TODO</string>
+    <string name="todo" translatable="false">TODO</string>
+    <string name="after_order_msg">Your order will be delivered in 24 buisiness hours..</string>
 
 </resources>
