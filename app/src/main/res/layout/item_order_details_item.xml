@@ -59,7 +59,7 @@
         android:layout_gravity="end"
         style="@style/SecondaryBlackTextView"
         android:textSize="10sp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         />
 
@@ -70,8 +70,8 @@
         android:text="@string/dummy_price"
         android:layout_gravity="end|top"
         style="@style/PrimaryBlackTextView"
-        android:textSize="24sp"
-        android:layout_marginEnd="40dp"
+        android:textSize="18sp"
+        android:layout_marginEnd="42dp"
         />
 
     <FrameLayout

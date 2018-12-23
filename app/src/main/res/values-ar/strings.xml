@@ -22,7 +22,7 @@
     <string name="main">الرئيسية</string>
     <string name="dummy_item_top_text">طرد ١٢ علبة</string>
     <string name="dummy_item_title"> عصير اورجينال بودرة برتقال</string>
-    <string name="dummy_price">200</string>
+    <string name="dummy_price">20000</string>
     <string name="currency">ل.س</string>
     <string name="dummy_header">منظفات</string>
     <string name="offers_available">يتوفر عروض</string>
@@ -114,5 +114,7 @@
     <string name="after_order_msg">سيتم توصيل طلبك خلال ٢٤ ساعة عمل</string>
     <string name="in_delivery">قيد التوصيل</string>
     <string name="calnceled">ألغي الطلب</string>
+    <string name="price_before_discount">السعر قبل الحسم</string>
+    <string name="coupon_value">قيمة القسيمة</string>
 
 </resources>
