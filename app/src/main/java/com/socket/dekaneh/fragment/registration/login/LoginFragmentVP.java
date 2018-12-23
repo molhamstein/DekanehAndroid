@@ -8,6 +8,7 @@ public class LoginFragmentVP {
     public interface View extends BaseView {
 
         void startMainActivity();
+        void finish();
 
     }
 

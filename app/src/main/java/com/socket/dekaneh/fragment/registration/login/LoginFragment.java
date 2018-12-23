@@ -16,6 +16,7 @@ import com.socket.dekaneh.base.BaseFragment;
 import com.socket.dekaneh.custom.DekanehInterpolator;
 import com.socket.dekaneh.fragment.registration.forgetPassword.ForgotPasswordFragment;
 import com.socket.dekaneh.fragment.registration.new_account.NewAccountFragment;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -111,6 +112,12 @@ public class LoginFragment extends BaseFragment implements LoginFragmentVP.View 
     @Override
     public void startMainActivity() {
         MainActivity.start(getContext());
+    }
+
+    @Override
+    public void finish() {
+        if (getActivity() != null)
+            getActivity().finish();
     }
 
     private void performOutAnimation(AnimationListener.Stop onStop) {

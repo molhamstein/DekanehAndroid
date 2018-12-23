@@ -59,6 +59,7 @@ public class LoginFragmentPresenter<T extends LoginFragmentVP.View> extends Base
                                     getCacheStore().getSession().setUser(loginResponse.getUser(), loginResponse.getId());
                                     getView().hideLoading();
                                     getView().startMainActivity();
+                                    getView().finish();
                                 } else {
                                     getView().showMessage(R.string.activate_account_error);
                                     getView().hideLoading();
