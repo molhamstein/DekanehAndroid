@@ -18,7 +18,7 @@ class ApiEndPoint {
     static final String CATEGORIES = BuildConfig.BASE_API_URL + "categories";
     static final String FEATURED_OFFERS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"and\":[{\"isOffer\":\"true\"}, {\"isFeatured\":\"true\"}]}}";
     static final String FEATURED_PRODUCTS = BuildConfig.BASE_API_URL + "products/productsFeatured";
-    static final String OFFERS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"and\":[{\"isOffer\":\"true\"}]}}";
+    static final String OFFERS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"and\":[{\"isOffer\":\"true\"},{\"status\":\"available\"}]}}";
     static final String ORDERS = BuildConfig.BASE_API_URL + "orders";
     static final String CURRENT_ORDERS = ORDERS + "?filter={\"where\":{\"and\":[{\"or\": [{\"status\":\"inDelivery\"},{\"status\":\"pending\"}]},{\"clientId\":\"{clientId}\"}]}}";
     static final String PAST_ORDERS = ORDERS +    "?filter={\"where\":{\"and\":[{\"or\": [{\"status\":\"canceled\"},{\"status\":\"delivered\"}]},{\"clientId\":\"{clientId}\"}]}}";
