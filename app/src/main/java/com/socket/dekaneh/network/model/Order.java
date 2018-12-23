@@ -22,6 +22,9 @@ public class Order implements Serializable {
     @SerializedName("totalPrice")
     @Expose
     private int totalPrice;
+    @SerializedName("priceBeforeCoupon")
+    @Expose
+    private int priceBeforeCoupon;
     @SerializedName("clientType")
     @Expose
     private String clientType;
@@ -43,6 +46,10 @@ public class Order implements Serializable {
     @SerializedName("orderProducts")
     @Expose
     private List<CartItem> products;
+    @SerializedName("coupon")
+    @Expose
+    private Coupon coupon;
+
 
     public Order(int totalPrice, String clientId, List<CartItem> items) {
         this.clientId = clientId;
@@ -92,6 +99,18 @@ public class Order implements Serializable {
 
     public List<CartItem> getItems() {
         return products;
+    }
+
+    public Coupon getCoupon() {
+        return coupon;
+    }
+
+    public int getPriceBeforeCoupon() {
+        return priceBeforeCoupon;
+    }
+
+    public boolean isCouponExist() {
+        return priceBeforeCoupon != totalPrice;
     }
 
     @Override

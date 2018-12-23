@@ -168,5 +168,9 @@
     <string name="add_notes">Add notes</string>
     <string name="todo" translatable="false">TODO</string>
     <string name="after_order_msg">Your order will be delivered in 24 buisiness hours..</string>
+    <string name="in_delivery">In delivery</string>
+    <string name="calnceled">Canceled</string>
+    <string name="price_before_discount">Price before discount</string>
+    <string name="coupon_value">Coupon value</string>
 
 </resources>

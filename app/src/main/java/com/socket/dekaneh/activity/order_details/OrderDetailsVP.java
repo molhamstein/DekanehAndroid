@@ -5,6 +5,7 @@ import java.util.List;
 import com.socket.dekaneh.base.BasePresenter;
 import com.socket.dekaneh.base.BaseView;
 import com.socket.dekaneh.network.model.CartItem;
+import com.socket.dekaneh.network.model.Coupon;
 
 public class OrderDetailsVP {
 
@@ -13,6 +14,8 @@ public class OrderDetailsVP {
         void updateView(String id, String creationDate, String status, String total);
         void edit(boolean edit);
         void finish();
+        void addCoupon(String code, String value, String priceBeforeDiscount);
+
     }
 
     public interface Presenter<T extends BaseView> extends BasePresenter<T> {

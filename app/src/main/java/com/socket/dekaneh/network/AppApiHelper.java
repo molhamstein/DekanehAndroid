@@ -179,6 +179,7 @@ public class AppApiHelper {
 
     public static Single<Order> getOrderDetails(String orderId, String accessToken) {
         return Rx2AndroidNetworking.get(ApiEndPoint.ORDER)
+                .addQueryParameter("filter", "{\"include\":[\"coupon\"]}")
                 .addPathParameter("id", orderId)
                 .addHeaders("Authorization", accessToken)
                 .build()

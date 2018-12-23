@@ -19,6 +19,7 @@ import com.socket.dekaneh.R;
 import com.socket.dekaneh.adapter.OrderDetailsItemsAdapter;
 import com.socket.dekaneh.base.BaseActivity;
 import com.socket.dekaneh.network.model.CartItem;
+import com.socket.dekaneh.network.model.Coupon;
 import com.socket.dekaneh.network.model.Order;
 import com.socket.dekaneh.utils.GsonUtils;
 import butterknife.BindView;
@@ -47,6 +48,14 @@ public class OrderDetailsActivity extends BaseActivity implements OrderDetailsVP
     TextView total;
     MenuItem edit;
     MenuItem submit;
+    @BindView(R.id.couponLayout)
+    View couponLayout;
+    @BindView(R.id.orderCouponCode)
+    TextView orderCouponCode;
+    @BindView(R.id.orderPriceBeforeDiscount)
+    TextView orderPriceBeforeDiscount;
+    @BindView(R.id.orderCouponValue)
+    TextView orderCouponValue;
 
 
     public static void start(Context context, Order order) {
@@ -136,5 +145,13 @@ public class OrderDetailsActivity extends BaseActivity implements OrderDetailsVP
             this.edit.setVisible(true);
             adapter.setEditing(false);
         }
+    }
+
+    @Override
+    public void addCoupon(String code, String value, String priceBeforeDiscount) {
+        couponLayout.setVisibility(View.VISIBLE);
+        orderCouponCode.setText(code);
+        orderPriceBeforeDiscount.setText(priceBeforeDiscount);
+        orderCouponValue.setText(value);
     }
 }

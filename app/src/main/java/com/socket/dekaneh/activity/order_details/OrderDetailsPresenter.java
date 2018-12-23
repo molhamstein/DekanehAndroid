@@ -8,17 +8,20 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.androidnetworking.error.ANError;
+import com.socket.dekaneh.R;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
 import com.socket.dekaneh.network.AppApiHelper;
 import com.socket.dekaneh.network.CacheStore;
 import com.socket.dekaneh.network.model.CartItem;
+import com.socket.dekaneh.network.model.Coupon;
 import com.socket.dekaneh.network.model.Order;
 import com.socket.dekaneh.network.model.OrderRequest;
 import com.socket.dekaneh.network.model.Orderitem;
 import com.socket.dekaneh.utils.AppDateUtils;
 import com.socket.dekaneh.utils.GsonUtils;
 import com.socket.dekaneh.utils.NetworkUtils;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -51,7 +54,11 @@ public class OrderDetailsPresenter<T extends OrderDetailsVP.View> extends BasePr
                             public void accept(Order order) throws Exception {
                                 getView().updateAllItems(order.getItems());
                                 getView().updateView(String.valueOf(order.getId()), AppDateUtils.dateToString(order.getOrderDate()),
-                                        order.getStatus().toString(), String.valueOf(order.getTotalPrice()));
+                                        getStuats(order.getStatus()), String.valueOf(order.getTotalPrice()));
+                                if (order.isCouponExist()) {
+                                    String couponValue = order.getCoupon().getType() == Coupon.Type.fixed ? String.valueOf(order.getCoupon().getValue()) : String.valueOf(order.getCoupon().getValue() + " %");
+                                    getView().addCoupon(order.getCoupon().getCode(), couponValue, String.valueOf(order.getPriceBeforeCoupon()));
+                                }
                                 getView().hideLoading();
                             }
                         }, new Consumer<Throwable>() {
@@ -101,5 +108,19 @@ public class OrderDetailsPresenter<T extends OrderDetailsVP.View> extends BasePr
     @Override
     public void updateProducts(List<CartItem> items) {
         this.order.setProducts(items);
+    }
+
+
+    private String getStuats(Order.Status status) {
+        switch (status) {
+            case pending:
+                return getView().getContext().getString(R.string.pending);
+            case inDelivery:
+                return getView().getContext().getString(R.string.in_delivery);
+            case delivered:
+                return getView().getContext().getString(R.string.delivered);
+            default:
+                return getView().getContext().getString(R.string.calnceled);
+        }
     }
 }
