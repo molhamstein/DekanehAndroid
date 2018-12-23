@@ -19,11 +19,11 @@ public class DockaanFirebaseMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
         String action = remoteMessage.getData().get("openActivity");
-        if (!action.isEmpty() && action.toLowerCase().equals("rating".toLowerCase())) {
-            startActivity(new Intent(this, RatingActivity.class));
-        }
+        if (action != null)
+            if (!action.isEmpty() && action.toLowerCase().equals("rating".toLowerCase())) {
+                startActivity(new Intent(this, RatingActivity.class));
+            }
     }
-
 
 
     @Override

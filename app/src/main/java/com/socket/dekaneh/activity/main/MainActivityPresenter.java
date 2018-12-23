@@ -131,7 +131,7 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
 
     @Override
     public void updateFirebaseToken() {
-        if (!isNetworkConnected()) {
+        if (isNetworkConnected()) {
 
             FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
                 @Override
