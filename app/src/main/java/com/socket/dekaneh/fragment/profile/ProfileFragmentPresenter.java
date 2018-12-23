@@ -59,6 +59,7 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
                                 public void accept(Throwable throwable) throws Exception {
                                     getView().hideLoading();
                                     Log.e(TAG, "accept: ", throwable);
+                                    handleApiError((ANError) throwable);
                                 }
                             })
             );
@@ -77,16 +78,13 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
                             .subscribe(new Consumer<User>() {
                                 @Override
                                 public void accept(User user) throws Exception {
-                                    Log.d(TAG, "accept: " + user.getOwnerName());
                                 }
                             }, new Consumer<Throwable>() {
                                 @Override
                                 public void accept(Throwable throwable) throws Exception {
                                     Log.e(TAG, "accept: ", throwable);
-                                    if (throwable instanceof ANError) {
-                                        ANError error = (ANError) throwable;
-                                        Log.e(TAG, "accept: " + error.getErrorBody(), error);
-                                    }
+                                    handleApiError((ANError) throwable);
+                                    getView().hideLoading();
                                 }
                             })
             );
@@ -115,6 +113,7 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
                                 public void accept(Throwable throwable) throws Exception {
                                     getView().hideLoading();
                                     Log.e(TAG, "accept: ", throwable);
+                                    handleApiError((ANError) throwable);
                                 }
                             })
             );

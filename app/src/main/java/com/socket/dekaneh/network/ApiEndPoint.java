@@ -20,8 +20,8 @@ class ApiEndPoint {
     static final String FEATURED_PRODUCTS = BuildConfig.BASE_API_URL + "products/productsFeatured";
     static final String OFFERS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"and\":[{\"isOffer\":\"true\"}]}}";
     static final String ORDERS = BuildConfig.BASE_API_URL + "orders";
-    static final String CURRENT_ORDERS = ORDERS + "?filter={\"where\":{\"and\":[{\"status\":\"pending\"},{\"status\":\"inDelivery\"},{\"clientId\":\"{clientId}\"}]}}";
-    static final String PAST_ORDERS = ORDERS + "?filter={\"where\":{\"and\":[{\"status\":\"delivered\"},{\"status\":\"canceled\"},{{\"clientId\":\"{clientId}\"}]}}";
+    static final String CURRENT_ORDERS = ORDERS + "?filter={\"where\":{\"and\":[{\"or\": [{\"status\":\"inDelivery\"},{\"status\":\"pending\"}]},{\"clientId\":\"{clientId}\"}]}}";
+    static final String PAST_ORDERS = ORDERS +    "?filter={\"where\":{\"and\":[{\"or\": [{\"status\":\"canceled\"},{\"status\":\"delivered\"}]},{\"clientId\":\"{clientId}\"}]}}";
     static final String TOP_SLIDERS = BuildConfig.BASE_API_URL + "topSliders?filter[where][status]=activated";
     static final String GROUPED_BY_MANUFACTURERS = BuildConfig.BASE_API_URL + "products/groupedByManufacturers";
     static final String SUB_CATEGORIES = CATEGORIES + "/{id}/subCategories";
