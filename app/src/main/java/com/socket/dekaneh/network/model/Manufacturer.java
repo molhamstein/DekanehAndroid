@@ -9,7 +9,7 @@ import java.util.List;
 public class Manufacturer implements Serializable {
 
     public static final String TAG = Manufacturer.class.getSimpleName();
-    @SerializedName("_id")
+    @SerializedName("id")
     @Expose
     private String id;
     @SerializedName("nameAr")
