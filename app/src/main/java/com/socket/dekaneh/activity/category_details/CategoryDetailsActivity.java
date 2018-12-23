@@ -77,7 +77,6 @@ public class CategoryDetailsActivity extends BaseActivity implements CategoryDet
             }
         });
 
-//        productsRV.setNestedScrollingEnabled(false);
 
     }
 
@@ -106,5 +105,13 @@ public class CategoryDetailsActivity extends BaseActivity implements CategoryDet
     @Override
     public void setTitle(String title) {
         toolbarTitle.setText(title);
+    }
+
+    @Override
+    protected void onResume() {
+        if (manufacturersAdapter != null) {
+            manufacturersAdapter.notifyDataSetChanged();
+        }
+        super.onResume();
     }
 }
