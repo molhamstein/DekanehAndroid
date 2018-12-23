@@ -1,14 +1,9 @@
 package com.socket.dekaneh.fragment.registration.new_account;
 
-import android.util.Log;
+import android.content.Context;
 
 import com.androidnetworking.error.ANError;
 import com.github.florent37.viewanimator.AnimationListener;
-
-import java.util.List;
-
-import javax.inject.Inject;
-
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
@@ -17,8 +12,13 @@ import com.socket.dekaneh.network.CacheStore;
 import com.socket.dekaneh.network.model.Area;
 import com.socket.dekaneh.network.model.SignUpRequest;
 import com.socket.dekaneh.network.model.User;
-import com.socket.dekaneh.utils.NetworkUtils;
 import com.socket.dekaneh.utils.ValidationUtils;
+import com.socket.dekaneh.utils.ViewUtils;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -103,5 +103,10 @@ public class NewAccountFragmentPresenter<T extends NewAccountFragmentVP.View> ex
         );
     }
 
+
+    @Override
+    public void openUrl() {
+        ViewUtils.openUrl(getView().getContext(), "http://dockaan.com/privacy");
+    }
 
 }

@@ -20,5 +20,6 @@ public class NewAccountFragmentVP {
     public interface Presenter<T extends BaseView> extends BasePresenter<T> {
         void signUp(String phoneNumber, String storeName, String ownerName, String location, String password, int areaPos);
         void fetchAreas();
+        void openUrl();
     }
 }

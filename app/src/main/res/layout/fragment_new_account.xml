@@ -222,7 +222,7 @@
                 android:theme="@style/WhiteCheckBox" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/privacyPolicyText"
                 style="@style/WhiteRegularTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

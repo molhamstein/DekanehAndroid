@@ -61,6 +61,7 @@ public class NewAccountFragment extends BaseFragment implements NewAccountFragme
     @BindView(R.id.password)
     EditText password;
 
+
     public NewAccountFragment() {
     }
 
@@ -166,6 +167,11 @@ public class NewAccountFragment extends BaseFragment implements NewAccountFragme
     @Override
     public void onSuccessfulSignUp() {
         navigationPresenter.replaceFragment(SubmitAccountFragment.newInstance());
+    }
+
+    @OnClick(R.id.privacyPolicyText)
+    public void onPrivacyPolicyTextClicked() {
+        presenter.openUrl();
     }
 
 }
