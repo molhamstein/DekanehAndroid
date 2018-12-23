@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">دَكّان</string>
+    <string name="app_name">دُكّان</string>
     <string name="phone_number">رقم الموبايل</string>
     <string name="password">كلمة السر</string>
     <string name="forgot_password">نسيت كلمة السر؟</string>
@@ -46,7 +46,7 @@
     <string name="contact_us">اتصل بنا</string>
     <string name="notifications">الاشعارات</string>
     <string name="owner_name">اسم المالك</string>
-    <string name="do_you_like_our_service">كيف وجدت خدمات دكانة؟</string>
+    <string name="do_you_like_our_service">كيف وجدت خدمات دُكّان؟</string>
     <string name="your_rating_will_help_us_improve_our_services">تقييمك سيساعدنا على تحسين خدماتنا باستمرار</string>
     <string name="great">رائعة</string>
     <string name="ok">مقبولة</string>
