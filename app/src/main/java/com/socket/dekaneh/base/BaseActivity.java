@@ -104,6 +104,11 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
     }
 
     @Override
+    public Context getContext() {
+        return getApplicationContext();
+    }
+
+    @Override
     public void onLanguageChange() {
         this.recreate();
     }

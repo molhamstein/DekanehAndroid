@@ -6,6 +6,7 @@
     android:layout_gravity="center"
     android:clickable="true"
     android:focusable="true"
+    android:layout_marginStart="16dp"
     android:foreground="?attr/selectableItemBackgroundBorderless">
 
 

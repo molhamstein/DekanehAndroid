@@ -40,76 +40,84 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
 
     @Override
     public void fetchOrders() {
-        getView().showLoading();
-        getCompositeDisposable().add(
-                AppApiHelper.getCurrentOrders(getCacheStore().getSession().getUserId(), getCacheStore().getSession().getAccessToken())
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<Order>>() {
-                    @Override
-                    public void accept(List<Order> orders) throws Exception {
+        if (isNetworkConnected()) {
+            getView().showLoading();
+            getCompositeDisposable().add(
+                    AppApiHelper.getCurrentOrders(getCacheStore().getSession().getUserId(), getCacheStore().getSession().getAccessToken())
+                            .subscribeOn(getSchedulerProvider().io())
+                            .observeOn(getSchedulerProvider().ui())
+                            .subscribe(new Consumer<List<Order>>() {
+                                @Override
+                                public void accept(List<Order> orders) throws Exception {
 
-                        getView().hideLoading();
-                        getView().addOrders(orders);
+                                    getView().hideLoading();
+                                    getView().addOrders(orders);
 
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        getView().hideLoading();
-                        Log.e(TAG, "accept: ", throwable);
-                    }
-                })
-        );
+                                }
+                            }, new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    getView().hideLoading();
+                                    Log.e(TAG, "accept: ", throwable);
+                                }
+                            })
+            );
+        }
     }
 
     @Override
     public void patchUser() {
-        getView().showLoading();
-        getCompositeDisposable().add(
-                AppApiHelper.patchUser(getCacheStore().getSession().getUser(), getCacheStore().getSession().getAccessToken())
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<User>() {
-                    @Override
-                    public void accept(User user) throws Exception {
-                        Log.d(TAG, "accept: " + user.getOwnerName());
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        Log.e(TAG, "accept: ", throwable);
-                        if (throwable instanceof ANError) {
-                            ANError error = (ANError) throwable;
-                            Log.e(TAG, "accept: " + error.getErrorBody(), error);
-                        }
-                    }
-                })
-        );
+        if (isNetworkConnected()) {
+
+            getView().showLoading();
+            getCompositeDisposable().add(
+                    AppApiHelper.patchUser(getCacheStore().getSession().getUser(), getCacheStore().getSession().getAccessToken())
+                            .subscribeOn(getSchedulerProvider().io())
+                            .observeOn(getSchedulerProvider().ui())
+                            .subscribe(new Consumer<User>() {
+                                @Override
+                                public void accept(User user) throws Exception {
+                                    Log.d(TAG, "accept: " + user.getOwnerName());
+                                }
+                            }, new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    Log.e(TAG, "accept: ", throwable);
+                                    if (throwable instanceof ANError) {
+                                        ANError error = (ANError) throwable;
+                                        Log.e(TAG, "accept: " + error.getErrorBody(), error);
+                                    }
+                                }
+                            })
+            );
+        }
     }
 
     @Override
     public void fetchPastOrders() {
-        getView().showLoading();
-        getCompositeDisposable().add(
-                AppApiHelper.getPastOrders(getCacheStore().getSession().getUserId(), getCacheStore().getSession().getAccessToken())
-                        .subscribeOn(getSchedulerProvider().io())
-                        .observeOn(getSchedulerProvider().ui())
-                        .subscribe(new Consumer<List<Order>>() {
-                            @Override
-                            public void accept(List<Order> orders) throws Exception {
+        if (isNetworkConnected()) {
 
-                                getView().hideLoading();
-                                getView().addOrders(orders);
+            getView().showLoading();
+            getCompositeDisposable().add(
+                    AppApiHelper.getPastOrders(getCacheStore().getSession().getUserId(), getCacheStore().getSession().getAccessToken())
+                            .subscribeOn(getSchedulerProvider().io())
+                            .observeOn(getSchedulerProvider().ui())
+                            .subscribe(new Consumer<List<Order>>() {
+                                @Override
+                                public void accept(List<Order> orders) throws Exception {
 
-                            }
-                        }, new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
-                                getView().hideLoading();
-                                Log.e(TAG, "accept: ", throwable);
-                            }
-                        })
-        );
+                                    getView().hideLoading();
+                                    getView().addOrders(orders);
+
+                                }
+                            }, new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    getView().hideLoading();
+                                    Log.e(TAG, "accept: ", throwable);
+                                }
+                            })
+            );
+        }
     }
 }

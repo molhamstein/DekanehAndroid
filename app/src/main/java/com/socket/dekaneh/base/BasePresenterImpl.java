@@ -4,13 +4,13 @@ import android.util.Log;
 
 import com.androidnetworking.common.ANConstants;
 import com.androidnetworking.error.ANError;
-
-import javax.inject.Inject;
-
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.network.AppApiHelper;
 import com.socket.dekaneh.network.CacheStore;
+import com.socket.dekaneh.utils.NetworkUtils;
+
+import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -33,6 +33,10 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
     @Override
     public void onAttach(T mvpView) {
         this.view = mvpView;
+        if (!isNetworkConnected()) {
+            compositeDisposable.dispose();
+            getView().hideLoading();
+        }
     }
 
     @Override
@@ -99,6 +103,10 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
     @Override
     public void updateCartItemsCountText() {
         getView().updateMainActivityCartItemsCount(String.valueOf(getCacheStore().getCartItems().size()));
+    }
+
+    public boolean isNetworkConnected() {
+        return NetworkUtils.isNetworkConnected(getView().getContext());
     }
 
     public static class MvpViewNotAttachedException extends RuntimeException {

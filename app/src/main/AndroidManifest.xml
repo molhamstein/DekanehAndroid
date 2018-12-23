@@ -17,7 +17,6 @@
         android:supportsRtl="true"
         android:testOnly="false"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
         tools:replace="android:allowBackup">
         <service android:name=".DockaanFirebaseMessagingService">
             <intent-filter>

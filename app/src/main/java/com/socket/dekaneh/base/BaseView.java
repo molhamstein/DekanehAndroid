@@ -1,5 +1,6 @@
 package com.socket.dekaneh.base;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.StringRes;
 
@@ -25,6 +26,6 @@ public interface BaseView {
 
     void updateMainActivityCartItemsCount(String count);
 
-
+    Context getContext();
 
 }

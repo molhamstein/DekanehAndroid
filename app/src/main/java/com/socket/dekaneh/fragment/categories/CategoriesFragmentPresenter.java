@@ -1,7 +1,9 @@
 package com.socket.dekaneh.fragment.categories;
 
 import java.util.List;
+
 import javax.inject.Inject;
+
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
 import com.socket.dekaneh.network.AppApiHelper;
@@ -21,33 +23,33 @@ public class CategoriesFragmentPresenter<T extends CategoriesFragmentVP.View> ex
     @Override
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
-        if (getCacheStore().getCategories() != null)
-            getView().addCategories(getCacheStore().getCategories());
-        else fetchCategories();
-
+        fetchCategories();
     }
 
     @Override
     public void fetchCategories() {
-        getCompositeDisposable().add(
-                AppApiHelper.getCategories(getCacheStore().getSession().getAccessToken())
-                        .subscribeOn(getSchedulerProvider().io())
-                        .observeOn(getSchedulerProvider().ui())
-                        .subscribe(new Consumer<List<Category>>() {
-                            @Override
-                            public void accept(List<Category> categories) throws Exception {
+        if (getCacheStore().getCategories() != null)
+            getView().addCategories(getCacheStore().getCategories());
+        if (isNetworkConnected()) {
+            getCompositeDisposable().add(
+                    AppApiHelper.getCategories(getCacheStore().getSession().getAccessToken())
+                            .subscribeOn(getSchedulerProvider().io())
+                            .observeOn(getSchedulerProvider().ui())
+                            .subscribe(new Consumer<List<Category>>() {
+                                @Override
+                                public void accept(List<Category> categories) throws Exception {
 
-                                getView().addCategories(categories);
-                                getCacheStore().cacheCategories(categories);
+                                    getView().addCategories(categories);
+                                    getCacheStore().cacheCategories(categories);
 
-                            }
-                        }, new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
+                                }
+                            }, new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
 
-                            }
-                        })
-        );
-
+                                }
+                            })
+            );
+        }
     }
 }

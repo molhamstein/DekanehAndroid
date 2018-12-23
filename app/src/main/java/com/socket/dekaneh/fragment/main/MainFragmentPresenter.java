@@ -31,16 +31,9 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
 
     private void updateFromCacheOrNetwork() {
         fetchFeaturedProducts();
-        if (getCacheStore().getHomeCategories() != null) {
-            getView().addCategoriesWithProducts(getCacheStore().getHomeCategories());
-        } else {
-            fetchCategories();
-        }
-        if (getCacheStore().getFeaturedOffers() != null) {
-            getView().addFeaturedOffers(getCacheStore().getFeaturedOffers());
-        } else {
-            fetchFeaturedOffers();
-        }
+        fetchFeaturedOffers();
+        fetchCategories();
+        fetchSliderImages();
     }
 
     @Override
@@ -51,108 +44,122 @@ public class MainFragmentPresenter<T extends MainFragmentVP.View> extends BasePr
 
     @Override
     public void fetchCategories() {
-        getView().showLoading();
-        getCompositeDisposable().add(
-                AppApiHelper.getHomeCategories(getCacheStore().getSession().getAccessToken())
-                        .subscribeOn(getSchedulerProvider().io())
-                        .observeOn(getSchedulerProvider().ui())
-                        .subscribe(new Consumer<List<HomeCategory>>() {
-                                       @Override
-                                       public void accept(List<HomeCategory> homeCategories) throws Exception {
-                                           getView().addCategoriesWithProducts(homeCategories);
-                                           getCacheStore().cacheHomeCategories(homeCategories);
-                                           getView().hideLoading();
+        if (getCacheStore().getHomeCategories() != null)
+            getView().addCategoriesWithProducts(getCacheStore().getHomeCategories());
+        if (isNetworkConnected()) {
+            getView().showLoading();
+            getCompositeDisposable().add(
+                    AppApiHelper.getHomeCategories(getCacheStore().getSession().getAccessToken())
+                            .subscribeOn(getSchedulerProvider().io())
+                            .observeOn(getSchedulerProvider().ui())
+                            .subscribe(new Consumer<List<HomeCategory>>() {
+                                           @Override
+                                           public void accept(List<HomeCategory> homeCategories) throws Exception {
+                                               getView().addCategoriesWithProducts(homeCategories);
+                                               getCacheStore().cacheHomeCategories(homeCategories);
+                                               getView().hideLoading();
 
+                                           }
+                                       }, new Consumer<Throwable>() {
+                                           @Override
+                                           public void accept(Throwable throwable) throws Exception {
+                                               handleApiError((ANError) throwable);
+                                               getView().hideLoading();
+                                               Log.e(TAG, "accept: fetchCategories");
+                                           }
                                        }
-                                   }, new Consumer<Throwable>() {
-                                       @Override
-                                       public void accept(Throwable throwable) throws Exception {
-                                           handleApiError((ANError) throwable);
-                                           getView().hideLoading();
-                                           Log.e(TAG, "accept: fetchCategories");
-                                       }
-                                   }
-                        )
-        );
+                            )
+            );
+        }
     }
 
     @Override
     public void fetchFeaturedOffers() {
-        getView().showLoading();
-        getCompositeDisposable().add(
-                AppApiHelper.getFeaturedOffers(getCacheStore().getSession().getAccessToken())
-                        .subscribeOn(getSchedulerProvider().io())
-                        .observeOn(getSchedulerProvider().ui())
-                        .subscribe(new Consumer<List<Offer>>() {
-                            @Override
-                            public void accept(List<Offer> offers) throws Exception {
+        if (getCacheStore().getFeaturedOffers() != null)
+            getView().addFeaturedOffers(getCacheStore().getFeaturedOffers());
+        if (isNetworkConnected()) {
+            getView().showLoading();
+            getCompositeDisposable().add(
+                    AppApiHelper.getFeaturedOffers(getCacheStore().getSession().getAccessToken())
+                            .subscribeOn(getSchedulerProvider().io())
+                            .observeOn(getSchedulerProvider().ui())
+                            .subscribe(new Consumer<List<Offer>>() {
+                                @Override
+                                public void accept(List<Offer> offers) throws Exception {
 
-                                getView().hideLoading();
-                                getView().addFeaturedOffers(offers);
-                                getCacheStore().cacheFeaturedOffers(offers);
+                                    getView().hideLoading();
+                                    getView().addFeaturedOffers(offers);
+                                    getCacheStore().cacheFeaturedOffers(offers);
 
 
-                            }
-                        }, new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
-                                Log.e(TAG, "accept: fetchFeaturedOffers", throwable);
-                                handleApiError((ANError) throwable);
-                                getView().hideLoading();
-                            }
-                        })
-        );
+                                }
+                            }, new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    Log.e(TAG, "accept: fetchFeaturedOffers", throwable);
+                                    handleApiError((ANError) throwable);
+                                    getView().hideLoading();
+                                }
+                            })
+            );
+        }
     }
 
     @Override
     public void fetchFeaturedProducts() {
-        getView().showLoading();
-        getCompositeDisposable().add(
-                AppApiHelper.getFeaturedProducts(getCacheStore().getSession().getAccessToken())
-                        .subscribeOn(getSchedulerProvider().io())
-                        .observeOn(getSchedulerProvider().ui())
-                        .subscribe(new Consumer<List<Product>>() {
-                            @Override
-                            public void accept(List<Product> products) throws Exception {
+        if (isNetworkConnected()) {
 
-                                getView().hideLoading();
-                                getView().addFeaturedProducts(products);
+            getView().showLoading();
+            getCompositeDisposable().add(
+                    AppApiHelper.getFeaturedProducts(getCacheStore().getSession().getAccessToken())
+                            .subscribeOn(getSchedulerProvider().io())
+                            .observeOn(getSchedulerProvider().ui())
+                            .subscribe(new Consumer<List<Product>>() {
+                                @Override
+                                public void accept(List<Product> products) throws Exception {
+
+                                    getView().hideLoading();
+                                    getView().addFeaturedProducts(products);
 
 
-                            }
-                        }, new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
-                                Log.e(TAG, "accept: fetchFeaturedProducts");
-                                handleApiError((ANError) throwable);
-                                getView().hideLoading();
-                            }
-                        })
-        );
+                                }
+                            }, new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    Log.e(TAG, "accept: fetchFeaturedProducts");
+                                    handleApiError((ANError) throwable);
+                                    getView().hideLoading();
+                                }
+                            })
+            );
+        }
     }
 
     @Override
     public void fetchSliderImages() {
-        getView().showLoading();
-        getCompositeDisposable().add(
-                AppApiHelper.getSliderImages(getCacheStore().getSession().getAccessToken())
-                        .subscribeOn(getSchedulerProvider().io())
-                        .observeOn(getSchedulerProvider().ui())
-                        .subscribe(new Consumer<List<SliderImage>>() {
-                            @Override
-                            public void accept(List<SliderImage> sliderImages) throws Exception {
-                                getView().addSliderImages(sliderImages);
-                                getView().hideLoading();
-                            }
-                        }, new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
-                                Log.e(TAG, "accept: fetchSliderImages");
-                                handleApiError((ANError) throwable);
-                                getView().hideLoading();
-                            }
-                        })
-        );
+        if (isNetworkConnected()) {
+
+            getView().showLoading();
+            getCompositeDisposable().add(
+                    AppApiHelper.getSliderImages(getCacheStore().getSession().getAccessToken())
+                            .subscribeOn(getSchedulerProvider().io())
+                            .observeOn(getSchedulerProvider().ui())
+                            .subscribe(new Consumer<List<SliderImage>>() {
+                                @Override
+                                public void accept(List<SliderImage> sliderImages) throws Exception {
+                                    getView().addSliderImages(sliderImages);
+                                    getView().hideLoading();
+                                }
+                            }, new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    Log.e(TAG, "accept: fetchSliderImages");
+                                    handleApiError((ANError) throwable);
+                                    getView().hideLoading();
+                                }
+                            })
+            );
+        }
     }
 
     @Override

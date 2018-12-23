@@ -24,9 +24,9 @@ public class SplashActivity extends BaseActivity implements SplashActivityVP.Vie
         }
 
         presenter.onAttach(this);
-        if (NetworkUtils.isNetworkConnected(this)) {
-            presenter.clearCache();
-        }
+//        if (NetworkUtils.isNetworkConnected(this)) {
+//            presenter.clearCache();
+//        }
 
         RegistrationActivity.start(this);
         finish();
