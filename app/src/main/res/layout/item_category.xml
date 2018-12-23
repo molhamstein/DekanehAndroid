@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<com.socket.dekaneh.custom_views.SquareView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:orientation="vertical"
-    >
+    android:layout_height="match_parent">
+
 
     <ImageView
         android:id="@+id/categoryImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:contentDescription="@string/todo"
+        android:scaleType="centerCrop" />
+
 
     <TextView
         android:id="@+id/category_title"
+        style="@style/PrimaryBlackTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/offers"
-        android:layout_marginTop="-8dp"
-        android:padding="8dp"
-        style="@style/PrimaryBlackTextView"
-        android:textSize="22sp"
         android:lineSpacingMultiplier=".7"
-        />
+        android:padding="8dp"
+        android:text="@string/offers"
+        android:textSize="18sp" />
 
-</FrameLayout>
+</com.socket.dekaneh.custom_views.SquareView>

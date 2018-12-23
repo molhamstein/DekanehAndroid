@@ -166,5 +166,6 @@
     <string name="coupon_not_found_error">Coupon Not Found or Date is Expired</string>
     <string name="coupon_in_use_error">Coupon already in use</string>
     <string name="add_notes">Add notes</string>
+    <string name="todo">TODO</string>
 
 </resources>
