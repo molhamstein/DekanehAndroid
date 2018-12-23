@@ -82,7 +82,7 @@
     <string name="address">العنوان</string>
     <string name="terms_and_conditions">وافق على شروط الخدمة</string>
     <string name="activate_account_error">يجب تفعيل حسابك قبل تسجيل الدخول</string>
-    <string name="pending">معلق</string>
+    <string name="pending">قيد المعالجة</string>
     <string name="delivered">تم التوصيل</string>
     <string name="canceled">تم لغي الطلب</string>
     <string name="inDelivery">قيد التوصيل</string>
