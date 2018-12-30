@@ -11,6 +11,9 @@ import com.socket.dekaneh.dagger.ApplicationModule;
 import com.socket.dekaneh.dagger.DaggerApplicationComponent;
 
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 
 
 public class DekanehApp extends Application {
@@ -29,7 +32,9 @@ public class DekanehApp extends Application {
 
         applicationComponent.inject(this);
 
-        AndroidNetworking.initialize(getApplicationContext());
+        OkHttpClient client = new OkHttpClient.Builder().connectTimeout(15, TimeUnit.SECONDS).build();
+
+        AndroidNetworking.initialize(getApplicationContext(), client);
 
         Locale locale = new Locale("ar");
         Locale.setDefault(locale);
