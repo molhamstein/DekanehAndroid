@@ -83,7 +83,7 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
 
     @Override
     public void search(String query) {
-        if (!isNetworkConnected()) {
+        if (isNetworkConnected()) {
             getView().showLoading();
             getCompositeDisposable().add(
                     AppApiHelper.search(query, getCacheStore().getSession().getAccessToken())
