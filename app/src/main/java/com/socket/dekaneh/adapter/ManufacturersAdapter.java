@@ -48,7 +48,7 @@ public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdap
         final Manufacturer manufacturer = manufacturers.get(position);
         holder.setIsRecyclable(false);
         holder.header.setText(manufacturer.getNameAr());
-        ProductsAdapter adapter = new ProductsAdapter(manufacturer.getProducts(), cacheStore, null);
+        ProductsAdapter adapter = new ProductsAdapter(manufacturer.getProducts(), cacheStore, null, false);
         holder.productsRV.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
         holder.productsRV.setAdapter(adapter);
         holder.header.setOnClickListener(new View.OnClickListener() {
