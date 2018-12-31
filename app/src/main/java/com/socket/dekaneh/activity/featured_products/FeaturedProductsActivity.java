@@ -50,7 +50,12 @@ public class FeaturedProductsActivity extends BaseActivity implements FeaturedAc
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
 
-        featuredProductsRV.setLayoutManager(new GridLayoutManager(this, 2));
+        if (getResources().getBoolean(R.bool.isLarge)) {
+            featuredProductsRV.setLayoutManager(new GridLayoutManager(this, 3));
+        }
+        else {
+            featuredProductsRV.setLayoutManager(new GridLayoutManager(this, 2));
+        }
         featuredProductsRV.setAdapter(adapter);
         presenter.fetchProducts();
     }

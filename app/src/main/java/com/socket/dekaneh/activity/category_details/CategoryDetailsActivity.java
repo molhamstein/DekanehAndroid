@@ -77,6 +77,7 @@ public class CategoryDetailsActivity extends BaseActivity implements CategoryDet
             }
         });
 
+        productsRV.setNestedScrollingEnabled(false);
 
     }
 
