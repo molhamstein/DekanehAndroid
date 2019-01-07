@@ -46,7 +46,6 @@ public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdap
     public void onBindViewHolder(@NonNull HomeCategoriesViewHolder holder, int position) {
 
         final Manufacturer manufacturer = manufacturers.get(position);
-        holder.setIsRecyclable(false);
         holder.header.setText(manufacturer.getNameAr());
         ProductsAdapter adapter = new ProductsAdapter(manufacturer.getProducts(), cacheStore, null, false);
         holder.productsRV.setLayoutManager(new LinearLayoutManager(holder.itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -73,8 +72,8 @@ public class ManufacturersAdapter extends RecyclerView.Adapter<ManufacturersAdap
     }
 
     public void addAllManufacturers(List<Manufacturer> manufacturers) {
-        Log.d("CategoryDetailsPresent", "(ADAPTER) addAllManufacturers: " + manufacturers.toString());
         this.manufacturers = manufacturers;
+        Log.d("CategoryDetailsPresent", "(ADAPTER) addAllManufacturers: " + this.manufacturers.size());
         notifyDataSetChanged();
     }
 

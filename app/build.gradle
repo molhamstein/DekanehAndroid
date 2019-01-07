@@ -59,7 +59,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_API_URL", '"http://167.99.214.78/api/"'
             signingConfig signingConfigs.config
-            debuggable false
+            debuggable true
         }
         debug {
             minifyEnabled false
