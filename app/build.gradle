@@ -9,7 +9,7 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 ext.versionMajor = 1 // major change - Api changes or major UI/UX change
 ext.versionMinor = 1 // minor change
-ext.versionPatch = 2 // bug-fixes
+ext.versionPatch = 3 // bug-fixes
 ext.versionClassifier = ''
 ext.minimumSdkVersion = 17
 
@@ -59,13 +59,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_API_URL", '"http://167.99.214.78/api/"'
             signingConfig signingConfigs.config
-            debuggable true
+            debuggable false
         }
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            buildConfigField "String", "BASE_API_URL", '"http://104.217.253.15:3003/api/"'
-            buildConfigField "String", "BASE_API_URL", '"http://192.168.1.5:3000/api/"'
+            buildConfigField "String", "BASE_API_URL", '"http://104.217.253.15:3003/api/"'
+//            buildConfigField "String", "BASE_API_URL", '"http://192.168.1.5:3000/api/"'
         }
     }
 }

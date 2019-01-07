@@ -210,7 +210,6 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="top|end"
-            android:background="@drawable/badge_discount"
             android:gravity="center"
             android:paddingBottom="8dp"
             android:text="10%"

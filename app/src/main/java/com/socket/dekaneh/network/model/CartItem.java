@@ -1,11 +1,13 @@
 package com.socket.dekaneh.network.model;
 
+import android.util.Log;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class CartItem extends Product implements Serializable{
+public class CartItem extends Product implements Serializable {
 
     @SerializedName("count")
     @Expose
@@ -50,7 +52,9 @@ public class CartItem extends Product implements Serializable{
     }
 
     public void addOne() {
-        ++count;
+        Log.d(TAG, "addOne: " + getOfferMaxQuantity());
+        if (getOfferMaxQuantity() > count)
+            ++count;
     }
 
     public void removeOne() {

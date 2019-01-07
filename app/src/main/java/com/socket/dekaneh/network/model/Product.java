@@ -1,5 +1,7 @@
 package com.socket.dekaneh.network.model;
 
+import android.util.Log;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -10,6 +12,7 @@ public class Product implements Serializable {
 
 
     public static final String TAG = Product.class.getSimpleName();
+    public static final int NO_MAX_QUANTITY = -1;
     @SerializedName("id")
     @Expose
     private String id;
@@ -52,6 +55,10 @@ public class Product implements Serializable {
     @SerializedName("isFavorite")
     @Expose
     private boolean favorite;
+    @SerializedName("offerMaxQuantity")
+    @Expose
+    private String offerMaxQuantity;
+
 
 
     @SerializedName("media")
@@ -70,6 +77,9 @@ public class Product implements Serializable {
         this.wholeSalePriceDiscount = product.getWholeSalePriceDiscount();
         if (product.media != null)
             this.media = product.getMedia();
+        this.offerMaxQuantity = product.getOfferMaxQuantityString();
+        this.isOffer = product.isOffer();
+
     }
 
     public Product(Offer offer) {
@@ -79,8 +89,10 @@ public class Product implements Serializable {
         this.horecaPriceDiscount = offer.getHorecaPriceDiscount();
         this.wholeSalePrice = offer.getWholeSalePrice();
         this.wholeSalePriceDiscount = offer.getWholeSalePriceDiscount();
+        this.offerMaxQuantity = offer.getOfferMaxQuantityString();
         if (this.media != null)
             this.media.url = offer.getMedia().url;
+        this.isOffer = offer.isOffer();
     }
 
 
@@ -94,6 +106,8 @@ public class Product implements Serializable {
         this.manufacturer = offer.getManufacturer();
         this.media = media;
         this.description = offer.getDescription();
+        this.offerMaxQuantity = offer.getOfferMaxQuantityString();
+        this.isOffer = offer.isOffer();
     }
 
     public Product(String id) {
@@ -307,5 +321,20 @@ public class Product implements Serializable {
 
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
+    }
+
+    public int getOfferMaxQuantity() {
+        Log.d(TAG, "getOfferMaxQuantity: =  " + offerMaxQuantity + " "  + isOffer);
+        if (isOffer) {
+            try {
+                return Integer.valueOf(offerMaxQuantity);
+
+            } catch(Exception ignored){}
+        }
+        return NO_MAX_QUANTITY;
+    }
+
+    public String getOfferMaxQuantityString() {
+        return offerMaxQuantity;
     }
 }

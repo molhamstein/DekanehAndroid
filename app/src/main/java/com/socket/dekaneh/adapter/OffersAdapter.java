@@ -27,6 +27,7 @@ import com.socket.dekaneh.network.model.Offer;
 import com.socket.dekaneh.network.model.Product;
 import com.socket.dekaneh.network.model.User;
 import com.socket.dekaneh.utils.ViewUtils;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -65,7 +66,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         final Product product = new Product(offer, offer.getMedia());
         final CartItem item = new CartItem(offer);
 
-        for (CartItem mItem : cacheStore.getCartItems())
+        for (CartItem mItem : cacheStore.getCartItems()) {
             if (mItem.getId().equals(item.getId())) {
                 holder.orderNowBtn.setVisibility(View.GONE);
                 holder.orderBtn.setVisibility(View.VISIBLE);
@@ -74,7 +75,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
                 holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                 holder.orderCount.setText(String.valueOf(mItem.getCount()));
             }
-
+        }
         if (offer.getMedia() != null && !offer.getMedia().getUrl().equals(""))
             Picasso.get().load(offer.getMedia().getUrl()).into(holder.image);
         holder.name.setText(offer.getNameAr());
