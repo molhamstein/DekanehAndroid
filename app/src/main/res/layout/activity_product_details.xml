@@ -91,7 +91,7 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="140dp"
                 android:layout_marginTop="24dp">
 
                 <TextView
@@ -99,7 +99,12 @@
                     style="@style/BrownBoldTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="lakjsnd laksdj laksjd lakjsd lajdslkaj dlakj dslkaj sdlak jsdl "
+                    android:lineSpacingMultiplier=".7"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
                     android:textSize="22sp" />
 
                 <TextView
