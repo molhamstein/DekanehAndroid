@@ -39,7 +39,7 @@
             android:layout_marginEnd="100dp"
             android:layout_marginStart="80dp"
             android:text="2*3 علب"
-            android:textSize="16sp" />
+            android:textSize="12sp" />
 
 
 
