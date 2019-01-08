@@ -28,7 +28,7 @@ class ApiEndPoint {
     static final String ORDER = ORDERS + "/{id}";
     static final String NOTIFICATIONS = BuildConfig.BASE_API_URL + "notifications";
     static final String LOGOUT = "users/logout";
-    static final String PRODUCT_OFFERS = PRODUCTS + "/{id}/offers" ;
+    static final String PRODUCT_OFFERS = PRODUCTS_RAW + "/{id}/offers" ;
     static final String SEARCH = PRODUCTS_RAW + "/searchClient" ;
     static final String AREAS = BuildConfig.BASE_API_URL + "areas";
     static final String RATINGS = BuildConfig.BASE_API_URL + "ratings";

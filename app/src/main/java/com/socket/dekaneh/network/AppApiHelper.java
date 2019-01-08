@@ -82,7 +82,8 @@ public class AppApiHelper {
     public static Single<Order> sendOrder(String accessToken, OrderRequest request) {
         return Rx2AndroidNetworking.post(ApiEndPoint.ORDERS)
                 .addApplicationJsonBody(request)
-                .addHeaders("Authorization", accessToken)
+//                .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectSingle(Order.class);
     }

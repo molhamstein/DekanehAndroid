@@ -12,7 +12,8 @@ public class Product implements Serializable {
 
 
     public static final String TAG = Product.class.getSimpleName();
-    public static final int NO_MAX_QUANTITY = -1;
+//    public static final int INFINITE_QUANTITY = -1;
+    public static final int INFINITE_QUANTITY = Integer.MAX_VALUE;
     @SerializedName("id")
     @Expose
     private String id;
@@ -328,10 +329,9 @@ public class Product implements Serializable {
         if (isOffer) {
             try {
                 return Integer.valueOf(offerMaxQuantity);
-
             } catch(Exception ignored){}
         }
-        return NO_MAX_QUANTITY;
+        return INFINITE_QUANTITY;
     }
 
     public String getOfferMaxQuantityString() {
