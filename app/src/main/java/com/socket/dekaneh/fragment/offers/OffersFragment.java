@@ -70,4 +70,11 @@ public class OffersFragment extends BaseFragment implements OffersFragmentVP.Vie
     public void addOffers(List<Offer> offers) {
         offersAdapter.addAllOffers(offers);
     }
+
+    @Override
+    public void onResume() {
+        if (offersAdapter != null)
+            offersAdapter.notifyDataSetChanged();
+        super.onResume();
+    }
 }
