@@ -100,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="lakjsnd laksdj laksjd lakjsd lajdslkaj dlakj dslkaj sdlak jsdl "
+                    android:text=""
                     android:lineSpacingMultiplier=".7"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="12dp"
@@ -273,6 +273,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/offersView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
@@ -288,7 +289,6 @@
                     app:srcCompat="@drawable/seperator" />
 
                 <TextView
-                    android:id="@+id/offersView1"
                     style="@style/PrimaryBlackTextView"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
