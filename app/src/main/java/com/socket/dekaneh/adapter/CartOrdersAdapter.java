@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.socket.dekaneh.utils.ViewUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -61,38 +62,42 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
         holder.plusOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cacheStore.addCartItem(item);
-                item.addOne();
-                notifyDataSetChanged();
-                if (onQuantityChangedListener != null)
-                    onQuantityChangedListener.onChanged(items.isEmpty());
+                if (item.getOfferMaxQuantity() < cacheStore.cartItemCount(item)) {
+                    cacheStore.addCartItem(item);
+                    item.addOne();
+                    notifyDataSetChanged();
+                    if (onQuantityChangedListener != null)
+                        onQuantityChangedListener.onChanged(items.isEmpty());
+                }else {
+                    ViewUtils.showToast(view.getContext(), view.getContext().getString(R.string.max_quantity_reached, cacheStore.cartItemCount(item)));
+                }
             }
         });
 
         holder.minusOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cacheStore.removeCartItem(item);
-                item.removeOne();
-                notifyDataSetChanged();
+                    cacheStore.removeCartItem(item);
+                    item.removeOne();
+                    notifyDataSetChanged();
 
-                if (item.getCount() <= 0) {
-                    items.remove(item);
-                    new Timer().schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            ((BaseActivity)holder.itemView.getContext()).runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    notifyDataSetChanged();
-                                }
-                            });
-                        }
-                    }, 500);
-                }
+                    if (item.getCount() <= 0) {
+                        items.remove(item);
+                        new Timer().schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                ((BaseActivity) holder.itemView.getContext()).runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        notifyDataSetChanged();
+                                    }
+                                });
+                            }
+                        }, 500);
+                    }
 
-                if (onQuantityChangedListener != null)
-                    onQuantityChangedListener.onChanged(items.isEmpty());
+                    if (onQuantityChangedListener != null)
+                        onQuantityChangedListener.onChanged(items.isEmpty());
             }
         });
 

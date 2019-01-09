@@ -55,7 +55,7 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
                         .subscribe(new Consumer<Product>() {
                             @Override
                             public void accept(Product product) throws Exception {
-                                String imageUrl = ProductDetailsPresenter.this.product.getMedia().getUrl();
+                                String imageUrl = product.getMedia().getUrl();
                                 item = new CartItem(ProductDetailsPresenter.this.product);
                                 getView().updateOrderCountText(getCacheStore().cartItemCount(item));
                                 ProductDetailsPresenter.this.product = product;

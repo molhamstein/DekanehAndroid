@@ -315,7 +315,6 @@ public class Product implements Serializable {
             return getWholeSalePrice() != 0 && getWholeSalePriceDiscount() != 0 && getWholeSalePrice() != getWholeSalePriceDiscount();
         }
     }
-
     public boolean isFavorite() {
         return favorite;
     }
@@ -337,4 +336,7 @@ public class Product implements Serializable {
     public String getOfferMaxQuantityString() {
         return offerMaxQuantity;
     }
+
+
+
 }

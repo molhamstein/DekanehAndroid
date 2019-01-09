@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -89,15 +90,19 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         holder.orderNowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.setVisibility(View.GONE);
-                holder.orderBtn.setVisibility(View.VISIBLE);
-                cacheStore.addCartItem(item);
-                holder.expandingBtn.animate().scaleX(1.2f).start();
-                holder.plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
-                holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
-                holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
-                if (onItemCountChange != null) {
-                    onItemCountChange.onChange();
+                if (offer.getOfferMaxQuantity() > cacheStore.cartItemCount(item)) {
+                    view.setVisibility(View.GONE);
+                    holder.orderBtn.setVisibility(View.VISIBLE);
+                    cacheStore.addCartItem(item);
+                    holder.expandingBtn.animate().scaleX(1.2f).start();
+                    holder.plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                    holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                    holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                    if (onItemCountChange != null) {
+                        onItemCountChange.onChange();
+                    }
+                }else {
+                    ViewUtils.showToast(view.getContext(), view.getContext().getString(R.string.max_quantity_reached, cacheStore.cartItemCount(item)));
                 }
             }
         });
@@ -105,40 +110,43 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         holder.plusOneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cacheStore.addCartItem(item);
-                holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
-                if (onItemCountChange != null) {
-                    onItemCountChange.onChange();
+                if(offer.getOfferMaxQuantity() > cacheStore.cartItemCount(item)) {
+                    cacheStore.addCartItem(item);
+                    holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                    if (onItemCountChange != null) {
+                        onItemCountChange.onChange();
+                    }
+                } else {
+                    ViewUtils.showToast(view.getContext(), view.getContext().getString(R.string.max_quantity_reached, cacheStore.cartItemCount(item)));
                 }
-
             }
         });
 
         holder.minusOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (cacheStore.cartItemCount(item) <= 1) {
-                    cacheStore.removeCartItem(item);
-                    holder.expandingBtn.animate().scaleX(1).withEndAction(new Runnable() {
-                        @Override
-                        public void run() {
-                            holder.orderNowBtn.setVisibility(View.VISIBLE);
-                            holder.orderBtn.setVisibility(View.GONE);
-                            holder.plusOneBtn.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
-                            holder.minusOne.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
-                        }
-                    }).start();
+
+                    if (cacheStore.cartItemCount(item) <= 1) {
+                        cacheStore.removeCartItem(item);
+                        holder.expandingBtn.animate().scaleX(1).withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+                                holder.orderNowBtn.setVisibility(View.VISIBLE);
+                                holder.orderBtn.setVisibility(View.GONE);
+                                holder.plusOneBtn.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                                holder.minusOne.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                            }
+                        }).start();
 
 
-                } else {
-                    cacheStore.removeCartItem(item);
-                    holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                    } else {
+                        cacheStore.removeCartItem(item);
+                        holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                    }
+                    if (onItemCountChange != null) {
+                        onItemCountChange.onChange();
+                    }
                 }
-                if (onItemCountChange != null) {
-                    onItemCountChange.onChange();
-                }
-
-            }
         });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -167,7 +175,6 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
     }
 
     private void setPrice(OffersViewHolder holder, int price, int discount) {
-        Log.d("QWEQWE", "setPrice: " + discount);
         if (discount != 0) {
             holder.price.setText(String.valueOf(discount));
             holder.oldPrice.setText(String.valueOf(price));

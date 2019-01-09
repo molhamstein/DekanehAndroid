@@ -116,5 +116,6 @@
     <string name="calnceled">ألغي الطلب</string>
     <string name="price_before_discount">السعر قبل الحسم</string>
     <string name="coupon_value">قيمة القسيمة</string>
+    <string name="max_quantity_reached">لا يمكنك طلب اكثر من %1$d قطعة من هذا العرض في الطلبية الواحدة</string>
 
 </resources>

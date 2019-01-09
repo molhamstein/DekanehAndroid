@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -134,6 +135,7 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
 
     @Override
     public void updateView(final Product product, String imageUrl, boolean isHoreca) {
+        Log.d("ASADSDADAS", "updateView: " + product.toString());
         if (!imageUrl.equals(""))
             Picasso.get().load(imageUrl).into(this.productImage);
         this.name.setText(product.getNameAr());
