@@ -9,6 +9,7 @@ class ApiEndPoint {
     static final String PRODUCTS = BuildConfig.BASE_API_URL + "products?filter={\"where\":{\"status\":\"available\"}}";
     static final String PRODUCTS_RAW = BuildConfig.BASE_API_URL + "products";
     static final String PRODUCTS_MANUFACTURER = BuildConfig.BASE_API_URL + "products/productsManufacturer";
+    static final String MANUFACTURER = BuildConfig.BASE_API_URL + "manufacturers/{id}";
     static final String SINGLE_PRODUCTS = BuildConfig.BASE_API_URL + "products/{id}";
     static final String USERS = BuildConfig.BASE_API_URL + "users";
     static final String EDIT_USERS = BuildConfig.BASE_API_URL + "users/{id}";

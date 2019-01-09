@@ -306,4 +306,14 @@ public class AppApiHelper {
                 .build()
                 .getObjectSingle(Coupon.class);
     }
+
+    public static Single<Manufacturer> fetchManufacturer(String id) {
+        return Rx2AndroidNetworking.put(ApiEndPoint.MANUFACTURER)
+                .addPathParameter("id", id)
+                .build()
+                .getObjectSingle(Manufacturer.class);
+    }
+
+
+
 }

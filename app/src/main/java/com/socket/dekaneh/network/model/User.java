@@ -40,14 +40,19 @@ public class User implements Serializable {
     @SerializedName("gender")
     @Expose
     private String gender;
+    @SerializedName("hideHistory")
+    @Expose
+    private boolean hideHistory;
 
-    public User(String id, String phoneNumber, String email, String clientType, String ownerName, String shopName) {
+
+    public User(String id, String phoneNumber, String email, String clientType, String ownerName, String shopName, boolean hideHistory) {
         this.id = id;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.clientType = clientType.equals(Type.horeca.toString()) ? Type.horeca : Type.wholesale;
         this.ownerName = ownerName;
         this.shopName = shopName;
+        this.hideHistory = hideHistory;
     }
 
     public String getId() {
@@ -96,6 +101,14 @@ public class User implements Serializable {
 
     public enum Status {
         activated, pending, deactivated
+    }
+
+    public boolean isHideHistory() {
+        return hideHistory;
+    }
+
+    public void setHideHistory(boolean hideHistory) {
+        this.hideHistory = hideHistory;
     }
 
     @Override

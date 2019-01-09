@@ -30,7 +30,9 @@ public class ManufacturerActivityPresenter<T extends ManufacturerActivityVP.View
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
         this.manufacturer = GsonUtils.convertJsonStringToManufacturerObject(getView().getIntent().getExtras().getString(Manufacturer.TAG));
-        getView().setTitle(manufacturer.getNameAr());
+        if (manufacturer.getNameAr() != null && manufacturer.getNameAr().equals(""))
+            getView().setTitle(manufacturer.getNameAr());
+        else fetchManufacturer();
     }
 
     @Override
@@ -38,24 +40,50 @@ public class ManufacturerActivityPresenter<T extends ManufacturerActivityVP.View
         getView().showLoading();
         getCompositeDisposable().add(
                 AppApiHelper.getProductsByManufacturer(manufacturer.getId(), getCacheStore().getSession().getAccessToken())
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<Product>>() {
-                    @Override
-                    public void accept(List<Product> products) throws Exception {
-                        getView().hideLoading();
-                        getView().addAllProducts(products);
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<List<Product>>() {
+                            @Override
+                            public void accept(List<Product> products) throws Exception {
+                                getView().hideLoading();
+                                getView().addAllProducts(products);
 
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        getView().hideLoading();
-                        handleApiError((ANError) throwable);
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                getView().hideLoading();
+                                handleApiError((ANError) throwable);
 
 
-                    }
-                })
+                            }
+                        })
         );
     }
+
+    @Override
+    public void fetchManufacturer() {
+        getView().showLoading();
+        getCompositeDisposable().add(
+                AppApiHelper.fetchManufacturer(manufacturer.getId())
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<Manufacturer>() {
+                            @Override
+                            public void accept(Manufacturer manufacturer) throws Exception {
+                                getView().hideLoading();
+                                getView().setTitle(manufacturer.getNameAr());
+
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                getView().hideLoading();
+                                handleApiError((ANError) throwable);
+                            }
+                        })
+        );
+    }
+
+
 }

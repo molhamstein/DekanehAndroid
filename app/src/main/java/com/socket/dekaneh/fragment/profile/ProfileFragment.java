@@ -21,6 +21,7 @@ import com.socket.dekaneh.adapter.OrdersAdapter;
 import com.socket.dekaneh.base.BaseFragment;
 import com.socket.dekaneh.network.model.Order;
 import com.socket.dekaneh.utils.ViewUtils;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -79,7 +80,8 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
         behavior = BottomSheetBehavior.from(bottomSheet);
         behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         tabLayout.addTab(tabLayout.newTab().setCustomView(ViewUtils.getTabTextView(getContext(), getString(R.string.order))));
-        tabLayout.addTab(tabLayout.newTab().setCustomView(ViewUtils.getTabTextView(getContext(), getString(R.string.past_orders))));
+        if (!presenter.hideHistory())
+            tabLayout.addTab(tabLayout.newTab().setCustomView(ViewUtils.getTabTextView(getContext(), getString(R.string.past_orders))));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

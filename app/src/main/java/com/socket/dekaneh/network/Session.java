@@ -30,6 +30,7 @@ public class Session {
     private static final String LONGITUDE = "longitude";
     private static final String IS_LOGGED_ON = "is_logged_on";
     private static final String FIREBASE_TOKEN = "firebase_token";
+    private static final String HIDE_HISTORY = "hide_history";
 
     @Inject
     public Session(Context context) {
@@ -182,6 +183,18 @@ public class Session {
         return getPreference().getString(FIREBASE_TOKEN, "");
     }
 
+
+    public void setHideHistory(boolean hideHistory) {
+        getPreference()
+                .edit()
+                .putBoolean(HIDE_HISTORY, hideHistory)
+                .apply();
+    }
+
+    public boolean getHideHistory() {
+        return getPreference().getBoolean(HIDE_HISTORY, false);
+    }
+
     public void setUser(User user, String accessToken) {
         setAccessToken(accessToken);
         setUserId(user.getId());
@@ -192,6 +205,7 @@ public class Session {
         setOwnerName(user.getOwnerName());
         setShopName(user.getShopName());
         setLoggedOn(true);
+        setHideHistory(user.isHideHistory());
         setClientType(user.getClientType().toString());
         if (user.getLocationPoint() != null) {
             setLatitude(user.getLocationPoint().getLat());
@@ -208,6 +222,7 @@ public class Session {
         setOwnerName(user.getOwnerName());
         setShopName(user.getShopName());
         setLoggedOn(true);
+        setHideHistory(user.isHideHistory());
         setClientType(user.getClientType().toString());
         if (user.getLocationPoint() != null) {
             setLatitude(user.getLocationPoint().getLat());
@@ -232,7 +247,8 @@ public class Session {
                 getEmail(),
                 getClientType(),
                 getOwnerName(),
-                getShopName()
+                getShopName(),
+                getHideHistory()
         );
     }
 

@@ -18,5 +18,6 @@ public class ProfileFragmentVP {
         void fetchOrders();
         void patchUser(String storeName, String ownerName, String phoneNumber);
         void fetchPastOrders();
+        boolean hideHistory();
     }
 }

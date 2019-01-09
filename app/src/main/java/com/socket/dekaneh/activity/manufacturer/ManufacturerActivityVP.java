@@ -18,6 +18,7 @@ public class ManufacturerActivityVP {
 
     public interface Presenter<T extends BaseView> extends BasePresenter<T> {
         void fetchProducts();
+        void fetchManufacturer();
     }
 
 }
