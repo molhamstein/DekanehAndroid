@@ -19,8 +19,6 @@ import com.socket.dekaneh.network.model.Offer;
 import com.socket.dekaneh.network.model.Product;
 import com.socket.dekaneh.network.model.User;
 import com.socket.dekaneh.utils.GsonUtils;
-import com.socket.dekaneh.utils.NetworkUtils;
-
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 

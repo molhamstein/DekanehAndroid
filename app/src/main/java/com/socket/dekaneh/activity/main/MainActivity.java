@@ -241,16 +241,6 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                presenter.restart();
-            }
-        }
-    }
-
     public void navigateToOffersFragment() {
         bottomNavigation.setCurrentItem(2);
     }

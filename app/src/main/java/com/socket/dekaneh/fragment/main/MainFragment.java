@@ -141,8 +141,12 @@ public class MainFragment extends BaseFragment implements MainFragmentVP.View {
 
     @Override
     public void onResume() {
-        if (presenter != null)
-            presenter.onFragmentResume();
+        if (categoriesAdapter != null) {
+            categoriesAdapter.notifyDataSetChanged();
+        }
+        if (offersAdapter != null) {
+            offersAdapter.notifyDataSetChanged();
+        }
         super.onResume();
     }
 }

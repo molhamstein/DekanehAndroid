@@ -132,7 +132,7 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
     @Override
     protected void onPause() {
         super.onPause();
-        overridePendingTransition(R.anim.anim_nothing, R.anim.anim_slide_out_to_right);
+//        overridePendingTransition(R.anim.anim_nothing, R.anim.anim_slide_out_to_right);
     }
 
     @Override
