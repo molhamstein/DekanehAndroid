@@ -244,4 +244,14 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     public void navigateToOffersFragment() {
         bottomNavigation.setCurrentItem(2);
     }
+
+    @Override
+    public void onBackPressed() {
+        if (searchLayout.getVisibility() == View.VISIBLE) {
+            searchView.closeSearch();
+        }
+        else {
+            super.onBackPressed();
+        }
+    }
 }
