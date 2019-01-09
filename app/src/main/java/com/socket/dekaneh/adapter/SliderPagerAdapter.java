@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.socket.dekaneh.activity.manufacturer.ManufacturerActivity;
+import com.socket.dekaneh.network.model.Manufacturer;
+import com.socket.dekaneh.utils.ViewUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -51,6 +54,15 @@ public class SliderPagerAdapter extends PagerAdapter {
                     Product product = new Product(sliderImage.getTarget());
                     ProductDetailsActivity.start(container.getContext(), product);
                 }
+
+                if (sliderImage.getType().equals("manufacturer")) {
+                    ManufacturerActivity.start(view.getContext(), new Manufacturer(sliderImage.getTarget()));
+                }
+
+                if (sliderImage.getType().equals("external")) {
+                    ViewUtils.openUrl(view.getContext(), sliderImage.getTarget());
+                }
+
             }
         });
 

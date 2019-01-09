@@ -22,7 +22,9 @@ public class Manufacturer implements Serializable {
     @Expose
     private List<Product> products;
 
-
+    public Manufacturer(String id) {
+        this.id = id;
+    }
 
     public String getId() {
         return id;
