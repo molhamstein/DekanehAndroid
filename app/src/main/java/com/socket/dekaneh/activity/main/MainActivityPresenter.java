@@ -124,6 +124,11 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
                             getView().hideLoading();
 
                         }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            getView().hideLoading();
+                        }
                     })
             );
         }
