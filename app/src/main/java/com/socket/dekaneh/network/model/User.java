@@ -41,8 +41,11 @@ public class User implements Serializable {
     @Expose
     private String gender;
 
-    public User(String phoneNumber, String ownerName, String shopName) {
+    public User(String id, String phoneNumber, String email, String clientType, String ownerName, String shopName) {
+        this.id = id;
         this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.clientType = clientType.equals(Type.horeca.toString()) ? Type.horeca : Type.wholesale;
         this.ownerName = ownerName;
         this.shopName = shopName;
     }
@@ -93,6 +96,67 @@ public class User implements Serializable {
 
     public enum Status {
         activated, pending, deactivated
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", status=" + status +
+                ", email='" + email + '\'' +
+                ", clientType=" + clientType +
+                ", ownerName='" + ownerName + '\'' +
+                ", shopName='" + shopName + '\'' +
+                ", locationPoint=" + locationPoint +
+                ", notes='" + notes + '\'' +
+                ", username='" + username + '\'' +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setClientType(Type clientType) {
+        this.clientType = clientType;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
+
+    public void setLocationPoint(LocationPoint locationPoint) {
+        this.locationPoint = locationPoint;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public enum Type {

@@ -195,9 +195,9 @@ public class AppApiHelper {
     }
 
     public static Single<User> patchUser(User user, String accessToken) {
-        return Rx2AndroidNetworking.patch(ApiEndPoint.USERS)
+        return Rx2AndroidNetworking.put(ApiEndPoint.EDIT_USERS)
                 .addApplicationJsonBody(user)
-                .addHeaders("Authorization", accessToken)
+                .addPathParameter("id", user.getId())
                 .build()
                 .getObjectSingle(User.class);
     }

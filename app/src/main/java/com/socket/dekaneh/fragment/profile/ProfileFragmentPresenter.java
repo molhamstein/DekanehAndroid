@@ -67,17 +67,25 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
     }
 
     @Override
-    public void patchUser() {
+    public void patchUser(String storeName, String ownerName, String phoneNumber) {
         if (isNetworkConnected()) {
+
+            User user = getCacheStore().getSession().getUser();
+            user.setPhoneNumber(phoneNumber);
+            user.setOwnerName(ownerName);
+            user.setShopName(storeName);
 
             getView().showLoading();
             getCompositeDisposable().add(
-                    AppApiHelper.patchUser(getCacheStore().getSession().getUser(), getCacheStore().getSession().getAccessToken())
+                    AppApiHelper.patchUser(user, getCacheStore().getSession().getAccessToken())
                             .subscribeOn(getSchedulerProvider().io())
                             .observeOn(getSchedulerProvider().ui())
                             .subscribe(new Consumer<User>() {
                                 @Override
                                 public void accept(User user) throws Exception {
+                                    getView().updateView(user.getShopName(), user.getOwnerName(), user.getPhoneNumber());
+                                    getCacheStore().getSession().setUser(user);
+                                    getView().hideLoading();
                                 }
                             }, new Consumer<Throwable>() {
                                 @Override

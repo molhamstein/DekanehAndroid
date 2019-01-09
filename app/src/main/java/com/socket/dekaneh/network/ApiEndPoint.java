@@ -11,6 +11,7 @@ class ApiEndPoint {
     static final String PRODUCTS_MANUFACTURER = BuildConfig.BASE_API_URL + "products/productsManufacturer";
     static final String SINGLE_PRODUCTS = BuildConfig.BASE_API_URL + "products/{id}";
     static final String USERS = BuildConfig.BASE_API_URL + "users";
+    static final String EDIT_USERS = BuildConfig.BASE_API_URL + "users/{id}";
     static final String SIMILAR_PRODUCTS = BuildConfig.BASE_API_URL + "products/similarProduct";
     static final String LOGIN = BuildConfig.BASE_API_URL + "users/login";
     static final String HOME_CATEGORIES = BuildConfig.BASE_API_URL + "products/groupedByCategories";

@@ -149,6 +149,9 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
 
     @OnClick(R.id.updateUserBtn)
     public void onClickedUpdateUserBtn() {
-        presenter.patchUser();
+        String storeName = this.businessNameForm.getText().toString();
+        String ownerName = this.ownerNameForm.getText().toString();
+        String phoneNumber = this.phoneNumberForm.getText().toString();
+        presenter.patchUser(storeName, ownerName, phoneNumber);
     }
 }

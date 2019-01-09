@@ -199,6 +199,22 @@ public class Session {
         }
     }
 
+    public void setUser(User user) {
+        setUserId(user.getId());
+        setEmail(user.getEmail());
+        setGender(user.getGender());
+        setUserName(user.getUsername());
+        setPhoneNumber(user.getPhoneNumber());
+        setOwnerName(user.getOwnerName());
+        setShopName(user.getShopName());
+        setLoggedOn(true);
+        setClientType(user.getClientType().toString());
+        if (user.getLocationPoint() != null) {
+            setLatitude(user.getLocationPoint().getLat());
+            setLongitude(user.getLocationPoint().getLng());
+        }
+    }
+
     public void logout() {
         setLoggedOn(false); // to make sure :P
         getPreference().edit().clear().apply();
@@ -211,7 +227,10 @@ public class Session {
 
     public User getUser() {
         return new User(
+                getUserId(),
                 getPhoneNumber(),
+                getEmail(),
+                getClientType(),
                 getOwnerName(),
                 getShopName()
         );
