@@ -54,6 +54,7 @@ public class AppApiHelper {
     public static Single<List<Category>> getCategories(String accessToken) {
         return Rx2AndroidNetworking.get(ApiEndPoint.ONLY_CATEGORIES)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(Category.class);
     }
@@ -61,6 +62,7 @@ public class AppApiHelper {
     public static Single<List<Offer>> getFeaturedOffers(String accessToken) {
         return Rx2AndroidNetworking.get(ApiEndPoint.FEATURED_OFFERS)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(Offer.class);
     }
@@ -68,6 +70,7 @@ public class AppApiHelper {
     public static Single<List<Product>> getFeaturedProducts(String accessToken) {
         return Rx2AndroidNetworking.get(ApiEndPoint.FEATURED_PRODUCTS)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(Product.class);
     }
@@ -75,6 +78,7 @@ public class AppApiHelper {
     public static Single<List<Offer>> getOffers(String accessToken) {
         return Rx2AndroidNetworking.get(ApiEndPoint.OFFERS)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(Offer.class);
     }
@@ -91,6 +95,7 @@ public class AppApiHelper {
     public static Single<List<Order>> getCurrentOrders(String userId, String accessToken) {
         return Rx2AndroidNetworking.get(ApiEndPoint.CURRENT_ORDERS)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .addPathParameter("clientId", userId)
                 .build()
                 .getObjectListSingle(Order.class);
@@ -100,6 +105,7 @@ public class AppApiHelper {
         return Rx2AndroidNetworking.get(ApiEndPoint.PAST_ORDERS)
                 .addPathParameter("clientId", userId)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(Order.class);
     }
@@ -107,6 +113,7 @@ public class AppApiHelper {
     public static Single<List<SliderImage>> getSliderImages(String accessToken) {
         return Rx2AndroidNetworking.get(ApiEndPoint.TOP_SLIDERS)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(SliderImage.class);
     }
@@ -116,6 +123,7 @@ public class AppApiHelper {
                 .addQueryParameter("productId", productId)
                 .addQueryParameter("limit", "10")
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(Product.class);
     }
@@ -125,6 +133,7 @@ public class AppApiHelper {
                 .addQueryParameter("categoryId", categoryId)
                 .addQueryParameter("limit", "10")
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(Manufacturer.class);
     }
@@ -135,6 +144,7 @@ public class AppApiHelper {
                 .addQueryParameter("subCategoryId", subCategoryId)
                 .addHeaders("Authorization", accessToken)
                 .addQueryParameter("limit", "10")
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(Manufacturer.class);
     }
@@ -143,6 +153,7 @@ public class AppApiHelper {
         return Rx2AndroidNetworking.get(ApiEndPoint.SUB_CATEGORIES)
                 .addPathParameter("id", categoryId)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(SubCategory.class);
     }
@@ -158,6 +169,7 @@ public class AppApiHelper {
         return Rx2AndroidNetworking.get(ApiEndPoint.PRODUCTS_MANUFACTURER)
                 .addQueryParameter("manufacturerId", manufacturerId)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(Product.class);
     }
@@ -173,6 +185,7 @@ public class AppApiHelper {
         return Rx2AndroidNetworking.patch(ApiEndPoint.ORDER)
                 .addPathParameter("id", orderId)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .addApplicationJsonBody(order)
                 .build()
                 .getObjectSingle(Order.class);
@@ -183,6 +196,7 @@ public class AppApiHelper {
                 .addQueryParameter("filter", "{\"include\":[\"coupon\"]}")
                 .addPathParameter("id", orderId)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectSingle(Order.class);
     }
@@ -190,6 +204,7 @@ public class AppApiHelper {
     public static Single<List<Notification>> getNotifications(String accessToken) {
         return Rx2AndroidNetworking.post(ApiEndPoint.NOTIFICATIONS)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(Notification.class);
     }
@@ -206,6 +221,7 @@ public class AppApiHelper {
         return Rx2AndroidNetworking.get(ApiEndPoint.SINGLE_PRODUCTS)
                 .addPathParameter("id", product.getId())
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectSingle(Product.class);
     }
@@ -215,6 +231,7 @@ public class AppApiHelper {
                 .addPathParameter("id", productId)
                 .addQueryParameter("limit", "10")
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(Offer.class);
     }
@@ -223,6 +240,7 @@ public class AppApiHelper {
         return Rx2AndroidNetworking.get(ApiEndPoint.SEARCH)
                 .addQueryParameter("string", query)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(Product.class);
     }
@@ -236,6 +254,7 @@ public class AppApiHelper {
     public static Single<JsonObject> postRating(String accessToken, Rating.Rate rate, String userId, String orderId) {
         return Rx2AndroidNetworking.post(ApiEndPoint.RATINGS)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .addBodyParameter("rate", rate.toString())
                 .addBodyParameter("userId", userId)
                 .addBodyParameter("orderId", orderId)
@@ -247,6 +266,7 @@ public class AppApiHelper {
     public static Single<Boolean> isActivated(String accessToken) {
         return Rx2AndroidNetworking.get(ApiEndPoint.CHECK_STATUS)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectSingle(Boolean.class);
     }
@@ -256,6 +276,7 @@ public class AppApiHelper {
         return Rx2AndroidNetworking.get(ApiEndPoint.COUPONS)
                 .addPathParameter("user_id", userId)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(Coupon.class);
     }
@@ -264,6 +285,7 @@ public class AppApiHelper {
         return Rx2AndroidNetworking.put(ApiEndPoint.SET_FIREBASE_TOKEN)
                 .addHeaders("Authorization", accessToken)
                 .addBodyParameter("token", firebaseToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectSingle(String.class);
     }
@@ -273,6 +295,7 @@ public class AppApiHelper {
         return Rx2AndroidNetworking.post(ApiEndPoint.FAVORITE)
                 .addHeaders("Authorization", accessToken)
                 .addBodyParameter("productId", productId)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectSingle(Favorite.class);
     }
@@ -281,6 +304,7 @@ public class AppApiHelper {
         return Rx2AndroidNetworking.delete(ApiEndPoint.DELETE_FAVORITE)
                 .addHeaders("Authorization", accessToken)
                 .addBodyParameter("productId", productId)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectSingle(String.class);
     }
@@ -288,6 +312,7 @@ public class AppApiHelper {
     public static Single<List<Product>> getFavorites(String accessToken) {
         return Rx2AndroidNetworking.get(ApiEndPoint.FAVORITE_PRODUCTS)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectListSingle(Product.class);
     }
@@ -303,6 +328,7 @@ public class AppApiHelper {
         return Rx2AndroidNetworking.put(ApiEndPoint.ADD_COUPON)
                 .addBodyParameter("code", couponCode)
                 .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
                 .build()
                 .getObjectSingle(Coupon.class);
     }
