@@ -109,7 +109,7 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
 
     @Override
     public void checkUserActivated() {
-        if (!isNetworkConnected()) {
+        if (isNetworkConnected()) {
             getView().showLoading();
             getCompositeDisposable().add(AppApiHelper.isActivated(getCacheStore().getSession().getAccessToken())
                     .subscribeOn(getSchedulerProvider().io())
