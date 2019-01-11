@@ -9,7 +9,7 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 ext.versionMajor = 1 // major change - Api changes or major UI/UX change
 ext.versionMinor = 1 // minor change
-ext.versionPatch = 4 // bug-fixes
+ext.versionPatch = 5 // bug-fixes
 ext.versionClassifier = ''
 ext.minimumSdkVersion = 17
 
@@ -59,7 +59,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_API_URL", '"http://dockaan.com/api/"'
             signingConfig signingConfigs.config
-            debuggable true
+            debuggable false
         }
         debug {
             minifyEnabled false

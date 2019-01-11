@@ -11,16 +11,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.socket.dekaneh.R;
+import com.socket.dekaneh.activity.product_details.ProductDetailsActivity;
+import com.socket.dekaneh.network.CacheStore;
 import com.socket.dekaneh.network.model.Offer;
+import com.socket.dekaneh.network.model.User;
+
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MiniOfferAdapter extends RecyclerView.Adapter<MiniOfferAdapter.MiniOfferViewHolder> {
 
     private List<Offer> offers;
+    private CacheStore cacheStore;
 
-    public MiniOfferAdapter() {
+    @Inject
+    public MiniOfferAdapter(CacheStore cacheStore) {
         offers = new ArrayList<>();
+        this.cacheStore = cacheStore;
     }
 
     @NonNull
@@ -34,11 +43,35 @@ public class MiniOfferAdapter extends RecyclerView.Adapter<MiniOfferAdapter.Mini
 
         final Offer offer = offers.get(position);
 
-//        holder.percent.setText(offer.getPercentageString());
-        holder.body.setText(offer.getDescription());
-//        holder.oldPrice.setText(String.valueOf(offer.getMarketPrice()));
-//        holder.newPrice.setText(String.valueOf(offer.getRetailPrice()));
+        holder.body.setText(offer.getNameAr());
+        if (offer.getPercentageString(cacheStore.getSession().getClientType()).equals("0%")) {
+            holder.percent.setText("%");
+        }else {
+            holder.percent.setText(offer.getPercentageString(cacheStore.getSession().getClientType()));
+        }
+        if (cacheStore.getSession().getClientType().equals(User.Type.horeca.toString())) {
+            setPrice(holder, offer.getHorecaPrice(), offer.getHorecaPriceDiscount());
+        } else {
+            setPrice(holder, offer.getWholeSalePrice(), offer.getWholeSalePriceDiscount());
+        }
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProductDetailsActivity.startAsOffer(view.getContext(), offer, offer.getPercentageString(cacheStore.getSession().getClientType()));
+            }
+        });
+
+    }
+
+    private void setPrice(MiniOfferViewHolder holder, int price, int discount) {
+        if (discount != 0) {
+            holder.newPrice.setText(String.valueOf(discount));
+            holder.oldPrice.setText(String.valueOf(price));
+        } else {
+            holder.oldPrice.setVisibility(View.GONE);
+            holder.newPrice.setText(String.valueOf(price));
+        }
     }
 
     @Override

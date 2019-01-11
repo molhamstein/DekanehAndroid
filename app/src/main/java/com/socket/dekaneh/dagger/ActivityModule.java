@@ -34,6 +34,7 @@ import com.socket.dekaneh.adapter.GridProductsAdapter;
 import com.socket.dekaneh.adapter.HomeCategoriesAdapter;
 import com.socket.dekaneh.adapter.ManufacturerProductsAdapter;
 import com.socket.dekaneh.adapter.ManufacturersAdapter;
+import com.socket.dekaneh.adapter.MiniOfferAdapter;
 import com.socket.dekaneh.adapter.OffersAdapter;
 import com.socket.dekaneh.adapter.OrderDetailsItemsAdapter;
 import com.socket.dekaneh.adapter.OrdersAdapter;
@@ -261,6 +262,11 @@ public class ActivityModule {
     @Provides
     ProductsAdapter provideProductsAdapterWithoutSeeMore(CacheStore cacheStore) {
         return new ProductsAdapter(cacheStore, false);
+    }
+
+    @Provides
+    MiniOfferAdapter provideMiniOffersAdapterWithoutSeeMore(CacheStore cacheStore) {
+        return new MiniOfferAdapter(cacheStore);
     }
 
     @Provides

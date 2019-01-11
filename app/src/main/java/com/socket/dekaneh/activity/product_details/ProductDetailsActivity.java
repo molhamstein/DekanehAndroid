@@ -79,6 +79,7 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     @BindView(R.id.orderCount)
     TextView orderCount;
 
+    @Inject
     MiniOfferAdapter miniOfferAdapter;
 
     public static void start(Context context, Product product) {
@@ -112,7 +113,6 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         getActivityComponent().inject(this);
 
         presenter.onAttach(this);
-        miniOfferAdapter = new MiniOfferAdapter();
 
         miniOffersRV.setLayoutManager(new LinearLayoutManager(this));
         miniOffersRV.setAdapter(miniOfferAdapter);
