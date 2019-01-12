@@ -213,4 +213,11 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
         presenter.onMinusBtnClicked();
     }
 
+
+    @Override
+    protected void onResume() {
+        if(productsAdapter != null)
+            productsAdapter.notifyDataSetChanged();
+        super.onResume();
+    }
 }

@@ -116,6 +116,7 @@ public class OrderDetailsActivity extends BaseActivity implements OrderDetailsVP
         getMenuInflater().inflate(R.menu.order_menu, menu);
         submit = menu.getItem(0);
         edit = menu.getItem(1);
+        edit.setVisible(false);
         return true;
 
     }
