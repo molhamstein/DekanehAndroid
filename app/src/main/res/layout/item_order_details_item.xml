@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="120dp">
+    android:layout_height="120dp"
+    android:layout_marginTop="8dp">
 
     <ImageView
         android:id="@+id/itemImage"
@@ -13,19 +14,6 @@
         android:layout_marginTop="8dp"
         />
 
-    <TextView
-        android:id="@+id/itemName"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="108dp"
-        android:text="@string/dummy_text"
-        android:layout_marginEnd="100dp"
-        style="@style/PrimaryBoldTextView"
-        android:textSize="11sp"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="top|start"
-        android:maxLines="2"
-        />
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,6 +25,7 @@
         android:text="@string/quantity"
         style="@style/SecondaryBoldTextView"
         android:textSize="12sp"/>
+
 
 
     <TextView
@@ -51,28 +40,47 @@
         style="@style/PrimaryBlackTextView"
         android:textSize="16sp"/>
 
-    <TextView
-        android:id="@+id/currency"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/currency"
-        android:layout_gravity="end"
-        style="@style/SecondaryBlackTextView"
-        android:textSize="10sp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="100dp"
+        android:paddingEnd="8dp"
+        >
 
-    <TextView
-        android:id="@+id/accPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/dummy_price"
-        android:layout_gravity="end|top"
-        style="@style/PrimaryBlackTextView"
-        android:textSize="18sp"
-        android:layout_marginEnd="42dp"
-        />
+
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/itemName"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_text"
+            style="@style/PrimaryBoldTextView"
+            android:textSize="11sp"
+            android:maxLines="2"
+            android:paddingEnd="8dp"
+            />
+
+        <TextView
+            android:id="@+id/accPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dummy_price"
+            style="@style/PrimaryBlackTextView"
+            android:textSize="20sp"
+            android:layout_marginTop="-4dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/currency"
+            style="@style/SecondaryBlackTextView"
+            android:textSize="8sp"
+            />
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/orderBtnLayout"

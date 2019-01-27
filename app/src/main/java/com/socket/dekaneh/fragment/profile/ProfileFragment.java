@@ -92,7 +92,6 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
                     case 1:
                         presenter.fetchPastOrders();
                         break;
-
                 }
             }
 

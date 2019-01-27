@@ -75,6 +75,11 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
     ImageView btnFav;
     @BindView(R.id.productOfferTagLayout)
     View productOfferTagLayout;
+    @BindView(R.id.prodDiscount)
+    View prodDiscount;
+    @BindView(R.id.oldPrice)
+    TextView oldPrice;
+
 
     @BindView(R.id.orderCount)
     TextView orderCount;
@@ -135,15 +140,21 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
 
     @Override
     public void updateView(final Product product, String imageUrl, boolean isHoreca) {
-        Log.d("ASADSDADAS", "updateView: " + product.toString());
+        //Log.d("ASADSDADAS", "updateView: " + product.toString());
         if (!imageUrl.equals(""))
             Picasso.get().load(imageUrl).into(this.productImage);
         this.name.setText(product.getNameAr());
-        if (isHoreca) {
-            this.price.setText(String.valueOf(product.getHorecaPrice()));
+
+        int discountValue = product.getDiscountPrice(isHoreca);
+        if (discountValue != 0) {
+            this.price.setText(String.valueOf(discountValue));
+            this.oldPrice.setText(String.valueOf(product.getOriginalPrice(isHoreca)));
+            this.prodDiscount.setVisibility(View.VISIBLE);
         } else {
-            this.price.setText(String.valueOf(product.getWholeSalePrice()));
+            this.prodDiscount.setVisibility(View.GONE);
+            this.price.setText(String.valueOf(product.getPrice(isHoreca)));
         }
+
         this.productOfficialPrice.setText(String.valueOf(product.getMarketOfficialPrice()));
         this.packName.setText(product.getPack());
         this.manufacturer.setText(product.getManufacturer().getNameAr());
@@ -159,9 +170,11 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
             }
         });
 
-        if (getIntent().getBooleanExtra("isOffer", false) && !getIntent().getStringExtra("percentage").equals("0%")) {
+        if (!getIntent().getStringExtra("percentage").equals("0%")) {
             productOfferTagLayout.setVisibility(View.VISIBLE);
             percentage.setText(getIntent().getStringExtra("percentage"));
+        } else {
+            productOfferTagLayout.setVisibility(View.GONE);
         }
     }
 
@@ -193,8 +206,11 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
 
     @Override
     public void setFavorite(boolean isFav) {
-        if (isFav) btnFav.setImageResource(R.drawable.star_active);
-        else btnFav.setImageResource(R.drawable.star);
+        if (isFav) {
+            btnFav.setImageResource(R.drawable.star_active);
+        } else {
+            btnFav.setImageResource(R.drawable.star);
+        }
 
     }
 

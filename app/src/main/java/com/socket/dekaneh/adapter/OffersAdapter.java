@@ -71,7 +71,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
             if (mItem.getId().equals(item.getId())) {
                 holder.orderNowBtn.setVisibility(View.GONE);
                 holder.orderBtn.setVisibility(View.VISIBLE);
-                holder.expandingBtn.animate().scaleX(1.2f).setDuration(10).start();
+                holder.expandingBtn.animate().scaleX(1.1f).setDuration(10).start();
                 holder.plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                 holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                 holder.orderCount.setText(String.valueOf(mItem.getCount()));
@@ -84,6 +84,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
             holder.productOfferTagLayout.setVisibility(View.GONE);
         }else {
             holder.percent.setText(offer.getPercentageString(cacheStore.getSession().getClientType()));
+            holder.productOfferTagLayout.setVisibility(View.VISIBLE);
         }
         holder.pack.setText(String.valueOf(offer.getPack()));
 
@@ -94,7 +95,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
                     view.setVisibility(View.GONE);
                     holder.orderBtn.setVisibility(View.VISIBLE);
                     cacheStore.addCartItem(item);
-                    holder.expandingBtn.animate().scaleX(1.2f).start();
+                    holder.expandingBtn.animate().scaleX(1.1f).start();
                     holder.plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                     holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                     holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
@@ -178,6 +179,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.OffersView
         if (discount != 0) {
             holder.price.setText(String.valueOf(discount));
             holder.oldPrice.setText(String.valueOf(price));
+            holder.offerDiscount.setVisibility(View.VISIBLE);
         } else {
             holder.offerDiscount.setVisibility(View.GONE);
             holder.price.setText(String.valueOf(price));

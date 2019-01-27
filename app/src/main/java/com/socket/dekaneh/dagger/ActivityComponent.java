@@ -18,6 +18,7 @@ import com.socket.dekaneh.fragment.profile.ProfileFragment;
 import com.socket.dekaneh.fragment.categories.CategoriesFragment;
 import com.socket.dekaneh.fragment.main.MainFragment;
 import com.socket.dekaneh.fragment.offers.OffersFragment;
+import com.socket.dekaneh.fragment.registration.forgetPassword.ForgotPasswordFragment;
 import com.socket.dekaneh.fragment.registration.new_account.NewAccountFragment;
 import com.socket.dekaneh.fragment.registration.login.LoginFragment;
 
@@ -54,6 +55,8 @@ public interface ActivityComponent {
     void inject(FeaturedProductsActivity activity);
 
     void inject(LoginFragment fragment);
+
+    void inject(ForgotPasswordFragment fragment);
 
     void inject(NewAccountFragment fragment);
 

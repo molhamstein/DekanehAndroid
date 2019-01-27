@@ -35,6 +35,7 @@ public class AppApiHelper {
     public static final int FAVORITE_NOT_SET_ERROR = 601;
     public static final int COUPON_NOT_FOUND_ERROR = 605;
     public static final int COUPON_IN_USE = 606;
+    public static final int WRONG_CREDENTIALS = 401;
 
     public static Single<LoginResponse> login(LoginRequest request) {
         return Rx2AndroidNetworking.post(ApiEndPoint.LOGIN)
@@ -191,6 +192,15 @@ public class AppApiHelper {
                 .getObjectSingle(Order.class);
     }
 
+    public static Single<JsonObject> deleteOrder(String accessToken, String orderId) {
+        return Rx2AndroidNetworking.delete(ApiEndPoint.DELETE_ORDER)
+                .addPathParameter("id", orderId)
+                .addHeaders("Authorization", accessToken)
+                .addQueryParameter("access_token", accessToken)
+                .build()
+                .getObjectSingle(JsonObject.class);
+    }
+
     public static Single<Order> getOrderDetails(String orderId, String accessToken) {
         return Rx2AndroidNetworking.get(ApiEndPoint.ORDER)
                 .addQueryParameter("filter", "{\"include\":[\"coupon\"]}")
@@ -323,6 +333,15 @@ public class AppApiHelper {
                 .build()
                 .getObjectSingle(String.class);
     }
+
+    public static Single<String> forgetPasswordNotifyAdmin(String phoneNumber) {
+        return Rx2AndroidNetworking.post(ApiEndPoint.FORGOT_PASSWORD_NOTIFY_ADMIN)
+                .addBodyParameter("phoneNumber", phoneNumber)
+                .build()
+                .getObjectSingle(String.class);
+    }
+
+
 
     public static Single<Coupon> addCoupon(String accessToken, String couponCode) {
         return Rx2AndroidNetworking.put(ApiEndPoint.ADD_COUPON)

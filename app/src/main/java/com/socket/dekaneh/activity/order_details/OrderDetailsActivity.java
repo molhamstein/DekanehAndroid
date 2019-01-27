@@ -1,7 +1,10 @@
 package com.socket.dekaneh.activity.order_details;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,6 +30,7 @@ import com.socket.dekaneh.network.model.Order;
 import com.socket.dekaneh.utils.GsonUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class OrderDetailsActivity extends BaseActivity implements OrderDetailsVP.View {
 
@@ -154,5 +161,34 @@ public class OrderDetailsActivity extends BaseActivity implements OrderDetailsVP
         orderCouponCode.setText(code);
         orderPriceBeforeDiscount.setText(priceBeforeDiscount);
         orderCouponValue.setText(value);
+    }
+
+    @OnClick(R.id.cancelOrderBtn)
+    public void onCancelOrderBtnClicked() {
+        if (presenter.checkOrderCancelOptionAvailable()) {
+            AlertDialog.Builder builder;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
+            } else {
+                builder = new AlertDialog.Builder(this);
+            }
+            builder.setTitle(R.string.confirm_delete_order_title)
+                    .setMessage(R.string.confirm_delete_order_desc)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            presenter.cancelOrder();
+                        }
+                    })
+                    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // do nothing
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+
+        } else {
+            showMessage(R.string.warn_cant_cancel_order);
+        }
     }
 }

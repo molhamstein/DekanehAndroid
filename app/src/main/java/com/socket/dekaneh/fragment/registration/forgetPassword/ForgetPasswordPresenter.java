@@ -27,7 +27,7 @@ public class ForgetPasswordPresenter<T extends ForgetPasswordVP.View> extends Ba
 
             getView().showLoading();
             getCompositeDisposable().add(
-                    AppApiHelper.forgetPassword(ValidationUtils.validatePhoneNumber(phoneNumber))
+                    AppApiHelper.forgetPasswordNotifyAdmin(ValidationUtils.validatePhoneNumber(phoneNumber))
                             .subscribeOn(getSchedulerProvider().io())
                             .observeOn(getSchedulerProvider().ui())
                             .subscribe(new Consumer<String>() {
@@ -35,6 +35,7 @@ public class ForgetPasswordPresenter<T extends ForgetPasswordVP.View> extends Ba
                                 public void accept(String s) throws Exception {
                                     getView().hideLoading();
                                     getView().showMessage(R.string.forgetPasswordMsg);
+                                    getView().backToLogin();
                                 }
                             }, new Consumer<Throwable>() {
                                 @Override

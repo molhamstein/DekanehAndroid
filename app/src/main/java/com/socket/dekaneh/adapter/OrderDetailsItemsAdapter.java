@@ -151,8 +151,8 @@ public class OrderDetailsItemsAdapter extends RecyclerView.Adapter<OrderDetailsI
         TextView name;
         @BindView(R.id.quantity)
         TextView quantity;
-        @BindView(R.id.currency)
-        View currency;
+//        @BindView(R.id.currency)
+//        View currency;
         @BindView(R.id.accPrice)
         TextView accPrice;
         @BindView(R.id.plusOne)

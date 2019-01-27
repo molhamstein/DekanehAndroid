@@ -91,6 +91,11 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                 productViewHolder.offerTag.setText(product.getPercentageString(cacheStore.getSession().getClientType()));
             } else if (!product.getOffersIds().isEmpty()) {
                 productViewHolder.productOfferTagLayout.setVisibility(View.VISIBLE);
+                productViewHolder.offerTag.setTextSize(10);
+                productViewHolder.productOfferTagImage.setImageResource(R.drawable.badge_offer);
+                productViewHolder.offerTag.setText(R.string.offers_available);
+            } else {
+                productViewHolder.productOfferTagLayout.setVisibility(View.GONE);
             }
 
             if (cacheStore.isCartItemExist(item)) {

@@ -93,6 +93,8 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
             getView().onError(R.string.coupon_not_found_error);
         } else if (error.getErrorCode() == AppApiHelper.COUPON_IN_USE) {
             getView().onError(R.string.coupon_in_use_error);
+        } else if (error.getErrorCode() == AppApiHelper.WRONG_CREDENTIALS) {
+            getView().onError(R.string.err_wrong_credentials);
         } else {
             Log.e("ERRRRRRRRRRR", "handleApiError: " + error.getErrorBody());
         }

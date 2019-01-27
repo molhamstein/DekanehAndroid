@@ -129,6 +129,7 @@
     <string name="low_total_price_error">Price should be more than 20,000 SP</string>
     <string name="country_code">00963</string>
     <string name="provide_valid_phone_number_statement">Please provide a valid phone number</string>
+    <string name="provide_fill_missing_info">Please fill the fields above</string>
     <string name="total">Total</string>
     <string name="no_notifications">No Notifications!</string>
     <string name="pack">Pack</string>
@@ -173,5 +174,12 @@
     <string name="price_before_discount">Price before discount</string>
     <string name="coupon_value">Coupon value</string>
     <string name="max_quantity_reached">You can\'t Order more than %1$d items of this offer</string>
+
+    <!--errors-->
+    <string name="err_wrong_credentials">wrong phonenumber or password</string>
+
+    <string name="warn_cant_cancel_order">You can\'t cancel an order after 8 AM</string>
+    <string name="confirm_delete_order_title">are you sure?</string>
+    <string name="confirm_delete_order_desc">are you sure you want to delete this order?</string>
 
 </resources>

@@ -5,11 +5,11 @@ import com.socket.dekaneh.base.BaseView;
 
 public class ForgetPasswordVP {
 
-    interface View extends BaseView {
-
+    public interface View extends BaseView {
+        void backToLogin();
     }
 
-    interface Presenter<T extends View> extends BasePresenter<T> {
+    public interface Presenter<T extends View> extends BasePresenter<T> {
         void forgetPasswordRequest(String phoneNumber);
     }
 }

@@ -28,15 +28,19 @@ public class SignUpRequest implements Serializable {
     @SerializedName("clientType")
     @Expose
     private String clientType;
+    @SerializedName("location")
+    @Expose
+    private String location;
 
 
-    public SignUpRequest(String phoneNumber, String shopName, String ownerName, String password, String areaId, User.Type clientType) {
+    public SignUpRequest(String phoneNumber, String shopName, String ownerName, String password, String areaId, User.Type clientType, String location) {
         this.phoneNumber = phoneNumber;
         this.shopName = shopName;
         this.ownerName = ownerName;
         this.password = password;
         this.areaId = areaId;
         this.clientType = clientType.toString();
+        this.location = location;
     }
 
 }

@@ -51,6 +51,8 @@ import com.socket.dekaneh.fragment.offers.OffersFragmentPresenter;
 import com.socket.dekaneh.fragment.offers.OffersFragmentVP;
 import com.socket.dekaneh.fragment.profile.ProfileFragmentPresenter;
 import com.socket.dekaneh.fragment.profile.ProfileFragmentVP;
+import com.socket.dekaneh.fragment.registration.forgetPassword.ForgetPasswordPresenter;
+import com.socket.dekaneh.fragment.registration.forgetPassword.ForgetPasswordVP;
 import com.socket.dekaneh.fragment.registration.login.LoginFragmentPresenter;
 import com.socket.dekaneh.fragment.registration.login.LoginFragmentVP;
 import com.socket.dekaneh.fragment.registration.new_account.NewAccountFragmentPresenter;
@@ -116,6 +118,13 @@ public class ActivityModule {
     LoginFragmentVP.Presenter<LoginFragmentVP.View> provideLoginPresenter(LoginFragmentPresenter<LoginFragmentVP.View> presenter) {
         return presenter;
     }
+
+
+    @Provides
+    ForgetPasswordVP.Presenter<ForgetPasswordVP.View> provideForgetPasswordPresenter(ForgetPasswordPresenter<ForgetPasswordVP.View> presenter) {
+        return presenter;
+    }
+
 
     @Provides
     MainActivityVP.Presenter<MainActivityVP.View> provideMainActivityPresenter(MainActivityPresenter<MainActivityVP.View> presenter) {

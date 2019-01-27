@@ -247,6 +247,23 @@ public class Product implements Serializable {
         }
     }
 
+    public int getOriginalPrice(boolean isHoreca) {
+        if (isHoreca){
+            return getHorecaPrice();
+        }
+        else {
+            return getWholeSalePrice();
+        }
+    }
+
+    public int getDiscountPrice(boolean isHoreca) {
+        if (isHoreca) {
+            return getHorecaPriceDiscount();
+        } else {
+            return getWholeSalePriceDiscount();
+        }
+    }
+
     public void setNameAr(String nameAr) {
         this.nameAr = nameAr;
     }
@@ -324,7 +341,7 @@ public class Product implements Serializable {
     }
 
     public int getOfferMaxQuantity() {
-        Log.d(TAG, "getOfferMaxQuantity: =  " + offerMaxQuantity + " "  + isOffer);
+         //Log.d(TAG, "getOfferMaxQuantity: =  " + offerMaxQuantity + " "  + isOffer);
         if (isOffer) {
             try {
                 return Integer.valueOf(offerMaxQuantity);

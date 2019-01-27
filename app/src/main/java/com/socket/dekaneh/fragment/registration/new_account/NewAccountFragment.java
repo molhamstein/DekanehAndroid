@@ -119,7 +119,7 @@ public class NewAccountFragment extends BaseFragment implements NewAccountFragme
             presenter.signUp(phoneNumber.getText().toString(),
                     storeName.getText().toString(),
                     ownerName.getText().toString(),
-                    "",
+                    storeLocation.getText().toString(),
                     password.getText().toString(),
                     areasSpinner.getSelectedItemPosition());
         }else{

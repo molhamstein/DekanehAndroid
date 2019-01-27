@@ -17,7 +17,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class ForgotPasswordFragment extends BaseFragment {
+public class ForgotPasswordFragment extends BaseFragment implements ForgetPasswordVP.View {
 
     @Inject
     ForgetPasswordVP.Presenter<ForgetPasswordVP.View> presenter;
@@ -42,6 +42,11 @@ public class ForgotPasswordFragment extends BaseFragment {
 
     @Override
     public void init(View rootView) {
+
+        if (getActivityComponent() != null)
+            getActivityComponent().inject(this);
+        presenter.onAttach(this);
+
 
         ViewAnimator.animate(text1).slideLeft().fadeIn()
                 .andAnimate(text2).slideLeft().fadeIn()
@@ -84,5 +89,10 @@ public class ForgotPasswordFragment extends BaseFragment {
                 .interpolator(new DekanehInterpolator(1f))
                 .onStop(onStop)
                 .start();
+    }
+
+    @Override
+    public void backToLogin() {
+        navigationPresenter.replaceFragment(LoginFragment.newInstance());
     }
 }

@@ -64,6 +64,7 @@
     <string name="low_total_price_error">حجم الطلبيه اقل من الحد الادنى المسموح ٢٠,٠٠٠ ل.س</string>
     <string name="country_code">00963</string>
     <string name="provide_valid_phone_number_statement">الرجاء ادخال رقم هاتف صحيح</string>
+    <string name="provide_fill_missing_info">الرجاء ملئ الحقول السابقة</string>
     <string name="api_retry_error">الرجاء اعادة المحاولة</string>
     <string name="api_default_error">حصل خطأ غير متوقع</string>
     <string name="connection_error">لا يوجد اتصال بالانترنت</string>
@@ -117,5 +118,13 @@
     <string name="price_before_discount">السعر قبل الحسم</string>
     <string name="coupon_value">قيمة القسيمة</string>
     <string name="max_quantity_reached">لا يمكنك طلب اكثر من %1$d قطعة من هذا العرض في الطلبية الواحدة</string>
+
+    <!--errors-->
+    <string name="err_wrong_credentials">الرجاء التحقق من رقم الهاتف او كلمة السر</string>
+
+    <string name="warn_cant_cancel_order">للأسف لا تستطيع إلغاء الطلب بعد الساعة الثامنة صباحاً</string>
+
+    <string name="confirm_delete_order_title">هل انت متأكد؟</string>
+    <string name="confirm_delete_order_desc">هل أنت متأكد من انك تريد حذف هذا الطلب؟</string>
 
 </resources>

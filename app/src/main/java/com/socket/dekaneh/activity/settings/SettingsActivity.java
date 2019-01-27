@@ -41,7 +41,6 @@ public class SettingsActivity extends BaseActivity implements SettingsActivityVP
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("");
 
-
     }
 
     @Override

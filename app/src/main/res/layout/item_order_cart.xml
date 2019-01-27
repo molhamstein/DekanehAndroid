@@ -81,8 +81,6 @@
             android:textSize="8sp"
             />
 
-
-
     </LinearLayout>
 
     <FrameLayout

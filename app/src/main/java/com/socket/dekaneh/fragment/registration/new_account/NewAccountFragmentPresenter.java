@@ -40,7 +40,7 @@ public class NewAccountFragmentPresenter<T extends NewAccountFragmentVP.View> ex
     @Override
     public void signUp(String phoneNumber, String storeName, String ownerName, String location, String password, int areaPos) {
 
-        SignUpRequest request = new SignUpRequest(ValidationUtils.validatePhoneNumber(phoneNumber), storeName, ownerName, password, areas.get(areaPos).getId(), User.Type.wholesale);
+        SignUpRequest request = new SignUpRequest(ValidationUtils.validatePhoneNumber(phoneNumber), storeName, ownerName, password, areas.get(areaPos).getId(), User.Type.wholesale, location);
 
         if(!ValidationUtils.isValidPhoneNumber(phoneNumber)) {
             getView().onError(R.string.provide_valid_phone_number_statement);
@@ -48,7 +48,7 @@ public class NewAccountFragmentPresenter<T extends NewAccountFragmentVP.View> ex
         }
 
         if (!getView().areFieldsEmpty()) {
-            getView().showMessage("All Fields are required");
+            getView().showMessage(R.string.provide_fill_missing_info);
         } else {
 
             getView().showLoading();
@@ -61,7 +61,7 @@ public class NewAccountFragmentPresenter<T extends NewAccountFragmentVP.View> ex
                                 @Override
                                 public void accept(User user) throws Exception {
                                     getView().hideLoading();
-                                    getView().showMessage("Thank you " + user.getOwnerName() + "!. Your request had been submitted");
+                                    getView().showMessage("شكراً لك " + user.getOwnerName() + ". تم ارسالل طلبك");
                                     getView().outAnimation(new AnimationListener.Stop() {
                                         @Override
                                         public void onStop() {

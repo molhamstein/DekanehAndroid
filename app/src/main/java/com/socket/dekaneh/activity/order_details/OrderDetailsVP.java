@@ -22,5 +22,7 @@ public class OrderDetailsVP {
         void fetchItems();
         void updateOrder();
         void updateProducts(List<CartItem> items);
+        void cancelOrder();
+        boolean checkOrderCancelOptionAvailable();
     }
 }

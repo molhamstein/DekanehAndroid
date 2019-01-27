@@ -37,6 +37,7 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
         this.product = GsonUtils.convertJsonStringToProductObject(getView().getIntent().getExtras().getString(Product.TAG));
+        //getView().updateView(this.product, this.product.getMedia().getUrl(), getCacheStore().getSession().getUser().getClientType() == User.Type.horeca);
         fetchProduct();
         fetchOffers();
         fetchSimilarProducts();
@@ -56,7 +57,7 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
                             @Override
                             public void accept(Product product) throws Exception {
                                 String imageUrl = product.getMedia().getUrl();
-                                item = new CartItem(ProductDetailsPresenter.this.product);
+                                item = new CartItem(product);
                                 getView().updateOrderCountText(getCacheStore().cartItemCount(item));
                                 ProductDetailsPresenter.this.product = product;
                                 getView().updateView(product, imageUrl, getCacheStore().getSession().getClientType().equals(User.Type.horeca));

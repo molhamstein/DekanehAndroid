@@ -1,13 +1,20 @@
 package com.socket.dekaneh.activity.order_details;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.os.Build;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import com.androidnetworking.error.ANError;
+import com.google.gson.JsonObject;
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
@@ -97,7 +104,7 @@ public class OrderDetailsPresenter<T extends OrderDetailsVP.View> extends BasePr
                         }, new Consumer<Throwable>() {
                             @Override
                             public void accept(Throwable throwable) throws Exception {
-                                Log.e("EEEEE", "accept: ", throwable);
+                                //Log.e("EEEEE", "accept: ", throwable);
                                 handleApiError((ANError) throwable);
                                 getView().hideLoading();
                             }
@@ -110,6 +117,61 @@ public class OrderDetailsPresenter<T extends OrderDetailsVP.View> extends BasePr
         this.order.setProducts(items);
     }
 
+    @Override
+    public void cancelOrder() {
+        requestDeleteOrder();
+    }
+
+    private void requestDeleteOrder() {
+        getView().showLoading();
+        getCompositeDisposable().add(
+                AppApiHelper.deleteOrder(getCacheStore().getSession().getAccessToken(), order.getId())
+                        .subscribeOn(getSchedulerProvider().io())
+                        .observeOn(getSchedulerProvider().ui())
+                        .subscribe(new Consumer<JsonObject>() {
+                            @Override
+                            public void accept(JsonObject s) throws Exception {
+                                getView().finish();
+                                getView().hideLoading();
+                            }
+                        }, new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                handleApiError((ANError) throwable);
+                                getView().hideLoading();
+                            }
+                        })
+        );
+    }
+
+    @Override
+    public boolean checkOrderCancelOptionAvailable() {
+        try {
+            // is cancel order option still available
+//            String string1 = "08:00:00";
+//            Date time1 = new SimpleDateFormat("HH:mm:ss").parse(string1);
+            Calendar calendar1 = Calendar.getInstance();
+//            calendar1.setTime(time1);
+
+            Date d = order.getOrderDate();
+            Calendar calendar3 = Calendar.getInstance();
+            calendar3.setTime(d);
+            calendar3.set(Calendar.HOUR_OF_DAY,8);
+            calendar3.set(Calendar.MINUTE,0);
+            calendar3.set(Calendar.SECOND,0);
+
+            //calendar3.add(Calendar.HOUR, 24);
+
+            Date x = calendar3.getTime();
+            if (x.after(calendar1.getTime())) {
+                return true;
+            }
+        } catch (Exception e){
+
+        }
+        return false;
+
+    }
 
     private String getStuats(Order.Status status) {
         switch (status) {
