@@ -19,6 +19,8 @@ import com.socket.dekaneh.network.model.Offer;
 import com.socket.dekaneh.network.model.Product;
 import com.socket.dekaneh.network.model.User;
 import com.socket.dekaneh.utils.GsonUtils;
+import com.socket.dekaneh.utils.ViewUtils;
+
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 
@@ -136,8 +138,13 @@ public class ProductDetailsPresenter<T extends ProductDetailsVP.View> extends Ba
 
     @Override
     public void onPlusBtnClicked() {
-        getCacheStore().addCartItem(item);
-        getView().updateOrderCountText(getCacheStore().cartItemCount(item));
+
+        if ( item.getOfferMaxQuantity() <= getCacheStore().cartItemCount(item)) {
+            ViewUtils.showToast(getView().getContext(), getView().getContext().getString(R.string.max_quantity_reached, getCacheStore().cartItemCount(item)));
+        } else {
+            getCacheStore().addCartItem(item);
+            getView().updateOrderCountText(getCacheStore().cartItemCount(item));
+        }
     }
 
     @Override

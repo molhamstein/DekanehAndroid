@@ -30,7 +30,7 @@ public class DockaanFirebaseMessagingService extends FirebaseMessagingService {
     public void onNewToken(String s) {
         Session session = new Session(getApplicationContext());
         session.setFirebaseToken(s);
-        Log.d("ASDADQWEASDQWEASD", "onNewToken: " + s);
+        //Log.d("ASDADQWEASDQWEASD", "onNewToken: " + s);
         super.onNewToken(s);
     }
 

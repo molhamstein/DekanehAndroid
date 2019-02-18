@@ -90,12 +90,24 @@ public class CacheStore {
                 .putString(CART_ITEMS, GsonUtils.convertArrayToJsonString(items))
                 .apply();
     }
-
+    // TODO should not convert the string to JSON every time !!!!!
     public List<CartItem> getCartItems() {
         List<CartItem> items = GsonUtils.convertJsonStringToCartItemsArray(getPreference().getString(CART_ITEMS, null));
         if (items != null)
             return items;
         return new ArrayList<>();
+    }
+
+    public CartItem getCartItemByProdId(String prodId) {
+        List<CartItem> items = GsonUtils.convertJsonStringToCartItemsArray(getPreference().getString(CART_ITEMS, null));
+        if (items != null) {
+            for (CartItem item : items) {
+                if (item.getId().equals(prodId)) {
+                    return item;
+                }
+            }
+        }
+        return null;
     }
 
     private void cacheNewCartItem(CartItem item) {

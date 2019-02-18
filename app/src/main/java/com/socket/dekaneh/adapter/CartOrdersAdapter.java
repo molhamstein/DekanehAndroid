@@ -62,7 +62,7 @@ public class CartOrdersAdapter extends RecyclerView.Adapter<CartOrdersAdapter.Ca
         holder.plusOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (item.isOffer() && item.getOfferMaxQuantity() <= cacheStore.cartItemCount(item)) {
+                if (item.getOfferMaxQuantity() <= cacheStore.cartItemCount(item)) {
                     ViewUtils.showToast(view.getContext(), view.getContext().getString(R.string.max_quantity_reached, cacheStore.cartItemCount(item)));
                 } else {
                     cacheStore.addCartItem(item);

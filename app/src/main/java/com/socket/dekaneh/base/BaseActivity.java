@@ -256,7 +256,7 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
 
     private void showProgressDialog() {
         mProgressDialog.setMessage("Please wait...");
-        mProgressDialog.setCancelable(false);
+        mProgressDialog.setCancelable(true);
         mProgressDialog.show();
     }
 

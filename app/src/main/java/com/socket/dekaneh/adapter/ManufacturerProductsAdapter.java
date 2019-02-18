@@ -65,14 +65,20 @@ public class ManufacturerProductsAdapter extends RecyclerView.Adapter<Manufactur
         final Product product = manufacturerProduct.getAsProduct();
         final CartItem item = new CartItem(manufacturerProduct.getAsProduct());
 
-        for (CartItem mItem : cacheStore.getCartItems())
-            if (mItem.getId().equals(item.getId())) {
+        CartItem mItem = cacheStore.getCartItemByProdId(item.getId());
+        if (mItem != null) {
                 holder.orderNowBtn.setVisibility(View.GONE);
                 holder.orderBtn.setVisibility(View.VISIBLE);
                 holder.expandingBtn.animate().scaleX(1.2f).setDuration(10).start();
                 holder.plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                 holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                 holder.orderCount.setText(String.valueOf(mItem.getCount()));
+            } else {
+                holder.orderNowBtn.setVisibility(View.VISIBLE);
+                holder.orderBtn.setVisibility(View.GONE);
+                holder.expandingBtn.animate().scaleX(1.0f).setDuration(0).start();
+                holder.plusOneBtn.animate().translationX(0).setInterpolator(new DekanehInterpolator(1)).start();
+                holder.minusOne.animate().translationX(0).setInterpolator(new DekanehInterpolator(1)).start();
             }
 
         if (manufacturerProduct.getMedia() != null && !manufacturerProduct.getMedia().getUrl().equals(""))
@@ -84,15 +90,19 @@ public class ManufacturerProductsAdapter extends RecyclerView.Adapter<Manufactur
         holder.orderNowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.setVisibility(View.GONE);
-                holder.orderBtn.setVisibility(View.VISIBLE);
-                cacheStore.addCartItem(item);
-                holder.expandingBtn.animate().scaleX(1.2f).start();
-                holder.plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
-                holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
-                holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
-                if (onItemCountChange != null) {
-                    onItemCountChange.onChange();
+                if(item.getOfferMaxQuantity() <= cacheStore.cartItemCount(item)) {
+                    ViewUtils.showToast(view.getContext(), view.getContext().getString(R.string.max_quantity_reached, cacheStore.cartItemCount(item)));
+                } else {
+                    view.setVisibility(View.GONE);
+                    holder.orderBtn.setVisibility(View.VISIBLE);
+                    cacheStore.addCartItem(item);
+                    holder.expandingBtn.animate().scaleX(1.2f).start();
+                    holder.plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                    holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                    holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                    if (onItemCountChange != null) {
+                        onItemCountChange.onChange();
+                    }
                 }
             }
         });
@@ -100,12 +110,15 @@ public class ManufacturerProductsAdapter extends RecyclerView.Adapter<Manufactur
         holder.plusOneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cacheStore.addCartItem(item);
-                holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
-                if (onItemCountChange != null) {
-                    onItemCountChange.onChange();
+                if(item.getOfferMaxQuantity() <= cacheStore.cartItemCount(item)) {
+                    ViewUtils.showToast(view.getContext(), view.getContext().getString(R.string.max_quantity_reached, cacheStore.cartItemCount(item)));
+                } else {
+                    cacheStore.addCartItem(item);
+                    holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                    if (onItemCountChange != null) {
+                        onItemCountChange.onChange();
+                    }
                 }
-
             }
         });
 

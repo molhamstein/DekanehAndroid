@@ -128,15 +128,19 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             productViewHolder.orderNowBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    view.setVisibility(View.GONE);
-                    productViewHolder.orderBtn.setVisibility(View.VISIBLE);
-                    cacheStore.addCartItem(item);
-                    ((ProductViewHolder) holder).expandingBtn.animate().scaleX(1.2f).start();
-                    ((ProductViewHolder) holder).plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
-                    ((ProductViewHolder) holder).minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
-                    productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
-                    if (onItemCountChange != null) {
-                        onItemCountChange.onChange();
+                    if (item.getOfferMaxQuantity() <= cacheStore.cartItemCount(item)) {
+                        ViewUtils.showToast(view.getContext(), view.getContext().getString(R.string.max_quantity_reached, cacheStore.cartItemCount(item)));
+                    } else {
+                        view.setVisibility(View.GONE);
+                        productViewHolder.orderBtn.setVisibility(View.VISIBLE);
+                        cacheStore.addCartItem(item);
+                        ((ProductViewHolder) holder).expandingBtn.animate().scaleX(1.2f).start();
+                        ((ProductViewHolder) holder).plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                        ((ProductViewHolder) holder).minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                        productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                        if (onItemCountChange != null) {
+                            onItemCountChange.onChange();
+                        }
                     }
                 }
             });
@@ -144,10 +148,14 @@ public class ProductsAdapter extends RecyclerView.Adapter {
             productViewHolder.plusOneBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    cacheStore.addCartItem(item);
-                    productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
-                    if (onItemCountChange != null) {
-                        onItemCountChange.onChange();
+                    if(item.getOfferMaxQuantity() <= cacheStore.cartItemCount(item)) {
+                        ViewUtils.showToast(view.getContext(), view.getContext().getString(R.string.max_quantity_reached, cacheStore.cartItemCount(item)));
+                    }else {
+                        cacheStore.addCartItem(item);
+                        productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                        if (onItemCountChange != null) {
+                            onItemCountChange.onChange();
+                        }
                     }
 
                 }

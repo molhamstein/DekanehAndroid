@@ -52,7 +52,7 @@ public class CartItem extends Product implements Serializable {
     }
 
     public void addOne() {
-        Log.d(TAG, "addOne: " + getOfferMaxQuantity());
+        //Log.d(TAG, "addOne: " + getOfferMaxQuantity());
         if (getOfferMaxQuantity() > count)
             ++count;
     }

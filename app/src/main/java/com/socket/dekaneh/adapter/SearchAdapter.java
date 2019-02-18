@@ -92,15 +92,19 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         holder.orderNowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.setVisibility(View.GONE);
-                holder.orderBtn.setVisibility(View.VISIBLE);
-                cacheStore.addCartItem(item);
-                holder.expandingBtn.animate().scaleX(1.2f).start();
-                holder.plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
-                holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
-                holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
-                if (onItemCountChange != null) {
-                    onItemCountChange.onChange();
+                if(item.getOfferMaxQuantity() <= cacheStore.cartItemCount(item)) {
+                    ViewUtils.showToast(view.getContext(), view.getContext().getString(R.string.max_quantity_reached, cacheStore.cartItemCount(item)));
+                } else {
+                    view.setVisibility(View.GONE);
+                    holder.orderBtn.setVisibility(View.VISIBLE);
+                    cacheStore.addCartItem(item);
+                    holder.expandingBtn.animate().scaleX(1.2f).start();
+                    holder.plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                    holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
+                    holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                    if (onItemCountChange != null) {
+                        onItemCountChange.onChange();
+                    }
                 }
             }
         });
@@ -108,12 +112,15 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         holder.plusOneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cacheStore.addCartItem(item);
-                holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
-                if (onItemCountChange != null) {
-                    onItemCountChange.onChange();
+                if(item.getOfferMaxQuantity() <= cacheStore.cartItemCount(item)) {
+                    ViewUtils.showToast(view.getContext(), view.getContext().getString(R.string.max_quantity_reached, cacheStore.cartItemCount(item)));
+                } else {
+                    cacheStore.addCartItem(item);
+                    holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+                    if (onItemCountChange != null) {
+                        onItemCountChange.onChange();
+                    }
                 }
-
             }
         });
 

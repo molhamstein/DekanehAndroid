@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.socket.dekaneh.activity.manufacturer.ManufacturerActivity;
 import com.socket.dekaneh.dagger.ProductDetails;
+import com.socket.dekaneh.network.model.User;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -150,9 +151,15 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
             this.price.setText(String.valueOf(discountValue));
             this.oldPrice.setText(String.valueOf(product.getOriginalPrice(isHoreca)));
             this.prodDiscount.setVisibility(View.VISIBLE);
+            // discount badge
+            productOfferTagLayout.setVisibility(View.VISIBLE);
+            // TODO: FIX isHoreca should be replaced with Enum
+            percentage.setText(product.getPercentageString(isHoreca ? User.Type.horeca.toString() : User.Type.wholesale.toString()));
         } else {
             this.prodDiscount.setVisibility(View.GONE);
             this.price.setText(String.valueOf(product.getPrice(isHoreca)));
+            // discount badge
+            productOfferTagLayout.setVisibility(View.GONE);
         }
 
         this.productOfficialPrice.setText(String.valueOf(product.getMarketOfficialPrice()));
@@ -170,12 +177,12 @@ public class ProductDetailsActivity extends BaseActivity implements ProductDetai
             }
         });
 
-        if (!getIntent().getStringExtra("percentage").equals("0%")) {
-            productOfferTagLayout.setVisibility(View.VISIBLE);
-            percentage.setText(getIntent().getStringExtra("percentage"));
-        } else {
-            productOfferTagLayout.setVisibility(View.GONE);
-        }
+//        if (getIntent().getStringExtra("percentage") != null && !getIntent().getStringExtra("percentage").equals("0%")) {
+//            productOfferTagLayout.setVisibility(View.VISIBLE);
+//            percentage.setText(getIntent().getStringExtra("percentage"));
+//        } else {
+//            productOfferTagLayout.setVisibility(View.GONE);
+//        }
     }
 
     @Override
