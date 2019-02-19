@@ -44,6 +44,6 @@ class ApiEndPoint {
     static final String FORGET_PASSWORD = USERS + "/forgetPassword";
     static final String ADD_COUPON = COUPONS_RAW + "/useCoupon";
     static final String FORGOT_PASSWORD_NOTIFY_ADMIN = BuildConfig.BASE_API_URL + "users/forgetpassword";
-    static final String DELETE_ORDER = BuildConfig.BASE_API_URL + "orders/{id}";
+    static final String CANCEL_ORDER = BuildConfig.BASE_API_URL + "orders/{id}/assignCancel";
 
 }

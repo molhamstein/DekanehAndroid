@@ -193,7 +193,7 @@ public class AppApiHelper {
     }
 
     public static Single<JsonObject> deleteOrder(String accessToken, String orderId) {
-        return Rx2AndroidNetworking.delete(ApiEndPoint.DELETE_ORDER)
+        return Rx2AndroidNetworking.post(ApiEndPoint.CANCEL_ORDER)
                 .addPathParameter("id", orderId)
                 .addHeaders("Authorization", accessToken)
                 .addQueryParameter("access_token", accessToken)

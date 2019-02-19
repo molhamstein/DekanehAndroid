@@ -40,7 +40,9 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
 
     @Override
     public void fetchOrders() {
+        Log.d(TAG, "fetchOrders: start");
         if (isNetworkConnected()) {
+            Log.d(TAG, "fetchOrders: fetching");
             getView().showLoading();
             getCompositeDisposable().add(
                     AppApiHelper.getCurrentOrders(getCacheStore().getSession().getUserId(), getCacheStore().getSession().getAccessToken())
@@ -52,6 +54,7 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
 
                                     getView().hideLoading();
                                     getView().addOrders(orders);
+                                    Log.d(TAG, "accept: " + orders.toString());
 
                                 }
                             }, new Consumer<Throwable>() {
