@@ -155,4 +155,12 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
         String phoneNumber = this.phoneNumberForm.getText().toString();
         presenter.patchUser(storeName, ownerName, phoneNumber);
     }
+
+
+    @Override
+    public void onResume() {
+        if (presenter != null)
+            presenter.fetchOrders();
+        super.onResume();
+    }
 }
