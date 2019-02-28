@@ -105,6 +105,12 @@ public class ProductsAdapter extends RecyclerView.Adapter {
                 ((ProductViewHolder) holder).plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                 ((ProductViewHolder) holder).minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
                 productViewHolder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+            } else {
+                productViewHolder.orderNowBtn.setVisibility(View.VISIBLE);
+                productViewHolder.orderBtn.setVisibility(View.GONE);
+                ((ProductViewHolder) holder).expandingBtn.animate().scaleX(1.0f).setDuration(1).start();
+                ((ProductViewHolder) holder).plusOneBtn.animate().translationX(0).setInterpolator(new DekanehInterpolator(1)).start();
+                ((ProductViewHolder) holder).minusOne.animate().translationX(0).setInterpolator(new DekanehInterpolator(1)).start();
             }
 
             if (cacheStore.getSession().getClientType().equals(User.Type.horeca.toString())) {

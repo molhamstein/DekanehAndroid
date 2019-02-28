@@ -65,6 +65,12 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             holder.plusOneBtn.animate().translationX(ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
             holder.minusOne.animate().translationX(-ViewUtils.getPXSize(plusMinusAnimationBtnVal, holder.itemView.getContext())).setInterpolator(new DekanehInterpolator(1)).start();
             holder.orderCount.setText(String.valueOf(cacheStore.cartItemCount(item)));
+        } else {
+            holder.orderNowBtn.setVisibility(View.VISIBLE);
+            holder.orderBtn.setVisibility(View.GONE);
+            holder.expandingBtn.animate().scaleX(1.0f).setDuration(1).start();
+            holder.plusOneBtn.animate().translationX(0).setInterpolator(new DekanehInterpolator(1)).start();
+            holder.minusOne.animate().translationX(0).setInterpolator(new DekanehInterpolator(1)).start();
         }
 
         if (product.isOffer()) {

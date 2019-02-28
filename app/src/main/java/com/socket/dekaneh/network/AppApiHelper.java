@@ -31,6 +31,7 @@ public class AppApiHelper {
 
     public static final int API_STATUS_CODE_LOCAL_ERROR = 0;
     public static final int TOTAL_PRICE_IS_LOW_ERROR = 602;
+    public static final int PRODUCT_NOT_AVAILABLE_ERROR = 611;
     public static final int ALREADY_IN_FAVORITE_ERROR = 600;
     public static final int FAVORITE_NOT_SET_ERROR = 601;
     public static final int COUPON_NOT_FOUND_ERROR = 605;
@@ -285,6 +286,7 @@ public class AppApiHelper {
     public static Single<List<Coupon>> getCoupons(String accessToken, String userId) {
         return Rx2AndroidNetworking.get(ApiEndPoint.COUPONS)
                 .addPathParameter("user_id", userId)
+                .addPathParameter("dateNow", Date)
                 .addHeaders("Authorization", accessToken)
                 .addQueryParameter("access_token", accessToken)
                 .build()

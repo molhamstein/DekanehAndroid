@@ -4,11 +4,20 @@ import android.util.Log;
 
 import com.androidnetworking.common.ANConstants;
 import com.androidnetworking.error.ANError;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.network.AppApiHelper;
 import com.socket.dekaneh.network.CacheStore;
+import com.socket.dekaneh.network.model.Product;
+import com.socket.dekaneh.utils.GsonUtils;
 import com.socket.dekaneh.utils.NetworkUtils;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.inject.Inject;
 
@@ -95,6 +104,18 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
             getView().onError(R.string.coupon_in_use_error);
         } else if (error.getErrorCode() == AppApiHelper.WRONG_CREDENTIALS) {
             getView().onError(R.string.err_wrong_credentials);
+        } else if (error.getErrorCode() == AppApiHelper.PRODUCT_NOT_AVAILABLE_ERROR) {
+            try {
+                // the error body shall contain the product that is causing this issue
+                JsonElement errBody = new JsonParser().parse(error.getErrorBody()).getAsJsonObject().get("error");
+                JsonArray unavailableProductsJsonArray = errBody.getAsJsonObject().getAsJsonArray("data");
+                String productString = unavailableProductsJsonArray.get(0).getAsJsonObject().toString();
+                Product product = GsonUtils.convertJsonStringToProductObject(productString);
+
+                getView().onError(getView().getContext().getString(R.string.product_not_available_error, product.getNameAr()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             Log.e("ERRRRRRRRRRR", "handleApiError: " + error.getErrorBody());
         }

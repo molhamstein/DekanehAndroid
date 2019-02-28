@@ -342,10 +342,15 @@ public class Product implements Serializable {
 
     public int getOfferMaxQuantity() {
          //Log.d(TAG, "getOfferMaxQuantity: =  " + offerMaxQuantity + " "  + isOffer);
-        if (isOffer) {
-            try {
+        try {
+            int maxQ = Integer.valueOf(offerMaxQuantity);
+            if (maxQ > 0) {
                 return Integer.valueOf(offerMaxQuantity);
-            } catch(Exception ignored){}
+            } else {
+                return INFINITE_QUANTITY;
+            }
+        } catch(Exception ignored){
+
         }
         return INFINITE_QUANTITY;
     }
