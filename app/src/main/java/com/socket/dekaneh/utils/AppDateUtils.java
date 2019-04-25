@@ -107,6 +107,17 @@ public class AppDateUtils {
         return  0;
     }
 
+    /**
+     * @return ISO formated date string
+     */
+    public static String gettUtcTimeString(Date date){
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(FORMAT_UTC , Locale.ENGLISH);
+            return sdf.format(date);
+        }catch (Exception ignored){}
+        return  "";
+    }
+
     public static long getCurrentTimezoneOffset() {
         TimeZone tz = TimeZone.getDefault();
         Date now = new Date();

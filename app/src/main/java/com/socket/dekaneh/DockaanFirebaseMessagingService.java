@@ -21,7 +21,10 @@ public class DockaanFirebaseMessagingService extends FirebaseMessagingService {
         String action = remoteMessage.getData().get("openActivity");
         if (action != null)
             if (!action.isEmpty() && action.toLowerCase().equals("rating".toLowerCase())) {
-                startActivity(new Intent(this, RatingActivity.class));
+                String orderId = remoteMessage.getData().get("orderId");
+                if (orderId != null) {
+                    RatingActivity.start(this, orderId);
+                }
             }
     }
 

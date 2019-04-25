@@ -53,7 +53,7 @@ public class SettingsActivityPresenter<T extends SettingsActivityVP.View> extend
 
     @Override
     public void callSupport(Context context) {
-        ViewUtils.makeCall(context, "00963947331020");
+        ViewUtils.makeCall(context, "00963993374995");
     }
 
     @Override

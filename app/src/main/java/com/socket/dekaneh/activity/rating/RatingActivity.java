@@ -29,8 +29,8 @@ public class RatingActivity extends BaseActivity implements RatingActivityVP.Vie
 
     public static void start(Context context, String orderId) {
         Intent starter = new Intent(context, RatingActivity.class);
-        Intent intent = new Intent();
-        intent.putExtra("orderId", orderId);
+        starter.putExtra("orderId", orderId);
+        starter.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(starter);
     }
 

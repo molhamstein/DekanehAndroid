@@ -1,8 +1,11 @@
 package com.socket.dekaneh.network;
 
+import android.text.format.DateUtils;
+
 import com.google.gson.JsonObject;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 
+import java.util.Calendar;
 import java.util.List;
 
 import com.socket.dekaneh.Rating;
@@ -24,6 +27,7 @@ import com.socket.dekaneh.network.model.SubCategory;
 import com.socket.dekaneh.network.model.User;
 
 import com.socket.dekaneh.network.model.Coupon;
+import com.socket.dekaneh.utils.AppDateUtils;
 
 import io.reactivex.Single;
 
@@ -284,9 +288,11 @@ public class AppApiHelper {
 
 
     public static Single<List<Coupon>> getCoupons(String accessToken, String userId) {
+        Calendar calendar = Calendar.getInstance();
+
         return Rx2AndroidNetworking.get(ApiEndPoint.COUPONS)
                 .addPathParameter("user_id", userId)
-                .addPathParameter("dateNow", Date)
+                .addPathParameter("dateNow", AppDateUtils.gettUtcTimeString(calendar.getTime()) )
                 .addHeaders("Authorization", accessToken)
                 .addQueryParameter("access_token", accessToken)
                 .build()

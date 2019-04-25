@@ -58,6 +58,20 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
         final CartItem item = new CartItem(product);
 
+        if (product.hasDiscount(cacheStore.getSession().getClientType())) {
+            holder.productOfferTagLayout.setVisibility(View.VISIBLE);
+            holder.offerTag.setTextSize(16);
+            holder.productOfferTagImage.setImageResource(R.drawable.badge_discount);
+            holder.offerTag.setText(product.getPercentageString(cacheStore.getSession().getClientType()));
+        } else if (!product.getOffersIds().isEmpty()) {
+            holder.productOfferTagLayout.setVisibility(View.VISIBLE);
+            holder.offerTag.setTextSize(10);
+            holder.productOfferTagImage.setImageResource(R.drawable.badge_offer);
+            holder.offerTag.setText(R.string.offers_available);
+        } else {
+            holder.productOfferTagLayout.setVisibility(View.GONE);
+        }
+
         if (cacheStore.isCartItemExist(item)) {
             holder.orderNowBtn.setVisibility(View.GONE);
             holder.orderBtn.setVisibility(View.VISIBLE);
@@ -192,7 +206,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         @BindView(R.id.oldPrice)
         TextView oldPrice;
         @BindView(R.id.productOfferTag)
-        View offerTag;
+        TextView offerTag;
         @BindView(R.id.productName)
         TextView name;
         @BindView(R.id.productImage)
@@ -213,6 +227,10 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         View expandingBtn;
         @BindView(R.id.productDiscount)
         View productDiscount;
+        @BindView(R.id.productOfferTagLayout)
+        View productOfferTagLayout;
+        @BindView(R.id.productOfferTagImage)
+        ImageView productOfferTagImage;
 
         public SearchViewHolder(View itemView) {
             super(itemView);

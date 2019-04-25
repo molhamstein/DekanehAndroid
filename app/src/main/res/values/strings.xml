@@ -175,6 +175,7 @@
     <string name="price_before_discount">Price before discount</string>
     <string name="coupon_value">Coupon value</string>
     <string name="max_quantity_reached">You can\'t Order more than %1$d items of this offer</string>
+    <string name="unknown_error_while_submitting_order">unknown error occurred, please contact us for more details</string>
 
     <!--errors-->
     <string name="err_wrong_credentials">wrong phonenumber or password</string>

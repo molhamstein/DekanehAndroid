@@ -9,7 +9,7 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 ext.versionMajor = 1 // major change - Api changes or major UI/UX change
 ext.versionMinor = 1 // minor change
-ext.versionPatch = 12 // bug-fixes
+ext.versionPatch = 15 // bug-fixes
 ext.versionClassifier = ''
 ext.minimumSdkVersion = 18
 
@@ -53,18 +53,20 @@ android {
 
 
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_API_URL", '"http://dockaan.com/api/"'
             signingConfig signingConfigs.config
-            debuggable true
+            debuggable false
         }
         debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            //buildConfigField "String", "BASE_API_URL", '"http://104.217.253.15:3003/api/"'
+            //buildConfigField "String", "BASE_API_URL", '"http://104.217.253.15:1999/api/"'
+            //buildConfigField "String", "BASE_API_URL", '"http://192.168.1.2:1999/api/"'
             buildConfigField "String", "BASE_API_URL", '"http://dockaan.com/api/"'
 //            buildConfigField "String", "BASE_API_URL", '"http://192.168.1.5:3000/api/"'
         }

@@ -32,7 +32,6 @@ import com.socket.dekaneh.adapter.CartOrdersAdapter;
 import com.socket.dekaneh.adapter.CategoriesAdapter;
 import com.socket.dekaneh.adapter.GridProductsAdapter;
 import com.socket.dekaneh.adapter.HomeCategoriesAdapter;
-import com.socket.dekaneh.adapter.ManufacturerProductsAdapter;
 import com.socket.dekaneh.adapter.ManufacturersAdapter;
 import com.socket.dekaneh.adapter.MiniOfferAdapter;
 import com.socket.dekaneh.adapter.OffersAdapter;
@@ -220,11 +219,6 @@ public class ActivityModule {
     @Provides
     OffersAdapter providesOffersAdapter(AppCompatActivity context) {
         return new OffersAdapter(R.layout.item_offer_fragment_offers, context);
-    }
-
-    @Provides
-    ManufacturerProductsAdapter provideManufacturerProductsAdapter(AppCompatActivity context) {
-        return new ManufacturerProductsAdapter(R.layout.item_offer_fragment_offers, context);
     }
 
     @Provides
