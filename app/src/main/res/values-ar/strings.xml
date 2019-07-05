@@ -129,4 +129,10 @@
     <string name="confirm_delete_order_title">هل انت متأكد؟</string>
     <string name="confirm_delete_order_desc">هل أنت متأكد من انك تريد حذف هذا الطلب؟</string>
 
+
+    <string name="level">المستوى</string>
+    <string name="balance">الرصيد</string>
+    <string name="rewards">الجوائز</string>
+    <string name="valid_till">صالح لغاية</string>
+
 </resources>

@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.annotation.IdRes;
 import android.support.v4.app.ActivityCompat;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -18,19 +19,13 @@ public class ViewUtils {
 
     public static View getTabTextView(Context context, String title) {
         TextView textView = (TextView) LayoutInflater.from(context).inflate(R.layout.item_tab, null);
-        textView.setTextSize(14f);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,12);
         textView.setText(title);
         return textView;
     }
 
     public static int getPXSize(int dp, Context context) {
-        int px = dp;
-        try {
-            float density = context.getResources().getDisplayMetrics().density;
-            px = Math.round((float) dp * density);
-        } catch (Exception ignored) {
-        }
-        return px;
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
     }
 
 

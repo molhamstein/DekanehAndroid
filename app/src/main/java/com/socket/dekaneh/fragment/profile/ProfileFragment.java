@@ -82,6 +82,7 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
         tabLayout.addTab(tabLayout.newTab().setCustomView(ViewUtils.getTabTextView(getContext(), getString(R.string.order))));
         if (!presenter.hideHistory())
             tabLayout.addTab(tabLayout.newTab().setCustomView(ViewUtils.getTabTextView(getContext(), getString(R.string.past_orders))));
+        tabLayout.addTab(tabLayout.newTab().setCustomView(ViewUtils.getTabTextView(getContext(), getString(R.string.rewards))));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

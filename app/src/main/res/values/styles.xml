@@ -13,7 +13,6 @@
     </style>
 
 
-
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <item name="colorControlNormal">@color/primaryText</item>
@@ -21,7 +20,6 @@
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
 
 
     <style name="PrimaryTextView" parent="@android:style/TextAppearance.Widget.TextView">
@@ -114,7 +112,6 @@
     </style>
 
 
-
     <!-- offer item styles -->
 
     <style name="WhiteBlackTextOfferBtn" parent="@android:style/TextAppearance.Widget.TextView">
@@ -197,7 +194,7 @@
 
 
     <style name="Widget.BottomNavigationView" parent="Widget.Design.BottomNavigationView">
-    <item name="fontFamily">@font/droidkufi_bold</item>
+        <item name="fontFamily">@font/droidkufi_bold</item>
     </style>
 
 
@@ -215,174 +212,173 @@
 
 
     <!--<style name="PrimaryTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_semi_bold</item>-->
-        <!--<item name="android:textColor">@color/primaryText</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_semi_bold</item>-->
+    <!--<item name="android:textColor">@color/primaryText</item>-->
     <!--</style>-->
 
     <!--<style name="PrimaryBoldTextViewDroidKufi" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/droidkufi_bold</item>-->
-        <!--<item name="android:textColor">@color/primaryText</item>-->
+    <!--<item name="android:fontFamily">@font/droidkufi_bold</item>-->
+    <!--<item name="android:textColor">@color/primaryText</item>-->
     <!--</style>-->
 
     <!--<style name="PrimaryBoldTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
-        <!--<item name="android:textColor">@color/primaryText</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
+    <!--<item name="android:textColor">@color/primaryText</item>-->
     <!--</style>-->
 
     <!--<style name="PrimaryBlackTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_black</item>-->
-        <!--<item name="android:textColor">@color/primaryText</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_black</item>-->
+    <!--<item name="android:textColor">@color/primaryText</item>-->
     <!--</style>-->
 
     <!--<style name="SecondaryRegularTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_regular</item>-->
-        <!--<item name="android:textColor">@color/secondaryText</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_regular</item>-->
+    <!--<item name="android:textColor">@color/secondaryText</item>-->
     <!--</style>-->
 
     <!--<style name="SecondaryBoldTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
-        <!--<item name="android:textColor">@color/secondaryText</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
+    <!--<item name="android:textColor">@color/secondaryText</item>-->
     <!--</style>-->
 
     <!--<style name="SecondaryBlackTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_black</item>-->
-        <!--<item name="android:textColor">@color/secondaryText</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_black</item>-->
+    <!--<item name="android:textColor">@color/secondaryText</item>-->
     <!--</style>-->
 
 
     <!--<style name="WhiteBlackTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_black</item>-->
-        <!--<item name="android:textColor">@color/white</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_black</item>-->
+    <!--<item name="android:textColor">@color/white</item>-->
     <!--</style>-->
 
 
     <!--<style name="WhiteBoldTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
-        <!--<item name="android:textColor">@color/white</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
+    <!--<item name="android:textColor">@color/white</item>-->
     <!--</style>-->
 
     <!--<style name="WhiteThinTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_light</item>-->
-        <!--<item name="android:textColor">@color/white</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_light</item>-->
+    <!--<item name="android:textColor">@color/white</item>-->
     <!--</style>-->
 
     <!--<style name="WhiteRegularTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_regular</item>-->
-        <!--<item name="android:textColor">@color/white</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_regular</item>-->
+    <!--<item name="android:textColor">@color/white</item>-->
     <!--</style>-->
 
     <!--<style name="GreenBlackTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_black</item>-->
-        <!--<item name="android:textColor">@color/light_green</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_black</item>-->
+    <!--<item name="android:textColor">@color/light_green</item>-->
     <!--</style>-->
 
     <!--<style name="WhiteCheckBox">-->
-        <!--<item name="colorAccent">#ffffff</item>-->
-        <!--<item name="buttonTint">#fff</item>-->
+    <!--<item name="colorAccent">#ffffff</item>-->
+    <!--<item name="buttonTint">#fff</item>-->
     <!--</style>-->
 
 
     <!--<style name="BrownBlackTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_black</item>-->
-        <!--<item name="android:textColor">@color/brown</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_black</item>-->
+    <!--<item name="android:textColor">@color/brown</item>-->
     <!--</style>-->
 
 
     <!--<style name="BrownBoldTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
-        <!--<item name="android:textColor">@color/brown</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
+    <!--<item name="android:textColor">@color/brown</item>-->
     <!--</style>-->
 
     <!--<style name="BrownThinTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_light</item>-->
-        <!--<item name="android:textColor">@color/brown</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_light</item>-->
+    <!--<item name="android:textColor">@color/brown</item>-->
     <!--</style>-->
 
     <!--<style name="BrownRegularTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_regular</item>-->
-        <!--<item name="android:textColor">@color/brown</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_regular</item>-->
+    <!--<item name="android:textColor">@color/brown</item>-->
     <!--</style>-->
-
 
 
     <!--&lt;!&ndash; offer item styles &ndash;&gt;-->
 
     <!--<style name="WhiteBlackTextOfferBtn" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_black</item>-->
-        <!--<item name="android:textColor">@color/white</item>-->
-        <!--<item name="android:textSize">16sp</item>-->
-        <!--<item name="android:textStyle">bold</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_black</item>-->
+    <!--<item name="android:textColor">@color/white</item>-->
+    <!--<item name="android:textSize">16sp</item>-->
+    <!--<item name="android:textStyle">bold</item>-->
     <!--</style>-->
 
 
     <!--<style name="WhiteBlackTextItemOffer" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_black</item>-->
-        <!--<item name="android:textColor">@color/white</item>-->
-        <!--<item name="android:textSize">12sp</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_black</item>-->
+    <!--<item name="android:textColor">@color/white</item>-->
+    <!--<item name="android:textSize">12sp</item>-->
     <!--</style>-->
 
 
     <!--<style name="PrimaryBoldItemTextView" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
-        <!--<item name="android:textColor">@color/primaryText</item>-->
-        <!--<item name="android:textSize">13sp</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
+    <!--<item name="android:textColor">@color/primaryText</item>-->
+    <!--<item name="android:textSize">13sp</item>-->
     <!--</style>-->
 
 
     <!--&lt;!&ndash; product home item styles &ndash;&gt;-->
 
     <!--<style name="PrimaryColorPrice" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_black</item>-->
-        <!--<item name="android:textColor">@color/primaryText</item>-->
-        <!--<item name="android:textSize">24sp</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_black</item>-->
+    <!--<item name="android:textColor">@color/primaryText</item>-->
+    <!--<item name="android:textSize">24sp</item>-->
     <!--</style>-->
 
     <!--<style name="SecondaryColorPrice" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_black</item>-->
-        <!--<item name="android:textColor">@color/secondaryText</item>-->
-        <!--<item name="android:textSize">24sp</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_black</item>-->
+    <!--<item name="android:textColor">@color/secondaryText</item>-->
+    <!--<item name="android:textSize">24sp</item>-->
     <!--</style>-->
 
     <!--<style name="ThirdColorPrice" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_black</item>-->
-        <!--<item name="android:textColor">@color/thirdText</item>-->
-        <!--<item name="android:textSize">24sp</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_black</item>-->
+    <!--<item name="android:textColor">@color/thirdText</item>-->
+    <!--<item name="android:textSize">24sp</item>-->
     <!--</style>-->
 
     <!--<style name="PrimaryColorCurrency" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
-        <!--<item name="android:textColor">@color/primaryText</item>-->
-        <!--<item name="android:alpha">.7</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
+    <!--<item name="android:textColor">@color/primaryText</item>-->
+    <!--<item name="android:alpha">.7</item>-->
     <!--</style>-->
 
     <!--<style name="SecondaryColorCurrency" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
-        <!--<item name="android:textColor">@color/secondaryText</item>-->
-        <!--<item name="android:alpha">.7</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
+    <!--<item name="android:textColor">@color/secondaryText</item>-->
+    <!--<item name="android:alpha">.7</item>-->
     <!--</style>-->
 
     <!--<style name="ThirdColorCurrency" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
-        <!--<item name="android:textColor">@color/thirdText</item>-->
-        <!--<item name="android:alpha">.7</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
+    <!--<item name="android:textColor">@color/thirdText</item>-->
+    <!--<item name="android:alpha">.7</item>-->
     <!--</style>-->
 
     <!--<style name="WhiteBlackTextItemBtn" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_black</item>-->
-        <!--<item name="android:textColor">@color/white</item>-->
-        <!--<item name="android:textSize">12sp</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_black</item>-->
+    <!--<item name="android:textColor">@color/white</item>-->
+    <!--<item name="android:textSize">12sp</item>-->
     <!--</style>-->
 
     <!--<style name="WhiteBoldTextItem" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
-        <!--<item name="android:textColor">@color/white</item>-->
-        <!--<item name="android:textSize">12sp</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
+    <!--<item name="android:textColor">@color/white</item>-->
+    <!--<item name="android:textSize">12sp</item>-->
     <!--</style>-->
 
     <!--<style name="ItemHeader" parent="@android:style/TextAppearance.Widget.TextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
-        <!--<item name="android:textColor">@color/primaryText</item>-->
-        <!--<item name="android:textSize">22sp</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_bold</item>-->
+    <!--<item name="android:textColor">@color/primaryText</item>-->
+    <!--<item name="android:textSize">22sp</item>-->
     <!--</style>-->
 
 
@@ -392,14 +388,14 @@
 
 
     <!--<style name="FlatButton" parent="Theme.AppCompat.Light">-->
-        <!--<item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless.Colored</item>-->
-        <!--<item name="colorControlHighlight">@color/secondaryText</item>-->
-        <!--<item name="colorAccent">@color/light_green</item>-->
+    <!--<item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless.Colored</item>-->
+    <!--<item name="colorControlHighlight">@color/secondaryText</item>-->
+    <!--<item name="colorAccent">@color/light_green</item>-->
     <!--</style>-->
 
     <!--<style name="ThirdBlackTextView">-->
-        <!--<item name="android:fontFamily">@font/cairo_black</item>-->
-        <!--<item name="android:textColor">@color/thirdText</item>-->
+    <!--<item name="android:fontFamily">@font/cairo_black</item>-->
+    <!--<item name="android:textColor">@color/thirdText</item>-->
     <!--</style>-->
 
 

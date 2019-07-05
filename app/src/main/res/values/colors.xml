@@ -20,7 +20,7 @@
     <color name="great_rating_color">#03CA9E</color>
     <color name="ok_rating_color">#cac003</color>
     <color name="bad_rating_color">#ca3f03</color>
-
+    <color name="bar_progress_color">#F7AA47</color>
 
 
 </resources>

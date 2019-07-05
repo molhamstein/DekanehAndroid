@@ -2,13 +2,14 @@
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tool:context=".fragment.profile.ProfileFragment">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -18,11 +19,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <FrameLayout
+                <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:fitsSystemWindows="true"
-                    app:layout_scrollFlags="scroll">
+                    android:layout_height="240dp">
 
                     <ImageView
                         android:id="@+id/map"
@@ -32,51 +31,57 @@
                         android:src="@drawable/ad" />
 
                     <View
+                        android:id="@+id/view"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:alpha=".4"
                         android:background="#000" />
 
                     <LinearLayout
+                        android:id="@+id/linearLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|start"
                         android:layout_margin="8dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
                             style="@style/WhiteBlackTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="-8dp"
                             android:alpha=".7"
-                            android:text="@string/name" />
+                            android:includeFontPadding="false"
+                            android:text="@string/name"
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/storeName"
                             style="@style/WhiteBlackTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="-18dp"
+                            android:includeFontPadding="false"
                             android:text="@string/store_name"
-                            android:textSize="22sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             style="@style/WhiteBlackTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="-8dp"
                             android:alpha=".7"
-                            android:text="@string/owner_name" />
+                            android:includeFontPadding="false"
+                            android:text="@string/owner_name"
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/ownerName"
                             style="@style/WhiteBlackTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="-18dp"
+                            android:includeFontPadding="false"
                             android:text="Name"
-                            android:textSize="22sp" />
+                            android:textSize="18sp" />
 
                         <TextView
                             style="@style/WhiteBlackTextView"
@@ -84,7 +89,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="-8dp"
                             android:alpha=".7"
-                            android:text="@string/phone_number" />
+                            android:text="@string/phone_number"
+                            android:textSize="12sp"
+                            android:visibility="gone" />
 
                         <TextView
                             android:id="@+id/phoneNumber"
@@ -93,56 +100,119 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="-18dp"
                             android:text="00963"
-                            android:textSize="22sp" />
+                            android:textSize="18sp"
+                            android:visibility="gone" />
+
+                        <TextView
+                            style="@style/WhiteBlackTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:alpha=".7"
+                            android:text="@string/level"
+                            android:textSize="12sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/level"
+                            style="@style/PrimaryBlackTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/white_rounded_bg"
+                            android:includeFontPadding="false"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
+                            android:text="Golden"
+                            android:textSize="18sp" />
 
                     </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/profileSettingsIcon"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginTop="30dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:padding="8dp"
-                        app:srcCompat="@drawable/ic_settings_white_24dp" />
+                        android:layout_marginEnd="10dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/linearLayout">
 
-                    <ImageView
-                        android:id="@+id/profileEditIcon"
+                        <ImageView
+                            android:id="@+id/profileSettingsIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="16dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:padding="8dp"
+                            app:srcCompat="@drawable/ic_settings_white_24dp" />
+
+                        <ImageView
+                            android:id="@+id/profileEditIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:padding="8dp"
+                            app:srcCompat="@drawable/ic_edit_white_24dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginEnd="56dp"
-                        android:layout_marginTop="30dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:padding="8dp"
-                        app:srcCompat="@drawable/ic_edit_white_24dp"
-
-                        />
+                        android:layout_marginEnd="8dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+                        app:layout_constraintEnd_toEndOf="@+id/view">
 
 
-                </FrameLayout>
+                        <TextView
+                            style="@style/WhiteBlackTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="-8dp"
+                            android:alpha=".7"
+                            android:text="@string/balance"
+                            android:textSize="12sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/balance"
+                            style="@style/WhiteBlackTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/primary_rounded_pg"
+                            android:includeFontPadding="false"
+                            android:paddingStart="15dp"
+                            android:paddingEnd="15dp"
+                            android:text="500"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+
+                </android.support.constraint.ConstraintLayout>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/profileOrdersRV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="250dp" />
+                    android:layout_marginTop="280dp" />
 
 
                 <FrameLayout
-                    android:layout_width="340dp"
-                    android:layout_height="60dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="190dp"
+                    android:layout_marginTop="205dp"
                     android:background="@drawable/shadow_white_background_round">
 
                     <android.support.design.widget.TabLayout
                         android:id="@+id/tabLayout"
-                        android:layout_width="300dp"
-                        android:layout_height="40dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
                         android:layout_gravity="center"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
                         app:tabGravity="fill"
                         app:tabMaxWidth="0dp"
                         app:tabMode="fixed" />
@@ -159,14 +229,14 @@
             android:id="@+id/bottomSheet"
             android:layout_width="match_parent"
             android:layout_height="800dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/shadow_card_black"
             android:orientation="vertical"
-            android:paddingBottom="100dp"
-            android:paddingEnd="32dp"
             android:paddingStart="32dp"
-            android:visibility="visible"
+            android:paddingEnd="32dp"
+            android:paddingBottom="100dp"
+            android:visibility="gone"
             app:behavior_hideable="true"
             app:behavior_peekHeight="600dp"
             app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
@@ -184,9 +254,9 @@
                 style="@style/PrimaryBoldTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="-4dp"
                 android:layout_marginStart="-4dp"
                 android:layout_marginTop="-22dp"
+                android:layout_marginEnd="-4dp"
                 android:hint="@string/store_name"
                 android:textSize="22sp" />
 
@@ -203,9 +273,9 @@
                 style="@style/PrimaryBoldTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="-4dp"
                 android:layout_marginStart="-4dp"
                 android:layout_marginTop="-22dp"
+                android:layout_marginEnd="-4dp"
                 android:hint="@string/phone_number"
                 android:textSize="22sp" />
 
@@ -222,9 +292,9 @@
                 style="@style/PrimaryBoldTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="-4dp"
                 android:layout_marginStart="-4dp"
                 android:layout_marginTop="-22dp"
+                android:layout_marginEnd="-4dp"
                 android:hint="@string/owner_name"
                 android:textSize="22sp" />
 
