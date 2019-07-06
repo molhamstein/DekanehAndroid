@@ -199,6 +199,14 @@
                     android:layout_marginTop="280dp" />
 
 
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rewardsRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="280dp"
+                    android:visibility="gone" />
+
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="70dp"

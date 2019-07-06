@@ -38,6 +38,7 @@ import com.socket.dekaneh.adapter.OffersAdapter;
 import com.socket.dekaneh.adapter.OrderDetailsItemsAdapter;
 import com.socket.dekaneh.adapter.OrdersAdapter;
 import com.socket.dekaneh.adapter.ProductsAdapter;
+import com.socket.dekaneh.adapter.RewardsAdapter;
 import com.socket.dekaneh.adapter.SearchAdapter;
 import com.socket.dekaneh.adapter.SubCategoriesAdapter;
 import com.socket.dekaneh.application.AppSchedulerProvider;
@@ -48,6 +49,7 @@ import com.socket.dekaneh.fragment.main.MainFragmentPresenter;
 import com.socket.dekaneh.fragment.main.MainFragmentVP;
 import com.socket.dekaneh.fragment.offers.OffersFragmentPresenter;
 import com.socket.dekaneh.fragment.offers.OffersFragmentVP;
+import com.socket.dekaneh.fragment.profile.ProfileFragment;
 import com.socket.dekaneh.fragment.profile.ProfileFragmentPresenter;
 import com.socket.dekaneh.fragment.profile.ProfileFragmentVP;
 import com.socket.dekaneh.fragment.registration.forgetPassword.ForgetPasswordPresenter;
@@ -291,5 +293,14 @@ public class ActivityModule {
     @Provides
     LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity) {
         return new LinearLayoutManager(activity);
+    }
+
+    @Provides
+    ProfileFragmentVP.View provideProfileView(){
+        return (ProfileFragmentVP.View)ProfileFragment.newInstance() ;
+    }
+    @Provides
+    RewardsAdapter provideRewardAdapter(ProfileFragmentVP.View pView) {
+        return new RewardsAdapter(provideProfileView());
     }
 }

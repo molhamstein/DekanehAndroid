@@ -38,6 +38,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrdersView
         return new OrdersViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_order, parent, false));
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull OrdersViewHolder holder, int position) {
 

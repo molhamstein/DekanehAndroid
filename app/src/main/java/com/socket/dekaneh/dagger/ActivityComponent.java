@@ -22,6 +22,8 @@ import com.socket.dekaneh.fragment.registration.forgetPassword.ForgotPasswordFra
 import com.socket.dekaneh.fragment.registration.new_account.NewAccountFragment;
 import com.socket.dekaneh.fragment.registration.login.LoginFragment;
 
+import javax.inject.Singleton;
+
 import dagger.Component;
 
 @PerActivity

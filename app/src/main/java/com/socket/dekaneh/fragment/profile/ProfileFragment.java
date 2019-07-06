@@ -2,6 +2,7 @@ package com.socket.dekaneh.fragment.profile;
 
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.socket.dekaneh.adapter.RewardsAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -34,6 +36,8 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
     ImageView map;
     @BindView(R.id.profileOrdersRV)
     RecyclerView profileOrdersRV;
+    @BindView(R.id.rewardsRV)
+    RecyclerView rewardsRV;
     @BindView(R.id.bottomSheet)
     View bottomSheet;
     @BindView(R.id.tabLayout)
@@ -55,7 +59,13 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
     @Inject
     OrdersAdapter ordersAdapter;
 
+    @Inject
+    RewardsAdapter rewardsAdapter;
+
     BottomSheetBehavior behavior;
+
+
+    private static ProfileFragment instance = null;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -63,7 +73,8 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
 
 
     public static BaseFragment newInstance() {
-        return new ProfileFragment();
+        if (instance == null) instance = new ProfileFragment();
+        return instance;
     }
 
     @Override
@@ -77,6 +88,11 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
         profileOrdersRV.setLayoutManager(new LinearLayoutManager(getContext()));
         profileOrdersRV.setAdapter(ordersAdapter);
         profileOrdersRV.setNestedScrollingEnabled(false);
+
+
+        rewardsRV.setLayoutManager(new LinearLayoutManager(getContext()));
+        rewardsRV.setAdapter(rewardsAdapter);
+
         behavior = BottomSheetBehavior.from(bottomSheet);
         behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         tabLayout.addTab(tabLayout.newTab().setCustomView(ViewUtils.getTabTextView(getContext(), getString(R.string.order))));
@@ -88,10 +104,18 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
             public void onTabSelected(TabLayout.Tab tab) {
                 switch (tab.getPosition()) {
                     case 0:
+                        profileOrdersRV.setVisibility(View.VISIBLE);
+                        rewardsRV.setVisibility(View.GONE);
                         presenter.fetchOrders();
                         break;
                     case 1:
+                        profileOrdersRV.setVisibility(View.VISIBLE);
+                        rewardsRV.setVisibility(View.GONE);
                         presenter.fetchPastOrders();
+                        break;
+                    case 2:
+                        profileOrdersRV.setVisibility(View.GONE);
+                        rewardsRV.setVisibility(View.VISIBLE);
                         break;
                 }
             }
@@ -147,6 +171,12 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
     @Override
     public void updateMap(String url) {
         Picasso.get().load(url).into(map);
+    }
+
+    @Override
+    public void openDialog(String tag) {
+        RewardDialogFragment fragment = new RewardDialogFragment();
+        fragment.show(getFragmentManager(), tag);
     }
 
     @OnClick(R.id.updateUserBtn)
