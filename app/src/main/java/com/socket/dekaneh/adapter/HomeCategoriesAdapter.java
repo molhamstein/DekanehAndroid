@@ -102,7 +102,7 @@ public class HomeCategoriesAdapter extends RecyclerView.Adapter<HomeCategoriesAd
 
     public void addAllCategories(List<HomeCategory> categories) {
         this.categories = categories;
-        if (this.featuredCategory != null && !this.categories.get(0).getId().isEmpty()) {
+        if (this.featuredCategory != null && this.categories.size() > 0 && !this.categories.get(0).getId().isEmpty()) {
             this.categories.add(0, featuredCategory);
         }
         notifyDataSetChanged();

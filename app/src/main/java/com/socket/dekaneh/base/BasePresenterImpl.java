@@ -116,7 +116,19 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else {
+        } else if (error.getErrorCode() == AppApiHelper.PRODUCT_AVAILABLE_STOCK_IS_LOW_ERROR) {
+            try {
+                // the error body shall contain the product that is causing this issue
+                JsonElement errBody = new JsonParser().parse(error.getErrorBody()).getAsJsonObject().get("error");
+                JsonArray unavailableProductsJsonArray = errBody.getAsJsonObject().getAsJsonArray("data");
+                String productString = unavailableProductsJsonArray.get(0).getAsJsonObject().toString();
+                Product product = GsonUtils.convertJsonStringToProductObject(productString);
+
+                getView().onError(getView().getContext().getString(R.string.product_not_available_error, product.getNameAr()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else {
             Log.e("ERRRRRRRRRRR", "handleApiError: " + error.getErrorBody());
         }
 
