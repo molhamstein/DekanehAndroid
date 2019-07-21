@@ -78,22 +78,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guidline1"
             app:layout_constraintTop_toBottomOf="@+id/validTill" />
-
+    
         <ProgressBar
             android:id="@+id/progressBar"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="0dp"
             android:layout_height="15dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:progressDrawable="@drawable/reward_progress"
             android:progress="50"
-
+            android:progressDrawable="@drawable/reward_progress"
+        
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/body" />
-
+            app:layout_constraintTop_toBottomOf="@+id/progressValue" />
+    
         <TextView
             android:id="@+id/progressValue"
             style="@style/PrimaryBlackTextView"
@@ -105,8 +104,8 @@
             android:lineSpacingExtra="0dp"
             android:text="10/20"
             android:textSize="10sp"
-            app:layout_constraintBottom_toTopOf="@+id/progressBar"
-            app:layout_constraintEnd_toEndOf="@+id/progressBar" />
+            app:layout_constraintEnd_toEndOf="@+id/progressBar"
+            app:layout_constraintTop_toBottomOf="@+id/body" />
 
 
     </android.support.constraint.ConstraintLayout>

@@ -5,7 +5,6 @@ import java.util.List;
 import com.socket.dekaneh.base.BasePresenter;
 import com.socket.dekaneh.base.BaseView;
 import com.socket.dekaneh.network.model.CartItem;
-import com.socket.dekaneh.network.model.Coupon;
 
 public class OrderDetailsVP {
 

@@ -14,9 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -25,7 +22,6 @@ import com.socket.dekaneh.R;
 import com.socket.dekaneh.adapter.OrderDetailsItemsAdapter;
 import com.socket.dekaneh.base.BaseActivity;
 import com.socket.dekaneh.network.model.CartItem;
-import com.socket.dekaneh.network.model.Coupon;
 import com.socket.dekaneh.network.model.Order;
 import com.socket.dekaneh.utils.GsonUtils;
 import butterknife.BindView;

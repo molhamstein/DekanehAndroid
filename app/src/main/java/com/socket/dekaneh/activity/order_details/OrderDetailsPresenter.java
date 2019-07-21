@@ -1,11 +1,5 @@
 package com.socket.dekaneh.activity.order_details;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.os.Build;
-import android.util.Log;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -20,14 +14,9 @@ import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
 import com.socket.dekaneh.network.AppApiHelper;
 import com.socket.dekaneh.network.CacheStore;
-import com.socket.dekaneh.network.model.CartItem;
-import com.socket.dekaneh.network.model.Coupon;
-import com.socket.dekaneh.network.model.Order;
-import com.socket.dekaneh.network.model.OrderRequest;
-import com.socket.dekaneh.network.model.Orderitem;
+import com.socket.dekaneh.network.model.*;
 import com.socket.dekaneh.utils.AppDateUtils;
 import com.socket.dekaneh.utils.GsonUtils;
-import com.socket.dekaneh.utils.NetworkUtils;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;

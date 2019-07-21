@@ -12,6 +12,7 @@ import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
 import com.socket.dekaneh.network.AppApiHelper;
 import com.socket.dekaneh.network.CacheStore;
+import com.socket.dekaneh.network.model.Award;
 import com.socket.dekaneh.network.model.Order;
 import com.socket.dekaneh.network.model.User;
 import com.socket.dekaneh.utils.NetworkUtils;
@@ -33,7 +34,8 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
         super.onAttach(mvpView);
         getView().updateView(getCacheStore().getSession().getShopName(),
                 getCacheStore().getSession().getOwnerName(),
-                getCacheStore().getSession().getPhoneNumber());
+                getCacheStore().getSession().getPhoneNumber(),
+                getCacheStore().getSession().getBalance());
         getView().updateMap(NetworkUtils.getStaticMapUrl(getCacheStore().getSession().getLatitude(), getCacheStore().getSession().getLongitude()));
 
     }
@@ -86,7 +88,7 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
                             .subscribe(new Consumer<User>() {
                                 @Override
                                 public void accept(User user) throws Exception {
-                                    getView().updateView(user.getShopName(), user.getOwnerName(), user.getPhoneNumber());
+                                    getView().updateView(user.getShopName(), user.getOwnerName(), user.getPhoneNumber(),user.getBalance());
                                     getCacheStore().getSession().setUser(user);
                                     getView().hideLoading();
                                 }
@@ -117,6 +119,35 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
 
                                     getView().hideLoading();
                                     getView().addOrders(orders);
+
+                                }
+                            }, new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    getView().hideLoading();
+                                    Log.e(TAG, "accept: ", throwable);
+                                    handleApiError((ANError) throwable);
+                                }
+                            })
+            );
+        }
+    }
+
+    @Override
+    public void fetchAwards() {
+        if (isNetworkConnected()) {
+
+            getView().showLoading();
+            getCompositeDisposable().add(
+                    AppApiHelper.getMyAwards(getCacheStore().getSession().getAccessToken())
+                            .subscribeOn(getSchedulerProvider().io())
+                            .observeOn(getSchedulerProvider().ui())
+                            .subscribe(new Consumer<List<Award>>() {
+                                @Override
+                                public void accept(List<Award> awards) throws Exception {
+
+                                    getView().hideLoading();
+                                    getView().addAwards(awards);
 
                                 }
                             }, new Consumer<Throwable>() {

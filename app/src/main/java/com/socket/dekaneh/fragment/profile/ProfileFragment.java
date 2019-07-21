@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.socket.dekaneh.adapter.RewardsAdapter;
+import com.socket.dekaneh.network.model.Award;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -54,6 +55,8 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
     EditText phoneNumberForm;
     @BindView(R.id.ownerNameForm)
     EditText ownerNameForm;
+    @BindView(R.id.balance)
+    TextView balance;
 
 
     @Inject
@@ -83,15 +86,17 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
         if (getActivityComponent() != null)
             getActivityComponent().inject(this);
         presenter.onAttach(this);
-        presenter.fetchOrders();
 
         profileOrdersRV.setLayoutManager(new LinearLayoutManager(getContext()));
         profileOrdersRV.setAdapter(ordersAdapter);
         profileOrdersRV.setNestedScrollingEnabled(false);
+        presenter.fetchOrders();
+
 
 
         rewardsRV.setLayoutManager(new LinearLayoutManager(getContext()));
         rewardsRV.setAdapter(rewardsAdapter);
+        presenter.fetchAwards();
 
         behavior = BottomSheetBehavior.from(bottomSheet);
         behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
@@ -116,6 +121,7 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
                     case 2:
                         profileOrdersRV.setVisibility(View.GONE);
                         rewardsRV.setVisibility(View.VISIBLE);
+                        presenter.fetchAwards();
                         break;
                 }
             }
@@ -159,13 +165,15 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
     }
 
     @Override
-    public void updateView(String storeName, String ownerName, String phoneNumber) {
+    public void updateView(String storeName, String ownerName, String phoneNumber,Integer balance) {
         this.storeName.setText(storeName);
         this.ownerName.setText(ownerName);
         this.phoneNumber.setText(phoneNumber);
         this.businessNameForm.setText(storeName);
         this.phoneNumberForm.setText(phoneNumber);
         this.ownerNameForm.setText(ownerName);
+        this.balance.setText(balance.toString());
+
     }
 
     @Override
@@ -187,6 +195,10 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
         presenter.patchUser(storeName, ownerName, phoneNumber);
     }
 
+    @Override
+    public void addAwards(List<Award> awards) {
+        rewardsAdapter.addAwards(awards);
+    }
 
     @Override
     public void onResume() {

@@ -43,6 +43,9 @@ public class User implements Serializable {
     @SerializedName("hideHistory")
     @Expose
     private boolean hideHistory;
+    @SerializedName("balance")
+    @Expose
+    private Integer balance;
 
 
     public User(String id, String phoneNumber, String email, String clientType, String ownerName, String shopName, boolean hideHistory) {
@@ -53,6 +56,15 @@ public class User implements Serializable {
         this.ownerName = ownerName;
         this.shopName = shopName;
         this.hideHistory = hideHistory;
+    }
+
+
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
     }
 
     public String getId() {

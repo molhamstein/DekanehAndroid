@@ -1,7 +1,5 @@
 package com.socket.dekaneh.network;
 
-import android.text.format.DateUtils;
-
 import com.google.gson.JsonObject;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 
@@ -9,24 +7,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.socket.dekaneh.Rating;
-import com.socket.dekaneh.network.model.Area;
-import com.socket.dekaneh.network.model.Category;
-import com.socket.dekaneh.network.model.Favorite;
-import com.socket.dekaneh.network.model.HomeCategory;
-import com.socket.dekaneh.network.model.LoginRequest;
-import com.socket.dekaneh.network.model.LoginResponse;
-import com.socket.dekaneh.network.model.Manufacturer;
-import com.socket.dekaneh.network.model.Notification;
-import com.socket.dekaneh.network.model.Offer;
-import com.socket.dekaneh.network.model.Order;
-import com.socket.dekaneh.network.model.OrderRequest;
-import com.socket.dekaneh.network.model.Product;
-import com.socket.dekaneh.network.model.SignUpRequest;
-import com.socket.dekaneh.network.model.SliderImage;
-import com.socket.dekaneh.network.model.SubCategory;
-import com.socket.dekaneh.network.model.User;
+import com.socket.dekaneh.network.model.*;
 
-import com.socket.dekaneh.network.model.Coupon;
 import com.socket.dekaneh.utils.AppDateUtils;
 
 import io.reactivex.Single;
@@ -365,6 +347,13 @@ public class AppApiHelper {
                 .addPathParameter("id", id)
                 .build()
                 .getObjectSingle(Manufacturer.class);
+    }
+
+    public static Single<List<Award>> getMyAwards(String accessToken) {
+        return Rx2AndroidNetworking.get(ApiEndPoint.AWARDS)
+                .addHeaders("Authorization", accessToken)
+                .build()
+                .getObjectListSingle(Award.class);
     }
 
 

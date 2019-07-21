@@ -4,23 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:elevation="5dp"
     android:layout_gravity="center"
+    android:elevation="5dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="10dp"
     app:cardUseCompatPadding="true"
     tools:context=".fragment.profile.RewardDialogFragment">
-
+    
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+        
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="16dp">
-
-
+            
+            
+            <nl.dionsegijn.konfetti.KonfettiView
+                android:id="@+id/viewKonfetti"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:elevation="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            
             <TextView
                 android:id="@+id/congrats"
                 style="@style/ThirdBlackTextView"
@@ -36,7 +46,7 @@
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
+            
             <TextView
                 android:id="@+id/title"
                 style="@style/PrimaryBlackTextView"
@@ -50,19 +60,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/congrats" />
-
+            
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="28dp"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/reward_image"
+                app:layout_constraintDimensionRatio="H,9:16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title" />
-
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                app:srcCompat="@drawable/ic_coupon" />
+            
             <TextView
                 android:id="@+id/msg"
                 style="@style/ThirdBlackTextView"
@@ -77,7 +86,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
+            
             <TextView
                 android:id="@+id/body"
                 style="@style/PrimaryBlackTextView"
@@ -86,16 +95,16 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:gravity="center"
                 android:includeFontPadding="false"
                 android:lineSpacingExtra="0dp"
                 android:paddingStart="16dp"
-                android:gravity="center"
                 android:text="Buy more than 200000 monthly and get a free box of dates"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/msg" />
-
+            
             <Button
                 android:id="@+id/button"
                 style="@style/WhiteBlackTextView"
@@ -107,17 +116,17 @@
                 android:background="@drawable/primary_color_button_round_10"
                 android:paddingStart="50dp"
                 android:paddingEnd="50dp"
-                android:textSize="14sp"
                 android:text="Check offers in profile page"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.51"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/body" />
-
-
+        
+        
         </android.support.constraint.ConstraintLayout>
-
-
+    
+    
     </ScrollView>
 
 

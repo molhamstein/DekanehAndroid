@@ -26,11 +26,11 @@ import com.socket.dekaneh.network.model.CartItem;
 import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
 
 import com.socket.dekaneh.adapter.CouponsAdapter;
-import com.socket.dekaneh.network.model.Coupon;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.socket.dekaneh.network.model.Coupon;
 
 public class CartActivity extends BaseActivity implements CartActivityVP.View {
 

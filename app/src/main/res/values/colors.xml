@@ -21,6 +21,9 @@
     <color name="ok_rating_color">#cac003</color>
     <color name="bad_rating_color">#ca3f03</color>
     <color name="bar_progress_color">#F7AA47</color>
+    
+    <color name="congrats_color1">#DD8D22</color>
+    <color name="congrats_color2">#1FC8CD</color>
 
 
 </resources>

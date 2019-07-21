@@ -24,6 +24,7 @@ public class Session {
     private static final String EMAIL = "email";
     private static final String OWNER_NAME = "owner_name";
     private static final String SHOP_NAME = "shop_name";
+    private static final String USER_BALANCE = "user_balance";
     private static final String USER_NAME = "user_name";
     private static final String GENDER = "gender";
     private static final String LATITUDE = "latitude";
@@ -104,6 +105,18 @@ public class Session {
         return getPreference().getString(OWNER_NAME, "");
     }
 
+    public void setBalance(Integer balance) {
+        getPreference()
+                .edit()
+                .putInt(USER_BALANCE, balance)
+                .apply();
+    }
+
+    public Integer getBalance() {
+        return getPreference().getInt(USER_BALANCE, 0);
+    }
+
+
     public void setShopName(String shopName) {
         getPreference()
                 .edit()
@@ -114,6 +127,7 @@ public class Session {
     public String getShopName() {
         return getPreference().getString(SHOP_NAME, "");
     }
+
 
     public void setUserName(String userName) {
         getPreference()
@@ -204,6 +218,7 @@ public class Session {
         setPhoneNumber(user.getPhoneNumber());
         setOwnerName(user.getOwnerName());
         setShopName(user.getShopName());
+        setBalance(user.getBalance());
         setLoggedOn(true);
         setHideHistory(user.isHideHistory());
         setClientType(user.getClientType().toString());

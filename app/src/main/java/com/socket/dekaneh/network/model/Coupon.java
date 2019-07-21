@@ -4,7 +4,10 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Coupon implements Serializable {
 
@@ -15,7 +18,7 @@ public class Coupon implements Serializable {
     @Expose
     @SerializedName("value")
     private
-    int value;
+    Integer value;
     @Expose
     @SerializedName("code")
     private
@@ -28,17 +31,29 @@ public class Coupon implements Serializable {
     int numberOfUsed;
     @SerializedName("expireDate")
     private
-    Date expireDate;
+    String expireDate;
     @SerializedName("type")
     private
     Type type;
 
+    @SerializedName("duration")
+    @Expose
+    private Integer duration;
+
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
 
     public String getId() {
         return id;
     }
 
-    public int getValue() {
+    public Integer getValue() {
         return value;
     }
 
@@ -55,7 +70,15 @@ public class Coupon implements Serializable {
     }
 
     public Date getExpireDate() {
-        return expireDate;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX", Locale.US);
+        Date formattedDate = null;
+
+        try {
+            formattedDate = sdf.parse(expireDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return formattedDate;
     }
 
     public Type getType() {

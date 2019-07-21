@@ -14,15 +14,9 @@ import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.base.BasePresenterImpl;
 import com.socket.dekaneh.network.AppApiHelper;
 import com.socket.dekaneh.network.CacheStore;
-import com.socket.dekaneh.network.model.CartItem;
-import com.socket.dekaneh.network.model.Order;
-import com.socket.dekaneh.network.model.OrderRequest;
-import com.socket.dekaneh.network.model.Orderitem;
-import com.socket.dekaneh.network.model.User;
+import com.socket.dekaneh.network.model.*;
 
 import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
-
-import com.socket.dekaneh.network.model.Coupon;
 
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
