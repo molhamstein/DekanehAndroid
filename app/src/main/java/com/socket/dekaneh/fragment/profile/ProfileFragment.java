@@ -3,6 +3,7 @@ package com.socket.dekaneh.fragment.profile;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -27,6 +28,9 @@ import com.socket.dekaneh.utils.ViewUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import nl.dionsegijn.konfetti.KonfettiView;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
 
 public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.View {
 
@@ -57,6 +61,7 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
     EditText ownerNameForm;
     @BindView(R.id.balance)
     TextView balance;
+
 
 
     @Inject
@@ -136,6 +141,7 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
 
             }
         });
+
 
     }
 

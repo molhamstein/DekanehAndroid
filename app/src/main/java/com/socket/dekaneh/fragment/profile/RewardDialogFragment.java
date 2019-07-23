@@ -51,13 +51,14 @@ public class RewardDialogFragment extends DialogFragment {
         viewKonfetti.build()
                 .addColors(ContextCompat.getColor(getActivity(),R.color.congrats_color1),ContextCompat.getColor(getActivity(),R.color.congrats_color2))
                 .setDirection(0.0, 359.0)
-                .setSpeed(1f,5f)
+                .setSpeed(1f,20f)
                 .setFadeOutEnabled(true)
                 .setTimeToLive(2000L)
                 .addShapes(Shape.RECT, Shape.CIRCLE)
                 .addSizes(new Size(12, 5))
-                .setPosition(viewKonfetti.getX()+ viewKonfetti.getWidth() / 2, viewKonfetti.getY() + viewKonfetti.getHeight() / 3)
-                .burst(1000);
+                .setPosition(view.getX()+ view.getWidth() / 2, view.getY() )
+//                .setPosition(-50f, viewKonfetti.getWidth() + 50f, -50f, -50f)
+                .streamFor(300, 50000000000000000L);
 
     }
 }
