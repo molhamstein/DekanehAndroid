@@ -80,7 +80,7 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
                             public void accept(Throwable throwable) throws Exception {
                                 Log.e(TAG, "accept: ", throwable);
                                 handleApiError((ANError) throwable);
-                                getView().showMessage(R.string.unknown_error_while_submitting_order);
+                                //getView().showMessage(R.string.unknown_error_while_submitting_order);
                                 getView().hideLoading();
                             }
                         })
