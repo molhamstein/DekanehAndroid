@@ -188,5 +188,19 @@
     <string name="balance">Balance</string>
     <string name="rewards">Rewards</string>
     <string name="valid_till">Valid till</string>
+    
+    
+    <string name="invalid_client_title">Critical Update!</string>
+    <string name="invalid_client_msg">This version is no more supported\nPlease download the latest version</string>
+    <string name="warning_client_title">Update!</string>
+    <string name="warning_client_msg">There is new version available at the store</string>
+    <string name="sys_not_running_title">Invalid Version!</string>
+    <string name="sys_not_running_msg">This version is expired</string>
+    <string name="store_button">Go to store</string>
+    <string name="offer_achieved">You Have Achieved this offer</string>
+    <string name="congrats">Congratulations!</string>
+    <string name="go_to_offers">Check Offers In Profile</string>
+    
+    
 
 </resources>

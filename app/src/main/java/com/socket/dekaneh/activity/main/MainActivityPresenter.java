@@ -25,6 +25,8 @@ import io.reactivex.functions.Consumer;
 public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePresenterImpl<T> implements MainActivityVP.Presenter<T> {
 
 
+
+
     @Inject
     public MainActivityPresenter(SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable, CacheStore cacheStore) {
         super(schedulerProvider, compositeDisposable, cacheStore);
@@ -33,7 +35,11 @@ public class MainActivityPresenter<T extends MainActivityVP.View> extends BasePr
     @Override
     public void onAttach(T mvpView) {
         super.onAttach(mvpView);
-        getView().showMainFragment();
+        Boolean showProfile  = getView().getIntent().getBooleanExtra("showProfile",false);
+        if (showProfile)
+            getView().showProfileFragment();
+        else
+            getView().showMainFragment();
         getView().showToolbarTitle(false);
         getView().showToolbarLogo(true);
 

@@ -1,8 +1,12 @@
 package com.socket.dekaneh.base;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,9 +15,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.socket.dekaneh.BuildConfig;
+import com.socket.dekaneh.R;
 import com.socket.dekaneh.activity.registration.FragmentNavigationVP;
 import com.socket.dekaneh.dagger.ActivityComponent;
 import butterknife.ButterKnife;
+import com.socket.dekaneh.network.AppApiHelper;
 
 public abstract class BaseFragment extends Fragment implements FragmentNavigationVP.View, BaseView {
 
@@ -94,6 +101,36 @@ public abstract class BaseFragment extends Fragment implements FragmentNavigatio
     @Override
     public void onError(String message) {
         if (activity != null) activity.onError(message);
+    }
+
+    @Override
+    public void handleVersionResponse(Integer errorCode) {
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(getActivity(), android.R.style.Theme_Material_Light_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(getActivity());
+        }
+        if (errorCode == AppApiHelper.SYSTEM_NOT_RUNNING) {
+
+            builder.setTitle(getString(R.string.sys_not_running_title))
+                    .setMessage(getString(R.string.sys_not_running_title))
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setCancelable(false)
+                    .show();
+        } else if (errorCode == AppApiHelper.INVALID_CLIENT) {
+            builder.setTitle(getString(R.string.invalid_client_title))
+                    .setMessage(getString(R.string.invalid_client_msg))
+                    .setNeutralButton(getString(R.string.store_button), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(BuildConfig.STORE_URL));
+                            startActivity(intent);
+                        }
+                    }).setIcon(android.R.drawable.ic_dialog_alert)
+                    .setCancelable(false)
+                    .show();
+        }
     }
 
     @Override

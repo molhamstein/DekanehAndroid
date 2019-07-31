@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.socket.dekaneh.adapter.RewardsAdapter;
@@ -61,7 +62,10 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
     EditText ownerNameForm;
     @BindView(R.id.balance)
     TextView balance;
-
+    @BindView(R.id.balanceLayout)
+    LinearLayout balanceLayout;
+    @BindView(R.id.level)
+    TextView level;
 
 
     @Inject
@@ -96,7 +100,6 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
         profileOrdersRV.setAdapter(ordersAdapter);
         profileOrdersRV.setNestedScrollingEnabled(false);
         presenter.fetchOrders();
-
 
 
         rewardsRV.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -171,14 +174,17 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
     }
 
     @Override
-    public void updateView(String storeName, String ownerName, String phoneNumber,Integer balance) {
+    public void updateView(String storeName, String ownerName, String phoneNumber, Integer balance, String level) {
         this.storeName.setText(storeName);
         this.ownerName.setText(ownerName);
         this.phoneNumber.setText(phoneNumber);
         this.businessNameForm.setText(storeName);
         this.phoneNumberForm.setText(phoneNumber);
         this.ownerNameForm.setText(ownerName);
+        if (balance == 0)
+            balanceLayout.setVisibility(View.GONE);
         this.balance.setText(balance.toString());
+        this.level.setText(level);
 
     }
 
@@ -187,11 +193,11 @@ public class ProfileFragment extends BaseFragment implements ProfileFragmentVP.V
         Picasso.get().load(url).into(map);
     }
 
-    @Override
-    public void openDialog(String tag) {
-        RewardDialogFragment fragment = new RewardDialogFragment();
-        fragment.show(getFragmentManager(), tag);
-    }
+//    @Override
+//    public void openDialog(String tag) {
+//        RewardDialogFragment fragment = new RewardDialogFragment();
+//        fragment.show(getFragmentManager(), tag);
+//    }
 
     @OnClick(R.id.updateUserBtn)
     public void onClickedUpdateUserBtn() {

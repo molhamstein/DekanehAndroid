@@ -62,6 +62,8 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     @BindView(R.id.cartItemsCount)
     TextView cartItemsCount;
 
+
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -95,6 +97,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
     protected void onResume() {
         super.onResume();
         presenter.updateCartItemsCountText();
+        presenter.checkClientVersion();
     }
 
     @Override
@@ -105,6 +108,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         getActivityComponent().inject(this);
+
         presenter.onAttach(this);
         presenter.checkUserActivated();
         presenter.updateFirebaseToken();
@@ -151,6 +155,7 @@ public class MainActivity extends BaseActivity implements MainActivityVP.View {
 
 
     }
+
 
     @Override
     public void showMainFragment() {

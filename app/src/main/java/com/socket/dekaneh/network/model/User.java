@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.Locale;
 
 public class User implements Serializable {
 
@@ -46,6 +47,9 @@ public class User implements Serializable {
     @SerializedName("balance")
     @Expose
     private Integer balance;
+    @SerializedName("level")
+    @Expose
+    private Level level;
 
 
     public User(String id, String phoneNumber, String email, String clientType, String ownerName, String shopName, boolean hideHistory) {
@@ -182,6 +186,15 @@ public class User implements Serializable {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+
+    public String getLevel() {
+        return Locale.getDefault().getLanguage() == "ar"?level.getNameAr() :level.getNameEn();
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
     }
 
     public enum Type {

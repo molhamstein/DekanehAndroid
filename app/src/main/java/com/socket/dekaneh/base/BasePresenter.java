@@ -12,4 +12,6 @@ public interface BasePresenter<T extends BaseView> {
 
     void updateCartItemsCountText();
 
+    void checkClientVersion();
+
 }

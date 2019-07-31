@@ -47,7 +47,8 @@ android {
         minSdkVersion 17
         targetSdkVersion 28
         versionCode generateVersionCode()
-        versionName generateVersionName()
+//        versionName generateVersionName()
+        versionName "2.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
 
@@ -71,6 +72,7 @@ android {
 //            buildConfigField "String", "BASE_API_URL", '"http://dockaan.com:3033/api/"'
 //            buildConfigField "String", "BASE_API_URL", '"http://192.168.1.5:3000/api/"'
             buildConfigField "String", "BASE_API_URL", '"http://104.217.253.15:3033/api/"'
+            buildConfigField "String", "STORE_URL", '"https://play.google.com/store/apps/details?id=com.socket.dekaneh"'
         }
     }
 

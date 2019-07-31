@@ -16,9 +16,9 @@ public class ProfileFragmentVP {
 
     public interface View extends BaseView {
         void addOrders(List<Order> orders);
-        void updateView(String storeName, String ownerName, String phoneNumber,Integer balance);
+        void updateView(String storeName, String ownerName, String phoneNumber,Integer balance,String level);
         void updateMap(String url);
-        void openDialog(String tag) ;
+//        void openDialog(String tag) ;
         void addAwards(List<Award> awards);
     }
 

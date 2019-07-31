@@ -12,6 +12,8 @@ import javax.inject.Singleton;
 
 import com.socket.dekaneh.network.model.User;
 
+import java.util.Locale;
+
 @Singleton
 public class Session {
 
@@ -32,6 +34,7 @@ public class Session {
     private static final String IS_LOGGED_ON = "is_logged_on";
     private static final String FIREBASE_TOKEN = "firebase_token";
     private static final String HIDE_HISTORY = "hide_history";
+    private static final String USER_LEVEL = "user_level";
 
     @Inject
     public Session(Context context) {
@@ -116,6 +119,16 @@ public class Session {
         return getPreference().getInt(USER_BALANCE, 0);
     }
 
+    public void setUserLevel(String level) {
+        getPreference()
+                .edit()
+                .putString(USER_LEVEL, level)
+                .apply();
+    }
+
+    public String getUserLevel() {
+        return getPreference().getString(USER_LEVEL, "");
+    }
 
     public void setShopName(String shopName) {
         getPreference()
@@ -219,6 +232,7 @@ public class Session {
         setOwnerName(user.getOwnerName());
         setShopName(user.getShopName());
         setBalance(user.getBalance());
+        setUserLevel(user.getLevel());
         setLoggedOn(true);
         setHideHistory(user.isHideHistory());
         setClientType(user.getClientType().toString());

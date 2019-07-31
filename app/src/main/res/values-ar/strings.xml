@@ -134,5 +134,20 @@
     <string name="balance">الرصيد</string>
     <string name="rewards">الجوائز</string>
     <string name="valid_till">صالح لغاية</string>
+    
+    <string name="invalid_client_title">تحديث هام جداً!</string>
+    <string name="invalid_client_msg">هذه النسخة لم تعد مدعومة\nالرجاء تحميل النسخة الأخيرة</string>
+    <string name="warning_client_title">تحديث!</string>
+    <string name="warning_client_msg">هناك نسخة جديدة متوفرة</string>
+    <string name="sys_not_running_title">نسخة غير صالحة!</string>
+    <string name="sys_not_running_msg">هذه النسخة من التطبيق لم تعد صالحة</string>
+    <string name="store_button">الذهاب إلى المتجر</string>
+    
+    <string name="offer_achieved">لقد قمت باكتساب العرض التالي</string>
+    <string name="congrats">مبروك!</string>
+    
+    <string name="go_to_offers">راجع عروضك في صفحة حسابك</string>
+
+
 
 </resources>

@@ -45,12 +45,12 @@ public class RewardsAdapter extends  RecyclerView.Adapter<RewardsAdapter.RewardV
 
     @Override
     public void onBindViewHolder(@NonNull RewardViewHolder holder, int position) {
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pView.openDialog("Dialog");
-            }
-        });
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                pView.openDialog("Dialog");
+//            }
+//        });
         holder.title.setText(Locale.getDefault().equals("ar")?data.get(position).getNameAr():data.get(position).getNameEn());
         holder.body.setText(data.get(position).getDetails());
         holder.date.setText(data.get(position).getTo());

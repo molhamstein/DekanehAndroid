@@ -21,6 +21,8 @@ import javax.inject.Inject;
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.adapter.CartOrdersAdapter;
 import com.socket.dekaneh.base.BaseActivity;
+import com.socket.dekaneh.fragment.profile.RewardDialogFragment;
+import com.socket.dekaneh.network.model.Award;
 import com.socket.dekaneh.network.model.CartItem;
 
 import brain_socket.com.dekaneh.activity.cart.CartActivityVP;
@@ -200,6 +202,17 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
         orderButton.setEnabled(false);
         orderButton.setClickable(false);
         orderButton.setBackgroundResource(R.drawable.disabled_button_round_10);
+    }
+
+    @Override
+    public void handleAwards(List<Award> awards) {
+        for(Award award : awards){
+            RewardDialogFragment fragment = new RewardDialogFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("award",award);
+            fragment.setArguments(bundle);
+            fragment.show(getSupportFragmentManager(), "Award Dialog");
+        }
     }
 
     @Override

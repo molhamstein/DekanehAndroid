@@ -72,6 +72,7 @@ public class CartActivityPresenter<T extends CartActivityVP.View> extends BasePr
                                 getView().hideLoading();
                                 getView().setOrderViewClear(true);
                                 getView().setOkResult();
+                                getView().handleAwards(order.getAwards());
                                 getView().showMessage(R.string.after_order_msg);
 
                             }

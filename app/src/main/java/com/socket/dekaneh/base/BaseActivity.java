@@ -2,12 +2,15 @@ package com.socket.dekaneh.base;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
@@ -25,11 +28,13 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+import com.socket.dekaneh.BuildConfig;
 import com.socket.dekaneh.dagger.ActivityComponent;
 import com.socket.dekaneh.application.DekanehApp;
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.dagger.ActivityModule;
 import com.socket.dekaneh.dagger.DaggerActivityComponent;
+import com.socket.dekaneh.network.AppApiHelper;
 import com.socket.dekaneh.utils.LocaleUtils;
 import com.socket.dekaneh.utils.NetworkUtils;
 
@@ -68,6 +73,47 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
     @Override
     public void onError(String message) {
         displayCustomToast(message);
+    }
+
+    @Override
+    public void handleVersionResponse(Integer errorCode) {
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(this);
+        }
+        if (errorCode == AppApiHelper.WARNING_CLIENT) {
+            builder.setTitle(getString(R.string.warning_client_title))
+                    .setMessage(getString(R.string.warning_client_msg))
+                    .setNeutralButton(getString(R.string.store_button), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(BuildConfig.STORE_URL));
+                            startActivity(intent);
+                        }
+                    }).setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+        } else if (errorCode == AppApiHelper.SYSTEM_NOT_RUNNING) {
+
+            builder.setTitle(getString(R.string.sys_not_running_title))
+                    .setMessage(getString(R.string.sys_not_running_title))
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setCancelable(false)
+                    .show();
+        } else if (errorCode == AppApiHelper.INVALID_CLIENT) {
+            builder.setTitle(getString(R.string.invalid_client_title))
+                    .setMessage(getString(R.string.invalid_client_msg))
+                    .setNeutralButton(getString(R.string.store_button), new DialogInterface.OnClickListener(){
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(BuildConfig.STORE_URL));
+                            startActivity(intent);
+                        }
+                    }).setIcon(android.R.drawable.ic_dialog_alert)
+                    .setCancelable(false)
+                    .show();
+        }
     }
 
     @Override
@@ -140,6 +186,11 @@ public class BaseActivity extends AppCompatActivity implements LocaleUtils.Langu
         super.onResume();
         clearNotifications();
     }
+
+//    @Override
+//    public void handleVersionResponse() {
+//
+//    }
 
     @Override
     protected void onStart() {

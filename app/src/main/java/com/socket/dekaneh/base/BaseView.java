@@ -28,4 +28,6 @@ public interface BaseView {
 
     Context getContext();
 
+    void handleVersionResponse(Integer errorCode);
+
 }

@@ -1,5 +1,6 @@
 package com.socket.dekaneh.base;
 
+import android.os.Build;
 import android.util.Log;
 
 import com.androidnetworking.common.ANConstants;
@@ -8,20 +9,25 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.socket.dekaneh.BuildConfig;
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.application.SchedulerProvider;
 import com.socket.dekaneh.network.AppApiHelper;
 import com.socket.dekaneh.network.CacheStore;
+import com.socket.dekaneh.network.model.ClientVersion;
 import com.socket.dekaneh.network.model.Product;
 import com.socket.dekaneh.utils.GsonUtils;
 import com.socket.dekaneh.utils.NetworkUtils;
 
+import io.reactivex.functions.Consumer;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.inject.Inject;
 
 import io.reactivex.disposables.CompositeDisposable;
+
+import java.util.List;
 
 public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
 
@@ -128,7 +134,10 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }else {
+        } else if (error.getErrorCode() == AppApiHelper.WARNING_CLIENT || error.getErrorCode() == AppApiHelper.SYSTEM_NOT_RUNNING || error.getErrorCode() == AppApiHelper.INVALID_CLIENT) {
+            getView().handleVersionResponse(error.getErrorCode());
+        }
+       else {
             Log.e("ERRRRRRRRRRR", "handleApiError: " + error.getErrorBody());
         }
 
@@ -138,6 +147,35 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
     @Override
     public void updateCartItemsCountText() {
         getView().updateMainActivityCartItemsCount(String.valueOf(getCacheStore().getCartItems().size()));
+    }
+
+
+    @Override
+    public void checkClientVersion() {
+        getView().showLoading();
+        if (isNetworkConnected()) {
+            getView().showLoading();
+            getCompositeDisposable().add(
+                    AppApiHelper.checkVersion(BuildConfig.VERSION_NAME)
+                            .subscribeOn(getSchedulerProvider().io())
+                            .observeOn(getSchedulerProvider().ui())
+                            .subscribe(new Consumer<ClientVersion>() {
+                                @Override
+                                public void accept(ClientVersion clientVersion) throws Exception {
+                                    getView().handleVersionResponse(clientVersion.getResult());
+                                    getView().hideLoading();
+                                }
+                            }, new Consumer<Throwable>() {
+                                @Override
+                                public void accept(Throwable throwable) throws Exception {
+                                    handleApiError((ANError) throwable);
+                                    getView().hideLoading();
+
+                                }
+                            })
+            );
+        }
+
     }
 
     public boolean isNetworkConnected() {

@@ -35,7 +35,7 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
         getView().updateView(getCacheStore().getSession().getShopName(),
                 getCacheStore().getSession().getOwnerName(),
                 getCacheStore().getSession().getPhoneNumber(),
-                getCacheStore().getSession().getBalance());
+                getCacheStore().getSession().getBalance(),getCacheStore().getSession().getUserLevel());
         getView().updateMap(NetworkUtils.getStaticMapUrl(getCacheStore().getSession().getLatitude(), getCacheStore().getSession().getLongitude()));
 
     }
@@ -88,7 +88,7 @@ public class ProfileFragmentPresenter<T extends ProfileFragmentVP.View> extends 
                             .subscribe(new Consumer<User>() {
                                 @Override
                                 public void accept(User user) throws Exception {
-                                    getView().updateView(user.getShopName(), user.getOwnerName(), user.getPhoneNumber(),user.getBalance());
+                                    getView().updateView(user.getShopName(), user.getOwnerName(), user.getPhoneNumber(),user.getBalance(),user.getLevel());
                                     getCacheStore().getSession().setUser(user);
                                     getView().hideLoading();
                                 }
