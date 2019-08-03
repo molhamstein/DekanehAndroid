@@ -33,6 +33,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.socket.dekaneh.network.model.Coupon;
+import com.socket.dekaneh.network.model.OrderPrize;
 
 public class CartActivity extends BaseActivity implements CartActivityVP.View {
 
@@ -205,12 +206,22 @@ public class CartActivity extends BaseActivity implements CartActivityVP.View {
     }
 
     @Override
-    public void handleAwards(List<Award> awards) {
-        for(Award award : awards){
+    public void handleAwardsAndPrizes(List<Award> awards, List<OrderPrize> orderPrizes) {
+        for (Award award : awards) {
             RewardDialogFragment fragment = new RewardDialogFragment();
             Bundle bundle = new Bundle();
-            bundle.putSerializable("award",award);
+            bundle.putSerializable("award", award);
             fragment.setArguments(bundle);
+
+            fragment.show(getSupportFragmentManager(), "Award Dialog");
+        }
+
+        for (OrderPrize orderPrize : orderPrizes) {
+            RewardDialogFragment fragment = new RewardDialogFragment();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("orderPrize", orderPrize);
+            fragment.setArguments(bundle);
+
             fragment.show(getSupportFragmentManager(), "Award Dialog");
         }
     }

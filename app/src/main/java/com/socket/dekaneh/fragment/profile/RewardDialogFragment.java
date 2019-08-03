@@ -15,12 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.socket.dekaneh.R;
 import com.socket.dekaneh.activity.main.MainActivity;
 import com.socket.dekaneh.network.model.Award;
+import com.socket.dekaneh.network.model.OrderPrize;
+import com.squareup.picasso.Picasso;
 import nl.dionsegijn.konfetti.KonfettiView;
 import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
@@ -45,7 +48,11 @@ public class RewardDialogFragment extends DialogFragment {
     @BindView(R.id.body)
     TextView body;
 
+    @BindView(R.id.image)
+    ImageView image;
+
     private Award award ;
+    private OrderPrize orderPrize ;
 
     public RewardDialogFragment() {
         // Required empty public constructor
@@ -66,16 +73,17 @@ public class RewardDialogFragment extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
 
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
         viewKonfetti.build()
                 .addColors(ContextCompat.getColor(getActivity(), R.color.congrats_color1), ContextCompat.getColor(getActivity(), R.color.congrats_color2))
                 .setDirection(0.0, 359.0)
-                .setSpeed(1f, 20f)
+                .setSpeed(1f, 5f)
                 .setFadeOutEnabled(true)
                 .setTimeToLive(2000L)
                 .addShapes(Shape.RECT, Shape.CIRCLE)
                 .addSizes(new Size(12, 5))
-                .setPosition(view.getX() + view.getWidth() / 2, view.getY())
-//                .setPosition(-50f, viewKonfetti.getWidth() + 50f, -50f, -50f)
+//                .setPosition(viewKonfetti.getX(),viewKonfetti.getX() + viewKonfetti.getWidth(), viewKonfetti.getY(),viewKonfetti.getY())
+                .setPosition(-1000f, viewKonfetti.getWidth() + 1000f, -50f, -50f)
                 .streamFor(300, 50000000000000000L);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,8 +96,17 @@ public class RewardDialogFragment extends DialogFragment {
         });
 
         award = (Award)getArguments().getSerializable("award");
-        title.setText(Locale.getDefault().getLanguage() == "ar"?award.getNameAr():award.getNameEn());
-        body.setText(award.getDetails());
+        orderPrize = (OrderPrize)getArguments().getSerializable("orderPrize");
+        if(award != null){
+            title.setText(Locale.getDefault().getLanguage() == "ar"?award.getNameAr():award.getNameEn());
+            body.setText(award.getDetails());
+        }
+        else if (orderPrize != null){
+            title.setText(Locale.getDefault().getLanguage() == "ar"?orderPrize.getProduct().getNameAr():orderPrize.getProduct().getNameEn());
+            body.setText(orderPrize.getProduct().getDescription());
+            Picasso.get().load(orderPrize.getProduct().getMedia().getUrl()).into(image);
+        }
+
 
 
     }

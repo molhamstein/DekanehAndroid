@@ -7,6 +7,7 @@ import com.socket.dekaneh.base.BaseView;
 import com.socket.dekaneh.network.model.Award;
 import com.socket.dekaneh.network.model.CartItem;
 import com.socket.dekaneh.network.model.Coupon;
+import com.socket.dekaneh.network.model.OrderPrize;
 
 public class CartActivityVP {
 
@@ -15,7 +16,7 @@ public class CartActivityVP {
         void setOrderViewClear(boolean clear);
         void setOkResult();
         void disableOrderBtn();
-        void handleAwards(List<Award> awards);
+        void handleAwardsAndPrizes(List<Award> awards, List<OrderPrize> orderPrizes);
         void addAllCoupons(List<Coupon> coupons);
         void updatePriceAfterCoupon(int couponValue, boolean isFixed);
     }

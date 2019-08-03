@@ -23,6 +23,9 @@ public class Product implements Serializable {
     @SerializedName("nameAr")
     @Expose
     private String nameAr;
+    @SerializedName("nameEn")
+    @Expose
+    private String nameEn;
     @SerializedName("horecaPrice")
     @Expose
     private int horecaPrice;
@@ -122,6 +125,14 @@ public class Product implements Serializable {
 
     public String getNameAr() {
         return nameAr;
+    }
+
+    public String getNameEn() {
+        return nameEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
 
     public int getHorecaPrice() {

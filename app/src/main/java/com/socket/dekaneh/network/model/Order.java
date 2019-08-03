@@ -53,6 +53,10 @@ public class Order implements Serializable {
     @Expose
     private List<Award> awards;
 
+    @SerializedName("orderPrizes")
+    @Expose
+    private List<OrderPrize> orderPrizes;
+
 
     public Order(int totalPrice, String clientId, List<CartItem> items) {
         this.clientId = clientId;
@@ -143,6 +147,14 @@ public class Order implements Serializable {
 
     public void setAwards(List<Award> awards) {
         this.awards = awards;
+    }
+
+    public List<OrderPrize> getOrderPrizes() {
+        return orderPrizes;
+    }
+
+    public void setOrderPrizes(List<OrderPrize> orderPrizes) {
+        this.orderPrizes = orderPrizes;
     }
 
     public enum Status {
