@@ -23,6 +23,7 @@ import com.socket.dekaneh.R;
 import com.socket.dekaneh.activity.main.MainActivity;
 import com.socket.dekaneh.network.model.Award;
 import com.socket.dekaneh.network.model.OrderPrize;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import nl.dionsegijn.konfetti.KonfettiView;
 import nl.dionsegijn.konfetti.models.Shape;
@@ -102,9 +103,20 @@ public class RewardDialogFragment extends DialogFragment {
             body.setText(award.getDetails());
         }
         else if (orderPrize != null){
+            viewKonfetti.setVisibility(View.GONE);
             title.setText(Locale.getDefault().getLanguage() == "ar"?orderPrize.getProduct().getNameAr():orderPrize.getProduct().getNameEn());
             body.setText(orderPrize.getProduct().getDescription());
-            Picasso.get().load(orderPrize.getProduct().getMedia().getUrl()).into(image);
+            Picasso.get().load(orderPrize.getProduct().getMedia().getUrl()).into(image, new Callback() {
+                @Override
+                public void onSuccess() {
+                    viewKonfetti.setVisibility(View.VISIBLE);
+                }
+
+                @Override
+                public void onError(Exception e) {
+
+                }
+            });
         }
 
 
