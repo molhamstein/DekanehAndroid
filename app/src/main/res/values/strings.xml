@@ -180,6 +180,8 @@
     <!--errors-->
     <string name="err_wrong_credentials">wrong phonenumber or password</string>
 
+    <string name="err_not_loged_in">Please login again</string>
+
     <string name="warn_cant_cancel_order">You can\'t cancel an order after 8 AM</string>
     <string name="confirm_delete_order_title">are you sure?</string>
     <string name="confirm_delete_order_desc">are you sure you want to delete this order?</string>

@@ -1,6 +1,7 @@
 package com.socket.dekaneh.base;
 
 import android.os.Build;
+import android.support.v7.widget.AppCompatImageHelper;
 import android.util.Log;
 
 import com.androidnetworking.common.ANConstants;
@@ -110,7 +111,9 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
             getView().onError(R.string.coupon_in_use_error);
         } else if (error.getErrorCode() == AppApiHelper.WRONG_CREDENTIALS) {
             getView().onError(R.string.err_wrong_credentials);
-        } else if (error.getErrorCode() == AppApiHelper.PRODUCT_NOT_AVAILABLE_ERROR) {
+        }else if (error.getErrorCode() == AppApiHelper.NOT_LOGGED_IN) {
+            getView().onError(R.string.err_not_loged_in);
+        }else if (error.getErrorCode() == AppApiHelper.PRODUCT_NOT_AVAILABLE_ERROR) {
             try {
                 // the error body shall contain the product that is causing this issue
                 JsonElement errBody = new JsonParser().parse(error.getErrorBody()).getAsJsonObject().get("error");
@@ -127,7 +130,8 @@ public class BasePresenterImpl<T extends BaseView> implements BasePresenter<T> {
                 // the error body shall contain the product that is causing this issue
                 JsonElement errBody = new JsonParser().parse(error.getErrorBody()).getAsJsonObject().get("error");
                 JsonArray unavailableProductsJsonArray = errBody.getAsJsonObject().getAsJsonArray("data");
-                String productString = unavailableProductsJsonArray.get(0).getAsJsonObject().toString();
+                JsonObject cartProduct = unavailableProductsJsonArray.get(0).getAsJsonObject();
+                String productString = cartProduct.getAsJsonObject("product").toString();
                 Product product = GsonUtils.convertJsonStringToProductObject(productString);
 
                 getView().onError(getView().getContext().getString(R.string.product_not_available_error, product.getNameAr()));

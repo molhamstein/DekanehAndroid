@@ -25,6 +25,7 @@ public class AppApiHelper {
     public static final int COUPON_NOT_FOUND_ERROR = 605;
     public static final int COUPON_IN_USE = 606;
     public static final int WRONG_CREDENTIALS = 401;
+    public static final int NOT_LOGGED_IN = 403;
     public static final int WARNING_CLIENT = 199;
     public static final int INVALID_CLIENT = 666;
     public static final int SYSTEM_NOT_RUNNING = 667;
