@@ -70,7 +70,7 @@ public class Coupon implements Serializable {
     }
 
     public Date getExpireDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX", Locale.US);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
         Date formattedDate = null;
 
         try {

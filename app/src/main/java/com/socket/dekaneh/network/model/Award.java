@@ -171,7 +171,7 @@ public class Award implements Serializable
     }
 
     public String getTo() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX", Locale.US);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
         SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
         Date formattedDate = null;
         try {
@@ -268,10 +268,11 @@ public class Award implements Serializable
 
 
     public Integer getProgressPercentage(){
-        Integer userProgress = this.userAward.getProgress();
-        Integer target = this.action.getTarget() ;
-        return (userProgress * 100)/target ;
-
+        if (this.userAward != null) {
+            Integer userProgress = this.userAward.getProgress();
+            Integer target = this.action.getTarget();
+            return (userProgress * 100) / target;
+        } return 0;
     }
 
 }
